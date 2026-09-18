@@ -1,0 +1,63 @@
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+11
+810
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+vfd_demo
+# storage
+db|vfd_demo.(0).cnf
+db|vfd_demo.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vfd_demo.vhd
+151a2941aaa3fd72948c25ea85c15f6
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+cnt_max
+4
+PARAMETER_DEC
+DEF
+lcd_char
+16
+PARAMETER_DEC
+DEF
+stable_delay
+19
+PARAMETER_DEC
+DEF
+display_delay
+399
+PARAMETER_DEC
+DEF
+}
+# hierarchies {
+|
+}
+# end
+# complete
+

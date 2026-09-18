@@ -1,0 +1,24 @@
+
+State Machine - |M4|full_demo:inst|oled_demo:oled|oled_routine
+Name oled_routine.wr_ram oled_routine.initial oled_routine.idle 
+oled_routine.idle 0 0 0 
+oled_routine.initial 0 1 1 
+oled_routine.wr_ram 1 0 1 
+
+State Machine - |M4|full_demo:inst|vfd_demo:vfd|lcd_routine
+Name lcd_routine.brightness_set lcd_routine.delay_2s lcd_routine.disp_line2 lcd_routine.disp_line1 lcd_routine.disp_on lcd_routine.entry_mode lcd_routine.function_set lcd_routine.delay_20m 
+lcd_routine.delay_20m 0 0 0 0 0 0 0 0 
+lcd_routine.function_set 0 0 0 0 0 0 1 1 
+lcd_routine.entry_mode 0 0 0 0 0 1 0 1 
+lcd_routine.disp_on 0 0 0 0 1 0 0 1 
+lcd_routine.disp_line1 0 0 0 1 0 0 0 1 
+lcd_routine.disp_line2 0 0 1 0 0 0 0 1 
+lcd_routine.delay_2s 0 1 0 0 0 0 0 1 
+lcd_routine.brightness_set 1 0 0 0 0 0 0 1 
+
+State Machine - |M4|full_demo:inst|bitman:dot|en_state
+Name en_state.move_right en_state.move_left en_state.jump en_state.stand 
+en_state.stand 0 0 0 0 
+en_state.jump 0 0 1 1 
+en_state.move_left 0 1 0 1 
+en_state.move_right 1 0 0 1 

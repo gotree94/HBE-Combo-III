@@ -1,0 +1,76 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 8.815 ns
+From           : sw_stop
+To             : cnt_record_max[9]
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 15.445 ns
+From           : record_routine.recording
+To             : led_record
+From Clock     : clk
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -3.256 ns
+From           : sram_data[4]
+To             : reg_audio_dout[4]
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clk'
+Slack          : 13.194 ns
+Required Time  : 50.00 MHz ( period = 20.000 ns )
+Actual Time    : 146.93 MHz ( period = 6.806 ns )
+From           : cnt_play_data[15]
+To             : record_routine.recording
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'codec_bclk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 222.62 MHz ( period = 4.492 ns )
+From           : audio_interface:u_audio_interface|audio_output:u2|dout_buff[31]
+To             : audio_interface:u_audio_interface|audio_output:u2|codec_din
+From Clock     : codec_bclk
+To Clock       : codec_bclk
+Failed Paths   : 0
+
+Type           : Clock Hold: 'clk'
+Slack          : 0.499 ns
+Required Time  : 50.00 MHz ( period = 20.000 ns )
+Actual Time    : N/A
+From           : record_routine.idle
+To             : record_routine.idle
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

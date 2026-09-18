@@ -1,0 +1,14 @@
+Fitter Status : Successful - Thu Jun 05 22:03:07 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : bitman
+Top-level Entity Name : bitman
+Family : Cyclone II
+Device : EP2C70F672C8
+Timing Models : Final
+Total logic elements : 288 / 68,416 ( < 1 % )
+Total registers : 96
+Total pins : 26 / 422 ( 6 % )
+Total virtual pins : 0
+Total memory bits : 14,336 / 1,152,000 ( 1 % )
+Embedded Multiplier 9-bit elements : 0 / 300 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

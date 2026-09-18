@@ -1,0 +1,17 @@
+NET "clk" LOC = F13;
+NET "led_data<0>" LOC = Y2;
+NET "led_data<1>" LOC = Y1;
+NET "led_data<2>" LOC = AA10;
+NET "led_data<3>" LOC = AA7;
+NET "led_data<4>" LOC = AA3;
+NET "led_data<5>" LOC = AA2;
+NET "led_data<6>" LOC = Y10;
+NET "led_data<7>" LOC = AB12;
+NET "led_data<8>" LOC = AA12;
+NET "led_data<9>" LOC = Y23;
+NET "led_data<10>" LOC = J5;
+NET "led_data<11>" LOC = J4;
+NET "led_data<12>" LOC = AD6;
+NET "led_data<13>" LOC = Y20;
+NET "led_data<14>" LOC = AB1;
+NET "led_data<15>" LOC = AB9;

@@ -1,0 +1,12 @@
+Analysis & Synthesis Status : Successful - Wed Apr 30 17:53:12 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : oled_demo
+Top-level Entity Name : oled_demo
+Family : Cyclone II
+Total logic elements : 201
+Total registers : 63
+Total pins : 15
+Total virtual pins : 0
+Total memory bits : 524,288
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,6 @@
+
+State Machine - |voice_record|record_routine
+Name record_routine.play record_routine.recording record_routine.idle 
+record_routine.idle 0 0 0 
+record_routine.recording 0 1 1 
+record_routine.play 1 0 1 

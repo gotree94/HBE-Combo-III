@@ -1,0 +1,36 @@
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -v 3 -s 4 -xml motor_demo motor_demo.ncd -o motor_demo.twr motor_demo.pcf -ucf motor_demo.ucf
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.syr"
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -v 3 -s 4 -xml motor_demo motor_demo.ncd -o motor_demo.twr motor_demo.pcf -ucf motor_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -f motor_demo.ut motor_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -f motor_demo.ut motor_demo.ncd
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "motor_demo.ngc" motor_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o motor_demo_map.ncd motor_demo.ngd motor_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -w -intstyle ise -ol std -t 1 motor_demo_map.ncd motor_demo.ncd motor_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -v 3 -s 4 -xml motor_demo motor_demo.ncd -o motor_demo.twr motor_demo.pcf -ucf motor_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.ise" -intstyle ise -f motor_demo.ut motor_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/CD/source/xilinx/motor/motor_demo.ise" -intstyle ise -f motor_demo.ut motor_demo.ncd

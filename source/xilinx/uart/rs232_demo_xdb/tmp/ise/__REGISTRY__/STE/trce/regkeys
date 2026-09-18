@@ -1,0 +1,6 @@
+CommandLine
+C:/Xilinx/10.1/ISE/bin/nt/unwrapped/trce.exe -ise F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise -intstyle ise -v 3 -s 4 -xml rs232_demo rs232_demo.ncd -o rs232_demo.twr rs232_demo.pcf -ucf rs232_demo.ucf
+s
+FormatString
+trce.exe ([-e|-v [<limit:0,2000000000>]] [-l <limit:0,2000000000>] [-n [<limit:0,2000000000>]] [-u [<limit:0,2000000000>]] [-skew] [-a] [--p] [-s <speed>] [-o <report[.twr]>] [--m] [-stamp <stampfile>] [-tsi <tsifile[.tsi]>] [-xml <report[.twx]>] [-nodatasheet] [-timegroups] [-fastpaths] [-intstyle ise|xflow|silent] [-ise <projectfile>] [--ucf <constraint[.ucf]>] <design[.ncd]> [<constraint[.pcf]>]) | ([-run <macro[.xtm]> [<design[.ncd]> [<constraint[.pcf]>]]] [-intstyle ise|xflow|silent] [-ise <projectfile>])
+s

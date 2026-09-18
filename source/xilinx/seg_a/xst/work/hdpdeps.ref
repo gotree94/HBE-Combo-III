@@ -1,0 +1,22 @@
+V3 11
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/decod.vhd" 2007/10/15.13:46:40 K.34
+EN work/decod 1210247463 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/decod.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/decod/gk 1210247464 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/decod.vhd" \
+      EN work/decod 1210247463
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/sep.vhd" 2007/10/08.15:26:44 K.34
+EN work/sep 1210247461 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/sep.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/sep/gk 1210247462 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/sep.vhd" \
+      EN work/sep 1210247461
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/stop_watch.vhd" 2008/05/08.20:50:55 K.34
+EN work/stop_watch 1210247465 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/stop_watch.vhd" \
+      PB ieee/std_logic_1164 1203817036 PB ieee/STD_LOGIC_UNSIGNED 1203817038
+AR work/stop_watch/gk 1210247466 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/stop_watch.vhd" \
+      EN work/stop_watch 1210247465 CP sep CP decod

@@ -1,0 +1,583 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.47 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.47 secs
+ 
+--> Reading design: led_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "led_demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "led_demo"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : led_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : led_demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd" in Library work.
+Architecture hb of Entity led_clk_gen is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd" in Library work.
+Architecture hb of Entity led_pwm_gen is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" in Library work.
+Architecture hb of Entity led_demo is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <led_demo> in library <work> (architecture <hb>).
+
+Analyzing hierarchy for entity <led_clk_gen> in library <work> (architecture <hb>).
+
+Analyzing hierarchy for entity <led_pwm_gen> in library <work> (architecture <hb>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <led_demo> in library <work> (Architecture <hb>).
+WARNING:Xst:753 - "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" line 99: Unconnected output port 'pwm' of component 'led_pwm_gen'.
+Entity <led_demo> analyzed. Unit <led_demo> generated.
+
+Analyzing Entity <led_clk_gen> in library <work> (Architecture <hb>).
+Entity <led_clk_gen> analyzed. Unit <led_clk_gen> generated.
+
+Analyzing Entity <led_pwm_gen> in library <work> (Architecture <hb>).
+Entity <led_pwm_gen> analyzed. Unit <led_pwm_gen> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <led_clk_gen>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd".
+    Found 8-bit register for signal <led1>.
+    Found 8-bit register for signal <led2>.
+    Found 8-bit register for signal <led3>.
+    Found 8-bit register for signal <led4>.
+    Found 8-bit register for signal <led5>.
+    Found 8-bit register for signal <led6>.
+    Found 8-bit register for signal <led7>.
+    Found 8-bit register for signal <led8>.
+    Found 1-bit register for signal <led_clk>.
+    Found 8-bit up counter for signal <clk_cnt>.
+    Found 4-bit up counter for signal <cnt>.
+    Found 4-bit up counter for signal <cnt0>.
+    Found 4-bit up counter for signal <cnt1>.
+    Found 1-bit register for signal <iclk>.
+    Summary:
+	inferred   4 Counter(s).
+	inferred  66 D-type flip-flop(s).
+Unit <led_clk_gen> synthesized.
+
+
+Synthesizing Unit <led_pwm_gen>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd".
+    Found 1-bit register for signal <fclk>.
+    Found 8-bit up counter for signal <cnt>.
+    Found 8-bit comparator less for signal <shades$cmp_lt0000> created at line 57.
+    Found 8-bit comparator less for signal <shades$cmp_lt0001> created at line 58.
+    Found 8-bit comparator less for signal <shades$cmp_lt0002> created at line 60.
+    Found 8-bit comparator less for signal <shades$cmp_lt0003> created at line 62.
+    Found 8-bit comparator less for signal <shades$cmp_lt0004> created at line 64.
+    Found 8-bit comparator less for signal <shades$cmp_lt0005> created at line 66.
+    Found 8-bit comparator less for signal <shades$cmp_lt0006> created at line 68.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+	inferred   7 Comparator(s).
+Unit <led_pwm_gen> synthesized.
+
+
+Synthesizing Unit <led_demo>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd".
+    Found 1-bit register for signal <clk_1MHz>.
+    Found 5-bit up counter for signal <clk_cnt>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <led_demo> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 6
+ 4-bit up counter                                      : 3
+ 5-bit up counter                                      : 1
+ 8-bit up counter                                      : 2
+# Registers                                            : 12
+ 1-bit register                                        : 4
+ 8-bit register                                        : 8
+# Comparators                                          : 7
+ 8-bit comparator less                                 : 7
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 6
+ 4-bit up counter                                      : 3
+ 5-bit up counter                                      : 1
+ 8-bit up counter                                      : 2
+# Registers                                            : 68
+ Flip-Flops                                            : 68
+# Comparators                                          : 7
+ 8-bit comparator less                                 : 7
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2677 - Node <clk_cnt_2> of sequential type is unconnected in block <led_clk_gen>.
+WARNING:Xst:2677 - Node <clk_cnt_3> of sequential type is unconnected in block <led_clk_gen>.
+WARNING:Xst:2677 - Node <clk_cnt_4> of sequential type is unconnected in block <led_clk_gen>.
+WARNING:Xst:2677 - Node <clk_cnt_5> of sequential type is unconnected in block <led_clk_gen>.
+WARNING:Xst:2677 - Node <clk_cnt_6> of sequential type is unconnected in block <led_clk_gen>.
+WARNING:Xst:2677 - Node <clk_cnt_7> of sequential type is unconnected in block <led_clk_gen>.
+
+Optimizing unit <led_demo> ...
+
+Optimizing unit <led_clk_gen> ...
+WARNING:Xst:1710 - FF/Latch <led4_0> (without init value) has a constant value of 1 in block <led_clk_gen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <led5_0> (without init value) has a constant value of 1 in block <led_clk_gen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <led4_0> (without init value) has a constant value of 1 in block <led_clk_gen>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <led5_0> (without init value) has a constant value of 1 in block <led_clk_gen>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <led_pwm_gen> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block led_demo, actual ratio is 0.
+FlipFlop clk_gen/cnt_0 has been replicated 2 time(s)
+FlipFlop clk_gen/cnt_1 has been replicated 2 time(s)
+FlipFlop clk_gen/cnt_2 has been replicated 2 time(s)
+FlipFlop clk_gen/cnt_3 has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 101
+ Flip-Flops                                            : 101
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : led_demo.ngr
+Top Level Output File Name         : led_demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 17
+
+Cell Usage :
+# BELS                             : 234
+#      GND                         : 1
+#      INV                         : 7
+#      LUT1                        : 8
+#      LUT2                        : 16
+#      LUT2_D                      : 2
+#      LUT2_L                      : 3
+#      LUT3                        : 46
+#      LUT3_D                      : 1
+#      LUT3_L                      : 8
+#      LUT4                        : 111
+#      LUT4_D                      : 1
+#      LUT4_L                      : 4
+#      MUXCY                       : 8
+#      MUXF5                       : 9
+#      VCC                         : 1
+#      XORCY                       : 8
+# FlipFlops/Latches                : 101
+#      FD                          : 33
+#      FDE                         : 1
+#      FDR                         : 33
+#      FDRS                        : 3
+#      FDS                         : 31
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 16
+#      OBUF                        : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                      114  out of  16640     0%  
+ Number of Slice Flip Flops:            101  out of  33280     0%  
+ Number of 4 input LUTs:                207  out of  33280     0%  
+ Number of IOs:                          17
+ Number of bonded IOBs:                  17  out of    519     3%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 6     |
+clk_gen/clk_cnt_1                  | NONE(clk_gen/cnt0_3)   | 5     |
+clk_1MHz                           | NONE(clk_gen/clk_cnt_1)| 2     |
+pwm_gen/fclk                       | NONE(clk_gen/cnt1_3)   | 5     |
+clk_gen/iclk1                      | BUFG                   | 74    |
+clk_gen/led_clk                    | NONE(pwm_gen/cnt_7)    | 9     |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 4.944ns (Maximum Frequency: 202.265MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 13.479ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.202ns (frequency: 237.982MHz)
+  Total number of paths / destination ports: 46 / 12
+-------------------------------------------------------------------------
+Delay:               4.202ns (Levels of Logic = 2)
+  Source:            clk_cnt_3 (FF)
+  Destination:       clk_cnt_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: clk_cnt_3 to clk_cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.591   0.674  clk_cnt_3 (clk_cnt_3)
+     LUT2_L:I0->LO         1   0.648   0.103  clk_1MHz_cmp_eq0000_SW0 (N25)
+     LUT4:I3->O            6   0.648   0.669  clk_1MHz_cmp_eq0000 (clk_1MHz_cmp_eq0000)
+     FDR:R                     0.869          clk_cnt_0
+    ----------------------------------------
+    Total                      4.202ns (2.756ns logic, 1.446ns route)
+                                       (65.6% logic, 34.4% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_gen/clk_cnt_1'
+  Clock period: 3.471ns (frequency: 288.101MHz)
+  Total number of paths / destination ports: 30 / 9
+-------------------------------------------------------------------------
+Delay:               3.471ns (Levels of Logic = 1)
+  Source:            clk_gen/cnt0_1 (FF)
+  Destination:       clk_gen/cnt0_3 (FF)
+  Source Clock:      clk_gen/clk_cnt_1 rising
+  Destination Clock: clk_gen/clk_cnt_1 rising
+
+  Data Path: clk_gen/cnt0_1 to clk_gen/cnt0_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              5   0.591   0.776  clk_gen/cnt0_1 (clk_gen/cnt0_1)
+     LUT4:I0->O            4   0.648   0.587  clk_gen/cnt0_cmp_eq00001 (clk_gen/cnt0_cmp_eq0000)
+     FDR:R                     0.869          clk_gen/cnt0_0
+    ----------------------------------------
+    Total                      3.471ns (2.108ns logic, 1.363ns route)
+                                       (60.7% logic, 39.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_1MHz'
+  Clock period: 3.387ns (frequency: 295.247MHz)
+  Total number of paths / destination ports: 3 / 2
+-------------------------------------------------------------------------
+Delay:               3.387ns (Levels of Logic = 3)
+  Source:            clk_gen/clk_cnt_0 (FF)
+  Destination:       clk_gen/clk_cnt_1 (FF)
+  Source Clock:      clk_1MHz rising
+  Destination Clock: clk_1MHz rising
+
+  Data Path: clk_gen/clk_cnt_0 to clk_gen/clk_cnt_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.591   0.420  clk_gen/clk_cnt_0 (clk_gen/clk_cnt_0)
+     INV:I->O              2   0.648   0.000  clk_gen/Mcount_clk_cnt_lut<0>_INV_0 (clk_gen/Mcount_clk_cnt_lut<0>)
+     MUXCY:S->O            0   0.632   0.000  clk_gen/Mcount_clk_cnt_cy<0> (clk_gen/Mcount_clk_cnt_cy<0>)
+     XORCY:CI->O           1   0.844   0.000  clk_gen/Mcount_clk_cnt_xor<1> (clk_gen/Result<1>2)
+     FD:D                      0.252          clk_gen/clk_cnt_1
+    ----------------------------------------
+    Total                      3.387ns (2.967ns logic, 0.420ns route)
+                                       (87.6% logic, 12.4% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'pwm_gen/fclk'
+  Clock period: 3.425ns (frequency: 291.971MHz)
+  Total number of paths / destination ports: 30 / 9
+-------------------------------------------------------------------------
+Delay:               3.425ns (Levels of Logic = 1)
+  Source:            clk_gen/cnt1_2 (FF)
+  Destination:       clk_gen/cnt1_3 (FF)
+  Source Clock:      pwm_gen/fclk rising
+  Destination Clock: pwm_gen/fclk rising
+
+  Data Path: clk_gen/cnt1_2 to clk_gen/cnt1_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              4   0.591   0.730  clk_gen/cnt1_2 (clk_gen/cnt1_2)
+     LUT4:I0->O            4   0.648   0.587  clk_gen/cnt1_cmp_eq00001 (clk_gen/cnt1_cmp_eq0000)
+     FDR:R                     0.869          clk_gen/cnt1_0
+    ----------------------------------------
+    Total                      3.425ns (2.108ns logic, 1.317ns route)
+                                       (61.5% logic, 38.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_gen/iclk1'
+  Clock period: 4.815ns (frequency: 207.684MHz)
+  Total number of paths / destination ports: 532 / 120
+-------------------------------------------------------------------------
+Delay:               4.815ns (Levels of Logic = 2)
+  Source:            clk_gen/cnt_0_1 (FF)
+  Destination:       clk_gen/led2_4 (FF)
+  Source Clock:      clk_gen/iclk1 rising
+  Destination Clock: clk_gen/iclk1 rising
+
+  Data Path: clk_gen/cnt_0_1 to clk_gen/led2_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.590  clk_gen/cnt_0_1 (clk_gen/cnt_0_1)
+     LUT4:I0->O           15   0.648   1.049  clk_gen/cnt_cmp_eq00001 (clk_gen/cnt_cmp_eq0000)
+     LUT3:I2->O            1   0.648   0.420  clk_gen/led2_mux0000<3>_SW0 (N83)
+     FDS:S                     0.869          clk_gen/led2_4
+    ----------------------------------------
+    Total                      4.815ns (2.756ns logic, 2.059ns route)
+                                       (57.2% logic, 42.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_gen/led_clk'
+  Clock period: 4.944ns (frequency: 202.265MHz)
+  Total number of paths / destination ports: 108 / 17
+-------------------------------------------------------------------------
+Delay:               4.944ns (Levels of Logic = 2)
+  Source:            pwm_gen/cnt_3 (FF)
+  Destination:       pwm_gen/cnt_7 (FF)
+  Source Clock:      clk_gen/led_clk rising
+  Destination Clock: clk_gen/led_clk rising
+
+  Data Path: pwm_gen/cnt_3 to pwm_gen/cnt_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              6   0.591   0.812  pwm_gen/cnt_3 (pwm_gen/cnt_3)
+     LUT4:I0->O            4   0.648   0.619  pwm_gen/shades<4>11 (pwm_gen/N21)
+     LUT4:I2->O            8   0.648   0.757  pwm_gen/fclk_cmp_eq00001 (pwm_gen/fclk_cmp_eq0000)
+     FDR:R                     0.869          pwm_gen/cnt_0
+    ----------------------------------------
+    Total                      4.944ns (2.756ns logic, 2.188ns route)
+                                       (55.7% logic, 44.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_gen/iclk1'
+  Total number of paths / destination ports: 124 / 16
+-------------------------------------------------------------------------
+Offset:              9.107ns (Levels of Logic = 4)
+  Source:            clk_gen/led8_7 (FF)
+  Destination:       led_data<15> (PAD)
+  Source Clock:      clk_gen/iclk1 rising
+
+  Data Path: clk_gen/led8_7 to led_data<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              2   0.591   0.590  clk_gen/led8_7 (clk_gen/led8_7)
+     LUT4:I0->O            1   0.648   0.563  pwm_gen/led_7_or000018 (pwm_gen/led_7_or000018)
+     LUT4:I0->O            1   0.648   0.452  pwm_gen/led_7_or000029 (pwm_gen/led_7_or000029)
+     LUT3:I2->O            2   0.648   0.447  pwm_gen/led_7_or000035 (led_b<7>)
+     OBUF:I->O                 4.520          led_data_15_OBUF (led_data<15>)
+    ----------------------------------------
+    Total                      9.107ns (7.055ns logic, 2.052ns route)
+                                       (77.5% logic, 22.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_gen/led_clk'
+  Total number of paths / destination ports: 1072 / 16
+-------------------------------------------------------------------------
+Offset:              13.479ns (Levels of Logic = 7)
+  Source:            pwm_gen/cnt_3 (FF)
+  Destination:       led_data<15> (PAD)
+  Source Clock:      clk_gen/led_clk rising
+
+  Data Path: pwm_gen/cnt_3 to led_data<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              6   0.591   0.812  pwm_gen/cnt_3 (pwm_gen/cnt_3)
+     LUT4:I0->O            4   0.648   0.667  pwm_gen/shades<4>11 (pwm_gen/N21)
+     LUT3:I1->O            9   0.643   0.852  pwm_gen/shades<6>11 (pwm_gen/N4)
+     LUT3:I2->O            8   0.648   0.837  pwm_gen/shades<6>2 (pwm_gen/pwm<6>)
+     LUT4:I1->O            1   0.643   0.423  pwm_gen/led_4_or000023 (pwm_gen/led_4_or000023)
+     LUT4:I3->O            1   0.648   0.452  pwm_gen/led_4_or000026 (pwm_gen/led_4_or000026)
+     LUT3:I2->O            2   0.648   0.447  pwm_gen/led_4_or000032 (led_b<4>)
+     OBUF:I->O                 4.520          led_data_12_OBUF (led_data<12>)
+    ----------------------------------------
+    Total                     13.479ns (8.989ns logic, 4.490ns route)
+                                       (66.7% logic, 33.3% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 17.00 secs
+Total CPU time to Xst completion: 16.34 secs
+ 
+--> 
+
+Total memory usage is 205860 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

@@ -1,0 +1,4 @@
+AR dip_switch hb "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/dip_switch.vhd" sub00/vhpl03 1210244310
+AR diptoseg a "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/diptoseg.vhd" sub00/vhpl01 1210244308
+EN dip_switch NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/dip_switch.vhd" sub00/vhpl02 1210244309
+EN diptoseg NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/diptoseg.vhd" sub00/vhpl00 1210244307

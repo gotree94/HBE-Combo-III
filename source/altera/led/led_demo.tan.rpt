@@ -1,0 +1,584 @@
+Timing Analyzer report for led_demo
+Thu Jun 05 22:06:29 2008
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Clock Setup: 'clk'
+  6. tco
+  7. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                    ;
++------------------------------+-------+---------------+----------------------------------+-----------------------------+-----------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                        ; To                          ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+-----------------------------+-----------------------------+------------+----------+--------------+
+; Worst-case tco               ; N/A   ; None          ; 33.448 ns                        ; led_clk_gen:clk_gen|led6[4] ; led_data[5]                 ; clk        ; --       ; 0            ;
+; Clock Setup: 'clk'           ; N/A   ; None          ; 197.08 MHz ( period = 5.074 ns ) ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[2] ; clk        ; clk      ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                             ;                             ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+-----------------------------+-----------------------------+------------+----------+--------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                ; Setting            ; From ; To ; Entity Name ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                           ; EP2C70F672C8       ;      ;    ;             ;
+; Timing Models                                         ; Final              ;      ;    ;             ;
+; Number of source nodes to report per destination node ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                 ; 10                 ;      ;    ;             ;
+; Number of paths to report                             ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                          ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                            ; Off                ;      ;    ;             ;
+; Default hold multicycle                               ; Same As Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains             ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                        ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                      ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                 ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements               ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                      ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                  ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                         ; Off                ;      ;    ;             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clk             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clk'                                                                                                                                                                                                                                                    ;
++-----------------------------------------+-----------------------------------------------------+-----------------------------+-----------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                        ; To                          ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+-----------------------------+-----------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 197.08 MHz ( period = 5.074 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[4] ; clk        ; clk      ; None                        ; None                      ; 4.813 ns                ;
+; N/A                                     ; 197.08 MHz ( period = 5.074 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[1] ; clk        ; clk      ; None                        ; None                      ; 4.813 ns                ;
+; N/A                                     ; 197.08 MHz ( period = 5.074 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[2] ; clk        ; clk      ; None                        ; None                      ; 4.813 ns                ;
+; N/A                                     ; 207.08 MHz ( period = 4.829 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[4] ; clk        ; clk      ; None                        ; None                      ; 4.568 ns                ;
+; N/A                                     ; 207.08 MHz ( period = 4.829 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led5[1] ; clk        ; clk      ; None                        ; None                      ; 4.568 ns                ;
+; N/A                                     ; 207.08 MHz ( period = 4.829 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led5[2] ; clk        ; clk      ; None                        ; None                      ; 4.568 ns                ;
+; N/A                                     ; 213.36 MHz ( period = 4.687 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[1] ; clk        ; clk      ; None                        ; None                      ; 4.423 ns                ;
+; N/A                                     ; 213.72 MHz ( period = 4.679 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[2] ; clk        ; clk      ; None                        ; None                      ; 4.418 ns                ;
+; N/A                                     ; 213.77 MHz ( period = 4.678 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[1] ; clk        ; clk      ; None                        ; None                      ; 4.417 ns                ;
+; N/A                                     ; 213.81 MHz ( period = 4.677 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led8[1] ; clk        ; clk      ; None                        ; None                      ; 4.416 ns                ;
+; N/A                                     ; 213.81 MHz ( period = 4.677 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led8[2] ; clk        ; clk      ; None                        ; None                      ; 4.416 ns                ;
+; N/A                                     ; 214.04 MHz ( period = 4.672 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[2] ; clk        ; clk      ; None                        ; None                      ; 4.411 ns                ;
+; N/A                                     ; 214.09 MHz ( period = 4.671 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[1] ; clk        ; clk      ; None                        ; None                      ; 4.410 ns                ;
+; N/A                                     ; 214.13 MHz ( period = 4.670 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[1] ; clk        ; clk      ; None                        ; None                      ; 4.409 ns                ;
+; N/A                                     ; 214.13 MHz ( period = 4.670 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[2] ; clk        ; clk      ; None                        ; None                      ; 4.409 ns                ;
+; N/A                                     ; 216.26 MHz ( period = 4.624 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[4] ; clk        ; clk      ; None                        ; None                      ; 4.360 ns                ;
+; N/A                                     ; 216.31 MHz ( period = 4.623 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[4] ; clk        ; clk      ; None                        ; None                      ; 4.359 ns                ;
+; N/A                                     ; 216.36 MHz ( period = 4.622 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[3] ; clk        ; clk      ; None                        ; None                      ; 4.358 ns                ;
+; N/A                                     ; 216.36 MHz ( period = 4.622 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[3] ; clk        ; clk      ; None                        ; None                      ; 4.358 ns                ;
+; N/A                                     ; 216.59 MHz ( period = 4.617 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[4] ; clk        ; clk      ; None                        ; None                      ; 4.353 ns                ;
+; N/A                                     ; 216.64 MHz ( period = 4.616 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[4] ; clk        ; clk      ; None                        ; None                      ; 4.352 ns                ;
+; N/A                                     ; 216.68 MHz ( period = 4.615 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[3] ; clk        ; clk      ; None                        ; None                      ; 4.351 ns                ;
+; N/A                                     ; 216.68 MHz ( period = 4.615 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[3] ; clk        ; clk      ; None                        ; None                      ; 4.351 ns                ;
+; N/A                                     ; 218.82 MHz ( period = 4.570 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[1] ; clk        ; clk      ; None                        ; None                      ; 4.306 ns                ;
+; N/A                                     ; 220.85 MHz ( period = 4.528 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[3] ; clk        ; clk      ; None                        ; None                      ; 4.260 ns                ;
+; N/A                                     ; 221.34 MHz ( period = 4.518 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led2[2] ; clk        ; clk      ; None                        ; None                      ; 4.257 ns                ;
+; N/A                                     ; 221.39 MHz ( period = 4.517 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led1[1] ; clk        ; clk      ; None                        ; None                      ; 4.256 ns                ;
+; N/A                                     ; 221.43 MHz ( period = 4.516 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led8[1] ; clk        ; clk      ; None                        ; None                      ; 4.255 ns                ;
+; N/A                                     ; 221.43 MHz ( period = 4.516 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led8[2] ; clk        ; clk      ; None                        ; None                      ; 4.255 ns                ;
+; N/A                                     ; 222.12 MHz ( period = 4.502 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[2] ; clk        ; clk      ; None                        ; None                      ; 4.238 ns                ;
+; N/A                                     ; 222.67 MHz ( period = 4.491 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led8[3] ; clk        ; clk      ; None                        ; None                      ; 4.223 ns                ;
+; N/A                                     ; 223.81 MHz ( period = 4.468 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[2] ; clk        ; clk      ; None                        ; None                      ; 4.204 ns                ;
+; N/A                                     ; 225.43 MHz ( period = 4.436 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led7[1] ; clk        ; clk      ; None                        ; None                      ; 4.172 ns                ;
+; N/A                                     ; 225.89 MHz ( period = 4.427 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led7[4] ; clk        ; clk      ; None                        ; None                      ; 4.163 ns                ;
+; N/A                                     ; 225.94 MHz ( period = 4.426 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led3[4] ; clk        ; clk      ; None                        ; None                      ; 4.162 ns                ;
+; N/A                                     ; 225.99 MHz ( period = 4.425 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led2[3] ; clk        ; clk      ; None                        ; None                      ; 4.161 ns                ;
+; N/A                                     ; 225.99 MHz ( period = 4.425 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led7[3] ; clk        ; clk      ; None                        ; None                      ; 4.161 ns                ;
+; N/A                                     ; 226.45 MHz ( period = 4.416 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[6] ; clk        ; clk      ; None                        ; None                      ; 4.155 ns                ;
+; N/A                                     ; 226.71 MHz ( period = 4.411 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led3[3] ; clk        ; clk      ; None                        ; None                      ; 4.143 ns                ;
+; N/A                                     ; 226.86 MHz ( period = 4.408 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[6] ; clk        ; clk      ; None                        ; None                      ; 4.147 ns                ;
+; N/A                                     ; 227.48 MHz ( period = 4.396 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led2[6] ; clk        ; clk      ; None                        ; None                      ; 4.135 ns                ;
+; N/A                                     ; 228.05 MHz ( period = 4.385 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[2] ; clk        ; clk      ; None                        ; None                      ; 4.121 ns                ;
+; N/A                                     ; 228.26 MHz ( period = 4.381 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[5] ; clk        ; clk      ; None                        ; None                      ; 4.120 ns                ;
+; N/A                                     ; 228.62 MHz ( period = 4.374 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led8[3] ; clk        ; clk      ; None                        ; None                      ; 4.106 ns                ;
+; N/A                                     ; 228.68 MHz ( period = 4.373 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[5] ; clk        ; clk      ; None                        ; None                      ; 4.112 ns                ;
+; N/A                                     ; 229.31 MHz ( period = 4.361 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led1[5] ; clk        ; clk      ; None                        ; None                      ; 4.100 ns                ;
+; N/A                                     ; 229.41 MHz ( period = 4.359 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[2] ; clk        ; clk      ; None                        ; None                      ; 4.098 ns                ;
+; N/A                                     ; 229.46 MHz ( period = 4.358 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[1] ; clk        ; clk      ; None                        ; None                      ; 4.097 ns                ;
+; N/A                                     ; 229.52 MHz ( period = 4.357 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led8[1] ; clk        ; clk      ; None                        ; None                      ; 4.096 ns                ;
+; N/A                                     ; 229.52 MHz ( period = 4.357 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led8[2] ; clk        ; clk      ; None                        ; None                      ; 4.096 ns                ;
+; N/A                                     ; 229.83 MHz ( period = 4.351 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[2] ; clk        ; clk      ; None                        ; None                      ; 4.087 ns                ;
+; N/A                                     ; 230.26 MHz ( period = 4.343 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[5] ; clk        ; clk      ; None                        ; None                      ; 4.082 ns                ;
+; N/A                                     ; 231.64 MHz ( period = 4.317 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[1] ; clk        ; clk      ; None                        ; None                      ; 4.053 ns                ;
+; N/A                                     ; 233.21 MHz ( period = 4.288 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[2] ; clk        ; clk      ; None                        ; None                      ; 4.024 ns                ;
+; N/A                                     ; 233.26 MHz ( period = 4.287 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[2] ; clk        ; clk      ; None                        ; None                      ; 4.023 ns                ;
+; N/A                                     ; 233.81 MHz ( period = 4.277 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led3[3] ; clk        ; clk      ; None                        ; None                      ; 4.009 ns                ;
+; N/A                                     ; 234.36 MHz ( period = 4.267 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[7] ; clk        ; clk      ; None                        ; None                      ; 4.003 ns                ;
+; N/A                                     ; 235.24 MHz ( period = 4.251 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led1[2] ; clk        ; clk      ; None                        ; None                      ; 3.987 ns                ;
+; N/A                                     ; 235.63 MHz ( period = 4.244 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[6] ; clk        ; clk      ; None                        ; None                      ; 3.983 ns                ;
+; N/A                                     ; 235.68 MHz ( period = 4.243 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[3] ; clk        ; clk      ; None                        ; None                      ; 3.975 ns                ;
+; N/A                                     ; 235.74 MHz ( period = 4.242 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[3] ; clk        ; clk      ; None                        ; None                      ; 3.974 ns                ;
+; N/A                                     ; 235.85 MHz ( period = 4.240 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led8[3] ; clk        ; clk      ; None                        ; None                      ; 3.972 ns                ;
+; N/A                                     ; 235.90 MHz ( period = 4.239 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[7] ; clk        ; clk      ; None                        ; None                      ; 3.975 ns                ;
+; N/A                                     ; 236.07 MHz ( period = 4.236 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[4] ; clk        ; clk      ; None                        ; None                      ; 3.972 ns                ;
+; N/A                                     ; 236.13 MHz ( period = 4.235 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led3[4] ; clk        ; clk      ; None                        ; None                      ; 3.971 ns                ;
+; N/A                                     ; 236.18 MHz ( period = 4.234 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[3] ; clk        ; clk      ; None                        ; None                      ; 3.970 ns                ;
+; N/A                                     ; 236.18 MHz ( period = 4.234 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[3] ; clk        ; clk      ; None                        ; None                      ; 3.970 ns                ;
+; N/A                                     ; 237.14 MHz ( period = 4.217 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led7[2] ; clk        ; clk      ; None                        ; None                      ; 3.953 ns                ;
+; N/A                                     ; 237.59 MHz ( period = 4.209 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[5] ; clk        ; clk      ; None                        ; None                      ; 3.948 ns                ;
+; N/A                                     ; 239.18 MHz ( period = 4.181 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led2[7] ; clk        ; clk      ; None                        ; None                      ; 3.917 ns                ;
+; N/A                                     ; 240.04 MHz ( period = 4.166 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[5] ; clk        ; clk      ; None                        ; None                      ; 3.905 ns                ;
+; N/A                                     ; 244.02 MHz ( period = 4.098 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[5] ; clk        ; clk      ; None                        ; None                      ; 3.837 ns                ;
+; N/A                                     ; 248.32 MHz ( period = 4.027 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[7] ; clk        ; clk      ; None                        ; None                      ; 3.763 ns                ;
+; N/A                                     ; 250.75 MHz ( period = 3.988 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[4] ; clk        ; clk      ; None                        ; None                      ; 3.727 ns                ;
+; N/A                                     ; 250.75 MHz ( period = 3.988 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led5[1] ; clk        ; clk      ; None                        ; None                      ; 3.727 ns                ;
+; N/A                                     ; 250.75 MHz ( period = 3.988 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led5[2] ; clk        ; clk      ; None                        ; None                      ; 3.727 ns                ;
+; N/A                                     ; 251.13 MHz ( period = 3.982 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led5[5] ; clk        ; clk      ; None                        ; None                      ; 3.721 ns                ;
+; N/A                                     ; 251.83 MHz ( period = 3.971 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led8[0] ; clk        ; clk      ; None                        ; None                      ; 3.706 ns                ;
+; N/A                                     ; 253.61 MHz ( period = 3.943 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[0] ; clk        ; clk      ; None                        ; None                      ; 3.678 ns                ;
+; N/A                                     ; 255.69 MHz ( period = 3.911 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led5[5] ; clk        ; clk      ; None                        ; None                      ; 3.650 ns                ;
+; N/A                                     ; 257.00 MHz ( period = 3.891 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[4] ; clk        ; clk      ; None                        ; None                      ; 3.627 ns                ;
+; N/A                                     ; 257.40 MHz ( period = 3.885 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led8[0] ; clk        ; clk      ; None                        ; None                      ; 3.620 ns                ;
+; N/A                                     ; 257.60 MHz ( period = 3.882 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[4] ; clk        ; clk      ; None                        ; None                      ; 3.618 ns                ;
+; N/A                                     ; 260.96 MHz ( period = 3.832 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led2[5] ; clk        ; clk      ; None                        ; None                      ; 3.571 ns                ;
+; N/A                                     ; 262.12 MHz ( period = 3.815 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led4[7] ; clk        ; clk      ; None                        ; None                      ; 3.546 ns                ;
+; N/A                                     ; 262.26 MHz ( period = 3.813 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led6[4] ; clk        ; clk      ; None                        ; None                      ; 3.549 ns                ;
+; N/A                                     ; 262.33 MHz ( period = 3.812 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led8[0] ; clk        ; clk      ; None                        ; None                      ; 3.547 ns                ;
+; N/A                                     ; 262.88 MHz ( period = 3.804 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led6[4] ; clk        ; clk      ; None                        ; None                      ; 3.540 ns                ;
+; N/A                                     ; 270.42 MHz ( period = 3.698 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[0] ; clk        ; clk      ; None                        ; None                      ; 3.437 ns                ;
+; N/A                                     ; 270.42 MHz ( period = 3.698 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[0] ; clk        ; clk      ; None                        ; None                      ; 3.437 ns                ;
+; N/A                                     ; 270.42 MHz ( period = 3.698 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led2[1] ; clk        ; clk      ; None                        ; None                      ; 3.437 ns                ;
+; N/A                                     ; 270.42 MHz ( period = 3.698 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[0] ; clk        ; clk      ; None                        ; None                      ; 3.437 ns                ;
+; N/A                                     ; 270.64 MHz ( period = 3.695 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led5[7] ; clk        ; clk      ; None                        ; None                      ; 3.427 ns                ;
+; N/A                                     ; 271.89 MHz ( period = 3.678 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[5] ; clk        ; clk      ; None                        ; None                      ; 3.417 ns                ;
+; N/A                                     ; 275.41 MHz ( period = 3.631 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led6[6] ; clk        ; clk      ; None                        ; None                      ; 3.370 ns                ;
+; N/A                                     ; 275.86 MHz ( period = 3.625 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led4[5] ; clk        ; clk      ; None                        ; None                      ; 3.356 ns                ;
+; N/A                                     ; 278.71 MHz ( period = 3.588 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led2[4] ; clk        ; clk      ; None                        ; None                      ; 3.324 ns                ;
+; N/A                                     ; 279.88 MHz ( period = 3.573 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led5[7] ; clk        ; clk      ; None                        ; None                      ; 3.305 ns                ;
+; N/A                                     ; 280.11 MHz ( period = 3.570 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led4[4] ; clk        ; clk      ; None                        ; None                      ; 3.302 ns                ;
+; N/A                                     ; 280.19 MHz ( period = 3.569 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led4[5] ; clk        ; clk      ; None                        ; None                      ; 3.300 ns                ;
+; N/A                                     ; 281.53 MHz ( period = 3.552 ns )                    ; led_clk_gen:clk_gen|led4[7] ; led_clk_gen:clk_gen|led4[7] ; clk        ; clk      ; None                        ; None                      ; 3.288 ns                ;
+; N/A                                     ; 282.81 MHz ( period = 3.536 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led4[7] ; clk        ; clk      ; None                        ; None                      ; 3.267 ns                ;
+; N/A                                     ; 283.45 MHz ( period = 3.528 ns )                    ; led_pwm_gen:pwm_gen|cnt[1]  ; led_pwm_gen:pwm_gen|fclk    ; clk        ; clk      ; None                        ; None                      ; 3.265 ns                ;
+; N/A                                     ; 284.33 MHz ( period = 3.517 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led6[5] ; clk        ; clk      ; None                        ; None                      ; 3.256 ns                ;
+; N/A                                     ; 284.90 MHz ( period = 3.510 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led6[4] ; clk        ; clk      ; None                        ; None                      ; 3.246 ns                ;
+; N/A                                     ; 286.29 MHz ( period = 3.493 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led6[7] ; clk        ; clk      ; None                        ; None                      ; 3.225 ns                ;
+; N/A                                     ; 289.60 MHz ( period = 3.453 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led4[6] ; clk        ; clk      ; None                        ; None                      ; 3.185 ns                ;
+; N/A                                     ; 289.77 MHz ( period = 3.451 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led7[7] ; clk        ; clk      ; None                        ; None                      ; 3.183 ns                ;
+; N/A                                     ; 289.77 MHz ( period = 3.451 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led8[6] ; clk        ; clk      ; None                        ; None                      ; 3.183 ns                ;
+; N/A                                     ; 293.00 MHz ( period = 3.413 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[4] ; clk        ; clk      ; None                        ; None                      ; 3.149 ns                ;
+; N/A                                     ; 294.99 MHz ( period = 3.390 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led4[5] ; clk        ; clk      ; None                        ; None                      ; 3.121 ns                ;
+; N/A                                     ; 297.09 MHz ( period = 3.366 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led6[4] ; clk        ; clk      ; None                        ; None                      ; 3.102 ns                ;
+; N/A                                     ; 299.58 MHz ( period = 3.338 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led4[6] ; clk        ; clk      ; None                        ; None                      ; 3.070 ns                ;
+; N/A                                     ; 299.67 MHz ( period = 3.337 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led6[7] ; clk        ; clk      ; None                        ; None                      ; 3.069 ns                ;
+; N/A                                     ; 299.67 MHz ( period = 3.337 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led6[6] ; clk        ; clk      ; None                        ; None                      ; 3.076 ns                ;
+; N/A                                     ; 299.67 MHz ( period = 3.337 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[7] ; clk        ; clk      ; None                        ; None                      ; 3.069 ns                ;
+; N/A                                     ; 299.76 MHz ( period = 3.336 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led6[5] ; clk        ; clk      ; None                        ; None                      ; 3.075 ns                ;
+; N/A                                     ; 300.03 MHz ( period = 3.333 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led8[6] ; clk        ; clk      ; None                        ; None                      ; 3.065 ns                ;
+; N/A                                     ; 300.48 MHz ( period = 3.328 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led3[7] ; clk        ; clk      ; None                        ; None                      ; 3.067 ns                ;
+; N/A                                     ; 300.57 MHz ( period = 3.327 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[0] ; clk        ; clk      ; None                        ; None                      ; 3.066 ns                ;
+; N/A                                     ; 300.57 MHz ( period = 3.327 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[0] ; clk        ; clk      ; None                        ; None                      ; 3.066 ns                ;
+; N/A                                     ; 300.57 MHz ( period = 3.327 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led2[1] ; clk        ; clk      ; None                        ; None                      ; 3.066 ns                ;
+; N/A                                     ; 300.57 MHz ( period = 3.327 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led3[0] ; clk        ; clk      ; None                        ; None                      ; 3.066 ns                ;
+; N/A                                     ; 302.02 MHz ( period = 3.311 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led4[4] ; clk        ; clk      ; None                        ; None                      ; 3.043 ns                ;
+; N/A                                     ; 302.57 MHz ( period = 3.305 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[5] ; clk        ; clk      ; None                        ; None                      ; 3.040 ns                ;
+; N/A                                     ; 304.79 MHz ( period = 3.281 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led6[5] ; clk        ; clk      ; None                        ; None                      ; 3.020 ns                ;
+; N/A                                     ; 305.34 MHz ( period = 3.275 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[7] ; clk        ; clk      ; None                        ; None                      ; 3.007 ns                ;
+; N/A                                     ; 305.62 MHz ( period = 3.272 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led3[7] ; clk        ; clk      ; None                        ; None                      ; 3.011 ns                ;
+; N/A                                     ; 306.94 MHz ( period = 3.258 ns )                    ; led_pwm_gen:pwm_gen|cnt[0]  ; led_pwm_gen:pwm_gen|fclk    ; clk        ; clk      ; None                        ; None                      ; 2.995 ns                ;
+; N/A                                     ; 307.22 MHz ( period = 3.255 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[3] ; clk        ; clk      ; None                        ; None                      ; 2.991 ns                ;
+; N/A                                     ; 307.22 MHz ( period = 3.255 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led4[2] ; clk        ; clk      ; None                        ; None                      ; 2.991 ns                ;
+; N/A                                     ; 307.22 MHz ( period = 3.255 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led4[1] ; clk        ; clk      ; None                        ; None                      ; 2.991 ns                ;
+; N/A                                     ; 312.89 MHz ( period = 3.196 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led8[5] ; clk        ; clk      ; None                        ; None                      ; 2.927 ns                ;
+; N/A                                     ; 313.38 MHz ( period = 3.191 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led1[7] ; clk        ; clk      ; None                        ; None                      ; 2.927 ns                ;
+; N/A                                     ; 315.06 MHz ( period = 3.174 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[7] ; clk        ; clk      ; None                        ; None                      ; 2.913 ns                ;
+; N/A                                     ; 315.06 MHz ( period = 3.174 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led6[6] ; clk        ; clk      ; None                        ; None                      ; 2.913 ns                ;
+; N/A                                     ; 317.56 MHz ( period = 3.149 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led4[3] ; clk        ; clk      ; None                        ; None                      ; 2.880 ns                ;
+; N/A                                     ; 318.07 MHz ( period = 3.144 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[5] ; clk        ; clk      ; None                        ; None                      ; 2.875 ns                ;
+; N/A                                     ; 318.27 MHz ( period = 3.142 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[6] ; clk        ; clk      ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 318.27 MHz ( period = 3.142 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led1[6] ; clk        ; clk      ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 318.57 MHz ( period = 3.139 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[0] ; clk        ; clk      ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 318.57 MHz ( period = 3.139 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[7] ; clk        ; clk      ; None                        ; None                      ; 2.875 ns                ;
+; N/A                                     ; 318.57 MHz ( period = 3.139 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[0] ; clk        ; clk      ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 318.57 MHz ( period = 3.139 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led2[1] ; clk        ; clk      ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 318.57 MHz ( period = 3.139 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[0] ; clk        ; clk      ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 320.10 MHz ( period = 3.124 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[6] ; clk        ; clk      ; None                        ; None                      ; 2.860 ns                ;
+; N/A                                     ; 323.83 MHz ( period = 3.088 ns )                    ; led_pwm_gen:pwm_gen|cnt[2]  ; led_pwm_gen:pwm_gen|fclk    ; clk        ; clk      ; None                        ; None                      ; 2.825 ns                ;
+; N/A                                     ; 324.36 MHz ( period = 3.083 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[6] ; clk        ; clk      ; None                        ; None                      ; 2.822 ns                ;
+; N/A                                     ; 324.68 MHz ( period = 3.080 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[4] ; clk        ; clk      ; None                        ; None                      ; 2.819 ns                ;
+; N/A                                     ; 324.89 MHz ( period = 3.078 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[6] ; clk        ; clk      ; None                        ; None                      ; 2.817 ns                ;
+; N/A                                     ; 324.99 MHz ( period = 3.077 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[0] ; clk        ; clk      ; None                        ; None                      ; 2.816 ns                ;
+; N/A                                     ; 325.31 MHz ( period = 3.074 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led5[4] ; clk        ; clk      ; None                        ; None                      ; 2.813 ns                ;
+; N/A                                     ; 325.41 MHz ( period = 3.073 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led5[1] ; clk        ; clk      ; None                        ; None                      ; 2.812 ns                ;
+; N/A                                     ; 325.41 MHz ( period = 3.073 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[0] ; clk        ; clk      ; None                        ; None                      ; 2.812 ns                ;
+; N/A                                     ; 325.63 MHz ( period = 3.071 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[6] ; clk        ; clk      ; None                        ; None                      ; 2.810 ns                ;
+; N/A                                     ; 325.73 MHz ( period = 3.070 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[6] ; clk        ; clk      ; None                        ; None                      ; 2.809 ns                ;
+; N/A                                     ; 327.98 MHz ( period = 3.049 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[6] ; clk        ; clk      ; None                        ; None                      ; 2.788 ns                ;
+; N/A                                     ; 329.38 MHz ( period = 3.036 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led5[3] ; clk        ; clk      ; None                        ; None                      ; 2.768 ns                ;
+; N/A                                     ; 329.38 MHz ( period = 3.036 ns )                    ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led6[5] ; clk        ; clk      ; None                        ; None                      ; 2.775 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led5[6] ; clk        ; clk      ; None                        ; None                      ; 2.774 ns                ;
+; N/A                                     ; 334.67 MHz ( period = 2.988 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[6] ; clk        ; clk      ; None                        ; None                      ; 2.724 ns                ;
+; N/A                                     ; 335.68 MHz ( period = 2.979 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led4[3] ; clk        ; clk      ; None                        ; None                      ; 2.710 ns                ;
+; N/A                                     ; 336.25 MHz ( period = 2.974 ns )                    ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|cnt[2]  ; clk        ; clk      ; None                        ; None                      ; 2.710 ns                ;
+; N/A                                     ; 338.52 MHz ( period = 2.954 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led6[1] ; clk        ; clk      ; None                        ; None                      ; 2.689 ns                ;
+; N/A                                     ; 338.64 MHz ( period = 2.953 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[2] ; clk        ; clk      ; None                        ; None                      ; 2.688 ns                ;
+; N/A                                     ; 338.64 MHz ( period = 2.953 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[1] ; clk        ; clk      ; None                        ; None                      ; 2.688 ns                ;
+; N/A                                     ; 338.75 MHz ( period = 2.952 ns )                    ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led6[2] ; clk        ; clk      ; None                        ; None                      ; 2.687 ns                ;
+; N/A                                     ; 339.21 MHz ( period = 2.948 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[2] ; clk        ; clk      ; None                        ; None                      ; 2.683 ns                ;
+; N/A                                     ; 339.21 MHz ( period = 2.948 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led3[1] ; clk        ; clk      ; None                        ; None                      ; 2.683 ns                ;
+; N/A                                     ; 339.21 MHz ( period = 2.948 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led6[0] ; clk        ; clk      ; None                        ; None                      ; 2.683 ns                ;
+; N/A                                     ; 339.21 MHz ( period = 2.948 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led6[1] ; clk        ; clk      ; None                        ; None                      ; 2.683 ns                ;
+; N/A                                     ; 339.21 MHz ( period = 2.948 ns )                    ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led6[2] ; clk        ; clk      ; None                        ; None                      ; 2.683 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led4[7] ; clk        ; clk      ; None                        ; None                      ; 2.671 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|cnt[2]  ; clk        ; clk      ; None                        ; None                      ; 2.670 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|cnt[1]  ; clk        ; clk      ; None                        ; None                      ; 2.670 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[3] ; clk        ; clk      ; None                        ; None                      ; 2.620 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led4[2] ; clk        ; clk      ; None                        ; None                      ; 2.620 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led4[1] ; clk        ; clk      ; None                        ; None                      ; 2.620 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led1[7] ; clk        ; clk      ; None                        ; None                      ; 2.615 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[2]  ; led_clk_gen:clk_gen|led7[5] ; clk        ; clk      ; None                        ; None                      ; 2.593 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led8[7] ; clk        ; clk      ; None                        ; None                      ; 2.550 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led6[6] ; clk        ; clk      ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led3[7] ; clk        ; clk      ; None                        ; None                      ; 2.509 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led1[7] ; clk        ; clk      ; None                        ; None                      ; 2.505 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led4[6] ; clk        ; clk      ; None                        ; None                      ; 2.499 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led7[7] ; clk        ; clk      ; None                        ; None                      ; 2.499 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led5[5] ; clk        ; clk      ; None                        ; None                      ; 2.504 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led6[7] ; clk        ; clk      ; None                        ; None                      ; 2.494 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[6] ; clk        ; clk      ; None                        ; None                      ; 2.492 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led5[3] ; clk        ; clk      ; None                        ; None                      ; 2.486 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led5[3] ; clk        ; clk      ; None                        ; None                      ; 2.474 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led8[7] ; clk        ; clk      ; None                        ; None                      ; 2.456 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[6] ; clk        ; clk      ; None                        ; None                      ; 2.451 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led5[6] ; clk        ; clk      ; None                        ; None                      ; 2.450 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led3[6] ; clk        ; clk      ; None                        ; None                      ; 2.447 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[0]  ; led_clk_gen:clk_gen|led7[5] ; clk        ; clk      ; None                        ; None                      ; 2.438 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led7[0] ; clk        ; clk      ; None                        ; None                      ; 2.444 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[1]  ; led_clk_gen:clk_gen|led5[4] ; clk        ; clk      ; None                        ; None                      ; 2.436 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led1[3] ; clk        ; clk      ; None                        ; None                      ; 2.432 ns                ;
+; N/A                                     ; Restricted to 340.02 MHz ( period = 2.941 ns )      ; led_clk_gen:clk_gen|cnt[3]  ; led_clk_gen:clk_gen|led4[2] ; clk        ; clk      ; None                        ; None                      ; 2.432 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                             ;                             ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+-----------------------------+-----------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; tco                                                                                                                                                                  ;
++-----------------------------------------+-----------------------------------------------------+------------+-----------------------------+--------------+------------+
+; Slack                                   ; Required tco                                        ; Actual tco ; From                        ; To           ; From Clock ;
++-----------------------------------------+-----------------------------------------------------+------------+-----------------------------+--------------+------------+
+; N/A                                     ; None                                                ; 33.448 ns  ; led_clk_gen:clk_gen|led6[4] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 33.447 ns  ; led_clk_gen:clk_gen|led3[4] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 33.283 ns  ; led_clk_gen:clk_gen|led6[0] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 33.177 ns  ; led_clk_gen:clk_gen|led3[7] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 32.926 ns  ; led_clk_gen:clk_gen|led5[3] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 32.879 ns  ; led_clk_gen:clk_gen|led5[7] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 32.865 ns  ; led_clk_gen:clk_gen|led6[4] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 32.856 ns  ; led_clk_gen:clk_gen|led5[4] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 32.844 ns  ; led_clk_gen:clk_gen|led5[2] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 32.700 ns  ; led_clk_gen:clk_gen|led6[0] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 32.634 ns  ; led_clk_gen:clk_gen|led6[6] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 32.564 ns  ; led_clk_gen:clk_gen|led6[1] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 32.545 ns  ; led_clk_gen:clk_gen|led5[1] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 32.407 ns  ; led_clk_gen:clk_gen|led6[2] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 32.395 ns  ; led_clk_gen:clk_gen|led4[3] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 32.378 ns  ; led_clk_gen:clk_gen|led4[7] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 32.351 ns  ; led_clk_gen:clk_gen|led3[0] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 32.336 ns  ; led_clk_gen:clk_gen|led2[7] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 32.219 ns  ; led_clk_gen:clk_gen|led5[3] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 32.206 ns  ; led_clk_gen:clk_gen|led3[4] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 32.205 ns  ; led_clk_gen:clk_gen|led4[3] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 32.188 ns  ; led_clk_gen:clk_gen|led4[7] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 32.172 ns  ; led_clk_gen:clk_gen|led5[7] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 32.149 ns  ; led_clk_gen:clk_gen|led5[4] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 32.137 ns  ; led_clk_gen:clk_gen|led5[2] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 32.107 ns  ; led_clk_gen:clk_gen|led8[0] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 32.097 ns  ; led_clk_gen:clk_gen|led8[0] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 32.064 ns  ; led_clk_gen:clk_gen|led5[6] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 32.059 ns  ; led_clk_gen:clk_gen|led8[4] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 32.051 ns  ; led_clk_gen:clk_gen|led6[6] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 32.049 ns  ; led_clk_gen:clk_gen|led8[4] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 32.031 ns  ; led_clk_gen:clk_gen|led8[7] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 32.021 ns  ; led_clk_gen:clk_gen|led8[7] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 32.009 ns  ; led_clk_gen:clk_gen|led2[4] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 31.981 ns  ; led_clk_gen:clk_gen|led6[1] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 31.953 ns  ; led_clk_gen:clk_gen|led7[3] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 31.953 ns  ; led_clk_gen:clk_gen|led1[3] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 31.936 ns  ; led_clk_gen:clk_gen|led3[7] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 31.928 ns  ; led_clk_gen:clk_gen|led4[4] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 31.912 ns  ; led_clk_gen:clk_gen|led3[6] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 31.868 ns  ; led_clk_gen:clk_gen|led7[2] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 31.838 ns  ; led_clk_gen:clk_gen|led5[1] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 31.824 ns  ; led_clk_gen:clk_gen|led6[2] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 31.738 ns  ; led_clk_gen:clk_gen|led4[4] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 31.726 ns  ; led_clk_gen:clk_gen|led7[0] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 31.719 ns  ; led_clk_gen:clk_gen|led7[1] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 31.635 ns  ; led_clk_gen:clk_gen|led2[2] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 31.564 ns  ; led_clk_gen:clk_gen|led6[7] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 31.463 ns  ; led_clk_gen:clk_gen|led7[4] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 31.370 ns  ; led_clk_gen:clk_gen|led1[3] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 31.357 ns  ; led_clk_gen:clk_gen|led5[6] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 31.340 ns  ; led_clk_gen:clk_gen|led8[3] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 31.330 ns  ; led_clk_gen:clk_gen|led8[3] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 31.309 ns  ; led_clk_gen:clk_gen|led4[6] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 31.307 ns  ; led_clk_gen:clk_gen|led8[1] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 31.300 ns  ; led_clk_gen:clk_gen|led3[3] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 31.297 ns  ; led_clk_gen:clk_gen|led8[1] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 31.253 ns  ; led_clk_gen:clk_gen|led8[2] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 31.243 ns  ; led_clk_gen:clk_gen|led8[2] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 31.218 ns  ; led_clk_gen:clk_gen|led5[5] ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 31.162 ns  ; led_clk_gen:clk_gen|led7[7] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 31.119 ns  ; led_clk_gen:clk_gen|led4[6] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 31.110 ns  ; led_clk_gen:clk_gen|led3[0] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 31.032 ns  ; led_clk_gen:clk_gen|led2[7] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 31.013 ns  ; led_clk_gen:clk_gen|led7[3] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 30.981 ns  ; led_clk_gen:clk_gen|led6[7] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 30.962 ns  ; led_clk_gen:clk_gen|led8[6] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 30.952 ns  ; led_clk_gen:clk_gen|led8[6] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 30.928 ns  ; led_clk_gen:clk_gen|led7[2] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 30.878 ns  ; led_clk_gen:clk_gen|led2[0] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 30.786 ns  ; led_clk_gen:clk_gen|led7[0] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 30.779 ns  ; led_clk_gen:clk_gen|led7[1] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 30.746 ns  ; led_clk_gen:clk_gen|led6[5] ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 30.705 ns  ; led_clk_gen:clk_gen|led2[4] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 30.671 ns  ; led_clk_gen:clk_gen|led3[6] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 30.646 ns  ; led_clk_gen:clk_gen|led4[2] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 30.629 ns  ; led_clk_gen:clk_gen|led7[6] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 30.523 ns  ; led_clk_gen:clk_gen|led7[4] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 30.511 ns  ; led_clk_gen:clk_gen|led5[5] ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 30.482 ns  ; led_clk_gen:clk_gen|led1[2] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 30.456 ns  ; led_clk_gen:clk_gen|led4[2] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 30.394 ns  ; led_clk_gen:clk_gen|led1[4] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 30.331 ns  ; led_clk_gen:clk_gen|led2[2] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 30.222 ns  ; led_clk_gen:clk_gen|led7[7] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 30.196 ns  ; led_clk_gen:clk_gen|led1[7] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 30.180 ns  ; led_clk_gen:clk_gen|led4[5] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 30.163 ns  ; led_clk_gen:clk_gen|led6[5] ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 30.158 ns  ; led_clk_gen:clk_gen|led1[3] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 30.151 ns  ; led_clk_gen:clk_gen|led1[0] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 30.075 ns  ; led_clk_gen:clk_gen|led4[1] ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 30.059 ns  ; led_clk_gen:clk_gen|led3[3] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 29.990 ns  ; led_clk_gen:clk_gen|led4[5] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 29.885 ns  ; led_clk_gen:clk_gen|led4[1] ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 29.879 ns  ; led_clk_gen:clk_gen|led2[1] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 29.782 ns  ; led_clk_gen:clk_gen|led3[5] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 29.773 ns  ; led_clk_gen:clk_gen|led1[2] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 29.729 ns  ; led_clk_gen:clk_gen|led3[2] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 29.689 ns  ; led_clk_gen:clk_gen|led7[6] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 29.685 ns  ; led_clk_gen:clk_gen|led1[4] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 29.576 ns  ; led_clk_gen:clk_gen|led2[5] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 29.574 ns  ; led_clk_gen:clk_gen|led2[0] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 29.502 ns  ; led_clk_gen:clk_gen|led1[1] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 29.487 ns  ; led_clk_gen:clk_gen|led1[7] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 29.466 ns  ; led_clk_gen:clk_gen|led2[6] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 29.449 ns  ; led_clk_gen:clk_gen|led1[3] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 29.442 ns  ; led_clk_gen:clk_gen|led1[0] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 29.404 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 29.231 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 29.231 ns  ; led_clk_gen:clk_gen|led2[3] ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 29.209 ns  ; led_clk_gen:clk_gen|led1[6] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 29.088 ns  ; led_clk_gen:clk_gen|led8[5] ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 29.078 ns  ; led_clk_gen:clk_gen|led8[5] ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 29.062 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 28.961 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 28.930 ns  ; led_clk_gen:clk_gen|led7[5] ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 28.879 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 28.793 ns  ; led_clk_gen:clk_gen|led1[1] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 28.791 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 28.706 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 28.697 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 28.689 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 28.617 ns  ; led_clk_gen:clk_gen|led3[1] ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 28.602 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 28.592 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 28.575 ns  ; led_clk_gen:clk_gen|led2[1] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 28.563 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 28.541 ns  ; led_clk_gen:clk_gen|led3[5] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 28.537 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 28.524 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 28.516 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 28.500 ns  ; led_clk_gen:clk_gen|led1[6] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 28.488 ns  ; led_clk_gen:clk_gen|led3[2] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 28.436 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 28.429 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 28.419 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 28.390 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 28.355 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 28.347 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 28.272 ns  ; led_clk_gen:clk_gen|led2[5] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 28.266 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 28.260 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 28.254 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 28.250 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 28.246 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 28.221 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 28.186 ns  ; led_clk_gen:clk_gen|led1[5] ; led_data[0]  ; clk        ;
+; N/A                                     ; None                                                ; 28.162 ns  ; led_clk_gen:clk_gen|led2[6] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 28.159 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 28.149 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 28.120 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 28.086 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 28.084 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 28.076 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 27.990 ns  ; led_clk_gen:clk_gen|led7[5] ; led_data[14] ; clk        ;
+; N/A                                     ; None                                                ; 27.989 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 27.979 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 27.950 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 27.927 ns  ; led_clk_gen:clk_gen|led2[3] ; led_data[1]  ; clk        ;
+; N/A                                     ; None                                                ; 27.920 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 27.913 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.809 ns  ; led_pwm_gen:pwm_gen|cnt[3]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 27.799 ns  ; led_pwm_gen:pwm_gen|cnt[3]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 27.744 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.701 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 27.698 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 27.688 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 27.686 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.684 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.654 ns  ; led_pwm_gen:pwm_gen|cnt[3]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 27.643 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 27.584 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 27.528 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 27.503 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 27.495 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[15] ; clk        ;
+; N/A                                     ; None                                                ; 27.485 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[7]  ; clk        ;
+; N/A                                     ; None                                                ; 27.483 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.477 ns  ; led_clk_gen:clk_gen|led1[5] ; led_data[8]  ; clk        ;
+; N/A                                     ; None                                                ; 27.473 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.454 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[12] ; clk        ;
+; N/A                                     ; None                                                ; 27.446 ns  ; led_pwm_gen:pwm_gen|cnt[3]  ; led_data[5]  ; clk        ;
+; N/A                                     ; None                                                ; 27.395 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 27.381 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 27.376 ns  ; led_clk_gen:clk_gen|led3[1] ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 27.373 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 27.359 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 27.344 ns  ; led_pwm_gen:pwm_gen|cnt[3]  ; led_data[10] ; clk        ;
+; N/A                                     ; None                                                ; 27.330 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 27.322 ns  ; led_pwm_gen:pwm_gen|cnt[4]  ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 27.258 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 27.213 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[4]  ; clk        ;
+; N/A                                     ; None                                                ; 27.205 ns  ; led_pwm_gen:pwm_gen|cnt[6]  ; led_data[11] ; clk        ;
+; N/A                                     ; None                                                ; 27.203 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[9]  ; clk        ;
+; N/A                                     ; None                                                ; 27.161 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 27.150 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 27.149 ns  ; led_pwm_gen:pwm_gen|cnt[1]  ; led_data[2]  ; clk        ;
+; N/A                                     ; None                                                ; 27.129 ns  ; led_pwm_gen:pwm_gen|cnt[3]  ; led_data[3]  ; clk        ;
+; N/A                                     ; None                                                ; 27.103 ns  ; led_pwm_gen:pwm_gen|cnt[7]  ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 27.101 ns  ; led_pwm_gen:pwm_gen|cnt[0]  ; led_data[13] ; clk        ;
+; N/A                                     ; None                                                ; 27.088 ns  ; led_pwm_gen:pwm_gen|cnt[2]  ; led_data[6]  ; clk        ;
+; N/A                                     ; None                                                ; 26.980 ns  ; led_pwm_gen:pwm_gen|cnt[5]  ; led_data[2]  ; clk        ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;                             ;              ;            ;
++-----------------------------------------+-----------------------------------------------------+------------+-----------------------------+--------------+------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Timing Analyzer
+    Info: Version 6.0 Build 178 04/27/2006 SJ Full Version
+    Info: Processing started: Thu Jun 05 22:06:29 2008
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off led_demo -c led_demo --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clk" is an undefined clock
+Warning: Found 4 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "led_clk_gen:clk_gen|clk_cnt[1]" as buffer
+    Info: Detected ripple clock "led_clk_gen:clk_gen|led_clk" as buffer
+    Info: Detected ripple clock "led_pwm_gen:pwm_gen|fclk" as buffer
+    Info: Detected ripple clock "led_clk_gen:clk_gen|iclk" as buffer
+Info: Clock "clk" has Internal fmax of 197.08 MHz between source register "led_clk_gen:clk_gen|cnt[2]" and destination register "led_clk_gen:clk_gen|led1[4]" (period= 5.074 ns)
+    Info: + Longest register to register delay is 4.813 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X44_Y29_N7; Fanout = 65; REG Node = 'led_clk_gen:clk_gen|cnt[2]'
+        Info: 2: + IC(1.613 ns) + CELL(0.202 ns) = 1.815 ns; Loc. = LCCOMB_X43_Y28_N10; Fanout = 3; COMB Node = 'led_clk_gen:clk_gen|led5~604'
+        Info: 3: + IC(1.407 ns) + CELL(0.206 ns) = 3.428 ns; Loc. = LCCOMB_X42_Y28_N14; Fanout = 3; COMB Node = 'led_clk_gen:clk_gen|led6[0]~1195'
+        Info: 4: + IC(0.530 ns) + CELL(0.855 ns) = 4.813 ns; Loc. = LCFF_X43_Y28_N11; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|led1[4]'
+        Info: Total cell delay = 1.263 ns ( 26.24 % )
+        Info: Total interconnect delay = 3.550 ns ( 73.76 % )
+    Info: - Smallest clock skew is 0.003 ns
+        Info: + Shortest clock path from clock "clk" to destination register is 18.621 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'clk'
+            Info: 2: + IC(0.135 ns) + CELL(0.000 ns) = 1.235 ns; Loc. = CLKCTRL_G2; Fanout = 2; COMB Node = 'clk~clkctrl'
+            Info: 3: + IC(1.431 ns) + CELL(0.970 ns) = 3.636 ns; Loc. = LCFF_X50_Y1_N9; Fanout = 2; REG Node = 'led_clk_gen:clk_gen|clk_cnt[1]'
+            Info: 4: + IC(0.999 ns) + CELL(0.000 ns) = 4.635 ns; Loc. = CLKCTRL_G13; Fanout = 5; COMB Node = 'led_clk_gen:clk_gen|clk_cnt[1]~clkctrl'
+            Info: 5: + IC(1.459 ns) + CELL(0.970 ns) = 7.064 ns; Loc. = LCFF_X47_Y50_N1; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|led_clk'
+            Info: 6: + IC(0.996 ns) + CELL(0.000 ns) = 8.060 ns; Loc. = CLKCTRL_G10; Fanout = 9; COMB Node = 'led_clk_gen:clk_gen|led_clk~clkctrl'
+            Info: 7: + IC(1.443 ns) + CELL(0.970 ns) = 10.473 ns; Loc. = LCFF_X47_Y28_N31; Fanout = 1; REG Node = 'led_pwm_gen:pwm_gen|fclk'
+            Info: 8: + IC(2.594 ns) + CELL(0.000 ns) = 13.067 ns; Loc. = CLKCTRL_G9; Fanout = 5; COMB Node = 'led_pwm_gen:pwm_gen|fclk~clkctrl'
+            Info: 9: + IC(1.447 ns) + CELL(0.970 ns) = 15.484 ns; Loc. = LCFF_X47_Y49_N9; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|iclk'
+            Info: 10: + IC(1.031 ns) + CELL(0.000 ns) = 16.515 ns; Loc. = CLKCTRL_G8; Fanout = 65; COMB Node = 'led_clk_gen:clk_gen|iclk~clkctrl'
+            Info: 11: + IC(1.440 ns) + CELL(0.666 ns) = 18.621 ns; Loc. = LCFF_X43_Y28_N11; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|led1[4]'
+            Info: Total cell delay = 5.646 ns ( 30.32 % )
+            Info: Total interconnect delay = 12.975 ns ( 69.68 % )
+        Info: - Longest clock path from clock "clk" to source register is 18.618 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'clk'
+            Info: 2: + IC(0.135 ns) + CELL(0.000 ns) = 1.235 ns; Loc. = CLKCTRL_G2; Fanout = 2; COMB Node = 'clk~clkctrl'
+            Info: 3: + IC(1.431 ns) + CELL(0.970 ns) = 3.636 ns; Loc. = LCFF_X50_Y1_N9; Fanout = 2; REG Node = 'led_clk_gen:clk_gen|clk_cnt[1]'
+            Info: 4: + IC(0.999 ns) + CELL(0.000 ns) = 4.635 ns; Loc. = CLKCTRL_G13; Fanout = 5; COMB Node = 'led_clk_gen:clk_gen|clk_cnt[1]~clkctrl'
+            Info: 5: + IC(1.459 ns) + CELL(0.970 ns) = 7.064 ns; Loc. = LCFF_X47_Y50_N1; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|led_clk'
+            Info: 6: + IC(0.996 ns) + CELL(0.000 ns) = 8.060 ns; Loc. = CLKCTRL_G10; Fanout = 9; COMB Node = 'led_clk_gen:clk_gen|led_clk~clkctrl'
+            Info: 7: + IC(1.443 ns) + CELL(0.970 ns) = 10.473 ns; Loc. = LCFF_X47_Y28_N31; Fanout = 1; REG Node = 'led_pwm_gen:pwm_gen|fclk'
+            Info: 8: + IC(2.594 ns) + CELL(0.000 ns) = 13.067 ns; Loc. = CLKCTRL_G9; Fanout = 5; COMB Node = 'led_pwm_gen:pwm_gen|fclk~clkctrl'
+            Info: 9: + IC(1.447 ns) + CELL(0.970 ns) = 15.484 ns; Loc. = LCFF_X47_Y49_N9; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|iclk'
+            Info: 10: + IC(1.031 ns) + CELL(0.000 ns) = 16.515 ns; Loc. = CLKCTRL_G8; Fanout = 65; COMB Node = 'led_clk_gen:clk_gen|iclk~clkctrl'
+            Info: 11: + IC(1.437 ns) + CELL(0.666 ns) = 18.618 ns; Loc. = LCFF_X44_Y29_N7; Fanout = 65; REG Node = 'led_clk_gen:clk_gen|cnt[2]'
+            Info: Total cell delay = 5.646 ns ( 30.33 % )
+            Info: Total interconnect delay = 12.972 ns ( 69.67 % )
+    Info: + Micro clock to output delay of source is 0.304 ns
+    Info: + Micro setup delay of destination is -0.040 ns
+Info: tco from clock "clk" to destination pin "led_data[5]" through register "led_clk_gen:clk_gen|led6[4]" is 33.448 ns
+    Info: + Longest clock path from clock "clk" to source register is 18.618 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_N2; Fanout = 1; CLK Node = 'clk'
+        Info: 2: + IC(0.135 ns) + CELL(0.000 ns) = 1.235 ns; Loc. = CLKCTRL_G2; Fanout = 2; COMB Node = 'clk~clkctrl'
+        Info: 3: + IC(1.431 ns) + CELL(0.970 ns) = 3.636 ns; Loc. = LCFF_X50_Y1_N9; Fanout = 2; REG Node = 'led_clk_gen:clk_gen|clk_cnt[1]'
+        Info: 4: + IC(0.999 ns) + CELL(0.000 ns) = 4.635 ns; Loc. = CLKCTRL_G13; Fanout = 5; COMB Node = 'led_clk_gen:clk_gen|clk_cnt[1]~clkctrl'
+        Info: 5: + IC(1.459 ns) + CELL(0.970 ns) = 7.064 ns; Loc. = LCFF_X47_Y50_N1; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|led_clk'
+        Info: 6: + IC(0.996 ns) + CELL(0.000 ns) = 8.060 ns; Loc. = CLKCTRL_G10; Fanout = 9; COMB Node = 'led_clk_gen:clk_gen|led_clk~clkctrl'
+        Info: 7: + IC(1.443 ns) + CELL(0.970 ns) = 10.473 ns; Loc. = LCFF_X47_Y28_N31; Fanout = 1; REG Node = 'led_pwm_gen:pwm_gen|fclk'
+        Info: 8: + IC(2.594 ns) + CELL(0.000 ns) = 13.067 ns; Loc. = CLKCTRL_G9; Fanout = 5; COMB Node = 'led_pwm_gen:pwm_gen|fclk~clkctrl'
+        Info: 9: + IC(1.447 ns) + CELL(0.970 ns) = 15.484 ns; Loc. = LCFF_X47_Y49_N9; Fanout = 1; REG Node = 'led_clk_gen:clk_gen|iclk'
+        Info: 10: + IC(1.031 ns) + CELL(0.000 ns) = 16.515 ns; Loc. = CLKCTRL_G8; Fanout = 65; COMB Node = 'led_clk_gen:clk_gen|iclk~clkctrl'
+        Info: 11: + IC(1.437 ns) + CELL(0.666 ns) = 18.618 ns; Loc. = LCFF_X45_Y29_N27; Fanout = 2; REG Node = 'led_clk_gen:clk_gen|led6[4]'
+        Info: Total cell delay = 5.646 ns ( 30.33 % )
+        Info: Total interconnect delay = 12.972 ns ( 69.67 % )
+    Info: + Micro clock to output delay of source is 0.304 ns
+    Info: + Longest register to pin delay is 14.526 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X45_Y29_N27; Fanout = 2; REG Node = 'led_clk_gen:clk_gen|led6[4]'
+        Info: 2: + IC(1.431 ns) + CELL(0.624 ns) = 2.055 ns; Loc. = LCCOMB_X42_Y28_N4; Fanout = 1; COMB Node = 'led_pwm_gen:pwm_gen|led[5]~2398'
+        Info: 3: + IC(1.460 ns) + CELL(0.319 ns) = 3.834 ns; Loc. = LCCOMB_X44_Y30_N8; Fanout = 1; COMB Node = 'led_pwm_gen:pwm_gen|led[5]~2400'
+        Info: 4: + IC(0.737 ns) + CELL(0.319 ns) = 4.890 ns; Loc. = LCCOMB_X43_Y30_N24; Fanout = 2; COMB Node = 'led_pwm_gen:pwm_gen|led[5]'
+        Info: 5: + IC(6.400 ns) + CELL(3.236 ns) = 14.526 ns; Loc. = PIN_AF6; Fanout = 0; PIN Node = 'led_data[5]'
+        Info: Total cell delay = 4.498 ns ( 30.97 % )
+        Info: Total interconnect delay = 10.028 ns ( 69.03 % )
+Info: Quartus II Timing Analyzer was successful. 0 errors, 2 warnings
+    Info: Processing ended: Thu Jun 05 22:06:29 2008
+    Info: Elapsed time: 00:00:01
+
+

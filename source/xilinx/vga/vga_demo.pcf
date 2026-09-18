@@ -1,0 +1,41 @@
+//! **************************************************************************
+// Written by: Map K.34 on Thu May 08 21:22:10 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "red<1>" LOCATE = SITE "A20" LEVEL 1;
+COMP "red<2>" LOCATE = SITE "A19" LEVEL 1;
+COMP "red<3>" LOCATE = SITE "A18" LEVEL 1;
+COMP "red<4>" LOCATE = SITE "F23" LEVEL 1;
+COMP "red<5>" LOCATE = SITE "F22" LEVEL 1;
+COMP "red<6>" LOCATE = SITE "A15" LEVEL 1;
+COMP "red<7>" LOCATE = SITE "B20" LEVEL 1;
+COMP "clk" LOCATE = SITE "F13" LEVEL 1;
+COMP "syncn" LOCATE = SITE "C23" LEVEL 1;
+COMP "synct" LOCATE = SITE "M18" LEVEL 1;
+COMP "blankn" LOCATE = SITE "B21" LEVEL 1;
+COMP "green<0>" LOCATE = SITE "F20" LEVEL 1;
+COMP "green<1>" LOCATE = SITE "F19" LEVEL 1;
+COMP "vclk" LOCATE = SITE "J21" LEVEL 1;
+COMP "green<2>" LOCATE = SITE "B19" LEVEL 1;
+COMP "green<3>" LOCATE = SITE "B18" LEVEL 1;
+COMP "green<4>" LOCATE = SITE "F17" LEVEL 1;
+COMP "green<5>" LOCATE = SITE "G15" LEVEL 1;
+COMP "hsync" LOCATE = SITE "L24" LEVEL 1;
+COMP "green<6>" LOCATE = SITE "B17" LEVEL 1;
+COMP "green<7>" LOCATE = SITE "B15" LEVEL 1;
+COMP "m1" LOCATE = SITE "M20" LEVEL 1;
+COMP "m2" LOCATE = SITE "M19" LEVEL 1;
+COMP "vsync" LOCATE = SITE "C22" LEVEL 1;
+COMP "reset" LOCATE = SITE "D5" LEVEL 1;
+COMP "blue<0>" LOCATE = SITE "F25" LEVEL 1;
+COMP "blue<1>" LOCATE = SITE "F24" LEVEL 1;
+COMP "blue<2>" LOCATE = SITE "C17" LEVEL 1;
+COMP "blue<3>" LOCATE = SITE "C16" LEVEL 1;
+COMP "blue<4>" LOCATE = SITE "L22" LEVEL 1;
+COMP "blue<5>" LOCATE = SITE "M21" LEVEL 1;
+COMP "blue<6>" LOCATE = SITE "C15" LEVEL 1;
+COMP "blue<7>" LOCATE = SITE "B23" LEVEL 1;
+COMP "red<0>" LOCATE = SITE "A22" LEVEL 1;
+SCHEMATIC END;
+

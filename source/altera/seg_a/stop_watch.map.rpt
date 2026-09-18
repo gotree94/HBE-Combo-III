@@ -1,0 +1,360 @@
+Analysis & Synthesis report for stop_watch
+Thu Jun 05 22:09:44 2008
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. State Machine - |stop_watch|mode
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Source assignments for Top-level Entity: |stop_watch
+ 11. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jun 05 22:09:44 2008    ;
+; Quartus II Version                 ; 6.0 Build 178 04/27/2006 SJ Full Version ;
+; Revision Name                      ; stop_watch                               ;
+; Top-level Entity Name              ; stop_watch                               ;
+; Family                             ; Cyclone II                               ;
+; Total logic elements               ; 376                                      ;
+; Total registers                    ; 126                                      ;
+; Total pins                         ; 24                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                             ; Setting            ; Default Value      ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                             ; EP2C70F672C8       ;                    ;
+; Top-level entity name                                              ; stop_watch         ; stop_watch         ;
+; Family name                                                        ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                           ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                ; Off                ; Off                ;
+; Preserve fewer node names                                          ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                          ; Off                ; Off                ;
+; Verilog Version                                                    ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                       ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                           ; Auto               ; Auto               ;
+; Extract Verilog State Machines                                     ; On                 ; On                 ;
+; Extract VHDL State Machines                                        ; On                 ; On                 ;
+; Add Pass-Through Logic to Inferred RAMs                            ; On                 ; On                 ;
+; DSP Block Balancing                                                ; Auto               ; Auto               ;
+; Maximum DSP Block Usage                                            ; Unlimited          ; Unlimited          ;
+; NOT Gate Push-Back                                                 ; On                 ; On                 ;
+; Power-Up Don't Care                                                ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                       ; Off                ; Off                ;
+; Remove Duplicate Registers                                         ; On                 ; On                 ;
+; Ignore CARRY Buffers                                               ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                             ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                              ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                          ; Off                ; Off                ;
+; Ignore LCELL Buffers                                               ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                     ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II ; 70                 ; 70                 ;
+; Auto Carry Chains                                                  ; On                 ; On                 ;
+; Auto Open-Drain Pins                                               ; On                 ; On                 ;
+; Remove Duplicate Logic                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                              ; Off                ; Off                ;
+; Perform gate-level register retiming                               ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax             ; On                 ; On                 ;
+; Auto ROM Replacement                                               ; On                 ; On                 ;
+; Auto RAM Replacement                                               ; On                 ; On                 ;
+; Auto Shift Register Replacement                                    ; On                 ; On                 ;
+; Auto Clock Enable Replacement                                      ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                  ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                             ; Off                ; Off                ;
+; Auto Resource Sharing                                              ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                      ; Off                ; Off                ;
+; Maximum Number of M4K Memory Blocks                                ; Unlimited          ; Unlimited          ;
+; Ignore translate_off and translate_on Synthesis Directives         ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                 ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                   ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                       ; Normal compilation ; Normal compilation ;
+; HDL message level                                                  ; Level2             ; Level2             ;
++--------------------------------------------------------------------+--------------------+--------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                           ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+
+; decod.vhd                        ; yes             ; User VHDL File  ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/seg_a/decod.vhd      ;
+; sep.vhd                          ; yes             ; User VHDL File  ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/seg_a/sep.vhd        ;
+; stop_watch.vhd                   ; yes             ; User VHDL File  ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/seg_a/stop_watch.vhd ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 376   ;
+; Total combinational functions               ; 376   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 223   ;
+;     -- 3 input functions                    ; 47    ;
+;     -- <=2 input functions                  ; 106   ;
+;         -- Combinational cells for routing  ; 0     ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 334   ;
+;     -- arithmetic mode                      ; 42    ;
+; Total registers                             ; 126   ;
+; I/O pins                                    ; 24    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 126   ;
+; Total fan-out                               ; 1671  ;
+; Average fan-out                             ; 3.18  ;
++---------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                    ;
++----------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+------------------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name    ;
++----------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+------------------------+
+; |stop_watch                ; 376 (287)         ; 126 (126)    ; 0           ; 0    ; 0            ; 0       ; 0         ; 24   ; 0            ; |stop_watch            ;
+;    |decod:s7|              ; 7 (7)             ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |stop_watch|decod:s7   ;
+;    |sep:h_sep|             ; 21 (21)           ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |stop_watch|sep:h_sep  ;
+;    |sep:hs_sep|            ; 19 (19)           ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |stop_watch|sep:hs_sep ;
+;    |sep:m_sep|             ; 21 (21)           ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |stop_watch|sep:m_sep  ;
+;    |sep:s_sep|             ; 21 (21)           ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |stop_watch|sep:s_sep  ;
++----------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+------------------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------+
+; State Machine - |stop_watch|mode                                                                    ;
++-------------------+-------------------+------------------+----------------+------------+------------+
+; Name              ; mode.stop_uncount ; mode.lap_uncount ; mode.lap_count ; mode.count ; mode.start ;
++-------------------+-------------------+------------------+----------------+------------+------------+
+; mode.start        ; 0                 ; 0                ; 0              ; 0          ; 0          ;
+; mode.count        ; 0                 ; 0                ; 0              ; 1          ; 1          ;
+; mode.lap_count    ; 0                 ; 0                ; 1              ; 0          ; 1          ;
+; mode.lap_uncount  ; 0                 ; 1                ; 0              ; 0          ; 1          ;
+; mode.stop_uncount ; 1                 ; 0                ; 0              ; 0          ; 1          ;
++-------------------+-------------------+------------------+----------------+------------+------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 126   ;
+; Number of registers using Synchronous Clear  ; 29    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 51    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 89    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 8:1                ; 4 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |stop_watch|num[0]         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |stop_watch|num~1          ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |stop_watch|num~10         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |stop_watch|num~17         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |stop_watch|num~25         ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |stop_watch|num~0          ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |stop_watch|num~8          ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |stop_watch|num~16         ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |stop_watch|num~27         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------+
+; Source assignments for Top-level Entity: |stop_watch ;
++----------------+-------+------+----------------------+
+; Assignment     ; Value ; From ; To                   ;
++----------------+-------+------+----------------------+
+; POWER_UP_LEVEL ; Low   ; -    ; num[1]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; num[0]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt[2]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt[1]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt[0]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; num[2]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; num[3]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs1[0]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs1[1]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs1[2]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs1[3]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs10[0]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs10[1]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs10[2]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_hs10[3]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s1[0]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s1[1]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s1[2]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s1[3]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s10[0]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s10[1]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s10[2]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_s10[3]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m1[0]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m1[1]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m1[2]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m1[3]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m10[0]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m10[1]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m10[2]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_m10[3]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h1[0]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h1[1]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h1[2]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h1[3]            ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h10[0]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h10[1]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h10[2]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; reg_h10[3]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[0]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[1]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[2]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[3]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[4]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[5]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; hour[6]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[0]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[1]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[2]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[3]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[4]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[5]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; min[6]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[0]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[1]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[2]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[3]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[4]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[5]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; sec[6]               ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[0]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[1]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[2]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[3]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[4]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[5]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; hectosec[6]          ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[0]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[1]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[2]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[3]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[4]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[5]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[6]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[7]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[8]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[9]              ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[10]             ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[11]             ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[12]             ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnts[13]             ;
+; POWER_UP_LEVEL ; Low   ; -    ; mode.stop_uncount    ;
+; POWER_UP_LEVEL ; Low   ; -    ; mode.lap_uncount     ;
+; POWER_UP_LEVEL ; Low   ; -    ; mode.lap_count       ;
+; POWER_UP_LEVEL ; Low   ; -    ; mode.count           ;
+; POWER_UP_LEVEL ; High  ; -    ; mode.start           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[0]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[1]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[2]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[3]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[4]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[5]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; rst_cnt[6]           ;
++----------------+-------+------+----------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 6.0 Build 178 04/27/2006 SJ Full Version
+    Info: Processing started: Thu Jun 05 22:09:35 2008
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off stop_watch -c stop_watch
+Info: Found 2 design units, including 1 entities, in source file decod.vhd
+    Info: Found design unit 1: decod-gk
+    Info: Found entity 1: decod
+Info: Found 2 design units, including 1 entities, in source file sep.vhd
+    Info: Found design unit 1: sep-gk
+    Info: Found entity 1: sep
+Info: Found 2 design units, including 1 entities, in source file stop_watch.vhd
+    Info: Found design unit 1: stop_watch-gk
+    Info: Found entity 1: stop_watch
+Info: Elaborating entity "stop_watch" for the top level hierarchy
+Info: Elaborating entity "sep" for hierarchy "sep:hs_sep"
+Info: Elaborating entity "decod" for hierarchy "decod:s7"
+Warning (10492): VHDL Process Statement warning at decod.vhd(33): signal "seg_d" is read inside the Process Statement but isn't in the Process Statement's sensivitity list
+Warning (10492): VHDL Process Statement warning at decod.vhd(33): signal "dot" is read inside the Process Statement but isn't in the Process Statement's sensivitity list
+Info: State machine "|stop_watch|mode" contains 5 states
+Info: Selected Auto state machine encoding method for state machine "|stop_watch|mode"
+Info: Encoding result for state machine "|stop_watch|mode"
+    Info: Completed encoding using 5 state bits
+        Info: Encoded state bit "mode.stop_uncount"
+        Info: Encoded state bit "mode.lap_uncount"
+        Info: Encoded state bit "mode.lap_count"
+        Info: Encoded state bit "mode.count"
+        Info: Encoded state bit "mode.start"
+    Info: State "|stop_watch|mode.start" uses code string "00000"
+    Info: State "|stop_watch|mode.count" uses code string "00011"
+    Info: State "|stop_watch|mode.lap_count" uses code string "00101"
+    Info: State "|stop_watch|mode.lap_uncount" uses code string "01001"
+    Info: State "|stop_watch|mode.stop_uncount" uses code string "10001"
+Info: Implemented 449 device resources after synthesis - the final resource count might be different
+    Info: Implemented 3 input pins
+    Info: Implemented 21 output pins
+    Info: Implemented 425 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Processing ended: Thu Jun 05 22:09:44 2008
+    Info: Elapsed time: 00:00:10
+
+

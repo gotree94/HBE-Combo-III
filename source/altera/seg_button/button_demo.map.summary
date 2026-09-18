@@ -1,0 +1,12 @@
+Analysis & Synthesis Status : Successful - Thu Jun 05 22:11:07 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : button_demo
+Top-level Entity Name : button_demo
+Family : Cyclone II
+Total logic elements : 55
+Total registers : 12
+Total pins : 25
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

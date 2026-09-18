@@ -1,0 +1,6 @@
+NET "clk" LOC = F13;
+NET "parity_en" LOC = A13;
+NET "parity_mode" LOC = C1;
+NET "reset" LOC = D5;
+NET "rxd" LOC = J12;
+NET "txd" LOC = J11;

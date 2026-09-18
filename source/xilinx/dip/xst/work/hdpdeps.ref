@@ -1,0 +1,15 @@
+V3 7
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/diptoseg.vhd" 2008/03/10.10:17:26 K.34
+EN work/diptoseg 1210244307 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/diptoseg.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/diptoseg/a 1210244308 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/diptoseg.vhd" \
+      EN work/diptoseg 1210244307
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/dip_switch.vhd" 2008/05/08.19:58:22 K.34
+EN work/dip_switch 1210244309 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/dip_switch.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/dip_switch/hb 1210244310 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dip/dip_switch.vhd" \
+      EN work/dip_switch 1210244309 CP diptoseg

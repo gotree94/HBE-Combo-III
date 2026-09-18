@@ -1,0 +1,38 @@
+Release 10.1.01 ngdbuild K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\10.1\ISE\bin\nt\unwrapped\ngdbuild.exe -ise F:/HANBACK
+Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise -intstyle ise -dd _ngo
+-nt timestamp -i -p xc3sd1800a-fg676-4 oled_demo.ngc oled_demo.ngd
+
+Reading NGO file "F:/HANBACK Product/HBE-COMBO
+III/source/xilinx/oled/oled_demo.ngc" ...
+Loading design module "F:\HANBACK Product\HBE-COMBO
+III\source\xilinx\oled/rom_data.ngc"...
+Reading in constraint information from 'oled_demo.ucf'...
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+Checking Partitions ...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 78656 kilobytes
+
+Writing NGD file "oled_demo.ngd" ...
+
+Writing NGDBUILD log file "oled_demo.bld"...

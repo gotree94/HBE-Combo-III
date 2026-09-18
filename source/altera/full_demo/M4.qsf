@@ -1,0 +1,259 @@
+# Copyright (C) 1991-2006 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+
+# The default values for assignments are stored in the file
+#		M4_assignment_defaults.qdf
+# If this file doesn't exist, and for assignments not listed, see file
+#		assignment_defaults.qdf
+
+# Altera recommends that you do not modify this file. This
+# file is updated automatically by the Quartus II software
+# and any changes you make may be lost or overwritten.
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C70F672C8
+set_global_assignment -name TOP_LEVEL_ENTITY M4
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 6.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:14:04  OCTOBER 19, 2007"
+set_global_assignment -name LAST_QUARTUS_VERSION 6.0
+set_location_assignment PIN_N2 -to GCLK1
+set_location_assignment PIN_AC8 -to LCD_DD[0]
+set_location_assignment PIN_AC7 -to LCD_DD[1]
+set_location_assignment PIN_AB12 -to LCD_DD[2]
+set_location_assignment PIN_AB10 -to LCD_DD[3]
+set_location_assignment PIN_AB8 -to LCD_DD[4]
+set_location_assignment PIN_AA12 -to LCD_DD[5]
+set_location_assignment PIN_AC10 -to LCD_DD[6]
+set_location_assignment PIN_AC9 -to LCD_DD[7]
+set_location_assignment PIN_AC6 -to LCD_DD[8]
+set_location_assignment PIN_AD6 -to LCD_DD[9]
+set_location_assignment PIN_AD5 -to LCD_DD[10]
+set_location_assignment PIN_AD4 -to LCD_DD[11]
+set_location_assignment PIN_AC12 -to LCD_DD[12]
+set_location_assignment PIN_AC11 -to LCD_DD[13]
+set_location_assignment PIN_AD12 -to LCD_DD[14]
+set_location_assignment PIN_AD11 -to LCD_DD[15]
+set_location_assignment PIN_AD10 -to LCD_DD[16]
+set_location_assignment PIN_AD8 -to LCD_DD[17]
+set_location_assignment PIN_AD7 -to LCD_DD[18]
+set_location_assignment PIN_AE9 -to LCD_DD[19]
+set_location_assignment PIN_AE8 -to LCD_DD[20]
+set_location_assignment PIN_AE7 -to LCD_DD[21]
+set_location_assignment PIN_AE6 -to LCD_DD[22]
+set_location_assignment PIN_AE5 -to LCD_DD[23]
+set_location_assignment PIN_AF4 -to LCD_DEN
+set_location_assignment PIN_AE12 -to LCD_FCLK
+set_location_assignment PIN_AE13 -to LCD_LCLK
+set_location_assignment PIN_AA6 -to LCD_PCLK
+set_location_assignment PIN_AA7 -to CMOS_MCLK
+set_location_assignment PIN_AA10 -to CMOS_STROBE
+set_location_assignment PIN_AD3 -to COMS_Y[7]
+set_location_assignment PIN_AE2 -to COMS_Y[6]
+set_location_assignment PIN_AE3 -to COMS_Y[5]
+set_location_assignment PIN_Y10 -to COMS_Y[4]
+set_location_assignment PIN_A4 -to COMS_Y[0]
+set_location_assignment PIN_AC1 -to COMS_Y[1]
+set_location_assignment PIN_AB4 -to COMS_Y[2]
+set_location_assignment PIN_AB3 -to COMS_Y[3]
+set_location_assignment PIN_AC5 -to COMS_FSYNC
+set_location_assignment PIN_Y12 -to CMOS_VCLK
+set_location_assignment PIN_Y11 -to CMOS_LVALID
+set_location_assignment PIN_B24 -to RAM_A[0]
+set_location_assignment PIN_B25 -to RAM_A[1]
+set_location_assignment PIN_C24 -to RAM_A[2]
+set_location_assignment PIN_C25 -to RAM_A[3]
+set_location_assignment PIN_D23 -to RAM_A[4]
+set_location_assignment PIN_D25 -to RAM_A[5]
+set_location_assignment PIN_D26 -to RAM_A[6]
+set_location_assignment PIN_E22 -to RAM_A[7]
+set_location_assignment PIN_E23 -to RAM_A[8]
+set_location_assignment PIN_E24 -to RAM_A[9]
+set_location_assignment PIN_E25 -to RAM_A[10]
+set_location_assignment PIN_E26 -to RAM_A[11]
+set_location_assignment PIN_F20 -to RAM_A[12]
+set_location_assignment PIN_F24 -to RAM_A[13]
+set_location_assignment PIN_F25 -to RAM_A[14]
+set_location_assignment PIN_F26 -to RAM_A[15]
+set_location_assignment PIN_G21 -to RAM_A[16]
+set_location_assignment PIN_G22 -to RAM_A[17]
+set_location_assignment PIN_P23 -to RAM_D[0]
+set_location_assignment PIN_P24 -to RAM_D[1]
+set_location_assignment PIN_R20 -to RAM_D[2]
+set_location_assignment PIN_R24 -to RAM_D[3]
+set_location_assignment PIN_R25 -to RAM_D[4]
+set_location_assignment PIN_T20 -to RAM_D[5]
+set_location_assignment PIN_T21 -to RAM_D[6]
+set_location_assignment PIN_T22 -to RAM_D[7]
+set_location_assignment PIN_T23 -to RAM_D[8]
+set_location_assignment PIN_T24 -to RAM_D[9]
+set_location_assignment PIN_T25 -to RAM_D[10]
+set_location_assignment PIN_U20 -to RAM_D[11]
+set_location_assignment PIN_U21 -to RAM_D[12]
+set_location_assignment PIN_U22 -to RAM_D[13]
+set_location_assignment PIN_U23 -to RAM_D[14]
+set_location_assignment PIN_U24 -to RAM_D[15]
+set_location_assignment PIN_H26 -to RAM_nCS1
+set_location_assignment PIN_J21 -to RAM_nOE
+set_location_assignment PIN_J20 -to RAM_nWE
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD LVTTL
+set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name VHDL_FILE lpm_ram_dp0.vhd
+set_global_assignment -name VHDL_FILE altpll0.vhd
+set_global_assignment -name BDF_FILE VIDEO_in.bdf
+set_global_assignment -name VHDL_FILE M4_control/buff.vhd
+set_global_assignment -name VHDL_FILE M4_control/buff_in.vhd
+set_global_assignment -name VHDL_FILE M4_control/cs_sel.vhd
+set_global_assignment -name VHDL_FILE M4_control/SEL.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/ColorSpace_CVT.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/Data_sync_gen.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/host_io.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/HOST_ITF.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/IP_Timing_gen.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/LCD_drv.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/SRAM_ctrl.vhd
+set_global_assignment -name VHDL_FILE ID_check/id_chk_s.vhd
+set_global_assignment -name BDF_FILE M4.bdf
+set_global_assignment -name VHDL_FILE M4_control/Logic_out.vhd
+set_global_assignment -name VHDL_FILE LCD_drv/CIF_int.vhd
+set_location_assignment PIN_E3 -to ~ASDO~
+set_location_assignment PIN_G23 -to SRAM2_DB
+set_location_assignment PIN_G24 -to SRAM1_UB
+set_location_assignment PIN_D3 -to ~nCSO~
+set_location_assignment PIN_H23 -to SRAM2_UB
+set_location_assignment PIN_H24 -to SRAM1_DB
+set_location_assignment PIN_AA9 -to IMAGE_RESET
+set_global_assignment -name VHDL_FILE clk_div.vhd
+set_location_assignment PIN_N20 -to oled_d[1]
+set_location_assignment PIN_M5 -to sega_data[7]
+set_location_assignment PIN_M21 -to dot_data[2]
+set_location_assignment PIN_K8 -to vfd_data[6]
+set_location_assignment PIN_Y3 -to button_sw[9]
+set_location_assignment PIN_AF6 -to led[5]
+set_location_assignment PIN_V5 -to dip_sw[0]
+set_location_assignment PIN_R2 -to sega_data[2]
+set_location_assignment PIN_K24 -to dot_scan[7]
+set_location_assignment PIN_K3 -to vfd_data[1]
+set_location_assignment PIN_J4 -to vfd_rw
+set_location_assignment PIN_W3 -to button_sw[4]
+set_location_assignment PIN_AE11 -to led[0]
+set_location_assignment PIN_M2 -to seg_data[6]
+set_location_assignment PIN_L20 -to dot_data[9]
+set_location_assignment PIN_R7 -to sega_scan[5]
+set_location_assignment PIN_C23 -to dot_scan[2]
+set_location_assignment PIN_AF23 -to led[12]
+set_location_assignment PIN_E15 -to oled_rn
+set_location_assignment PIN_T6 -to dip_sw[7]
+set_location_assignment PIN_D20 -to oled_d[3]
+set_location_assignment PIN_P4 -to seg_data[1]
+set_location_assignment PIN_D17 -to dot_data[4]
+set_location_assignment PIN_T7 -to sega_scan[0]
+set_location_assignment PIN_Y1 -to button_sw[11]
+set_location_assignment PIN_B3 -to led[7]
+set_location_assignment PIN_T2 -to sega_scan[6]
+set_location_assignment PIN_U4 -to dip_sw[2]
+set_location_assignment PIN_K22 -to dot_scan[3]
+set_location_assignment PIN_Y25 -to led[13]
+set_location_assignment PIN_R4 -to sega_data[4]
+set_location_assignment PIN_E18 -to oled_wn
+set_location_assignment PIN_V4 -to button_sw[0]
+set_location_assignment PIN_B23 -to dot_scan[9]
+set_location_assignment PIN_M25 -to oled_d[4]
+set_location_assignment PIN_P6 -to seg_data[2]
+set_location_assignment PIN_K1 -to vfd_data[3]
+set_location_assignment PIN_K5 -to vfd_e
+set_location_assignment PIN_W1 -to button_sw[6]
+set_location_assignment PIN_K26 -to dot_data[5]
+set_location_assignment PIN_AF9 -to led[2]
+set_location_assignment PIN_U1 -to sega_scan[1]
+set_location_assignment PIN_W6 -to button_sw[12]
+set_location_assignment PIN_C19 -to dot_data[11]
+set_location_assignment PIN_AF10 -to led[8]
+set_location_assignment PIN_T3 -to sega_scan[7]
+set_location_assignment PIN_U5 -to dip_sw[3]
+set_location_assignment PIN_K23 -to dot_scan[4]
+set_location_assignment PIN_AF13 -to led[14]
+set_location_assignment PIN_R5 -to sega_data[5]
+set_location_assignment PIN_L25 -to oled_dc
+set_location_assignment PIN_V3 -to button_sw[1]
+set_location_assignment PIN_D15 -to dot_data[0]
+set_location_assignment PIN_M24 -to oled_d[5]
+set_location_assignment PIN_L4 -to seg_data[3]
+set_location_assignment PIN_L3 -to vfd_data[4]
+set_location_assignment PIN_V7 -to button_sw[7]
+set_location_assignment PIN_L19 -to dot_data[6]
+set_location_assignment PIN_AF8 -to led[3]
+set_location_assignment PIN_U2 -to sega_scan[2]
+set_location_assignment PIN_AA4 -to button_sw[13]
+set_location_assignment PIN_C21 -to dot_data[12]
+set_location_assignment PIN_AA24 -to led[9]
+set_location_assignment PIN_T4 -to sega_data[0]
+set_location_assignment PIN_U6 -to dip_sw[4]
+set_location_assignment PIN_B21 -to dot_scan[5]
+set_location_assignment PIN_B2 -to led[15]
+set_location_assignment PIN_L24 -to oled_d[0]
+set_location_assignment PIN_M4 -to sega_data[6]
+set_location_assignment PIN_M19 -to oled_rstn
+set_location_assignment PIN_V2 -to button_sw[2]
+set_location_assignment PIN_M20 -to dot_data[1]
+set_location_assignment PIN_D19 -to oled_d[6]
+set_location_assignment PIN_L6 -to seg_data[4]
+set_location_assignment PIN_L2 -to vfd_data[5]
+set_location_assignment PIN_Y4 -to button_sw[8]
+set_location_assignment PIN_D18 -to dot_data[7]
+set_location_assignment PIN_AF7 -to led[4]
+set_location_assignment PIN_U3 -to sega_scan[3]
+set_location_assignment PIN_AA3 -to button_sw[14]
+set_location_assignment PIN_L23 -to dot_data[13]
+set_location_assignment PIN_K21 -to dot_scan[0]
+set_location_assignment PIN_G2 -to led[10]
+set_location_assignment PIN_P7 -to sega_data[1]
+set_location_assignment PIN_U7 -to dip_sw[5]
+set_location_assignment PIN_B22 -to dot_scan[6]
+set_location_assignment PIN_K4 -to vfd_data[0]
+set_location_assignment PIN_D14 -to oled_cs
+set_location_assignment PIN_W4 -to button_sw[3]
+set_location_assignment PIN_F16 -to oled_d[7]
+set_location_assignment PIN_L7 -to seg_data[5]
+set_location_assignment PIN_C17 -to dot_data[8]
+set_location_assignment PIN_R6 -to sega_scan[4]
+set_location_assignment PIN_AA2 -to button_sw[15]
+set_location_assignment PIN_C22 -to dot_scan[1]
+set_location_assignment PIN_G1 -to led[11]
+set_location_assignment PIN_V1 -to dip_sw[6]
+set_location_assignment PIN_D21 -to oled_d[2]
+set_location_assignment PIN_P3 -to seg_data[0]
+set_location_assignment PIN_D16 -to dot_data[3]
+set_location_assignment PIN_K7 -to vfd_data[7]
+set_location_assignment PIN_Y2 -to button_sw[10]
+set_location_assignment PIN_AF5 -to led[6]
+set_location_assignment PIN_V6 -to dip_sw[1]
+set_location_assignment PIN_R3 -to sega_data[3]
+set_location_assignment PIN_K25 -to dot_scan[8]
+set_location_assignment PIN_K2 -to vfd_data[2]
+set_location_assignment PIN_J5 -to vfd_rs
+set_location_assignment PIN_W2 -to button_sw[5]
+set_location_assignment PIN_AE10 -to led[1]
+set_location_assignment PIN_M3 -to seg_data[7]
+set_location_assignment PIN_L21 -to dot_data[10]
+set_location_assignment PIN_AA23 -to motor_data[0]
+set_location_assignment PIN_AB24 -to motor_data[1]
+set_location_assignment PIN_Y26 -to motor_data[2]
+set_location_assignment PIN_AB23 -to motor_data[3]
+set_location_assignment PIN_AA26 -to motor_sensor
+set_global_assignment -name ENABLE_DEVICE_WIDE_RESET ON

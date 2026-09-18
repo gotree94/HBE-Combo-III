@@ -1,0 +1,12 @@
+Analysis & Synthesis Status : Successful - Thu Jun 05 22:04:11 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : M4
+Top-level Entity Name : M4
+Family : Cyclone II
+Total logic elements : 373
+Total registers : 204
+Total pins : 87
+Total virtual pins : 0
+Total memory bits : 16,384
+Embedded Multiplier 9-bit elements : 9
+Total PLLs : 0

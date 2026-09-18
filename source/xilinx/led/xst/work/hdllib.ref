@@ -1,0 +1,6 @@
+AR led_clk_gen hb "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd" sub00/vhpl01 1210122464
+AR led_demo hb "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" sub00/vhpl05 1210122468
+EN led_demo NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" sub00/vhpl04 1210122467
+EN led_clk_gen NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd" sub00/vhpl00 1210122463
+EN led_pwm_gen NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd" sub00/vhpl02 1210122465
+AR led_pwm_gen hb "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd" sub00/vhpl03 1210122466

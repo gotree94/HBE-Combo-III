@@ -1,0 +1,24 @@
+CommandLine-Map
+
+s
+CommandLine-Ngdbuild
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\ngdbuild.exe -ise F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise -intstyle ise -dd _ngo -nt timestamp -i -p xc3sd1800a-fg676-4 led_demo.ngc led_demo.ngd
+s
+CommandLine-Par
+
+s
+CommandLine-Xst
+
+s
+Previous-NGD
+led_demo_prev_built.ngd
+s
+Previous-NGM
+
+s
+Previous-Packed-NCD
+
+s
+Previous-Routed-NCD
+
+s

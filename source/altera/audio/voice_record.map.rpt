@@ -1,0 +1,630 @@
+Analysis & Synthesis report for voice_record
+Thu Jun 05 21:59:34 2008
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. State Machine - |voice_record|record_routine
+  8. General Register Statistics
+  9. Inverted Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Source assignments for Top-level Entity: |voice_record
+ 12. Source assignments for audio_interface:u_audio_interface|audio_input:u1
+ 13. Source assignments for audio_interface:u_audio_interface|audio_output:u2
+ 14. Parameter Settings for User Entity Instance: audio_clk:u_audio_clk|altpll:altpll_component
+ 15. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jun 05 21:59:34 2008    ;
+; Quartus II Version                 ; 6.0 Build 178 04/27/2006 SJ Full Version ;
+; Revision Name                      ; voice_record                             ;
+; Top-level Entity Name              ; voice_record                             ;
+; Family                             ; Cyclone II                               ;
+; Total logic elements               ; 223                                      ;
+; Total registers                    ; 187                                      ;
+; Total pins                         ; 58                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 1                                        ;
++------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                             ; Setting            ; Default Value      ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                             ; EP2C70F672C8       ;                    ;
+; Top-level entity name                                              ; voice_record       ; voice_record       ;
+; Family name                                                        ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                           ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                ; Off                ; Off                ;
+; Preserve fewer node names                                          ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                          ; Off                ; Off                ;
+; Verilog Version                                                    ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                       ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                           ; Auto               ; Auto               ;
+; Extract Verilog State Machines                                     ; On                 ; On                 ;
+; Extract VHDL State Machines                                        ; On                 ; On                 ;
+; Add Pass-Through Logic to Inferred RAMs                            ; On                 ; On                 ;
+; DSP Block Balancing                                                ; Auto               ; Auto               ;
+; Maximum DSP Block Usage                                            ; Unlimited          ; Unlimited          ;
+; NOT Gate Push-Back                                                 ; On                 ; On                 ;
+; Power-Up Don't Care                                                ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                       ; Off                ; Off                ;
+; Remove Duplicate Registers                                         ; On                 ; On                 ;
+; Ignore CARRY Buffers                                               ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                             ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                              ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                          ; Off                ; Off                ;
+; Ignore LCELL Buffers                                               ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                     ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II ; 70                 ; 70                 ;
+; Auto Carry Chains                                                  ; On                 ; On                 ;
+; Auto Open-Drain Pins                                               ; On                 ; On                 ;
+; Remove Duplicate Logic                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                              ; Off                ; Off                ;
+; Perform gate-level register retiming                               ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax             ; On                 ; On                 ;
+; Auto ROM Replacement                                               ; On                 ; On                 ;
+; Auto RAM Replacement                                               ; On                 ; On                 ;
+; Auto Shift Register Replacement                                    ; On                 ; On                 ;
+; Auto Clock Enable Replacement                                      ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                  ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                             ; Off                ; Off                ;
+; Auto Resource Sharing                                              ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                      ; Off                ; Off                ;
+; Maximum Number of M4K Memory Blocks                                ; Unlimited          ; Unlimited          ;
+; Ignore translate_off and translate_on Synthesis Directives         ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                 ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                   ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                       ; Normal compilation ; Normal compilation ;
+; HDL message level                                                  ; Level2             ; Level2             ;
++--------------------------------------------------------------------+--------------------+--------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                           ;
++----------------------------------+-----------------+---------------+-----------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type     ; File Name with Absolute Path                                                ;
++----------------------------------+-----------------+---------------+-----------------------------------------------------------------------------+
+; voice_record.vhd                 ; yes             ; Other         ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/audio/voice_record.vhd    ;
+; audio_clk.vhd                    ; yes             ; Other         ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/audio/audio_clk.vhd       ;
+; altpll.tdf                       ; yes             ; Megafunction  ; c:/altera/quartus60/libraries/megafunctions/altpll.tdf                      ;
+; aglobal60.inc                    ; yes             ; Other         ; c:/altera/quartus60/libraries/megafunctions/aglobal60.inc                   ;
+; stratix_pll.inc                  ; yes             ; Other         ; c:/altera/quartus60/libraries/megafunctions/stratix_pll.inc                 ;
+; stratixii_pll.inc                ; yes             ; Other         ; c:/altera/quartus60/libraries/megafunctions/stratixii_pll.inc               ;
+; cycloneii_pll.inc                ; yes             ; Other         ; c:/altera/quartus60/libraries/megafunctions/cycloneii_pll.inc               ;
+; audio_interface.vhd              ; yes             ; Other         ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/audio/audio_interface.vhd ;
+; audio_setup.vhd                  ; yes             ; Other         ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/audio/audio_setup.vhd     ;
+; audio_input.vhd                  ; yes             ; Other         ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/audio/audio_input.vhd     ;
+; audio_output.vhd                 ; yes             ; Other         ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/audio/audio_output.vhd    ;
++----------------------------------+-----------------+---------------+-----------------------------------------------------------------------------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimated Total logic elements              ; 223      ;
+; Total combinational functions               ; 223      ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 76       ;
+;     -- 3 input functions                    ; 44       ;
+;     -- <=2 input functions                  ; 103      ;
+;         -- Combinational cells for routing  ; 0        ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 169      ;
+;     -- arithmetic mode                      ; 54       ;
+; Total registers                             ; 187      ;
+; I/O pins                                    ; 58       ;
+; Total PLLs                                  ; 1        ;
+; Maximum fan-out node                        ; sw_reset ;
+; Maximum fan-out                             ; 187      ;
+; Total fan-out                               ; 1436     ;
+; Average fan-out                             ; 3.06     ;
++---------------------------------------------+----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                         ;
++----------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                             ;
++----------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------+
+; |voice_record                          ; 223 (103)         ; 187 (77)     ; 0           ; 0    ; 0            ; 0       ; 0         ; 58   ; 0            ; |voice_record                                                   ;
+;    |audio_clk:u_audio_clk|             ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |voice_record|audio_clk:u_audio_clk                             ;
+;       |altpll:altpll_component|        ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |voice_record|audio_clk:u_audio_clk|altpll:altpll_component     ;
+;    |audio_interface:u_audio_interface| ; 120 (0)           ; 110 (0)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |voice_record|audio_interface:u_audio_interface                 ;
+;       |audio_input:u1|                 ; 26 (26)           ; 40 (40)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |voice_record|audio_interface:u_audio_interface|audio_input:u1  ;
+;       |audio_output:u2|                ; 41 (41)           ; 39 (39)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |voice_record|audio_interface:u_audio_interface|audio_output:u2 ;
+;       |audio_setup:u0|                 ; 53 (53)           ; 31 (31)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |voice_record|audio_interface:u_audio_interface|audio_setup:u0  ;
++----------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------+
+; State Machine - |voice_record|record_routine                                                    ;
++--------------------------+---------------------+--------------------------+---------------------+
+; Name                     ; record_routine.play ; record_routine.recording ; record_routine.idle ;
++--------------------------+---------------------+--------------------------+---------------------+
+; record_routine.idle      ; 0                   ; 0                        ; 0                   ;
+; record_routine.recording ; 0                   ; 1                        ; 1                   ;
+; record_routine.play      ; 1                   ; 0                        ; 1                   ;
++--------------------------+---------------------+--------------------------+---------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 187   ;
+; Number of registers using Synchronous Clear  ; 47    ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 187   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 130   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------+
+; Inverted Register Statistics                                         ;
++------------------------------------------------------------+---------+
+; Inverted Register                                          ; Fan out ;
++------------------------------------------------------------+---------+
+; audio_interface:u_audio_interface|audio_setup:u0|codec_csn ; 1       ;
+; Total number of inverted registers = 1                     ;         ;
++------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+; 3:1                ; 18 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |voice_record|cnt_record_max[14]                                              ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |voice_record|audio_interface:u_audio_interface|audio_setup:u0|shft_reg[6]    ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |voice_record|audio_interface:u_audio_interface|audio_input:u1|din_cnt[2]     ;
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |voice_record|audio_interface:u_audio_interface|audio_output:u2|dout_buff[18] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |voice_record|audio_interface:u_audio_interface|audio_output:u2|dout_cnt[4]   ;
+; 4:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |voice_record|cnt_rec_data[10]                                                ;
+; 4:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |voice_record|cnt_play_data[11]                                               ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |voice_record|sram_add~24                                                     ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |voice_record|Selector2                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------+
+; Source assignments for Top-level Entity: |voice_record   ;
++----------------+-------+------+--------------------------+
+; Assignment     ; Value ; From ; To                       ;
++----------------+-------+------+--------------------------+
+; POWER_UP_LEVEL ; Low   ; -    ; record_routine.play      ;
+; POWER_UP_LEVEL ; Low   ; -    ; record_routine.recording ;
+; POWER_UP_LEVEL ; High  ; -    ; record_routine.idle      ;
++----------------+-------+------+--------------------------+
+
+
++-------------------------------------------------------------------------+
+; Source assignments for audio_interface:u_audio_interface|audio_input:u1 ;
++----------------+-------+------+-----------------------------------------+
+; Assignment     ; Value ; From ; To                                      ;
++----------------+-------+------+-----------------------------------------+
+; POWER_UP_LEVEL ; Low   ; -    ; din_cnt[0]                              ;
+; POWER_UP_LEVEL ; Low   ; -    ; din_cnt[1]                              ;
+; POWER_UP_LEVEL ; Low   ; -    ; din_cnt[2]                              ;
+; POWER_UP_LEVEL ; Low   ; -    ; din_cnt[3]                              ;
+; POWER_UP_LEVEL ; Low   ; -    ; din_cnt[4]                              ;
+; POWER_UP_LEVEL ; High  ; -    ; din_cnt[5]                              ;
++----------------+-------+------+-----------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Source assignments for audio_interface:u_audio_interface|audio_output:u2 ;
++----------------+-------+------+------------------------------------------+
+; Assignment     ; Value ; From ; To                                       ;
++----------------+-------+------+------------------------------------------+
+; POWER_UP_LEVEL ; High  ; -    ; dout_cnt[1]                              ;
+; POWER_UP_LEVEL ; High  ; -    ; dout_cnt[0]                              ;
+; POWER_UP_LEVEL ; High  ; -    ; dout_cnt[2]                              ;
+; POWER_UP_LEVEL ; High  ; -    ; dout_cnt[3]                              ;
+; POWER_UP_LEVEL ; High  ; -    ; dout_cnt[4]                              ;
++----------------+-------+------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: audio_clk:u_audio_clk|altpll:altpll_component ;
++-------------------------------+-------------+----------------------------------------------+
+; Parameter Name                ; Value       ; Type                                         ;
++-------------------------------+-------------+----------------------------------------------+
+; OPERATION_MODE                ; NORMAL      ; Untyped                                      ;
+; PLL_TYPE                      ; FAST        ; Untyped                                      ;
+; QUALIFY_CONF_DONE             ; OFF         ; Untyped                                      ;
+; COMPENSATE_CLOCK              ; CLK0        ; Untyped                                      ;
+; SCAN_CHAIN                    ; LONG        ; Untyped                                      ;
+; PRIMARY_CLOCK                 ; INCLK0      ; Untyped                                      ;
+; INCLK0_INPUT_FREQUENCY        ; 20000       ; Integer                                      ;
+; INCLK1_INPUT_FREQUENCY        ; 0           ; Untyped                                      ;
+; GATE_LOCK_SIGNAL              ; NO          ; Untyped                                      ;
+; GATE_LOCK_COUNTER             ; 0           ; Untyped                                      ;
+; LOCK_HIGH                     ; 1           ; Untyped                                      ;
+; LOCK_LOW                      ; 1           ; Untyped                                      ;
+; VALID_LOCK_MULTIPLIER         ; 1           ; Untyped                                      ;
+; INVALID_LOCK_MULTIPLIER       ; 5           ; Untyped                                      ;
+; SWITCH_OVER_ON_LOSSCLK        ; OFF         ; Untyped                                      ;
+; SWITCH_OVER_ON_GATED_LOCK     ; OFF         ; Untyped                                      ;
+; ENABLE_SWITCH_OVER_COUNTER    ; OFF         ; Untyped                                      ;
+; SKIP_VCO                      ; OFF         ; Untyped                                      ;
+; SWITCH_OVER_COUNTER           ; 0           ; Untyped                                      ;
+; SWITCH_OVER_TYPE              ; AUTO        ; Untyped                                      ;
+; FEEDBACK_SOURCE               ; EXTCLK0     ; Untyped                                      ;
+; BANDWIDTH                     ; 0           ; Untyped                                      ;
+; BANDWIDTH_TYPE                ; AUTO        ; Untyped                                      ;
+; SPREAD_FREQUENCY              ; 0           ; Untyped                                      ;
+; DOWN_SPREAD                   ; 0           ; Untyped                                      ;
+; SELF_RESET_ON_GATED_LOSS_LOCK ; OFF         ; Untyped                                      ;
+; CLK5_MULTIPLY_BY              ; 1           ; Untyped                                      ;
+; CLK4_MULTIPLY_BY              ; 1           ; Untyped                                      ;
+; CLK3_MULTIPLY_BY              ; 1           ; Untyped                                      ;
+; CLK2_MULTIPLY_BY              ; 1           ; Untyped                                      ;
+; CLK1_MULTIPLY_BY              ; 1           ; Untyped                                      ;
+; CLK0_MULTIPLY_BY              ; 6           ; Integer                                      ;
+; CLK5_DIVIDE_BY                ; 1           ; Untyped                                      ;
+; CLK4_DIVIDE_BY                ; 1           ; Untyped                                      ;
+; CLK3_DIVIDE_BY                ; 1           ; Untyped                                      ;
+; CLK2_DIVIDE_BY                ; 1           ; Untyped                                      ;
+; CLK1_DIVIDE_BY                ; 1           ; Untyped                                      ;
+; CLK0_DIVIDE_BY                ; 25          ; Integer                                      ;
+; CLK5_PHASE_SHIFT              ; 0           ; Untyped                                      ;
+; CLK4_PHASE_SHIFT              ; 0           ; Untyped                                      ;
+; CLK3_PHASE_SHIFT              ; 0           ; Untyped                                      ;
+; CLK2_PHASE_SHIFT              ; 0           ; Untyped                                      ;
+; CLK1_PHASE_SHIFT              ; 0           ; Untyped                                      ;
+; CLK0_PHASE_SHIFT              ; 0           ; Untyped                                      ;
+; CLK5_TIME_DELAY               ; 0           ; Untyped                                      ;
+; CLK4_TIME_DELAY               ; 0           ; Untyped                                      ;
+; CLK3_TIME_DELAY               ; 0           ; Untyped                                      ;
+; CLK2_TIME_DELAY               ; 0           ; Untyped                                      ;
+; CLK1_TIME_DELAY               ; 0           ; Untyped                                      ;
+; CLK0_TIME_DELAY               ; 0           ; Untyped                                      ;
+; CLK5_DUTY_CYCLE               ; 50          ; Untyped                                      ;
+; CLK4_DUTY_CYCLE               ; 50          ; Untyped                                      ;
+; CLK3_DUTY_CYCLE               ; 50          ; Untyped                                      ;
+; CLK2_DUTY_CYCLE               ; 50          ; Untyped                                      ;
+; CLK1_DUTY_CYCLE               ; 50          ; Untyped                                      ;
+; CLK0_DUTY_CYCLE               ; 50          ; Integer                                      ;
+; EXTCLK3_MULTIPLY_BY           ; 1           ; Untyped                                      ;
+; EXTCLK2_MULTIPLY_BY           ; 1           ; Untyped                                      ;
+; EXTCLK1_MULTIPLY_BY           ; 1           ; Untyped                                      ;
+; EXTCLK0_MULTIPLY_BY           ; 1           ; Untyped                                      ;
+; EXTCLK3_DIVIDE_BY             ; 1           ; Untyped                                      ;
+; EXTCLK2_DIVIDE_BY             ; 1           ; Untyped                                      ;
+; EXTCLK1_DIVIDE_BY             ; 1           ; Untyped                                      ;
+; EXTCLK0_DIVIDE_BY             ; 1           ; Untyped                                      ;
+; EXTCLK3_PHASE_SHIFT           ; 0           ; Untyped                                      ;
+; EXTCLK2_PHASE_SHIFT           ; 0           ; Untyped                                      ;
+; EXTCLK1_PHASE_SHIFT           ; 0           ; Untyped                                      ;
+; EXTCLK0_PHASE_SHIFT           ; 0           ; Untyped                                      ;
+; EXTCLK3_TIME_DELAY            ; 0           ; Untyped                                      ;
+; EXTCLK2_TIME_DELAY            ; 0           ; Untyped                                      ;
+; EXTCLK1_TIME_DELAY            ; 0           ; Untyped                                      ;
+; EXTCLK0_TIME_DELAY            ; 0           ; Untyped                                      ;
+; EXTCLK3_DUTY_CYCLE            ; 50          ; Untyped                                      ;
+; EXTCLK2_DUTY_CYCLE            ; 50          ; Untyped                                      ;
+; EXTCLK1_DUTY_CYCLE            ; 50          ; Untyped                                      ;
+; EXTCLK0_DUTY_CYCLE            ; 50          ; Untyped                                      ;
+; VCO_MULTIPLY_BY               ; 0           ; Untyped                                      ;
+; VCO_DIVIDE_BY                 ; 0           ; Untyped                                      ;
+; SCLKOUT0_PHASE_SHIFT          ; 0           ; Untyped                                      ;
+; SCLKOUT1_PHASE_SHIFT          ; 0           ; Untyped                                      ;
+; VCO_MIN                       ; 0           ; Untyped                                      ;
+; VCO_MAX                       ; 0           ; Untyped                                      ;
+; VCO_CENTER                    ; 0           ; Untyped                                      ;
+; PFD_MIN                       ; 0           ; Untyped                                      ;
+; PFD_MAX                       ; 0           ; Untyped                                      ;
+; M_INITIAL                     ; 0           ; Untyped                                      ;
+; M                             ; 0           ; Untyped                                      ;
+; N                             ; 1           ; Untyped                                      ;
+; M2                            ; 1           ; Untyped                                      ;
+; N2                            ; 1           ; Untyped                                      ;
+; SS                            ; 1           ; Untyped                                      ;
+; C0_HIGH                       ; 0           ; Untyped                                      ;
+; C1_HIGH                       ; 0           ; Untyped                                      ;
+; C2_HIGH                       ; 0           ; Untyped                                      ;
+; C3_HIGH                       ; 0           ; Untyped                                      ;
+; C4_HIGH                       ; 0           ; Untyped                                      ;
+; C5_HIGH                       ; 0           ; Untyped                                      ;
+; C0_LOW                        ; 0           ; Untyped                                      ;
+; C1_LOW                        ; 0           ; Untyped                                      ;
+; C2_LOW                        ; 0           ; Untyped                                      ;
+; C3_LOW                        ; 0           ; Untyped                                      ;
+; C4_LOW                        ; 0           ; Untyped                                      ;
+; C5_LOW                        ; 0           ; Untyped                                      ;
+; C0_INITIAL                    ; 0           ; Untyped                                      ;
+; C1_INITIAL                    ; 0           ; Untyped                                      ;
+; C2_INITIAL                    ; 0           ; Untyped                                      ;
+; C3_INITIAL                    ; 0           ; Untyped                                      ;
+; C4_INITIAL                    ; 0           ; Untyped                                      ;
+; C5_INITIAL                    ; 0           ; Untyped                                      ;
+; C0_MODE                       ; BYPASS      ; Untyped                                      ;
+; C1_MODE                       ; BYPASS      ; Untyped                                      ;
+; C2_MODE                       ; BYPASS      ; Untyped                                      ;
+; C3_MODE                       ; BYPASS      ; Untyped                                      ;
+; C4_MODE                       ; BYPASS      ; Untyped                                      ;
+; C5_MODE                       ; BYPASS      ; Untyped                                      ;
+; C0_PH                         ; 0           ; Untyped                                      ;
+; C1_PH                         ; 0           ; Untyped                                      ;
+; C2_PH                         ; 0           ; Untyped                                      ;
+; C3_PH                         ; 0           ; Untyped                                      ;
+; C4_PH                         ; 0           ; Untyped                                      ;
+; C5_PH                         ; 0           ; Untyped                                      ;
+; L0_HIGH                       ; 1           ; Untyped                                      ;
+; L1_HIGH                       ; 1           ; Untyped                                      ;
+; G0_HIGH                       ; 1           ; Untyped                                      ;
+; G1_HIGH                       ; 1           ; Untyped                                      ;
+; G2_HIGH                       ; 1           ; Untyped                                      ;
+; G3_HIGH                       ; 1           ; Untyped                                      ;
+; E0_HIGH                       ; 1           ; Untyped                                      ;
+; E1_HIGH                       ; 1           ; Untyped                                      ;
+; E2_HIGH                       ; 1           ; Untyped                                      ;
+; E3_HIGH                       ; 1           ; Untyped                                      ;
+; L0_LOW                        ; 1           ; Untyped                                      ;
+; L1_LOW                        ; 1           ; Untyped                                      ;
+; G0_LOW                        ; 1           ; Untyped                                      ;
+; G1_LOW                        ; 1           ; Untyped                                      ;
+; G2_LOW                        ; 1           ; Untyped                                      ;
+; G3_LOW                        ; 1           ; Untyped                                      ;
+; E0_LOW                        ; 1           ; Untyped                                      ;
+; E1_LOW                        ; 1           ; Untyped                                      ;
+; E2_LOW                        ; 1           ; Untyped                                      ;
+; E3_LOW                        ; 1           ; Untyped                                      ;
+; L0_INITIAL                    ; 1           ; Untyped                                      ;
+; L1_INITIAL                    ; 1           ; Untyped                                      ;
+; G0_INITIAL                    ; 1           ; Untyped                                      ;
+; G1_INITIAL                    ; 1           ; Untyped                                      ;
+; G2_INITIAL                    ; 1           ; Untyped                                      ;
+; G3_INITIAL                    ; 1           ; Untyped                                      ;
+; E0_INITIAL                    ; 1           ; Untyped                                      ;
+; E1_INITIAL                    ; 1           ; Untyped                                      ;
+; E2_INITIAL                    ; 1           ; Untyped                                      ;
+; E3_INITIAL                    ; 1           ; Untyped                                      ;
+; L0_MODE                       ; BYPASS      ; Untyped                                      ;
+; L1_MODE                       ; BYPASS      ; Untyped                                      ;
+; G0_MODE                       ; BYPASS      ; Untyped                                      ;
+; G1_MODE                       ; BYPASS      ; Untyped                                      ;
+; G2_MODE                       ; BYPASS      ; Untyped                                      ;
+; G3_MODE                       ; BYPASS      ; Untyped                                      ;
+; E0_MODE                       ; BYPASS      ; Untyped                                      ;
+; E1_MODE                       ; BYPASS      ; Untyped                                      ;
+; E2_MODE                       ; BYPASS      ; Untyped                                      ;
+; E3_MODE                       ; BYPASS      ; Untyped                                      ;
+; L0_PH                         ; 0           ; Untyped                                      ;
+; L1_PH                         ; 0           ; Untyped                                      ;
+; G0_PH                         ; 0           ; Untyped                                      ;
+; G1_PH                         ; 0           ; Untyped                                      ;
+; G2_PH                         ; 0           ; Untyped                                      ;
+; G3_PH                         ; 0           ; Untyped                                      ;
+; E0_PH                         ; 0           ; Untyped                                      ;
+; E1_PH                         ; 0           ; Untyped                                      ;
+; E2_PH                         ; 0           ; Untyped                                      ;
+; E3_PH                         ; 0           ; Untyped                                      ;
+; M_PH                          ; 0           ; Untyped                                      ;
+; C1_USE_CASC_IN                ; 0           ; Untyped                                      ;
+; C2_USE_CASC_IN                ; 0           ; Untyped                                      ;
+; C3_USE_CASC_IN                ; 0           ; Untyped                                      ;
+; C4_USE_CASC_IN                ; 0           ; Untyped                                      ;
+; C5_USE_CASC_IN                ; 0           ; Untyped                                      ;
+; CLK0_COUNTER                  ; G0          ; Untyped                                      ;
+; CLK1_COUNTER                  ; G0          ; Untyped                                      ;
+; CLK2_COUNTER                  ; G0          ; Untyped                                      ;
+; CLK3_COUNTER                  ; G0          ; Untyped                                      ;
+; CLK4_COUNTER                  ; G0          ; Untyped                                      ;
+; CLK5_COUNTER                  ; G0          ; Untyped                                      ;
+; L0_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; L1_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; G0_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; G1_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; G2_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; G3_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; E0_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; E1_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; E2_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; E3_TIME_DELAY                 ; 0           ; Untyped                                      ;
+; M_TIME_DELAY                  ; 0           ; Untyped                                      ;
+; N_TIME_DELAY                  ; 0           ; Untyped                                      ;
+; EXTCLK3_COUNTER               ; E3          ; Untyped                                      ;
+; EXTCLK2_COUNTER               ; E2          ; Untyped                                      ;
+; EXTCLK1_COUNTER               ; E1          ; Untyped                                      ;
+; EXTCLK0_COUNTER               ; E0          ; Untyped                                      ;
+; ENABLE0_COUNTER               ; L0          ; Untyped                                      ;
+; ENABLE1_COUNTER               ; L0          ; Untyped                                      ;
+; CHARGE_PUMP_CURRENT           ; 2           ; Untyped                                      ;
+; LOOP_FILTER_R                 ;  1.000000   ; Untyped                                      ;
+; LOOP_FILTER_C                 ; 5           ; Untyped                                      ;
+; VCO_POST_SCALE                ; 0           ; Untyped                                      ;
+; CLK2_OUTPUT_FREQUENCY         ; 0           ; Untyped                                      ;
+; CLK1_OUTPUT_FREQUENCY         ; 0           ; Untyped                                      ;
+; CLK0_OUTPUT_FREQUENCY         ; 0           ; Untyped                                      ;
+; INTENDED_DEVICE_FAMILY        ; Cyclone II  ; Untyped                                      ;
+; PORT_CLKENA0                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKENA1                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKENA2                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKENA3                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKENA4                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKENA5                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLKENA0               ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLKENA1               ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLKENA2               ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLKENA3               ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLK0                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLK1                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLK2                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_EXTCLK3                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKBAD0                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKBAD1                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLK0                     ; PORT_USED   ; Untyped                                      ;
+; PORT_CLK1                     ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLK2                     ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLK3                     ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLK4                     ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLK5                     ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANDATA                 ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANDATAOUT              ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANDONE                 ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCLKOUT1                 ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCLKOUT0                 ; PORT_UNUSED ; Untyped                                      ;
+; PORT_ACTIVECLOCK              ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKLOSS                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_INCLK1                   ; PORT_UNUSED ; Untyped                                      ;
+; PORT_INCLK0                   ; PORT_USED   ; Untyped                                      ;
+; PORT_FBIN                     ; PORT_UNUSED ; Untyped                                      ;
+; PORT_PLLENA                   ; PORT_UNUSED ; Untyped                                      ;
+; PORT_CLKSWITCH                ; PORT_UNUSED ; Untyped                                      ;
+; PORT_ARESET                   ; PORT_UNUSED ; Untyped                                      ;
+; PORT_PFDENA                   ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANCLK                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANACLR                 ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANREAD                 ; PORT_UNUSED ; Untyped                                      ;
+; PORT_SCANWRITE                ; PORT_UNUSED ; Untyped                                      ;
+; PORT_ENABLE0                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_ENABLE1                  ; PORT_UNUSED ; Untyped                                      ;
+; PORT_LOCKED                   ; PORT_UNUSED ; Untyped                                      ;
+; M_TEST_SOURCE                 ; 5           ; Untyped                                      ;
+; C0_TEST_SOURCE                ; 5           ; Untyped                                      ;
+; C1_TEST_SOURCE                ; 5           ; Untyped                                      ;
+; C2_TEST_SOURCE                ; 5           ; Untyped                                      ;
+; C3_TEST_SOURCE                ; 5           ; Untyped                                      ;
+; C4_TEST_SOURCE                ; 5           ; Untyped                                      ;
+; C5_TEST_SOURCE                ; 5           ; Untyped                                      ;
+; DEVICE_FAMILY                 ; Cyclone II  ; Untyped                                      ;
+; AUTO_CARRY_CHAINS             ; ON          ; AUTO_CARRY                                   ;
+; IGNORE_CARRY_BUFFERS          ; OFF         ; IGNORE_CARRY                                 ;
+; AUTO_CASCADE_CHAINS           ; ON          ; AUTO_CASCADE                                 ;
+; IGNORE_CASCADE_BUFFERS        ; OFF         ; IGNORE_CASCADE                               ;
++-------------------------------+-------------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 6.0 Build 178 04/27/2006 SJ Full Version
+    Info: Processing started: Thu Jun 05 21:59:31 2008
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off voice_record -c voice_record
+Warning: Using design file voice_record.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info: Found design unit 1: voice_record-a
+    Info: Found entity 1: voice_record
+Info: Elaborating entity "voice_record" for the top level hierarchy
+Warning: Using design file audio_clk.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info: Found design unit 1: audio_clk-SYN
+    Info: Found entity 1: audio_clk
+Info: Elaborating entity "audio_clk" for hierarchy "audio_clk:u_audio_clk"
+Info: Found 1 design units, including 1 entities, in source file c:/altera/quartus60/libraries/megafunctions/altpll.tdf
+    Info: Found entity 1: altpll
+Info: Elaborating entity "altpll" for hierarchy "audio_clk:u_audio_clk|altpll:altpll_component"
+Info: Elaborated megafunction instantiation "audio_clk:u_audio_clk|altpll:altpll_component"
+Warning: Using design file audio_interface.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info: Found design unit 1: audio_interface-a
+    Info: Found entity 1: audio_interface
+Info: Elaborating entity "audio_interface" for hierarchy "audio_interface:u_audio_interface"
+Warning: Using design file audio_setup.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info: Found design unit 1: audio_setup-a
+    Info: Found entity 1: audio_setup
+Info: Elaborating entity "audio_setup" for hierarchy "audio_interface:u_audio_interface|audio_setup:u0"
+Warning: Using design file audio_input.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info: Found design unit 1: audio_input-a
+    Info: Found entity 1: audio_input
+Info: Elaborating entity "audio_input" for hierarchy "audio_interface:u_audio_interface|audio_input:u1"
+Warning: Using design file audio_output.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info: Found design unit 1: audio_output-a
+    Info: Found entity 1: audio_output
+Info: Elaborating entity "audio_output" for hierarchy "audio_interface:u_audio_interface|audio_output:u2"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "reg_audio_dout[28]" merged to single register "reg_audio_dout[12]"
+    Info: Duplicate register "reg_audio_dout[27]" merged to single register "reg_audio_dout[11]"
+    Info: Duplicate register "reg_audio_dout[26]" merged to single register "reg_audio_dout[10]"
+    Info: Duplicate register "reg_audio_dout[25]" merged to single register "reg_audio_dout[9]"
+    Info: Duplicate register "reg_audio_dout[24]" merged to single register "reg_audio_dout[8]"
+    Info: Duplicate register "reg_audio_dout[23]" merged to single register "reg_audio_dout[7]"
+    Info: Duplicate register "reg_audio_dout[22]" merged to single register "reg_audio_dout[6]"
+    Info: Duplicate register "reg_audio_dout[21]" merged to single register "reg_audio_dout[5]"
+    Info: Duplicate register "reg_audio_dout[20]" merged to single register "reg_audio_dout[4]"
+    Info: Duplicate register "reg_audio_dout[19]" merged to single register "reg_audio_dout[3]"
+    Info: Duplicate register "reg_audio_dout[18]" merged to single register "reg_audio_dout[2]"
+    Info: Duplicate register "reg_audio_dout[17]" merged to single register "reg_audio_dout[1]"
+    Info: Duplicate register "reg_audio_dout[16]" merged to single register "reg_audio_dout[0]"
+    Info: Duplicate register "reg_audio_dout[29]" merged to single register "reg_audio_dout[13]"
+    Info: Duplicate register "reg_audio_dout[30]" merged to single register "reg_audio_dout[14]"
+    Info: Duplicate register "reg_audio_dout[31]" merged to single register "reg_audio_dout[15]"
+Info: State machine "|voice_record|record_routine" contains 3 states
+Info: Selected Auto state machine encoding method for state machine "|voice_record|record_routine"
+Info: Encoding result for state machine "|voice_record|record_routine"
+    Info: Completed encoding using 3 state bits
+        Info: Encoded state bit "record_routine.play"
+        Info: Encoded state bit "record_routine.recording"
+        Info: Encoded state bit "record_routine.idle"
+    Info: State "|voice_record|record_routine.idle" uses code string "000"
+    Info: State "|voice_record|record_routine.recording" uses code string "011"
+    Info: State "|voice_record|record_routine.play" uses code string "101"
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning: Output pins are stuck at VCC or GND
+    Warning: Pin "codec_mode" stuck at VCC
+    Warning: Pin "sram_cs" stuck at GND
+    Warning: Pin "sram_lb[0]" stuck at GND
+    Warning: Pin "sram_lb[1]" stuck at GND
+    Warning: Pin "sram_ub[0]" stuck at GND
+    Warning: Pin "sram_ub[1]" stuck at GND
+Info: Implemented 319 device resources after synthesis - the final resource count might be different
+    Info: Implemented 9 input pins
+    Info: Implemented 33 output pins
+    Info: Implemented 16 bidirectional pins
+    Info: Implemented 260 logic cells
+    Info: Implemented 1 ClockLock PLLs
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Processing ended: Thu Jun 05 21:59:34 2008
+    Info: Elapsed time: 00:00:03
+
+

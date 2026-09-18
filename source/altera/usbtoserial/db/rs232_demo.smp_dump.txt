@@ -1,0 +1,16 @@
+
+State Machine - |rs232_demo|rs_232:u_rs_232|tx_routine
+Name tx_routine.tx_stop tx_routine.tx_parity tx_routine.data_tx tx_routine.tx_start tx_routine.tx_idle 
+tx_routine.tx_idle 0 0 0 0 0 
+tx_routine.tx_start 0 0 0 1 1 
+tx_routine.data_tx 0 0 1 0 1 
+tx_routine.tx_parity 0 1 0 0 1 
+tx_routine.tx_stop 1 0 0 0 1 
+
+State Machine - |rs232_demo|rs_232:u_rs_232|rx_routine
+Name rx_routine.rx_stop rx_routine.rx_parity rx_routine.data_rx rx_routine.rx_start rx_routine.rx_idle 
+rx_routine.rx_idle 0 0 0 0 0 
+rx_routine.rx_start 0 0 0 1 1 
+rx_routine.data_rx 0 0 1 0 1 
+rx_routine.rx_parity 0 1 0 0 1 
+rx_routine.rx_stop 1 0 0 0 1 

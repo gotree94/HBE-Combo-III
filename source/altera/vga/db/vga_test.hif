@@ -1,0 +1,129 @@
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+11
+810
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+vga_test
+# storage
+db|vga_test.(0).cnf
+db|vga_test.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vga_test.vhd
+087de55a8b15248d846b7cc0687ac1
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+vga_data
+# storage
+db|vga_test.(1).cnf
+db|vga_test.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+vga_data.vhd
+14dd7ae9a51bee54eac3334d9c151d3d
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(line)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(colume)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(rgb_data)
+23 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+vga_data:data_con
+}
+# end
+# entity
+interface_vga
+# storage
+db|vga_test.(2).cnf
+db|vga_test.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+interface_vga.vhd
+47da8c313599cc3374b7fde225912a
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(rgb)
+23 downto 0
+PARAMETER_STRING
+USR
+ constraint(red)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(green)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(blue)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(line_pix)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(colum_pix)
+9 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+interface_vga:interface
+}
+# end
+# complete
+

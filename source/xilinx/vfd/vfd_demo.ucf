@@ -1,0 +1,13 @@
+NET "clk" LOC = F13;
+NET "rst" LOC = D5;
+NET "vfd_data<0>" LOC = L10;
+NET "vfd_data<1>" LOC = L9;
+NET "vfd_data<2>" LOC = L7;
+NET "vfd_data<3>" LOC = L4;
+NET "vfd_data<4>" LOC = M6;
+NET "vfd_data<5>" LOC = M5;
+NET "vfd_data<6>" LOC = M4;
+NET "vfd_data<7>" LOC = M3;
+NET "vfd_e" LOC = M1;
+NET "vfd_rs" LOC = K9;
+NET "vfd_rw" LOC = K8;

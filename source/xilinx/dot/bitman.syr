@@ -1,0 +1,512 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Reading design: bitman.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "bitman.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "bitman"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : bitman
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : bitman.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/rom_data.vhd" in Library work.
+Architecture rom_data_a of Entity rom_data is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd" in Library work.
+Entity <bitman> compiled.
+Entity <bitman> (Architecture <mush>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <bitman> in library <work> (architecture <mush>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <bitman> in library <work> (Architecture <mush>).
+WARNING:Xst:2211 - "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd" line 66: Instantiating black box module <rom_data>.
+INFO:Xst:2679 - Register <use_one_en> in unit <bitman> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <use_two_en> in unit <bitman> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Entity <bitman> analyzed. Unit <bitman> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <bitman>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd".
+    Found finite state machine <FSM_0> for signal <en_state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 4                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Clock enable       | en_state$cmp_eq0000 (positive)                 |
+    | Reset              | reset (positive)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | stand                                          |
+    | Power Up State     | stand                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:643 - "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd" line 219: The result of a 4x4-bit multiplication is partially used. Only the 7 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 10x10-bit ROM for signal <dot_scan$mux0001> created at line 244.
+    Found 14-bit register for signal <dot_d>.
+    Found 10-bit register for signal <dot_scan>.
+    Found 10-bit register for signal <address>.
+    Found 1-bit register for signal <clk>.
+    Found 15-bit up counter for signal <clk_cnt>.
+    Found 4-bit up counter for signal <cnt_a>.
+    Found 4-bit up counter for signal <cnt_b>.
+    Found 4-bit up counter for signal <cnt_c>.
+    Found 4-bit register for signal <cnt_rem>.
+    Found 4-bit subtractor for signal <cnt_rem$sub0000> created at line 238.
+    Found 10-bit register for signal <cnt_sum>.
+    Found 7-bit adder for signal <cnt_sum$add0000> created at line 219.
+    Found 9-bit adder for signal <cnt_sum$add0003> created at line 215.
+    Found 7-bit adder carry out for signal <cnt_sum$addsub0000> created at line 211.
+    Found 8-bit adder carry out for signal <cnt_sum$addsub0001> created at line 213.
+    Found 7-bit adder carry out for signal <cnt_sum$addsub0002> created at line 221.
+    Found 4x4-bit multiplier for signal <cnt_sum$mult0001> created at line 219.
+    Found 12-bit up counter for signal <delay_cnt>.
+    Found 1-bit register for signal <jump_en>.
+    Found 1-bit register for signal <move_left_en>.
+    Found 1-bit register for signal <move_right_en>.
+    Found 1-bit register for signal <stand_en>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   5 Counter(s).
+	inferred  53 D-type flip-flop(s).
+	inferred   6 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+Unit <bitman> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 10x10-bit ROM                                         : 1
+# Multipliers                                          : 1
+ 4x4-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 6
+ 4-bit subtractor                                      : 1
+ 7-bit adder                                           : 1
+ 7-bit adder carry out                                 : 2
+ 8-bit adder carry out                                 : 1
+ 9-bit adder                                           : 1
+# Counters                                             : 5
+ 12-bit up counter                                     : 1
+ 15-bit up counter                                     : 1
+ 4-bit up counter                                      : 3
+# Registers                                            : 10
+ 1-bit register                                        : 5
+ 10-bit register                                       : 3
+ 14-bit register                                       : 1
+ 4-bit register                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <en_state/FSM> on signal <en_state[1:2]> with gray encoding.
+------------------------
+ State      | Encoding
+------------------------
+ stand      | 00
+ jump       | 01
+ move_left  | 11
+ move_right | 10
+------------------------
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+Reading core <rom_data.ngc>.
+Loading core <rom_data> for timing and area information for instance <u1>.
+
+Synthesizing (advanced) Unit <bitman>.
+INFO:Xst - In order to maximize performance and save block RAM resources, the small ROM <Mrom_dot_scan_mux0001> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_cnt_sum_mult0001 by adding 2 register level(s).
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_cnt_sum_mult0001 by adding 2 register level(s).
+Unit <bitman> synthesized (advanced).
+WARNING:Xst:1426 - The value init of the FF/Latch cnt_sum_9 hinder the constant cleaning in the block bitman.
+   You should achieve better results by setting this init to 0.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 10x10-bit ROM                                         : 1
+# Multipliers                                          : 1
+ 4x4-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 6
+ 4-bit subtractor                                      : 1
+ 7-bit adder                                           : 1
+ 7-bit adder carry out                                 : 2
+ 8-bit adder carry out                                 : 1
+ 9-bit adder                                           : 1
+# Counters                                             : 5
+ 12-bit up counter                                     : 1
+ 15-bit up counter                                     : 1
+ 4-bit up counter                                      : 3
+# Registers                                            : 55
+ Flip-Flops                                            : 55
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <bitman> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block bitman, actual ratio is 0.
+PACKER Warning: Lut Madd_cnt_sum_addsub0002_lut<3> driving carry Madd_cnt_sum_addsub0002_cy<3> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+PACKER Warning: Lut Madd_cnt_sum_add0000_lut<3> driving carry Madd_cnt_sum_add0000_cy<3> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 94
+ Flip-Flops                                            : 94
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : bitman.ngr
+Top Level Output File Name         : bitman
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 26
+
+Cell Usage :
+# BELS                             : 227
+#      GND                         : 2
+#      INV                         : 9
+#      LUT1                        : 33
+#      LUT2                        : 20
+#      LUT2_D                      : 1
+#      LUT2_L                      : 1
+#      LUT3                        : 18
+#      LUT3_D                      : 1
+#      LUT3_L                      : 1
+#      LUT4                        : 50
+#      LUT4_L                      : 10
+#      MUXCY                       : 39
+#      MUXF5                       : 2
+#      VCC                         : 2
+#      XORCY                       : 38
+# FlipFlops/Latches                : 94
+#      FD                          : 26
+#      FDC                         : 18
+#      FDCE                        : 10
+#      FDE                         : 13
+#      FDR                         : 26
+#      FDS                         : 1
+# RAMS                             : 1
+#      RAMB16BWER                  : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 25
+#      IBUF                        : 1
+#      OBUF                        : 24
+=========================================================================
+PACKER Warning: Lut Madd_cnt_sum_addsub0002_lut<3> driving carry Madd_cnt_sum_addsub0002_cy<3> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+PACKER Warning: Lut Madd_cnt_sum_add0000_lut<3> driving carry Madd_cnt_sum_add0000_cy<3> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                       88  out of  16640     0%  
+ Number of Slice Flip Flops:             94  out of  33280     0%  
+ Number of 4 input LUTs:                144  out of  33280     0%  
+ Number of IOs:                          26
+ Number of bonded IOBs:                  26  out of    519     5%  
+ Number of BRAMs:                         1  out of     84     1%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+----------------------------------------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                                                            | Load  |
+-----------------------------------+----------------------------------------------------------------------------------+-------+
+clk1                               | BUFG                                                                             | 79    |
+u1/BU2/dbiterr                     | NONE(u1/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3adsp_init.ram/ram)| 1     |
+clk_50MHz                          | BUFGP                                                                            | 16    |
+-----------------------------------+----------------------------------------------------------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 28    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 10.342ns (Maximum Frequency: 96.693MHz)
+   Minimum input arrival time before clock: 4.031ns
+   Maximum output required time after clock: 5.531ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk1'
+  Clock period: 10.342ns (frequency: 96.693MHz)
+  Total number of paths / destination ports: 1499 / 108
+-------------------------------------------------------------------------
+Delay:               10.342ns (Levels of Logic = 9)
+  Source:            cnt_c_0 (FF)
+  Destination:       cnt_sum_6 (FF)
+  Source Clock:      clk1 rising
+  Destination Clock: clk1 rising
+
+  Data Path: cnt_c_0 to cnt_sum_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q            10   0.591   0.962  cnt_c_0 (cnt_c_0)
+     LUT2:I1->O            1   0.643   0.000  Mmult_cnt_sum_mult0001_Madd_lut<3> (Mmult_cnt_sum_mult0001_Madd_lut<3>)
+     MUXCY:S->O            1   0.632   0.000  Mmult_cnt_sum_mult0001_Madd_cy<3> (Mmult_cnt_sum_mult0001_Madd_cy<3>)
+     XORCY:CI->O           2   0.844   0.590  Mmult_cnt_sum_mult0001_Madd_xor<4> (cnt_sum_mult0001<4>)
+     LUT1:I0->O            1   0.648   0.000  Madd_cnt_sum_add0000_cy<4>_rt (Madd_cnt_sum_add0000_cy<4>_rt)
+     MUXCY:S->O            1   0.632   0.000  Madd_cnt_sum_add0000_cy<4> (Madd_cnt_sum_add0000_cy<4>)
+     XORCY:CI->O          10   0.844   0.885  Madd_cnt_sum_add0000_xor<5> (Madd_cnt_sum_addsub00014)
+     LUT4:I3->O            1   0.648   0.423  cnt_sum_mux0006<6>50_SW1 (N52)
+     LUT4:I3->O            1   0.648   0.452  cnt_sum_mux0006<6>50 (cnt_sum_mux0006<6>50)
+     LUT4:I2->O            1   0.648   0.000  cnt_sum_mux0006<6>176 (cnt_sum_mux0006<6>)
+     FDC:D                     0.252          cnt_sum_6
+    ----------------------------------------
+    Total                     10.342ns (7.030ns logic, 3.312ns route)
+                                       (68.0% logic, 32.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_50MHz'
+  Clock period: 4.943ns (frequency: 202.306MHz)
+  Total number of paths / destination ports: 361 / 32
+-------------------------------------------------------------------------
+Delay:               4.943ns (Levels of Logic = 2)
+  Source:            clk_cnt_4 (FF)
+  Destination:       clk_cnt_0 (FF)
+  Source Clock:      clk_50MHz rising
+  Destination Clock: clk_50MHz rising
+
+  Data Path: clk_cnt_4 to clk_cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.590  clk_cnt_4 (clk_cnt_4)
+     LUT4:I0->O            1   0.648   0.563  clk_cmp_eq00007 (clk_cmp_eq00007)
+     LUT4:I0->O           16   0.648   1.034  clk_cmp_eq000057 (clk_cmp_eq0000)
+     FDR:R                     0.869          clk_cnt_0
+    ----------------------------------------
+    Total                      4.943ns (2.756ns logic, 2.187ns route)
+                                       (55.8% logic, 44.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk1'
+  Total number of paths / destination ports: 12 / 12
+-------------------------------------------------------------------------
+Offset:              4.031ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       delay_cnt_0 (FF)
+  Destination Clock: clk1 rising
+
+  Data Path: reset to delay_cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            29   0.849   1.261  reset_IBUF (reset_IBUF)
+     INV:I->O             12   0.648   0.961  reset_inv1_INV_0 (reset_inv)
+     FDE:CE                    0.312          delay_cnt_0
+    ----------------------------------------
+    Total                      4.031ns (1.809ns logic, 2.222ns route)
+                                       (44.9% logic, 55.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk1'
+  Total number of paths / destination ports: 24 / 24
+-------------------------------------------------------------------------
+Offset:              5.531ns (Levels of Logic = 1)
+  Source:            dot_d_13 (FF)
+  Destination:       dot_d<13> (PAD)
+  Source Clock:      clk1 rising
+
+  Data Path: dot_d_13 to dot_d<13>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.591   0.420  dot_d_13 (dot_d_13)
+     OBUF:I->O                 4.520          dot_d_13_OBUF (dot_d<13>)
+    ----------------------------------------
+    Total                      5.531ns (5.111ns logic, 0.420ns route)
+                                       (92.4% logic, 7.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 15.91 secs
+ 
+--> 
+
+Total memory usage is 206884 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
+

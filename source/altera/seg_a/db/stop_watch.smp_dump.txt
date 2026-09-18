@@ -1,0 +1,8 @@
+
+State Machine - |stop_watch|mode
+Name mode.stop_uncount mode.lap_uncount mode.lap_count mode.count mode.start 
+mode.start 0 0 0 0 0 
+mode.count 0 0 0 1 1 
+mode.lap_count 0 0 1 0 1 
+mode.lap_uncount 0 1 0 0 1 
+mode.stop_uncount 1 0 0 0 1 

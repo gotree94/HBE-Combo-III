@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="NgdBuild" num="1012" delta="unknown" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;seg_com&lt;1&gt;&quot; LOC = R2&gt; [dip_switch.ucf(2)]</arg> is overridden on the design object <arg fmt="%s" index="2">seg_com&lt;1&gt;</arg> by the constraint <arg fmt="%s" index="3">&lt;NET &quot;seg_com&lt;1&gt;&quot; LOC = P8&gt; [dip_switch.ucf(21)]</arg>.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="1012" delta="unknown" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;seg_com&lt;4&gt;&quot; LOC = P6&gt; [dip_switch.ucf(3)]</arg> is overridden on the design object <arg fmt="%s" index="2">seg_com&lt;4&gt;</arg> by the constraint <arg fmt="%s" index="3">&lt;NET &quot;seg_com&lt;4&gt;&quot; LOC = R4&gt; [dip_switch.ucf(24)]</arg>.
+</msg>
+
+</messages>
+

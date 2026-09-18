@@ -1,0 +1,8 @@
+V3 3
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/button_demo.vhd" 2008/03/10.10:05:53 K.34
+EN work/button_demo 1210158492 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/button_demo.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/button_demo/hb 1210158493 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/button_demo.vhd" \
+      EN work/button_demo 1210158492

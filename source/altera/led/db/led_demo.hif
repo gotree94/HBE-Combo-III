@@ -1,0 +1,165 @@
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+11
+810
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+led_demo
+# storage
+db|led_demo.(0).cnf
+db|led_demo.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+led_demo.vhd
+44b9d1cc2f7092b030709eceea161acd
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+led_clk_gen
+# storage
+db|led_demo.(1).cnf
+db|led_demo.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+led_clk_gen.vhd
+3de51dd53f1aa4d5e115e9e2d89e887
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(led1)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led2)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led3)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led4)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led5)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led6)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led7)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led8)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+led_clk_gen:clk_gen
+}
+# end
+# entity
+led_pwm_gen
+# storage
+db|led_demo.(2).cnf
+db|led_demo.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+led_pwm_gen.vhd
+ebebd1e09be75cf09dd8f5fda172cb9a
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(data_a)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_b)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_c)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_d)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_e)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_f)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_g)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_h)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(pwm)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(led)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+led_pwm_gen:pwm_gen
+}
+# end
+# complete
+

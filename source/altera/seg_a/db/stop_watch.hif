@@ -1,0 +1,98 @@
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+11
+810
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+sep
+# storage
+db|stop_watch.(1).cnf
+db|stop_watch.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+sep.vhd
+41651c909c5733389e6d57d86c2d7b2
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+sep:hs_sep
+sep:s_sep
+sep:m_sep
+sep:h_sep
+}
+# end
+# entity
+decod
+# storage
+db|stop_watch.(2).cnf
+db|stop_watch.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+decod.vhd
+33b5046e88759292e1a1a9614fb7a
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(seg_data)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+decod:s7
+}
+# end
+# entity
+stop_watch
+# storage
+db|stop_watch.(0).cnf
+db|stop_watch.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+stop_watch.vhd
+71b71bedbd8ba4bb5aa9a58618384865
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# complete
+

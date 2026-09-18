@@ -1,0 +1,20 @@
+//! **************************************************************************
+// Written by: Map K.34 on Thu May 08 21:11:40 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk" LOCATE = SITE "F13" LEVEL 1;
+COMP "vfd_data<0>" LOCATE = SITE "L10" LEVEL 1;
+COMP "vfd_data<1>" LOCATE = SITE "L9" LEVEL 1;
+COMP "vfd_data<2>" LOCATE = SITE "L7" LEVEL 1;
+COMP "vfd_data<3>" LOCATE = SITE "L4" LEVEL 1;
+COMP "vfd_data<4>" LOCATE = SITE "M6" LEVEL 1;
+COMP "vfd_data<5>" LOCATE = SITE "M5" LEVEL 1;
+COMP "vfd_data<6>" LOCATE = SITE "M4" LEVEL 1;
+COMP "vfd_data<7>" LOCATE = SITE "M3" LEVEL 1;
+COMP "vfd_e" LOCATE = SITE "M1" LEVEL 1;
+COMP "vfd_rw" LOCATE = SITE "K8" LEVEL 1;
+COMP "vfd_rs" LOCATE = SITE "K9" LEVEL 1;
+COMP "rst" LOCATE = SITE "D5" LEVEL 1;
+SCHEMATIC END;
+

@@ -1,0 +1,6 @@
+CommandLine
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\bitgen.exe -ise F:/HANBACK Product/HBE-COMBO III/CD/source/xilinx/vfd/vfd_demo.ise -intstyle ise -f vfd_demo.ut vfd_demo.ncd
+s
+FormatString
+bitgen [-d] [-j] [-b] [-w] [-l] [-m] [-t] [-n] [-u] [-a] [--p] [-r <bitFile>] [-intstyle ise|xflow|silent] [-ise <projectrepositoryfile>] {-bd <BRAM_data_file> [tag <tagname>]} {-g <setting_value>} <infile[.ncd]> [<outfile>] [<pcffile[.pcf]>]
+s

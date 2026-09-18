@@ -1,0 +1,14 @@
+Fitter Status : Successful - Thu Jun 05 22:04:37 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : M4
+Top-level Entity Name : M4
+Family : Cyclone II
+Device : EP2C70F672C8
+Timing Models : Final
+Total logic elements : 430 / 68,416 ( < 1 % )
+Total registers : 192
+Total pins : 87 / 422 ( 21 % )
+Total virtual pins : 0
+Total memory bits : 16,384 / 1,152,000 ( 1 % )
+Embedded Multiplier 9-bit elements : 9 / 300 ( 3 % )
+Total PLLs : 0 / 4 ( 0 % )

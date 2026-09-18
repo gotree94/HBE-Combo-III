@@ -1,0 +1,2 @@
+vhdl work "rom_data.vhd"
+vhdl work "oled_demo.vhd"

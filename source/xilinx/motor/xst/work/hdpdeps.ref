@@ -1,0 +1,8 @@
+V3 3
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.vhd" 2008/05/08.20:34:59 K.34
+EN work/motor_demo 1210246504 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/motor_demo/hb 1210246505 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/motor/motor_demo.vhd" \
+      EN work/motor_demo 1210246504

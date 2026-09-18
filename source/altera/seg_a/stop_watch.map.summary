@@ -1,0 +1,12 @@
+Analysis & Synthesis Status : Successful - Thu Jun 05 22:09:44 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : stop_watch
+Top-level Entity Name : stop_watch
+Family : Cyclone II
+Total logic elements : 376
+Total registers : 126
+Total pins : 24
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,200 @@
+Release 10.1.01 par K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+SHJUNG::  Wed May 07 19:29:36 2008
+
+par -w -intstyle ise -ol std -t 1 oled_demo_map.ncd oled_demo.ncd oled_demo.pcf
+ 
+
+
+Constraints file: oled_demo.pcf.
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+   "oled_demo" is an NCD, version 3.2, device xc3sd1800a, package fg676, speed -4
+
+Initializing temperature to 85.000 Celsius. (default - Range: -40.000 to 100.000 Celsius)
+Initializing voltage to 1.140 Volts. (default - Range: 1.140 to 1.260 Volts)
+
+INFO:Par:282 - No user timing constraints were detected or you have set the option to ignore timing constraints ("par
+   -x"). Place and Route will run in "Performance Evaluation Mode" to automatically improve the performance of all
+   internal clocks in this design. The PAR timing summary will list the performance achieved for each clock. Note: For
+   the fastest runtime, set the effort level to "std".  For best performance, set the effort level to "high". For a
+   balance between the fastest runtime and best performance, set the effort level to "med".
+
+Device speed data version:  "PRODUCTION 1.31 2008-01-09".
+
+
+Design Summary Report:
+
+ Number of External IOBs                          15 out of 519     2%
+
+   Number of External Input IOBs                  2
+
+      Number of External Input IBUFs              2
+        Number of LOCed External Input IBUFs      2 out of 2     100%
+
+
+   Number of External Output IOBs                13
+
+      Number of External Output IOBs             13
+        Number of LOCed External Output IOBs     13 out of 13    100%
+
+
+   Number of External Bidir IOBs                  0
+
+
+   Number of BUFGMUXs                        2 out of 24      8%
+   Number of RAMB16BWERs                    30 out of 84     35%
+   Number of Slices                        143 out of 16640   1%
+      Number of SLICEMs                     18 out of 8320    1%
+
+
+
+Overall effort level (-ol):   Standard 
+Placer effort level (-pl):    High 
+Placer cost table entry (-t): 1
+Router effort level (-rl):    Standard 
+
+
+Starting Placer
+
+Phase 1.1
+Phase 1.1 (Checksum:989c4c) REAL time: 8 secs 
+
+Phase 2.7
+Phase 2.7 (Checksum:1312cfe) REAL time: 8 secs 
+
+Phase 3.31
+Phase 3.31 (Checksum:1c9c37d) REAL time: 8 secs 
+
+Phase 4.2
+
+......
+Phase 4.2 (Checksum:989e4f) REAL time: 8 secs 
+
+Phase 5.30
+Phase 5.30 (Checksum:2faf07b) REAL time: 8 secs 
+
+Phase 6.8
+........................................
+.......
+......
+.....
+......
+...............
+.
+Phase 6.8 (Checksum:ad78d3) REAL time: 21 secs 
+
+Phase 7.5
+Phase 7.5 (Checksum:42c1d79) REAL time: 21 secs 
+
+Phase 8.18
+Phase 8.18 (Checksum:4c4b3f8) REAL time: 23 secs 
+
+Phase 9.5
+Phase 9.5 (Checksum:55d4a77) REAL time: 23 secs 
+
+REAL time consumed by placer: 23 secs 
+CPU  time consumed by placer: 21 secs 
+Writing design to file oled_demo.ncd
+
+
+Total REAL time to Placer completion: 23 secs 
+Total CPU time to Placer completion: 21 secs 
+
+Starting Router
+
+Phase 1: 2247 unrouted;       REAL time: 35 secs 
+
+Phase 2: 2026 unrouted;       REAL time: 35 secs 
+
+Phase 3: 392 unrouted;       REAL time: 36 secs 
+
+Phase 4: 392 unrouted; (6067)      REAL time: 37 secs 
+
+Phase 5: 389 unrouted; (0)      REAL time: 37 secs 
+
+Phase 6: 0 unrouted; (0)      REAL time: 38 secs 
+
+Phase 7: 0 unrouted; (0)      REAL time: 39 secs 
+
+Phase 8: 0 unrouted; (0)      REAL time: 39 secs 
+
+Phase 9: 0 unrouted; (0)      REAL time: 39 secs 
+
+Phase 10: 0 unrouted; (0)      REAL time: 39 secs 
+
+
+Total REAL time to Router completion: 39 secs 
+Total CPU time to Router completion: 37 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|                 clk | BUFGMUX_X1Y10| No   |   71 |  0.178     |  1.641      |
++---------------------+--------------+------+------+------------+-------------+
+|     clk_50MHz_BUFGP | BUFGMUX_X2Y10| No   |    4 |  0.006     |  1.668      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+Timing Score: 0
+
+INFO:Timing:2761 - N/A entries in the Constraints list may indicate that the constraint does not cover any paths or that it has no
+   requested value.
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+------------------------------------------------------------------------------------------------------
+  Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
+                                            |         |    Slack   | Achievable | Errors |    Score   
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net clk | SETUP   |         N/A|     8.546ns|     N/A|           0
+                                            | HOLD    |     1.082ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net clk | SETUP   |         N/A|     3.491ns|     N/A|           0
+  _50MHz_BUFGP                              | HOLD    |     1.308ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+INFO:Timing:2761 - N/A entries in the Constraints list may indicate that the 
+   constraint does not cover any paths or that it has no requested value.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 43 secs 
+Total CPU time to PAR completion: 41 secs 
+
+Peak Memory Usage:  237 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 0
+Number of info messages: 2
+
+Writing design to file oled_demo.ncd
+
+
+
+PAR done!

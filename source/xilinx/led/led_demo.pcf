@@ -1,0 +1,25 @@
+//! **************************************************************************
+// Written by: Map K.34 on Thu May 08 20:31:13 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+COMP "led_data<4>" LOCATE = SITE "AA3" LEVEL 1;
+COMP "led_data<5>" LOCATE = SITE "AA2" LEVEL 1;
+COMP "led_data<6>" LOCATE = SITE "Y10" LEVEL 1;
+COMP "led_data<7>" LOCATE = SITE "AB12" LEVEL 1;
+COMP "led_data<8>" LOCATE = SITE "AA12" LEVEL 1;
+COMP "led_data<9>" LOCATE = SITE "Y23" LEVEL 1;
+COMP "clk" LOCATE = SITE "F13" LEVEL 1;
+COMP "led_data<10>" LOCATE = SITE "J5" LEVEL 1;
+COMP "led_data<11>" LOCATE = SITE "J4" LEVEL 1;
+COMP "led_data<12>" LOCATE = SITE "AD6" LEVEL 1;
+COMP "led_data<13>" LOCATE = SITE "Y20" LEVEL 1;
+COMP "led_data<14>" LOCATE = SITE "AB1" LEVEL 1;
+COMP "led_data<15>" LOCATE = SITE "AB9" LEVEL 1;
+COMP "led_data<0>" LOCATE = SITE "Y2" LEVEL 1;
+COMP "led_data<1>" LOCATE = SITE "Y1" LEVEL 1;
+COMP "led_data<2>" LOCATE = SITE "AA10" LEVEL 1;
+COMP "led_data<3>" LOCATE = SITE "AA7" LEVEL 1;
+SCHEMATIC END;
+

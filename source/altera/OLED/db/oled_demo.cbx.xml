@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="oled_demo">
+		<CBX_INST_ENTRY INSTANCE_NAME="|oled_demo|oled_rom_data:oled_data_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_pt71.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

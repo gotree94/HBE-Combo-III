@@ -1,0 +1,14 @@
+Fitter Status : Successful - Thu Jun 05 22:15:40 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : vfd_demo
+Top-level Entity Name : vfd_demo
+Family : Cyclone II
+Device : EP2C70F672C8
+Timing Models : Final
+Total logic elements : 92 / 68,416 ( < 1 % )
+Total registers : 52
+Total pins : 13 / 422 ( 3 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,152,000 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 300 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

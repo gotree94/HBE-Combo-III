@@ -1,0 +1,6 @@
+
+State Machine - |oled_demo|oled_routine
+Name oled_routine.wr_ram oled_routine.initial oled_routine.idle 
+oled_routine.idle 0 0 0 
+oled_routine.initial 0 1 1 
+oled_routine.wr_ram 1 0 1 

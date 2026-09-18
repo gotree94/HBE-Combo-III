@@ -1,0 +1,386 @@
+Analysis & Synthesis report for oled_demo
+Wed Apr 30 17:53:12 2008
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Analysis & Synthesis RAM Summary
+  8. State Machine - |oled_demo|oled_routine
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Source assignments for Top-level Entity: |oled_demo
+ 13. Source assignments for oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated
+ 14. Parameter Settings for User Entity Instance: oled_rom_data:oled_data_inst|altsyncram:altsyncram_component
+ 15. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Apr 30 17:53:12 2008    ;
+; Quartus II Version                 ; 6.0 Build 178 04/27/2006 SJ Full Version ;
+; Revision Name                      ; oled_demo                                ;
+; Top-level Entity Name              ; oled_demo                                ;
+; Family                             ; Cyclone II                               ;
+; Total logic elements               ; 201                                      ;
+; Total registers                    ; 63                                       ;
+; Total pins                         ; 15                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 524,288                                  ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                             ; Setting            ; Default Value      ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                             ; EP2C70F672C8       ;                    ;
+; Top-level entity name                                              ; oled_demo          ; oled_demo          ;
+; Family name                                                        ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                           ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                ; Off                ; Off                ;
+; Preserve fewer node names                                          ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                          ; Off                ; Off                ;
+; Verilog Version                                                    ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                       ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                           ; Auto               ; Auto               ;
+; Extract Verilog State Machines                                     ; On                 ; On                 ;
+; Extract VHDL State Machines                                        ; On                 ; On                 ;
+; Add Pass-Through Logic to Inferred RAMs                            ; On                 ; On                 ;
+; DSP Block Balancing                                                ; Auto               ; Auto               ;
+; Maximum DSP Block Usage                                            ; Unlimited          ; Unlimited          ;
+; NOT Gate Push-Back                                                 ; On                 ; On                 ;
+; Power-Up Don't Care                                                ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                       ; Off                ; Off                ;
+; Remove Duplicate Registers                                         ; On                 ; On                 ;
+; Ignore CARRY Buffers                                               ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                             ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                              ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                          ; Off                ; Off                ;
+; Ignore LCELL Buffers                                               ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                     ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II ; 70                 ; 70                 ;
+; Auto Carry Chains                                                  ; On                 ; On                 ;
+; Auto Open-Drain Pins                                               ; On                 ; On                 ;
+; Remove Duplicate Logic                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                              ; Off                ; Off                ;
+; Perform gate-level register retiming                               ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax             ; On                 ; On                 ;
+; Auto ROM Replacement                                               ; On                 ; On                 ;
+; Auto RAM Replacement                                               ; On                 ; On                 ;
+; Auto Shift Register Replacement                                    ; On                 ; On                 ;
+; Auto Clock Enable Replacement                                      ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                  ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                             ; Off                ; Off                ;
+; Auto Resource Sharing                                              ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                      ; Off                ; Off                ;
+; Maximum Number of M4K Memory Blocks                                ; Unlimited          ; Unlimited          ;
+; Ignore translate_off and translate_on Synthesis Directives         ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                 ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                   ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                       ; Normal compilation ; Normal compilation ;
+; HDL message level                                                  ; Level2             ; Level2             ;
++--------------------------------------------------------------------+--------------------+--------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                               ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+
+; oled_demo.vhd                    ; yes             ; User VHDL File               ; F:/HANBACK Product/HBE-COMBO III/source/altera/OLED/oled_demo.vhd          ;
+; oled_rom_data.vhd                ; yes             ; User VHDL File               ; F:/HANBACK Product/HBE-COMBO III/source/altera/OLED/oled_rom_data.vhd      ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/quartus60/libraries/megafunctions/altsyncram.tdf                 ;
+; stratix_ram_block.inc            ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/stratix_ram_block.inc          ;
+; lpm_mux.inc                      ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/lpm_mux.inc                    ;
+; lpm_decode.inc                   ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/lpm_decode.inc                 ;
+; aglobal60.inc                    ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/aglobal60.inc                  ;
+; altsyncram.inc                   ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/altsyncram.inc                 ;
+; a_rdenreg.inc                    ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/a_rdenreg.inc                  ;
+; altrom.inc                       ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/altrom.inc                     ;
+; altram.inc                       ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/altram.inc                     ;
+; altdpram.inc                     ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/altdpram.inc                   ;
+; altqpram.inc                     ; yes             ; Other                        ; c:/altera/quartus60/libraries/megafunctions/altqpram.inc                   ;
+; db/altsyncram_pt71.tdf           ; yes             ; Auto-Generated Megafunction  ; F:/HANBACK Product/HBE-COMBO III/source/altera/OLED/db/altsyncram_pt71.tdf ;
+; db/decode_9oa.tdf                ; yes             ; Auto-Generated Megafunction  ; F:/HANBACK Product/HBE-COMBO III/source/altera/OLED/db/decode_9oa.tdf      ;
+; db/mux_8kb.tdf                   ; yes             ; Auto-Generated Megafunction  ; F:/HANBACK Product/HBE-COMBO III/source/altera/OLED/db/mux_8kb.tdf         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 201    ;
+; Total combinational functions               ; 201    ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 139    ;
+;     -- 3 input functions                    ; 20     ;
+;     -- <=2 input functions                  ; 42     ;
+;         -- Combinational cells for routing  ; 0      ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 166    ;
+;     -- arithmetic mode                      ; 35     ;
+; Total registers                             ; 63     ;
+; I/O pins                                    ; 15     ;
+; Total memory bits                           ; 524288 ;
+; Maximum fan-out node                        ; clk    ;
+; Maximum fan-out                             ; 186    ;
+; Total fan-out                               ; 2743   ;
+; Average fan-out                             ; 6.74   ;
++---------------------------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                          ;
++-------------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                           ;
++-------------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------+
+; |oled_demo                                ; 201 (193)         ; 63 (57)      ; 524288      ; 0    ; 0            ; 0       ; 0         ; 15   ; 0            ; |oled_demo                                                                                                                    ;
+;    |oled_rom_data:oled_data_inst|         ; 8 (0)             ; 6 (0)        ; 524288      ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |oled_demo|oled_rom_data:oled_data_inst                                                                                       ;
+;       |altsyncram:altsyncram_component|   ; 8 (0)             ; 6 (0)        ; 524288      ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |oled_demo|oled_rom_data:oled_data_inst|altsyncram:altsyncram_component                                                       ;
+;          |altsyncram_pt71:auto_generated| ; 8 (0)             ; 6 (6)        ; 524288      ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |oled_demo|oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated                        ;
+;             |decode_9oa:deep_decode|      ; 8 (8)             ; 0 (0)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |oled_demo|oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated|decode_9oa:deep_decode ;
++-------------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                             ;
++--------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+------------------+
+; Name                                                                                                   ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF              ;
++--------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+------------------+
+; oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 32768        ; 16           ; --           ; --           ; 524288 ; oled_display.mif ;
++--------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+--------+------------------+
+
+
++---------------------------------------------------------------------------------------+
+; State Machine - |oled_demo|oled_routine                                               ;
++----------------------+---------------------+----------------------+-------------------+
+; Name                 ; oled_routine.wr_ram ; oled_routine.initial ; oled_routine.idle ;
++----------------------+---------------------+----------------------+-------------------+
+; oled_routine.idle    ; 0                   ; 0                    ; 0                 ;
+; oled_routine.initial ; 0                   ; 1                    ; 1                 ;
+; oled_routine.wr_ram  ; 1                   ; 0                    ; 1                 ;
++----------------------+---------------------+----------------------+-------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 63    ;
+; Number of registers using Synchronous Clear  ; 34    ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 52    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 31    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; oled_cs~reg0                           ; 1       ;
+; oled_wn~reg0                           ; 1       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |oled_demo|cnt_set_reg[0]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |oled_demo|start_cnt[0]     ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |oled_demo|cnt_init_data[4] ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |oled_demo|cnt_ram_data[7]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |oled_demo|oled_routine~7   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
+
+
++------------------------------------------------------+
+; Source assignments for Top-level Entity: |oled_demo  ;
++----------------+-------+------+----------------------+
+; Assignment     ; Value ; From ; To                   ;
++----------------+-------+------+----------------------+
+; POWER_UP_LEVEL ; Low   ; -    ; oled_routine.wr_ram  ;
+; POWER_UP_LEVEL ; Low   ; -    ; oled_routine.initial ;
+; POWER_UP_LEVEL ; High  ; -    ; oled_routine.idle    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_init_data[0]     ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_init_data[1]     ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_init_data[2]     ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_init_data[3]     ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_init_data[4]     ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_init_data[5]     ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_set_reg[0]       ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_set_reg[1]       ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt_set_reg[2]       ;
+; POWER_UP_LEVEL ; Low   ; -    ; clk_cnt[0]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; clk_cnt[1]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; clk_cnt[2]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; clk_cnt[3]           ;
+; POWER_UP_LEVEL ; Low   ; -    ; clk_cnt[4]           ;
++----------------+-------+------+----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Source assignments for oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                   ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                    ;
++---------------------------------+--------------------+------+------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: oled_rom_data:oled_data_inst|altsyncram:altsyncram_component ;
++------------------------------------+------------------+---------------------------------------------------+
+; Parameter Name                     ; Value            ; Type                                              ;
++------------------------------------+------------------+---------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                ; Untyped                                           ;
+; AUTO_CARRY_CHAINS                  ; ON               ; AUTO_CARRY                                        ;
+; IGNORE_CARRY_BUFFERS               ; OFF              ; IGNORE_CARRY                                      ;
+; AUTO_CASCADE_CHAINS                ; ON               ; AUTO_CASCADE                                      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF              ; IGNORE_CASCADE                                    ;
+; OPERATION_MODE                     ; ROM              ; Untyped                                           ;
+; WIDTH_A                            ; 16               ; Integer                                           ;
+; WIDTHAD_A                          ; 15               ; Integer                                           ;
+; NUMWORDS_A                         ; 32768            ; Integer                                           ;
+; OUTDATA_REG_A                      ; CLOCK0           ; Untyped                                           ;
+; ADDRESS_ACLR_A                     ; NONE             ; Untyped                                           ;
+; OUTDATA_ACLR_A                     ; NONE             ; Untyped                                           ;
+; WRCONTROL_ACLR_A                   ; NONE             ; Untyped                                           ;
+; INDATA_ACLR_A                      ; NONE             ; Untyped                                           ;
+; BYTEENA_ACLR_A                     ; NONE             ; Untyped                                           ;
+; WIDTH_B                            ; 1                ; Untyped                                           ;
+; WIDTHAD_B                          ; 1                ; Untyped                                           ;
+; NUMWORDS_B                         ; 1                ; Untyped                                           ;
+; INDATA_REG_B                       ; CLOCK1           ; Untyped                                           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1           ; Untyped                                           ;
+; RDCONTROL_REG_B                    ; CLOCK1           ; Untyped                                           ;
+; ADDRESS_REG_B                      ; CLOCK1           ; Untyped                                           ;
+; OUTDATA_REG_B                      ; UNREGISTERED     ; Untyped                                           ;
+; BYTEENA_REG_B                      ; CLOCK1           ; Untyped                                           ;
+; INDATA_ACLR_B                      ; NONE             ; Untyped                                           ;
+; WRCONTROL_ACLR_B                   ; NONE             ; Untyped                                           ;
+; ADDRESS_ACLR_B                     ; NONE             ; Untyped                                           ;
+; OUTDATA_ACLR_B                     ; NONE             ; Untyped                                           ;
+; RDCONTROL_ACLR_B                   ; NONE             ; Untyped                                           ;
+; BYTEENA_ACLR_B                     ; NONE             ; Untyped                                           ;
+; WIDTH_BYTEENA_A                    ; 1                ; Integer                                           ;
+; WIDTH_BYTEENA_B                    ; 1                ; Untyped                                           ;
+; RAM_BLOCK_TYPE                     ; AUTO             ; Untyped                                           ;
+; BYTE_SIZE                          ; 8                ; Untyped                                           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE        ; Untyped                                           ;
+; INIT_FILE                          ; oled_display.mif ; Untyped                                           ;
+; INIT_FILE_LAYOUT                   ; PORT_A           ; Untyped                                           ;
+; MAXIMUM_DEPTH                      ; 0                ; Untyped                                           ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS           ; Untyped                                           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL           ; Untyped                                           ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS           ; Untyped                                           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL           ; Untyped                                           ;
+; DEVICE_FAMILY                      ; Cyclone II       ; Untyped                                           ;
+; CBXI_PARAMETER                     ; altsyncram_pt71  ; Untyped                                           ;
++------------------------------------+------------------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 6.0 Build 178 04/27/2006 SJ Full Version
+    Info: Processing started: Wed Apr 30 17:53:06 2008
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off oled_demo -c oled_demo
+Info: Found 2 design units, including 1 entities, in source file oled_demo.vhd
+    Info: Found design unit 1: oled_demo-a
+    Info: Found entity 1: oled_demo
+Info: Found 2 design units, including 1 entities, in source file oled_rom_data.vhd
+    Info: Found design unit 1: oled_rom_data-SYN
+    Info: Found entity 1: oled_rom_data
+Info: Elaborating entity "oled_demo" for the top level hierarchy
+Info: Elaborating entity "oled_rom_data" for hierarchy "oled_rom_data:oled_data_inst"
+Info: Found 1 design units, including 1 entities, in source file c:/altera/quartus60/libraries/megafunctions/altsyncram.tdf
+    Info: Found entity 1: altsyncram
+Info: Elaborating entity "altsyncram" for hierarchy "oled_rom_data:oled_data_inst|altsyncram:altsyncram_component"
+Info: Elaborated megafunction instantiation "oled_rom_data:oled_data_inst|altsyncram:altsyncram_component"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_pt71.tdf
+    Info: Found entity 1: altsyncram_pt71
+Info: Elaborating entity "altsyncram_pt71" for hierarchy "oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated"
+Info: Found 1 design units, including 1 entities, in source file db/decode_9oa.tdf
+    Info: Found entity 1: decode_9oa
+Info: Elaborating entity "decode_9oa" for hierarchy "oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated|decode_9oa:deep_decode"
+Info: Found 1 design units, including 1 entities, in source file db/mux_8kb.tdf
+    Info: Found entity 1: mux_8kb
+Info: Elaborating entity "mux_8kb" for hierarchy "oled_rom_data:oled_data_inst|altsyncram:altsyncram_component|altsyncram_pt71:auto_generated|mux_8kb:mux2"
+Info: State machine "|oled_demo|oled_routine" contains 3 states
+Info: Selected Auto state machine encoding method for state machine "|oled_demo|oled_routine"
+Info: Encoding result for state machine "|oled_demo|oled_routine"
+    Info: Completed encoding using 3 state bits
+        Info: Encoded state bit "oled_routine.wr_ram"
+        Info: Encoded state bit "oled_routine.initial"
+        Info: Encoded state bit "oled_routine.idle"
+    Info: State "|oled_demo|oled_routine.idle" uses code string "000"
+    Info: State "|oled_demo|oled_routine.initial" uses code string "011"
+    Info: State "|oled_demo|oled_routine.wr_ram" uses code string "101"
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning: Output pins are stuck at VCC or GND
+    Warning: Pin "oled_rstn" stuck at VCC
+    Warning: Pin "oled_rn" stuck at VCC
+Info: Implemented 351 device resources after synthesis - the final resource count might be different
+    Info: Implemented 2 input pins
+    Info: Implemented 13 output pins
+    Info: Implemented 208 logic cells
+    Info: Implemented 128 RAM segments
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Processing ended: Wed Apr 30 17:53:12 2008
+    Info: Elapsed time: 00:00:06
+
+

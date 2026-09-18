@@ -1,0 +1,815 @@
+Analysis & Synthesis report for M4
+Thu Jun 05 22:04:11 2008
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Analysis & Synthesis RAM Summary
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Source assignments for IP_Timing_gen:inst7
+ 12. Source assignments for COLORSPACE_CVT:inst8
+ 13. Source assignments for VIDEO_in:inst6|Data_sync_gen:inst17
+ 14. Source assignments for VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated
+ 15. Source assignments for VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated|altsyncram_v3t1:altsyncram1
+ 16. Source assignments for sram_ctrl:inst17
+ 17. Parameter Settings for User Entity Instance: VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component
+ 18. Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult1
+ 19. Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult0
+ 20. Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult3
+ 21. Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult2
+ 22. Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult4
+ 23. lpm_mult Parameter Settings by Entity Instance
+ 24. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Jun 05 22:04:11 2008    ;
+; Quartus II Version                 ; 6.0 Build 178 04/27/2006 SJ Full Version ;
+; Revision Name                      ; M4                                       ;
+; Top-level Entity Name              ; M4                                       ;
+; Family                             ; Cyclone II                               ;
+; Total logic elements               ; 373                                      ;
+; Total registers                    ; 204                                      ;
+; Total pins                         ; 87                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 16,384                                   ;
+; Embedded Multiplier 9-bit elements ; 9                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                             ; Setting            ; Default Value      ;
++--------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                             ; EP2C70F672C8       ;                    ;
+; Top-level entity name                                              ; M4                 ; M4                 ;
+; Family name                                                        ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                              ; Off                ; Off                ;
+; Restructure Multiplexers                                           ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                ; Off                ; Off                ;
+; Preserve fewer node names                                          ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                          ; Off                ; Off                ;
+; Verilog Version                                                    ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                       ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                           ; Auto               ; Auto               ;
+; Extract Verilog State Machines                                     ; On                 ; On                 ;
+; Extract VHDL State Machines                                        ; On                 ; On                 ;
+; Add Pass-Through Logic to Inferred RAMs                            ; On                 ; On                 ;
+; DSP Block Balancing                                                ; Auto               ; Auto               ;
+; Maximum DSP Block Usage                                            ; Unlimited          ; Unlimited          ;
+; NOT Gate Push-Back                                                 ; On                 ; On                 ;
+; Power-Up Don't Care                                                ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                       ; Off                ; Off                ;
+; Remove Duplicate Registers                                         ; On                 ; On                 ;
+; Ignore CARRY Buffers                                               ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                             ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                              ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                          ; Off                ; Off                ;
+; Ignore LCELL Buffers                                               ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                     ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II ; 70                 ; 70                 ;
+; Auto Carry Chains                                                  ; On                 ; On                 ;
+; Auto Open-Drain Pins                                               ; On                 ; On                 ;
+; Remove Duplicate Logic                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                              ; Off                ; Off                ;
+; Perform gate-level register retiming                               ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax             ; On                 ; On                 ;
+; Auto ROM Replacement                                               ; On                 ; On                 ;
+; Auto RAM Replacement                                               ; On                 ; On                 ;
+; Auto Shift Register Replacement                                    ; On                 ; On                 ;
+; Auto Clock Enable Replacement                                      ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                  ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                             ; Off                ; Off                ;
+; Auto Resource Sharing                                              ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                 ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                      ; Off                ; Off                ;
+; Maximum Number of M4K Memory Blocks                                ; Unlimited          ; Unlimited          ;
+; Ignore translate_off and translate_on Synthesis Directives         ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                 ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                   ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                       ; Normal compilation ; Normal compilation ;
+; HDL message level                                                  ; Level2             ; Level2             ;
++--------------------------------------------------------------------+--------------------+--------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                     ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                     ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------------+
+; lpm_ram_dp0.vhd                  ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/lpm_ram_dp0.vhd            ;
+; VIDEO_in.bdf                     ; yes             ; User Block Diagram/Schematic File  ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/VIDEO_in.bdf               ;
+; LCD_drv/ColorSpace_CVT.vhd       ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/LCD_drv/ColorSpace_CVT.vhd ;
+; LCD_drv/Data_sync_gen.vhd        ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/LCD_drv/Data_sync_gen.vhd  ;
+; LCD_drv/IP_Timing_gen.vhd        ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/LCD_drv/IP_Timing_gen.vhd  ;
+; LCD_drv/LCD_drv.vhd              ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/LCD_drv/LCD_drv.vhd        ;
+; LCD_drv/SRAM_ctrl.vhd            ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/LCD_drv/SRAM_ctrl.vhd      ;
+; M4.bdf                           ; yes             ; User Block Diagram/Schematic File  ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/M4.bdf                     ;
+; M4_control/Logic_out.vhd         ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/M4_control/Logic_out.vhd   ;
+; clk_div.vhd                      ; yes             ; User VHDL File                     ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/clk_div.vhd                ;
+; altsyncram.tdf                   ; yes             ; Megafunction                       ; c:/altera/quartus60/libraries/megafunctions/altsyncram.tdf                       ;
+; stratix_ram_block.inc            ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/stratix_ram_block.inc                ;
+; lpm_mux.inc                      ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/lpm_mux.inc                          ;
+; lpm_decode.inc                   ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/lpm_decode.inc                       ;
+; aglobal60.inc                    ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/aglobal60.inc                        ;
+; altsyncram.inc                   ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/altsyncram.inc                       ;
+; a_rdenreg.inc                    ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/a_rdenreg.inc                        ;
+; altrom.inc                       ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/altrom.inc                           ;
+; altram.inc                       ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/altram.inc                           ;
+; altdpram.inc                     ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/altdpram.inc                         ;
+; altqpram.inc                     ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/altqpram.inc                         ;
+; db/altsyncram_mdk1.tdf           ; yes             ; Auto-Generated Megafunction        ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/db/altsyncram_mdk1.tdf     ;
+; db/altsyncram_v3t1.tdf           ; yes             ; Auto-Generated Megafunction        ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/db/altsyncram_v3t1.tdf     ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                       ; c:/altera/quartus60/libraries/megafunctions/lpm_mult.tdf                         ;
+; lpm_add_sub.inc                  ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/lpm_add_sub.inc                      ;
+; multcore.inc                     ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/multcore.inc                         ;
+; bypassff.inc                     ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/bypassff.inc                         ;
+; altshift.inc                     ; yes             ; Other                              ; c:/altera/quartus60/libraries/megafunctions/altshift.inc                         ;
+; db/mult_e111.tdf                 ; yes             ; Auto-Generated Megafunction        ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/db/mult_e111.tdf           ;
+; db/mult_c111.tdf                 ; yes             ; Auto-Generated Megafunction        ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/db/mult_c111.tdf           ;
+; db/mult_2011.tdf                 ; yes             ; Auto-Generated Megafunction        ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/db/mult_2011.tdf           ;
+; db/mult_6111.tdf                 ; yes             ; Auto-Generated Megafunction        ; F:/HANBACK Product/HBE-COMBO III/CD/source/altera/LCD/db/mult_6111.tdf           ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                       ;
++---------------------------------------------+---------------------+
+; Resource                                    ; Usage               ;
++---------------------------------------------+---------------------+
+; Estimated Total logic elements              ; 373                 ;
+; Total combinational functions               ; 373                 ;
+; Logic element usage by number of LUT inputs ;                     ;
+;     -- 4 input functions                    ; 51                  ;
+;     -- 3 input functions                    ; 150                 ;
+;     -- <=2 input functions                  ; 172                 ;
+;         -- Combinational cells for routing  ; 0                   ;
+; Logic elements by mode                      ;                     ;
+;     -- normal mode                          ; 132                 ;
+;     -- arithmetic mode                      ; 241                 ;
+; Total registers                             ; 204                 ;
+; I/O pins                                    ; 87                  ;
+; Total memory bits                           ; 16384               ;
+; Embedded Multiplier 9-bit elements          ; 9                   ;
+; Maximum fan-out node                        ; clk_div:inst4|clk_d ;
+; Maximum fan-out                             ; 126                 ;
+; Total fan-out                               ; 1844                ;
+; Average fan-out                             ; 2.70                ;
++---------------------------------------------+---------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                               ;
++----------------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                             ;
++----------------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------+
+; |M4                                          ; 373 (1)           ; 204 (0)      ; 16384       ; 0    ; 9            ; 1       ; 4         ; 87   ; 0            ; |M4                                                                                                                             ;
+;    |COLORSPACE_CVT:inst8|                    ; 161 (161)         ; 56 (56)      ; 0           ; 0    ; 9            ; 1       ; 4         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8                                                                                                        ;
+;       |lpm_mult:Mult0|                       ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult0                                                                                         ;
+;          |mult_e111:auto_generated|          ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult0|mult_e111:auto_generated                                                                ;
+;       |lpm_mult:Mult1|                       ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult1                                                                                         ;
+;          |mult_e111:auto_generated|          ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult1|mult_e111:auto_generated                                                                ;
+;       |lpm_mult:Mult2|                       ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 1            ; 1       ; 0         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult2                                                                                         ;
+;          |mult_2011:auto_generated|          ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 1            ; 1       ; 0         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult2|mult_2011:auto_generated                                                                ;
+;       |lpm_mult:Mult3|                       ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult3                                                                                         ;
+;          |mult_c111:auto_generated|          ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult3|mult_c111:auto_generated                                                                ;
+;       |lpm_mult:Mult4|                       ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult4                                                                                         ;
+;          |mult_6111:auto_generated|          ; 0 (0)             ; 0 (0)        ; 0           ; 0    ; 2            ; 0       ; 1         ; 0    ; 0            ; |M4|COLORSPACE_CVT:inst8|lpm_mult:Mult4|mult_6111:auto_generated                                                                ;
+;    |IP_Timing_gen:inst7|                     ; 99 (99)           ; 68 (68)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|IP_Timing_gen:inst7                                                                                                         ;
+;    |LCD_drv:inst9|                           ; 57 (57)           ; 16 (16)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|LCD_drv:inst9                                                                                                               ;
+;    |VIDEO_in:inst6|                          ; 22 (0)            ; 28 (0)       ; 16384       ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|VIDEO_in:inst6                                                                                                              ;
+;       |Data_sync_gen:inst17|                 ; 22 (22)           ; 28 (28)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|VIDEO_in:inst6|Data_sync_gen:inst17                                                                                         ;
+;       |lpm_ram_dp0:inst1|                    ; 0 (0)             ; 0 (0)        ; 16384       ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|VIDEO_in:inst6|lpm_ram_dp0:inst1                                                                                            ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 16384       ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component                                                            ;
+;             |altsyncram_mdk1:auto_generated| ; 0 (0)             ; 0 (0)        ; 16384       ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated                             ;
+;                |altsyncram_v3t1:altsyncram1| ; 0 (0)             ; 0 (0)        ; 16384       ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated|altsyncram_v3t1:altsyncram1 ;
+;    |clk_div:inst4|                           ; 1 (1)             ; 1 (1)        ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|clk_div:inst4                                                                                                               ;
+;    |sram_ctrl:inst17|                        ; 32 (32)           ; 35 (35)      ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; |M4|sram_ctrl:inst17                                                                                                            ;
++----------------------------------------------+-------------------+--------------+-------------+------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                          ;
++----------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+-------+------+
+; Name                                                                                                                                   ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF  ;
++----------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+-------+------+
+; VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated|altsyncram_v3t1:altsyncram1|ALTSYNCRAM ; AUTO ; True Dual Port ; 2048         ; 8            ; 2048         ; 8            ; 16384 ; None ;
++----------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+-------+------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 1           ;
+; Simple Multipliers (18-bit)           ; 4           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 9           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 5           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 204   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 6     ;
+; Number of registers using Asynchronous Clear ; 86    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 49    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |M4|sram_ctrl:inst17|sram0_dd[3]~reg0  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |M4|sram_ctrl:inst17|sram0_dd[9]~reg0  ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |M4|sram_ctrl:inst17|sram0_dd[15]~reg0 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+
+
++---------------------------------------------+
+; Source assignments for IP_Timing_gen:inst7  ;
++----------------+-------+------+-------------+
+; Assignment     ; Value ; From ; To          ;
++----------------+-------+------+-------------+
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[0] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[1] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[2] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[3] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[4] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[5] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[6] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[7] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[8] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_VS_CNT[9] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[0] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[1] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[2] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[3] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[4] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[5] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[6] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[7] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[8] ;
+; POWER_UP_LEVEL ; Low   ; -    ; M_HS_CNT[9] ;
++----------------+-------+------+-------------+
+
+
++---------------------------------------------+
+; Source assignments for COLORSPACE_CVT:inst8 ;
++----------------+-------+------+-------------+
+; Assignment     ; Value ; From ; To          ;
++----------------+-------+------+-------------+
+; POWER_UP_LEVEL ; Low   ; -    ; cnt[0]      ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt[1]      ;
++----------------+-------+------+-------------+
+
+
++------------------------------------------------------------+
+; Source assignments for VIDEO_in:inst6|Data_sync_gen:inst17 ;
++----------------+-------+------+----------------------------+
+; Assignment     ; Value ; From ; To                         ;
++----------------+-------+------+----------------------------+
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[0]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[1]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[2]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[3]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[4]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[5]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[6]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[7]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[8]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[9]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt2[10]                   ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[0]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[1]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[2]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[3]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[4]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[5]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[6]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[7]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[8]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[9]                    ;
+; POWER_UP_LEVEL ; Low   ; -    ; cnt1[10]                   ;
++----------------+-------+------+----------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                       ;
++---------------------------------+--------------------+------+----------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                        ;
++---------------------------------+--------------------+------+----------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated|altsyncram_v3t1:altsyncram1 ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                   ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                    ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------+
+; Source assignments for sram_ctrl:inst17         ;
++----------------+-------+------+-----------------+
+; Assignment     ; Value ; From ; To              ;
++----------------+-------+------+-----------------+
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[0]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[1]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[2]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[3]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[4]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[5]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[6]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[7]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[8]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[9]~en  ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[10]~en ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[11]~en ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[12]~en ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[13]~en ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[14]~en ;
+; POWER_UP_LEVEL ; Low   ; -    ; sram0_dd[15]~en ;
++----------------+-------+------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component ;
++------------------------------------+-----------------+--------------------------------------------------------+
+; Parameter Name                     ; Value           ; Type                                                   ;
++------------------------------------+-----------------+--------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8               ; Untyped                                                ;
+; AUTO_CARRY_CHAINS                  ; ON              ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS               ; OFF             ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS                ; ON              ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS             ; OFF             ; IGNORE_CASCADE                                         ;
+; OPERATION_MODE                     ; DUAL_PORT       ; Untyped                                                ;
+; WIDTH_A                            ; 8               ; Integer                                                ;
+; WIDTHAD_A                          ; 11              ; Integer                                                ;
+; NUMWORDS_A                         ; 2048            ; Integer                                                ;
+; OUTDATA_REG_A                      ; UNREGISTERED    ; Untyped                                                ;
+; ADDRESS_ACLR_A                     ; NONE            ; Untyped                                                ;
+; OUTDATA_ACLR_A                     ; NONE            ; Untyped                                                ;
+; WRCONTROL_ACLR_A                   ; NONE            ; Untyped                                                ;
+; INDATA_ACLR_A                      ; NONE            ; Untyped                                                ;
+; BYTEENA_ACLR_A                     ; NONE            ; Untyped                                                ;
+; WIDTH_B                            ; 8               ; Integer                                                ;
+; WIDTHAD_B                          ; 11              ; Integer                                                ;
+; NUMWORDS_B                         ; 2048            ; Integer                                                ;
+; INDATA_REG_B                       ; CLOCK1          ; Untyped                                                ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1          ; Untyped                                                ;
+; RDCONTROL_REG_B                    ; CLOCK1          ; Untyped                                                ;
+; ADDRESS_REG_B                      ; CLOCK1          ; Untyped                                                ;
+; OUTDATA_REG_B                      ; CLOCK1          ; Untyped                                                ;
+; BYTEENA_REG_B                      ; CLOCK1          ; Untyped                                                ;
+; INDATA_ACLR_B                      ; NONE            ; Untyped                                                ;
+; WRCONTROL_ACLR_B                   ; NONE            ; Untyped                                                ;
+; ADDRESS_ACLR_B                     ; NONE            ; Untyped                                                ;
+; OUTDATA_ACLR_B                     ; NONE            ; Untyped                                                ;
+; RDCONTROL_ACLR_B                   ; NONE            ; Untyped                                                ;
+; BYTEENA_ACLR_B                     ; NONE            ; Untyped                                                ;
+; WIDTH_BYTEENA_A                    ; 1               ; Integer                                                ;
+; WIDTH_BYTEENA_B                    ; 1               ; Untyped                                                ;
+; RAM_BLOCK_TYPE                     ; AUTO            ; Untyped                                                ;
+; BYTE_SIZE                          ; 8               ; Untyped                                                ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE       ; Untyped                                                ;
+; INIT_FILE                          ; UNUSED          ; Untyped                                                ;
+; INIT_FILE_LAYOUT                   ; PORT_A          ; Untyped                                                ;
+; MAXIMUM_DEPTH                      ; 0               ; Untyped                                                ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS          ; Untyped                                                ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS          ; Untyped                                                ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL          ; Untyped                                                ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS          ; Untyped                                                ;
+; DEVICE_FAMILY                      ; Cyclone II      ; Untyped                                                ;
+; CBXI_PARAMETER                     ; altsyncram_mdk1 ; Untyped                                                ;
++------------------------------------+-----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult1 ;
++------------------------------------------------+------------+------------------------+
+; Parameter Name                                 ; Value      ; Type                   ;
++------------------------------------------------+------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 8          ; Untyped                ;
+; LPM_WIDTHB                                     ; 11         ; Untyped                ;
+; LPM_WIDTHP                                     ; 19         ; Untyped                ;
+; LPM_WIDTHR                                     ; 19         ; Untyped                ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                ;
+; LATENCY                                        ; 0          ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                ;
+; USE_EAB                                        ; OFF        ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 6          ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_e111  ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                ;
++------------------------------------------------+------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult0 ;
++------------------------------------------------+------------+------------------------+
+; Parameter Name                                 ; Value      ; Type                   ;
++------------------------------------------------+------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 8          ; Untyped                ;
+; LPM_WIDTHB                                     ; 11         ; Untyped                ;
+; LPM_WIDTHP                                     ; 19         ; Untyped                ;
+; LPM_WIDTHR                                     ; 19         ; Untyped                ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                ;
+; LATENCY                                        ; 0          ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                ;
+; USE_EAB                                        ; OFF        ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 6          ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_e111  ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                ;
++------------------------------------------------+------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult3 ;
++------------------------------------------------+------------+------------------------+
+; Parameter Name                                 ; Value      ; Type                   ;
++------------------------------------------------+------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 8          ; Untyped                ;
+; LPM_WIDTHB                                     ; 10         ; Untyped                ;
+; LPM_WIDTHP                                     ; 18         ; Untyped                ;
+; LPM_WIDTHR                                     ; 18         ; Untyped                ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                ;
+; LATENCY                                        ; 0          ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                ;
+; USE_EAB                                        ; OFF        ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 6          ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_c111  ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                ;
++------------------------------------------------+------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult2 ;
++------------------------------------------------+------------+------------------------+
+; Parameter Name                                 ; Value      ; Type                   ;
++------------------------------------------------+------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 8          ; Untyped                ;
+; LPM_WIDTHB                                     ; 9          ; Untyped                ;
+; LPM_WIDTHP                                     ; 17         ; Untyped                ;
+; LPM_WIDTHR                                     ; 17         ; Untyped                ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                ;
+; LATENCY                                        ; 0          ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                ;
+; USE_EAB                                        ; OFF        ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_2011  ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                ;
++------------------------------------------------+------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: COLORSPACE_CVT:inst8|lpm_mult:Mult4 ;
++------------------------------------------------+------------+------------------------+
+; Parameter Name                                 ; Value      ; Type                   ;
++------------------------------------------------+------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 8          ; Untyped                ;
+; LPM_WIDTHB                                     ; 12         ; Untyped                ;
+; LPM_WIDTHP                                     ; 20         ; Untyped                ;
+; LPM_WIDTHR                                     ; 20         ; Untyped                ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                ;
+; LATENCY                                        ; 0          ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                ;
+; USE_EAB                                        ; OFF        ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_6111  ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                ;
++------------------------------------------------+------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                              ;
++---------------------------------------+-------------------------------------+
+; Name                                  ; Value                               ;
++---------------------------------------+-------------------------------------+
+; Number of entity instances            ; 5                                   ;
+; Entity Instance                       ; COLORSPACE_CVT:inst8|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 8                                   ;
+;     -- LPM_WIDTHB                     ; 11                                  ;
+;     -- LPM_WIDTHP                     ; 19                                  ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                  ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                 ;
+;     -- USE_EAB                        ; OFF                                 ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                  ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                  ;
+; Entity Instance                       ; COLORSPACE_CVT:inst8|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                                   ;
+;     -- LPM_WIDTHB                     ; 11                                  ;
+;     -- LPM_WIDTHP                     ; 19                                  ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                  ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                 ;
+;     -- USE_EAB                        ; OFF                                 ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                  ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                  ;
+; Entity Instance                       ; COLORSPACE_CVT:inst8|lpm_mult:Mult3 ;
+;     -- LPM_WIDTHA                     ; 8                                   ;
+;     -- LPM_WIDTHB                     ; 10                                  ;
+;     -- LPM_WIDTHP                     ; 18                                  ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                  ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                 ;
+;     -- USE_EAB                        ; OFF                                 ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                  ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                  ;
+; Entity Instance                       ; COLORSPACE_CVT:inst8|lpm_mult:Mult2 ;
+;     -- LPM_WIDTHA                     ; 8                                   ;
+;     -- LPM_WIDTHB                     ; 9                                   ;
+;     -- LPM_WIDTHP                     ; 17                                  ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                  ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                 ;
+;     -- USE_EAB                        ; OFF                                 ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                  ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                  ;
+; Entity Instance                       ; COLORSPACE_CVT:inst8|lpm_mult:Mult4 ;
+;     -- LPM_WIDTHA                     ; 8                                   ;
+;     -- LPM_WIDTHB                     ; 12                                  ;
+;     -- LPM_WIDTHP                     ; 20                                  ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                            ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                  ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                 ;
+;     -- USE_EAB                        ; OFF                                 ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                  ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                  ;
++---------------------------------------+-------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 6.0 Build 178 04/27/2006 SJ Full Version
+    Info: Processing started: Thu Jun 05 22:04:04 2008
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off M4 -c M4
+Info: Found 2 design units, including 1 entities, in source file lpm_ram_dp0.vhd
+    Info: Found design unit 1: lpm_ram_dp0-SYN
+    Info: Found entity 1: lpm_ram_dp0
+Info: Found 2 design units, including 1 entities, in source file altpll0.vhd
+    Info: Found design unit 1: altpll0-SYN
+    Info: Found entity 1: altpll0
+Info: Found 1 design units, including 1 entities, in source file VIDEO_in.bdf
+    Info: Found entity 1: VIDEO_in
+Info: Found 2 design units, including 1 entities, in source file M4_control/buff.vhd
+    Info: Found design unit 1: buff-hb
+    Info: Found entity 1: buff
+Info: Found 2 design units, including 1 entities, in source file M4_control/buff_in.vhd
+    Info: Found design unit 1: buff_in-hb
+    Info: Found entity 1: buff_in
+Info: Found 2 design units, including 1 entities, in source file M4_control/cs_sel.vhd
+    Info: Found design unit 1: cs_sel-hb
+    Info: Found entity 1: cs_sel
+Info: Found 2 design units, including 1 entities, in source file M4_control/SEL.vhd
+    Info: Found design unit 1: SEL-a
+    Info: Found entity 1: SEL
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/ColorSpace_CVT.vhd
+    Info: Found design unit 1: COLORSPACE_CVT-a
+    Info: Found entity 1: COLORSPACE_CVT
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/Data_sync_gen.vhd
+    Info: Found design unit 1: Data_sync_gen-a
+    Info: Found entity 1: Data_sync_gen
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/host_io.vhd
+    Info: Found design unit 1: host_io-behav
+    Info: Found entity 1: host_io
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/HOST_ITF.vhd
+    Info: Found design unit 1: HOST_ITF-a
+    Info: Found entity 1: HOST_ITF
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/IP_Timing_gen.vhd
+    Info: Found design unit 1: IP_Timing_gen-a
+    Info: Found entity 1: IP_Timing_gen
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/LCD_drv.vhd
+    Info: Found design unit 1: LCD_drv-a
+    Info: Found entity 1: LCD_drv
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/SRAM_ctrl.vhd
+    Info: Found design unit 1: sram_ctrl-behav
+    Info: Found entity 1: sram_ctrl
+Info: Found 2 design units, including 1 entities, in source file ID_check/id_chk_s.vhd
+    Info: Found design unit 1: id_chk_s-hb
+    Info: Found entity 1: id_chk_s
+Info: Found 1 design units, including 1 entities, in source file M4.bdf
+    Info: Found entity 1: M4
+Info: Found 2 design units, including 1 entities, in source file M4_control/Logic_out.vhd
+    Info: Found design unit 1: Logic_out-hb
+    Info: Found entity 1: Logic_out
+Info: Found 2 design units, including 1 entities, in source file LCD_drv/CIF_int.vhd
+    Info: Found design unit 1: CIF_int-hb
+    Info: Found entity 1: CIF_int
+Info: Found 2 design units, including 1 entities, in source file clk_div.vhd
+    Info: Found design unit 1: clk_div-hb
+    Info: Found entity 1: clk_div
+Info: Elaborating entity "M4" for the top level hierarchy
+Info: Elaborating entity "Logic_out" for hierarchy "Logic_out:inst14"
+Info: Elaborating entity "IP_Timing_gen" for hierarchy "IP_Timing_gen:inst7"
+Warning (10036): Verilog HDL or VHDL warning at IP_Timing_gen.vhd(51): object "int" assigned a value but never read
+Info: Elaborating entity "clk_div" for hierarchy "clk_div:inst4"
+Info: Elaborating entity "COLORSPACE_CVT" for hierarchy "COLORSPACE_CVT:inst8"
+Info: Elaborating entity "VIDEO_in" for hierarchy "VIDEO_in:inst6"
+Info: Elaborating entity "Data_sync_gen" for hierarchy "VIDEO_in:inst6|Data_sync_gen:inst17"
+Info: Elaborating entity "lpm_ram_dp0" for hierarchy "VIDEO_in:inst6|lpm_ram_dp0:inst1"
+Info: Found 1 design units, including 1 entities, in source file c:/altera/quartus60/libraries/megafunctions/altsyncram.tdf
+    Info: Found entity 1: altsyncram
+Info: Elaborating entity "altsyncram" for hierarchy "VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component"
+Info: Elaborated megafunction instantiation "VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_mdk1.tdf
+    Info: Found entity 1: altsyncram_mdk1
+Info: Elaborating entity "altsyncram_mdk1" for hierarchy "VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_v3t1.tdf
+    Info: Found entity 1: altsyncram_v3t1
+Info: Elaborating entity "altsyncram_v3t1" for hierarchy "VIDEO_in:inst6|lpm_ram_dp0:inst1|altsyncram:altsyncram_component|altsyncram_mdk1:auto_generated|altsyncram_v3t1:altsyncram1"
+Info: Elaborating entity "LCD_drv" for hierarchy "LCD_drv:inst9"
+Info: Elaborating entity "sram_ctrl" for hierarchy "sram_ctrl:inst17"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[1]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[2]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[3]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[4]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[5]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[6]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[7]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[8]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[9]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[10]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[11]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[12]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[13]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[14]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+    Info: Duplicate register "sram_ctrl:inst17|sram0_dd[15]~en" merged to single register "sram_ctrl:inst17|sram0_dd[0]~en"
+Info: Found 1 design units, including 1 entities, in source file c:/altera/quartus60/libraries/megafunctions/lpm_mult.tdf
+    Info: Found entity 1: lpm_mult
+Info: Elaborated megafunction instantiation "COLORSPACE_CVT:inst8|lpm_mult:Mult1"
+Info: Found 1 design units, including 1 entities, in source file db/mult_e111.tdf
+    Info: Found entity 1: mult_e111
+Info: Elaborated megafunction instantiation "COLORSPACE_CVT:inst8|lpm_mult:Mult0"
+Info: Elaborated megafunction instantiation "COLORSPACE_CVT:inst8|lpm_mult:Mult3"
+Info: Found 1 design units, including 1 entities, in source file db/mult_c111.tdf
+    Info: Found entity 1: mult_c111
+Info: Elaborated megafunction instantiation "COLORSPACE_CVT:inst8|lpm_mult:Mult2"
+Info: Found 1 design units, including 1 entities, in source file db/mult_2011.tdf
+    Info: Found entity 1: mult_2011
+Info: Elaborated megafunction instantiation "COLORSPACE_CVT:inst8|lpm_mult:Mult4"
+Info: Found 1 design units, including 1 entities, in source file db/mult_6111.tdf
+    Info: Found entity 1: mult_6111
+Warning: Output pins are stuck at VCC or GND
+    Warning: Pin "LCD_OFF" stuck at VCC
+    Warning: Pin "LCD_EN" stuck at VCC
+    Warning: Pin "RAM_nCS1" stuck at GND
+    Warning: Pin "CMOS_STROBE" stuck at GND
+    Warning: Pin "SRAM1_UB" stuck at GND
+    Warning: Pin "SRAM1_DB" stuck at GND
+    Warning: Pin "SRAM2_UB" stuck at GND
+    Warning: Pin "SRAM2_DB" stuck at GND
+Info: Implemented 559 device resources after synthesis - the final resource count might be different
+    Info: Implemented 13 input pins
+    Info: Implemented 58 output pins
+    Info: Implemented 16 bidirectional pins
+    Info: Implemented 455 logic cells
+    Info: Implemented 8 RAM segments
+    Info: Implemented 9 DSP elements
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Processing ended: Thu Jun 05 22:04:11 2008
+    Info: Elapsed time: 00:00:07
+
+

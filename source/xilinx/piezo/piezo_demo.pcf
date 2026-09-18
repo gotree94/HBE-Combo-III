@@ -1,0 +1,15 @@
+//! **************************************************************************
+// Written by: Map K.34 on Wed May 07 19:35:14 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk" LOCATE = SITE "F13" LEVEL 1;
+COMP "key<0>" LOCATE = SITE "D5" LEVEL 1;
+COMP "key<1>" LOCATE = SITE "D7" LEVEL 1;
+COMP "key<2>" LOCATE = SITE "D12" LEVEL 1;
+COMP "key<3>" LOCATE = SITE "F9" LEVEL 1;
+COMP "key<4>" LOCATE = SITE "F10" LEVEL 1;
+COMP "key<5>" LOCATE = SITE "E6" LEVEL 1;
+COMP "piezo" LOCATE = SITE "M2" LEVEL 1;
+SCHEMATIC END;
+

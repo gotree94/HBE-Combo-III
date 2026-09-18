@@ -1,0 +1,3 @@
+vhdl work "led_pwm_gen.vhd"
+vhdl work "led_clk_gen.vhd"
+vhdl work "led_demo.vhd"

@@ -1,0 +1,76 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 8.799 ns
+From           : reset
+To             : interface_vga:interface|colum_pix[9]
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 17.824 ns
+From           : vga_data:data_con|rgb_data[5]
+To             : blue[5]
+From Clock     : clk
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 8.699 ns
+From           : clk
+To             : vclk
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -6.372 ns
+From           : reset
+To             : interface_vga:interface|\timing:c_h[0]
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 147.32 MHz ( period = 6.788 ns )
+From           : interface_vga:interface|\timing:c_v[0]
+To             : interface_vga:interface|line_pix[4]
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Hold: 'clk'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : interface_vga:interface|line_pix[7]
+To             : vga_data:data_con|rgb_data[9]
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 80
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 80
+
+--------------------------------------------------------------------------------------
+

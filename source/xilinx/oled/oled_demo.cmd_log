@@ -1,0 +1,9 @@
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.syr"
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.syr"
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "oled_demo.ngc" oled_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o oled_demo_map.ncd oled_demo.ngd oled_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -w -intstyle ise -ol std -t 1 oled_demo_map.ncd oled_demo.ncd oled_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -v 3 -s 4 -xml oled_demo oled_demo.ncd -o oled_demo.twr oled_demo.pcf -ucf oled_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.ise" -intstyle ise -f oled_demo.ut oled_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/CD/source/xilinx/oled/oled_demo.ise" -intstyle ise -f oled_demo.ut oled_demo.ncd

@@ -1,0 +1,15 @@
+V3 7
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd" 2008/05/08.21:02:58 K.34
+EN work/rs232_demo 1210248186 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd" \
+      PB ieee/std_logic_1164 1203817036 PB ieee/STD_LOGIC_UNSIGNED 1203817038
+AR work/rs232_demo/a 1210248187 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd" \
+      EN work/rs232_demo 1210248186 CP rs_232
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd" 2007/01/19.13:13:58 K.34
+EN work/rs_232 1210248184 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd" \
+      PB ieee/std_logic_1164 1203817036 PB ieee/STD_LOGIC_UNSIGNED 1203817038
+AR work/rs_232/a 1210248185 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd" \
+      EN work/rs_232 1210248184

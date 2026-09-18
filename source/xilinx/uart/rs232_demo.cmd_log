@@ -1,0 +1,13 @@
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "rs232_demo.ngc" rs232_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o rs232_demo_map.ncd rs232_demo.ngd rs232_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -w -intstyle ise -ol std -t 1 rs232_demo_map.ncd rs232_demo.ncd rs232_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -v 3 -s 4 -xml rs232_demo rs232_demo.ncd -o rs232_demo.twr rs232_demo.pcf -ucf rs232_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -f rs232_demo.ut rs232_demo.ncd
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "rs232_demo.ngc" rs232_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o rs232_demo_map.ncd rs232_demo.ngd rs232_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -w -intstyle ise -ol std -t 1 rs232_demo_map.ncd rs232_demo.ncd rs232_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -v 3 -s 4 -xml rs232_demo rs232_demo.ncd -o rs232_demo.twr rs232_demo.pcf -ucf rs232_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/uart/rs232_demo.ise" -intstyle ise -f rs232_demo.ut rs232_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/CD/source/xilinx/uart/rs232_demo.ise" -intstyle ise -f rs232_demo.ut rs232_demo.ncd

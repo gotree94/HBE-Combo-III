@@ -1,0 +1,576 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.28 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.28 secs
+ 
+--> Reading design: vga_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "vga_demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "vga_demo"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : vga_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : vga_demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd" in Library work.
+Architecture data of Entity vga_data is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd" in Library work.
+Architecture hb of Entity interface_vga is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd" in Library work.
+Entity <vga_demo> compiled.
+Entity <vga_demo> (Architecture <hb>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <vga_demo> in library <work> (architecture <hb>).
+
+Analyzing hierarchy for entity <vga_data> in library <work> (architecture <data>).
+
+Analyzing hierarchy for entity <interface_vga> in library <work> (architecture <hb>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <vga_demo> in library <work> (Architecture <hb>).
+Entity <vga_demo> analyzed. Unit <vga_demo> generated.
+
+Analyzing Entity <vga_data> in library <work> (Architecture <data>).
+Entity <vga_data> analyzed. Unit <vga_data> generated.
+
+Analyzing Entity <interface_vga> in library <work> (Architecture <hb>).
+Entity <interface_vga> analyzed. Unit <interface_vga> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <vga_data>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd".
+WARNING:Xst:647 - Input <colume<9>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <colume<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+INFO:Xst:1608 - Relative priorities of control signals on register <rgb_data> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_3>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_4>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_5>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_6>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_7>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_8>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_9>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_10>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_11>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_12>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_13>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_14>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_20>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_15>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_21>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_16>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_22>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_17>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_23>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_18>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_19>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_0>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <rgb_data_1>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 11-bit comparator less for signal <rgb_data_2$cmp_lt0000> created at line 27.
+    Found 11-bit comparator less for signal <rgb_data_2$or0000>.
+    Found 11-bit comparator less for signal <rgb_data_8$cmp_lt0000> created at line 20.
+    Found 11-bit comparator less for signal <rgb_data_8$cmp_lt0001> created at line 23.
+    Summary:
+	inferred   4 Comparator(s).
+Unit <vga_data> synthesized.
+
+
+Synthesizing Unit <interface_vga>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd".
+    Found 1-bit register for signal <vga_hs>.
+    Found 1-bit register for signal <vga_vs>.
+    Found 10-bit register for signal <line_pix>.
+    Found 10-bit register for signal <colum_pix>.
+    Found 10-bit register for signal <c_h>.
+    Found 10-bit adder for signal <c_h$addsub0000> created at line 81.
+    Found 10-bit register for signal <c_v>.
+    Found 10-bit adder for signal <c_v$addsub0000> created at line 78.
+    Found 10-bit comparator greatequal for signal <colum_pix$cmp_ge0000> created at line 96.
+    Found 10-bit comparator greatequal for signal <line_pix$cmp_ge0000> created at line 102.
+    Found 10-bit comparator greatequal for signal <vga_hs$cmp_ge0000> created at line 84.
+    Found 10-bit comparator less for signal <vga_hs$cmp_lt0000> created at line 84.
+    Found 1-bit register for signal <video_on_h>.
+    Found 10-bit comparator less for signal <video_on_h$cmp_lt0000> created at line 96.
+    Found 1-bit register for signal <video_on_v>.
+    Found 10-bit comparator less for signal <video_on_v$cmp_lt0000> created at line 102.
+    Summary:
+	inferred  44 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+Unit <interface_vga> synthesized.
+
+
+Synthesizing Unit <vga_demo>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd".
+    Found 1-bit register for signal <clk_25m>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <vga_demo> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 10-bit adder                                          : 2
+# Registers                                            : 9
+ 1-bit register                                        : 5
+ 10-bit register                                       : 4
+# Latches                                              : 24
+ 1-bit latch                                           : 24
+# Comparators                                          : 10
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator less                                : 3
+ 11-bit comparator less                                : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 10-bit adder                                          : 2
+# Registers                                            : 45
+ Flip-Flops                                            : 45
+# Latches                                              : 24
+ 1-bit latch                                           : 24
+# Comparators                                          : 10
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator less                                : 3
+ 11-bit comparator less                                : 4
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <vga_demo> ...
+
+Optimizing unit <vga_data> ...
+
+Optimizing unit <interface_vga> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block vga_demo, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 45
+ Flip-Flops                                            : 45
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : vga_demo.ngr
+Top Level Output File Name         : vga_demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 54
+
+Cell Usage :
+# BELS                             : 155
+#      GND                         : 1
+#      INV                         : 11
+#      LUT1                        : 18
+#      LUT2                        : 30
+#      LUT2_L                      : 1
+#      LUT3                        : 18
+#      LUT4                        : 30
+#      LUT4_D                      : 2
+#      LUT4_L                      : 5
+#      MUXCY                       : 18
+#      MUXF5                       : 2
+#      VCC                         : 1
+#      XORCY                       : 18
+# FlipFlops/Latches                : 69
+#      FDE                         : 24
+#      FDR                         : 21
+#      LDC                         : 8
+#      LDCP                        : 16
+# Clock Buffers                    : 3
+#      BUFG                        : 2
+#      BUFGP                       : 1
+# IO Buffers                       : 53
+#      IBUF                        : 1
+#      OBUF                        : 52
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                       60  out of  16640     0%  
+ Number of Slice Flip Flops:             45  out of  33280     0%  
+ Number of 4 input LUTs:                115  out of  33280     0%  
+ Number of IOs:                          54
+ Number of bonded IOBs:                  54  out of    519    10%  
+    IOB Flip Flops:                      24
+ Number of GCLKs:                         3  out of     24    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------------------------+-----------------------------+-------+
+Clock Signal                                                         | Clock buffer(FF name)       | Load  |
+---------------------------------------------------------------------+-----------------------------+-------+
+clk                                                                  | BUFGP                       | 1     |
+data_con/rgb_data_2_cmp_lt00001(data_con/rgb_data_2_cmp_lt00001_f5:O)| BUFG(*)(data_con/rgb_data_2)| 24    |
+clk_25m1                                                             | BUFG                        | 44    |
+---------------------------------------------------------------------+-----------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+---------------------------------------------------------------+---------------------------+-------+
+Control Signal                                                 | Buffer(FF name)           | Load  |
+---------------------------------------------------------------+---------------------------+-------+
+data_con/rgb_data_2_or0000(data_con/rgb_data_2_or00001:O)      | NONE(data_con/rgb_data_3) | 8     |
+data_con/rgb_data_10__and0000(data_con/rgb_data_10__and00001:O)| NONE(data_con/rgb_data_10)| 1     |
+data_con/rgb_data_10__or0000(data_con/rgb_data_10__or00001:O)  | NONE(data_con/rgb_data_10)| 1     |
+data_con/rgb_data_11__and0000(data_con/rgb_data_11__and00001:O)| NONE(data_con/rgb_data_11)| 1     |
+data_con/rgb_data_11__or0000(data_con/rgb_data_11__or00001:O)  | NONE(data_con/rgb_data_11)| 1     |
+data_con/rgb_data_12__and0000(data_con/rgb_data_12__and00001:O)| NONE(data_con/rgb_data_12)| 1     |
+data_con/rgb_data_12__or0000(data_con/rgb_data_12__or00001:O)  | NONE(data_con/rgb_data_12)| 1     |
+data_con/rgb_data_13__and0000(data_con/rgb_data_13__and00001:O)| NONE(data_con/rgb_data_13)| 1     |
+data_con/rgb_data_13__or0000(data_con/rgb_data_13__or00001:O)  | NONE(data_con/rgb_data_13)| 1     |
+data_con/rgb_data_14__and0000(data_con/rgb_data_14__and00001:O)| NONE(data_con/rgb_data_14)| 1     |
+data_con/rgb_data_14__or0000(data_con/rgb_data_14__or00001:O)  | NONE(data_con/rgb_data_14)| 1     |
+data_con/rgb_data_15__and0000(data_con/rgb_data_15__and00001:O)| NONE(data_con/rgb_data_15)| 1     |
+data_con/rgb_data_15__or0000(data_con/rgb_data_15__or00001:O)  | NONE(data_con/rgb_data_15)| 1     |
+data_con/rgb_data_16__and0000(data_con/rgb_data_16__and00001:O)| NONE(data_con/rgb_data_16)| 1     |
+data_con/rgb_data_16__or0000(data_con/rgb_data_16__or00001:O)  | NONE(data_con/rgb_data_16)| 1     |
+data_con/rgb_data_17__and0000(data_con/rgb_data_17__and00001:O)| NONE(data_con/rgb_data_17)| 1     |
+data_con/rgb_data_17__or0000(data_con/rgb_data_17__or00001:O)  | NONE(data_con/rgb_data_17)| 1     |
+data_con/rgb_data_18__and0000(data_con/rgb_data_18__and00001:O)| NONE(data_con/rgb_data_18)| 1     |
+data_con/rgb_data_18__or0000(data_con/rgb_data_18__or00001:O)  | NONE(data_con/rgb_data_18)| 1     |
+data_con/rgb_data_19__and0000(data_con/rgb_data_19__and00001:O)| NONE(data_con/rgb_data_19)| 1     |
+data_con/rgb_data_19__or0000(data_con/rgb_data_19__or00001:O)  | NONE(data_con/rgb_data_19)| 1     |
+data_con/rgb_data_20__and0000(data_con/rgb_data_20__and00001:O)| NONE(data_con/rgb_data_20)| 1     |
+data_con/rgb_data_20__or0000(data_con/rgb_data_20__or00001:O)  | NONE(data_con/rgb_data_20)| 1     |
+data_con/rgb_data_21__and0000(data_con/rgb_data_21__and00001:O)| NONE(data_con/rgb_data_21)| 1     |
+data_con/rgb_data_21__or0000(data_con/rgb_data_21__or00001:O)  | NONE(data_con/rgb_data_21)| 1     |
+data_con/rgb_data_22__and0000(data_con/rgb_data_22__and00001:O)| NONE(data_con/rgb_data_22)| 1     |
+data_con/rgb_data_22__or0000(data_con/rgb_data_22__or00001:O)  | NONE(data_con/rgb_data_22)| 1     |
+data_con/rgb_data_23__and0000(data_con/rgb_data_23__and00001:O)| NONE(data_con/rgb_data_23)| 1     |
+data_con/rgb_data_23__or0000(data_con/rgb_data_23__or00001:O)  | NONE(data_con/rgb_data_23)| 1     |
+data_con/rgb_data_8__and0000(data_con/rgb_data_8__and00001:O)  | NONE(data_con/rgb_data_8) | 1     |
+data_con/rgb_data_8__or0000(data_con/rgb_data_8__or00001:O)    | NONE(data_con/rgb_data_8) | 1     |
+data_con/rgb_data_9__and0000(data_con/rgb_data_9__and00001:O)  | NONE(data_con/rgb_data_9) | 1     |
+data_con/rgb_data_9__or0000(data_con/rgb_data_9__or00001:O)    | NONE(data_con/rgb_data_9) | 1     |
+---------------------------------------------------------------+---------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 9.007ns (Maximum Frequency: 111.025MHz)
+   Minimum input arrival time before clock: 4.036ns
+   Maximum output required time after clock: 6.742ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 1.991ns (frequency: 502.260MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.991ns (Levels of Logic = 0)
+  Source:            clk_25m (FF)
+  Destination:       clk_25m (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: clk_25m to clk_25m
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.591   0.531  clk_25m (clk_25m1)
+     FDR:R                     0.869          clk_25m
+    ----------------------------------------
+    Total                      1.991ns (1.460ns logic, 0.531ns route)
+                                       (73.3% logic, 26.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_25m1'
+  Clock period: 9.007ns (frequency: 111.025MHz)
+  Total number of paths / destination ports: 4294 / 64
+-------------------------------------------------------------------------
+Delay:               9.007ns (Levels of Logic = 6)
+  Source:            interface/c_h_4 (FF)
+  Destination:       interface/line_pix_9 (FF)
+  Source Clock:      clk_25m1 rising
+  Destination Clock: clk_25m1 rising
+
+  Data Path: interface/c_h_4 to interface/line_pix_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.591   0.674  interface/c_h_4 (interface/c_h_4)
+     LUT4:I0->O            3   0.648   0.534  interface/c_h_cmp_eq000010 (interface/c_h_cmp_eq000010)
+     LUT4_L:I3->LO         1   0.648   0.103  interface/c_h_cmp_eq000031_1 (interface/c_h_cmp_eq000031)
+     LUT4:I3->O           12   0.648   0.964  interface/c_v_mux0001<0>140 (interface/N0)
+     LUT4:I3->O            5   0.648   0.636  interface/c_v_mux0001<7>1 (interface/c_v_mux0001<7>)
+     LUT4:I3->O            1   0.648   0.423  interface/video_on_v_cmp_lt00001_SW1 (N9)
+     LUT4:I3->O           10   0.648   0.882  interface/line_pix_not00011 (interface/line_pix_not0001)
+     FDE:CE                    0.312          interface/line_pix_0
+    ----------------------------------------
+    Total                      9.007ns (4.791ns logic, 4.216ns route)
+                                       (53.2% logic, 46.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_25m1'
+  Total number of paths / destination ports: 44 / 44
+-------------------------------------------------------------------------
+Offset:              4.036ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       interface/colum_pix_9 (FF)
+  Destination Clock: clk_25m1 rising
+
+  Data Path: reset to interface/colum_pix_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            23   0.849   1.345  reset_IBUF (reset_IBUF)
+     LUT4:I0->O           10   0.648   0.882  interface/colum_pix_not00011 (interface/colum_pix_not0001)
+     FDE:CE                    0.312          interface/colum_pix_0
+    ----------------------------------------
+    Total                      4.036ns (1.809ns logic, 2.227ns route)
+                                       (44.8% logic, 55.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_25m1'
+  Total number of paths / destination ports: 24 / 23
+-------------------------------------------------------------------------
+Offset:              6.742ns (Levels of Logic = 2)
+  Source:            interface/video_on_h (FF)
+  Destination:       blankn (PAD)
+  Source Clock:      clk_25m1 rising
+
+  Data Path: interface/video_on_h to blankn
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.591   0.563  interface/video_on_h (interface/video_on_h)
+     LUT2:I0->O            1   0.648   0.420  interface/blank_n1 (blankn_OBUF)
+     OBUF:I->O                 4.520          blankn_OBUF (blankn)
+    ----------------------------------------
+    Total                      6.742ns (5.759ns logic, 0.983ns route)
+                                       (85.4% logic, 14.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              5.642ns (Levels of Logic = 1)
+  Source:            clk_25m (FF)
+  Destination:       vclk (PAD)
+  Source Clock:      clk rising
+
+  Data Path: clk_25m to vclk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.591   0.531  clk_25m (clk_25m1)
+     OBUF:I->O                 4.520          vclk_OBUF (vclk)
+    ----------------------------------------
+    Total                      5.642ns (5.111ns logic, 0.531ns route)
+                                       (90.6% logic, 9.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'data_con/rgb_data_2_cmp_lt00001'
+  Total number of paths / destination ports: 24 / 24
+-------------------------------------------------------------------------
+Offset:              5.668ns (Levels of Logic = 1)
+  Source:            data_con/rgb_data_7 (LATCH)
+  Destination:       blue<7> (PAD)
+  Source Clock:      data_con/rgb_data_2_cmp_lt00001 falling
+
+  Data Path: data_con/rgb_data_7 to blue<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDC:G->Q              1   0.728   0.420  data_con/rgb_data_7 (data_con/rgb_data_7)
+     OBUF:I->O                 4.520          blue_7_OBUF (blue<7>)
+    ----------------------------------------
+    Total                      5.668ns (5.248ns logic, 0.420ns route)
+                                       (92.6% logic, 7.4% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 13.84 secs
+ 
+--> 
+
+Total memory usage is 204836 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   26 (   0 filtered)
+Number of infos    :    8 (   0 filtered)
+

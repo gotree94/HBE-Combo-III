@@ -1,0 +1,33 @@
+//! **************************************************************************
+// Written by: Map K.34 on Wed May 07 20:11:44 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "button_sw<10>" LOCATE = SITE "G2" LEVEL 1;
+COMP "button_sw<11>" LOCATE = SITE "G5" LEVEL 1;
+COMP "button_sw<12>" LOCATE = SITE "G11" LEVEL 1;
+COMP "button_sw<13>" LOCATE = SITE "J10" LEVEL 1;
+COMP "button_sw<14>" LOCATE = SITE "J13" LEVEL 1;
+COMP "button_sw<15>" LOCATE = SITE "H4" LEVEL 1;
+COMP "seg_data<0>" LOCATE = SITE "N5" LEVEL 1;
+COMP "button_sw<0>" LOCATE = SITE "D5" LEVEL 1;
+COMP "seg_data<1>" LOCATE = SITE "N6" LEVEL 1;
+COMP "button_sw<1>" LOCATE = SITE "D7" LEVEL 1;
+COMP "seg_data<2>" LOCATE = SITE "N7" LEVEL 1;
+COMP "button_sw<2>" LOCATE = SITE "D12" LEVEL 1;
+COMP "seg_data<3>" LOCATE = SITE "M7" LEVEL 1;
+COMP "button_sw<3>" LOCATE = SITE "F9" LEVEL 1;
+COMP "seg_data<4>" LOCATE = SITE "M8" LEVEL 1;
+COMP "button_sw<4>" LOCATE = SITE "F10" LEVEL 1;
+COMP "seg_data<5>" LOCATE = SITE "M9" LEVEL 1;
+COMP "button_sw<5>" LOCATE = SITE "E6" LEVEL 1;
+COMP "seg_data<6>" LOCATE = SITE "M10" LEVEL 1;
+COMP "button_sw<6>" LOCATE = SITE "E9" LEVEL 1;
+COMP "seg_data<7>" LOCATE = SITE "N1" LEVEL 1;
+COMP "button_sw<7>" LOCATE = SITE "E11" LEVEL 1;
+COMP "button_sw<8>" LOCATE = SITE "H13" LEVEL 1;
+COMP "button_sw<9>" LOCATE = SITE "G1" LEVEL 1;
+NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+COMP "clk" LOCATE = SITE "F13" LEVEL 1;
+SCHEMATIC END;
+

@@ -1,0 +1,46 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 12.847 ns
+From           : motor_data[0]~reg0
+To             : motor_data[2]
+From Clock     : clk
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 212.13 MHz ( period = 4.714 ns )
+From           : cnt[14]
+To             : cnt[23]
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'sensor'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 317.66 MHz ( period = 3.148 ns )
+From           : s_cnt[0]
+To             : s_cnt[4]
+From Clock     : sensor
+To Clock       : sensor
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

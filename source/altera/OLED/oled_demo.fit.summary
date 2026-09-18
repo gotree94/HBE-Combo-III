@@ -1,0 +1,14 @@
+Fitter Status : Successful - Wed Apr 30 17:53:43 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : oled_demo
+Top-level Entity Name : oled_demo
+Family : Cyclone II
+Device : EP2C70F672C8
+Timing Models : Final
+Total logic elements : 205 / 68,416 ( < 1 % )
+Total registers : 63
+Total pins : 15 / 422 ( 4 % )
+Total virtual pins : 0
+Total memory bits : 524,288 / 1,152,000 ( 46 % )
+Embedded Multiplier 9-bit elements : 0 / 300 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

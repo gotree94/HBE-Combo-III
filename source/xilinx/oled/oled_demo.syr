@@ -1,0 +1,496 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Reading design: oled_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "oled_demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "oled_demo"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : oled_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : oled_demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/rom_data.vhd" in Library work.
+Architecture rom_data_a of Entity rom_data is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.vhd" in Library work.
+Entity <oled_demo> compiled.
+Entity <oled_demo> (Architecture <a>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <oled_demo> in library <work> (architecture <a>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <oled_demo> in library <work> (Architecture <a>).
+WARNING:Xst:2211 - "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.vhd" line 303: Instantiating black box module <rom_data>.
+Entity <oled_demo> analyzed. Unit <oled_demo> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <oled_demo>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.vhd".
+WARNING:Xst:1780 - Signal <cnt_ram_datan> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <cnt_ram_cycle> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_0> for signal <oled_routine>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | resetn (negative)                              |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 38x9-bit ROM for signal <oled_dc$varindex0000> created at line 269.
+    Found 1-bit register for signal <oled_cs>.
+    Found 1-bit register for signal <oled_dc>.
+    Found 1-bit register for signal <oled_wn>.
+    Found 1-bit register for signal <clk>.
+    Found 5-bit up counter for signal <clk_cnt>.
+    Found 6-bit register for signal <cnt_init_data>.
+    Found 6-bit adder for signal <cnt_init_data$addsub0000> created at line 159.
+    Found 20-bit register for signal <cnt_ram_data>.
+    Found 20-bit adder for signal <cnt_ram_data$addsub0000> created at line 178.
+    Found 3-bit register for signal <cnt_set_reg>.
+    Found 3-bit adder for signal <cnt_set_reg$addsub0000> created at line 144.
+    Found 3-bit comparator greatequal for signal <oled_cs$cmp_ge0000> created at line 239.
+    Found 3-bit comparator lessequal for signal <oled_cs$cmp_le0000> created at line 239.
+    Found 8-bit register for signal <oled_data>.
+    Found 8-bit register for signal <start_cnt>.
+    Found 8-bit adder for signal <start_cnt$addsub0000> created at line 125.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   1 Counter(s).
+	inferred  49 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+Unit <oled_demo> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 38x9-bit ROM                                          : 1
+# Adders/Subtractors                                   : 4
+ 20-bit adder                                          : 1
+ 3-bit adder                                           : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
+# Counters                                             : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 9
+ 1-bit register                                        : 4
+ 20-bit register                                       : 1
+ 3-bit register                                        : 1
+ 6-bit register                                        : 1
+ 8-bit register                                        : 2
+# Comparators                                          : 2
+ 3-bit comparator greatequal                           : 1
+ 3-bit comparator lessequal                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <oled_routine/FSM> on signal <oled_routine[1:2]> with sequential encoding.
+---------------------
+ State   | Encoding
+---------------------
+ idle    | 00
+ initial | 01
+ wr_ram  | 10
+---------------------
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+Reading core <rom_data.ngc>.
+Loading core <rom_data> for timing and area information for instance <oled_data_inst>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 38x9-bit ROM                                          : 1
+# Adders/Subtractors                                   : 4
+ 20-bit adder                                          : 1
+ 3-bit adder                                           : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
+# Counters                                             : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 51
+ Flip-Flops                                            : 51
+# Comparators                                          : 2
+ 3-bit comparator greatequal                           : 1
+ 3-bit comparator lessequal                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <oled_demo> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block oled_demo, actual ratio is 0.
+FlipFlop cnt_init_data_1 has been replicated 1 time(s)
+FlipFlop cnt_init_data_4 has been replicated 1 time(s)
+FlipFlop cnt_ram_data_1 has been replicated 1 time(s)
+FlipFlop cnt_ram_data_2 has been replicated 1 time(s)
+FlipFlop cnt_ram_data_4 has been replicated 1 time(s)
+FlipFlop cnt_ram_data_5 has been replicated 1 time(s)
+FlipFlop cnt_ram_data_8 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 63
+ Flip-Flops                                            : 63
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : oled_demo.ngr
+Top Level Output File Name         : oled_demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 15
+
+Cell Usage :
+# BELS                             : 397
+#      GND                         : 2
+#      INV                         : 4
+#      LUT1                        : 19
+#      LUT2                        : 32
+#      LUT2_D                      : 2
+#      LUT2_L                      : 3
+#      LUT3                        : 99
+#      LUT3_D                      : 1
+#      LUT3_L                      : 4
+#      LUT4                        : 90
+#      LUT4_D                      : 1
+#      LUT4_L                      : 1
+#      MUXCY                       : 19
+#      MUXF5                       : 65
+#      MUXF6                       : 25
+#      MUXF7                       : 9
+#      VCC                         : 2
+#      XORCY                       : 19
+# FlipFlops/Latches                : 67
+#      FDC                         : 22
+#      FDCE                        : 34
+#      FDE                         : 9
+#      FDP                         : 2
+# RAMS                             : 30
+#      RAMB16BWER                  : 30
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 14
+#      IBUF                        : 1
+#      OBUF                        : 13
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                      137  out of  16640     0%  
+ Number of Slice Flip Flops:             67  out of  33280     0%  
+ Number of 4 input LUTs:                256  out of  33280     0%  
+ Number of IOs:                          15
+ Number of bonded IOBs:                  15  out of    519     2%  
+ Number of BRAMs:                        30  out of     84    35%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+-----------------------------------------------------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                                                                         | Load  |
+-----------------------------------+-----------------------------------------------------------------------------------------------+-------+
+clk1                               | BUFG                                                                                          | 91    |
+oled_data_inst/BU2/dbiterr         | NONE(oled_data_inst/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/s3adsp_init.ram/ram)| 30    |
+clk_50MHz                          | BUFGP                                                                                         | 6     |
+-----------------------------------+-----------------------------------------------------------------------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 58    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.976ns (Maximum Frequency: 143.349MHz)
+   Minimum input arrival time before clock: 3.713ns
+   Maximum output required time after clock: 5.531ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk1'
+  Clock period: 6.976ns (frequency: 143.349MHz)
+  Total number of paths / destination ports: 2337 / 496
+-------------------------------------------------------------------------
+Delay:               6.976ns (Levels of Logic = 7)
+  Source:            oled_data_inst/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/s3adsp_init.ram/ram (RAM)
+  Destination:       oled_data_7 (FF)
+  Source Clock:      clk1 rising
+  Destination Clock: clk1 rising
+
+  Data Path: oled_data_inst/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/s3adsp_init.ram/ram to oled_data_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB16BWER:CLKA->DOPA0    1   2.800   0.500  U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/s3adsp_init.ram/ram (U0/blk_mem_generator/valid.cstr/ram_douta13<8>)
+     LUT3:I1->O            1   0.643   0.000  U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_85 (U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_85)
+     MUXF5:I0->O           1   0.276   0.000  U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_6_f5_4 (U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_6_f55)
+     MUXF6:I0->O           1   0.291   0.000  U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_4_f6_4 (U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_4_f65)
+     MUXF7:I0->O           1   0.291   0.500  U0/blk_mem_generator/valid.cstr/has_mux_a.A/Mmux_dout_mux_2_f7_4 (douta(15))
+     end scope: 'BU2'
+     end scope: 'oled_data_inst'
+     LUT3_L:I1->LO         1   0.643   0.132  oled_data_mux0003<7>7 (oled_data_mux0003<7>7)
+     LUT3:I2->O            1   0.648   0.000  oled_data_mux0003<7>135 (oled_data_mux0003<7>)
+     FDC:D                     0.252          oled_data_7
+    ----------------------------------------
+    Total                      6.976ns (5.844ns logic, 1.132ns route)
+                                       (83.8% logic, 16.2% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_50MHz'
+  Clock period: 4.170ns (frequency: 239.808MHz)
+  Total number of paths / destination ports: 35 / 7
+-------------------------------------------------------------------------
+Delay:               4.170ns (Levels of Logic = 3)
+  Source:            clk_cnt_3 (FF)
+  Destination:       clk_cnt_4 (FF)
+  Source Clock:      clk_50MHz rising
+  Destination Clock: clk_50MHz rising
+
+  Data Path: clk_cnt_3 to clk_cnt_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              3   0.591   0.611  clk_cnt_3 (clk_cnt_3)
+     LUT2_D:I1->LO         1   0.643   0.103  clk_cmp_eq0000_SW0 (N79)
+     LUT4:I3->O            3   0.648   0.674  clk_cmp_eq0000 (clk_cmp_eq0000)
+     LUT4:I0->O            1   0.648   0.000  Mcount_clk_cnt_xor<4>11 (Mcount_clk_cnt12)
+     FDE:D                     0.252          clk_cnt_4
+    ----------------------------------------
+    Total                      4.170ns (2.782ns logic, 1.388ns route)
+                                       (66.7% logic, 33.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_50MHz'
+  Total number of paths / destination ports: 5 / 5
+-------------------------------------------------------------------------
+Offset:              3.713ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       clk_cnt_0 (FF)
+  Destination Clock: clk_50MHz rising
+
+  Data Path: reset to clk_cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            59   0.849   1.271  reset_IBUF (oled_routine_FSM_Acst_inv)
+     INV:I->O              5   0.648   0.633  resetn1_INV_0 (resetn)
+     FDE:CE                    0.312          clk_cnt_0
+    ----------------------------------------
+    Total                      3.713ns (1.809ns logic, 1.904ns route)
+                                       (48.7% logic, 51.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk1'
+  Total number of paths / destination ports: 11 / 11
+-------------------------------------------------------------------------
+Offset:              5.531ns (Levels of Logic = 1)
+  Source:            oled_dc (FF)
+  Destination:       oled_dc (PAD)
+  Source Clock:      clk1 rising
+
+  Data Path: oled_dc to oled_dc
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              1   0.591   0.420  oled_dc (oled_dc_OBUF)
+     OBUF:I->O                 4.520          oled_dc_OBUF (oled_dc)
+    ----------------------------------------
+    Total                      5.531ns (5.111ns logic, 0.420ns route)
+                                       (92.4% logic, 7.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 48.00 secs
+Total CPU time to Xst completion: 47.38 secs
+ 
+--> 
+
+Total memory usage is 229348 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

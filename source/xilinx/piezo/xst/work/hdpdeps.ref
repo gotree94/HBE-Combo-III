@@ -1,0 +1,8 @@
+V3 3
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/piezo/piezo_demo.vhd" 2007/01/03.14:45:36 K.34
+EN work/piezo_demo 1210156421 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/piezo/piezo_demo.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/piezo_demo/hb 1210156422 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/piezo/piezo_demo.vhd" \
+      EN work/piezo_demo 1210156421

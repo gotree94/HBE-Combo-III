@@ -1,0 +1,8 @@
+NET "clk" LOC = F13;
+NET "key<0>" LOC = D5;
+NET "key<1>" LOC = D7;
+NET "key<2>" LOC = D12;
+NET "key<3>" LOC = F9;
+NET "key<4>" LOC = F10;
+NET "key<5>" LOC = E6;
+NET "piezo" LOC = M2;

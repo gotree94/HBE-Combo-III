@@ -1,0 +1,3 @@
+vhdl work "sep.vhd"
+vhdl work "decod.vhd"
+vhdl work "stop_watch.vhd"

@@ -1,0 +1,78 @@
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+11
+810
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+dip_switch
+# storage
+db|dip_switch.(0).cnf
+db|dip_switch.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+dip_switch.vhd
+cfb758dd66c9e238d754661ea25eb131
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+diptoseg
+# storage
+db|dip_switch.(1).cnf
+db|dip_switch.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+diptoseg.vhd
+619769b785a2b017e41d348b8c44a733
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(dip_sw)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(seg_d)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+diptoseg:d1
+diptoseg:d2
+}
+# end
+# complete
+

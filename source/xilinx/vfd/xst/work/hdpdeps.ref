@@ -1,0 +1,8 @@
+V3 3
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.vhd" 2008/05/08.21:11:05 K.34
+EN work/vfd_demo 1210248671 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.vhd" \
+      PB ieee/std_logic_1164 1203817036 PB ieee/STD_LOGIC_UNSIGNED 1203817038
+AR work/vfd_demo/a 1210248672 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.vhd" \
+      EN work/vfd_demo 1210248671

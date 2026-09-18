@@ -1,0 +1,6 @@
+NET "clk" LOC = F13;
+NET "motor_data<0>" LOC = Y22;
+NET "motor_data<1>" LOC = Y25;
+NET "motor_data<2>" LOC = Y21;
+NET "motor_data<3>" LOC = Y24;
+NET "sensor" LOC = Y26;

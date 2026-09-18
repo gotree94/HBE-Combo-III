@@ -1,0 +1,13 @@
+//! **************************************************************************
+// Written by: Map K.34 on Thu May 08 20:58:39 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk" LOCATE = SITE "F13" LEVEL 1;
+COMP "parity_en" LOCATE = SITE "A13" LEVEL 1;
+COMP "parity_mode" LOCATE = SITE "C1" LEVEL 1;
+COMP "reset" LOCATE = SITE "D5" LEVEL 1;
+COMP "rxd" LOCATE = SITE "K2" LEVEL 1;
+COMP "txd" LOCATE = SITE "H12" LEVEL 1;
+SCHEMATIC END;
+

@@ -1,0 +1,23 @@
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.syr"
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "led_demo.ngc" led_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o led_demo_map.ncd led_demo.ngd led_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -w -intstyle ise -ol std -t 1 led_demo_map.ncd led_demo.ncd led_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -e 3 -s 4 -xml led_demo led_demo.ncd -o led_demo.twr led_demo.pcf -ucf led_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -f led_demo.ut led_demo.ncd
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -w -intstyle ise -ol std -t 1 led_demo_map.ncd led_demo.ncd led_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -e 3 -s 4 -xml led_demo led_demo.ncd -o led_demo.twr led_demo.pcf -ucf led_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -f led_demo.ut led_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -f led_demo.ut led_demo.ncd
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "led_demo.ngc" led_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o led_demo_map.ncd led_demo.ngd led_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -w -intstyle ise -ol std -t 1 led_demo_map.ncd led_demo.ncd led_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -v 3 -s 4 -xml led_demo led_demo.ncd -o led_demo.twr led_demo.pcf -ucf led_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -f led_demo.ut led_demo.ncd
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "led_demo.ngc" led_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o led_demo_map.ncd led_demo.ngd led_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -w -intstyle ise -ol std -t 1 led_demo_map.ncd led_demo.ncd led_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -v 3 -s 4 -xml led_demo led_demo.ncd -o led_demo.twr led_demo.pcf -ucf led_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.ise" -intstyle ise -f led_demo.ut led_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/CD/source/xilinx/led/led_demo.ise" -intstyle ise -f led_demo.ut led_demo.ncd

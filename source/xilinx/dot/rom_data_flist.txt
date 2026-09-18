@@ -1,0 +1,13 @@
+# Output products list for <rom_data>
+rom_data.asy
+rom_data.mif
+rom_data.ngc
+rom_data.sym
+rom_data.v
+rom_data.veo
+rom_data.vhd
+rom_data.vho
+rom_data.xco
+rom_data_blk_mem_gen_v2_7_xst_1.ngc_xst.xrpt
+rom_data_flist.txt
+rom_data_xmdf.tcl

@@ -1,0 +1,22 @@
+V3 11
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd" 2007/01/19.11:37:01 K.34
+EN work/led_clk_gen 1210122463 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd" \
+      PB ieee/std_logic_1164 1200023565 PB ieee/STD_LOGIC_UNSIGNED 1200023567
+AR work/led_clk_gen/hb 1210122464 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_clk_gen.vhd" \
+      EN work/led_clk_gen 1210122463
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" 2008/04/25.15:19:55 K.34
+EN work/led_demo 1210122467 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" \
+      PB ieee/std_logic_1164 1200023565
+AR work/led_demo/hb 1210122468 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_demo.vhd" \
+      EN work/led_demo 1210122467 CP led_clk_gen CP led_pwm_gen
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd" 2007/01/19.11:37:19 K.34
+EN work/led_pwm_gen 1210122465 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd" \
+      PB ieee/std_logic_1164 1200023565 PB ieee/STD_LOGIC_UNSIGNED 1200023567
+AR work/led_pwm_gen/hb 1210122466 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/led/led_pwm_gen.vhd" \
+      EN work/led_pwm_gen 1210122465

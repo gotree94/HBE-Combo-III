@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="Xst" num="2211" delta="unknown" >&quot;<arg fmt="%s" index="1">F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd</arg>&quot; line <arg fmt="%d" index="2">66</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">rom_data</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="2679" delta="unknown" >Register &lt;<arg fmt="%s" index="1">use_one_en</arg>&gt; in unit &lt;<arg fmt="%s" index="2">bitman</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="info" file="Xst" num="2679" delta="unknown" >Register &lt;<arg fmt="%s" index="1">use_two_en</arg>&gt; in unit &lt;<arg fmt="%s" index="2">bitman</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="warning" file="Xst" num="643" delta="unknown" >&quot;<arg fmt="%s" index="1">F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd</arg>&quot; line <arg fmt="%d" index="2">219</arg>: The result of a <arg fmt="%d" index="3">4</arg>x<arg fmt="%d" index="4">4</arg>-bit multiplication is partially used. Only the <arg fmt="%d" index="5">7</arg> least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+</msg>
+
+<msg type="info" file="Xst" num="0" delta="unknown" >In order to maximize performance and save block RAM resources, the small ROM &lt;<arg fmt="%s" index="1">Mrom_dot_scan_mux0001</arg>&gt; will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_cnt_sum_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
+</msg>
+
+<msg type="info" file="Xst" num="2385" delta="unknown" >HDL ADVISOR - You can improve the performance of the multiplier <arg fmt="%s" index="1">Mmult_cnt_sum_mult0001</arg> by adding <arg fmt="%d" index="2">2</arg> register level(s).
+</msg>
+
+<msg type="warning" file="Xst" num="1426" delta="unknown" >The value init of the FF/Latch <arg fmt="%s" index="1">cnt_sum_9</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">bitman</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">0</arg>.
+</msg>
+
+<msg type="info" file="Xst" num="2169" delta="unknown" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+</msg>
+
+</messages>
+

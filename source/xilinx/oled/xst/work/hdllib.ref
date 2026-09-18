@@ -1,0 +1,4 @@
+EN rom_data NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/rom_data.vhd" sub00/vhpl00 1210155052
+AR rom_data rom_data_a "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/rom_data.vhd" sub00/vhpl01 1210155053
+AR oled_demo a "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.vhd" sub00/vhpl03 1210155055
+EN oled_demo NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/oled/oled_demo.vhd" sub00/vhpl02 1210155054

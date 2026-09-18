@@ -1,0 +1,531 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Reading design: rs232_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "rs232_demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "rs232_demo"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : rs232_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : rs232_demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd" in Library work.
+Architecture a of Entity rs_232 is up to date.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd" in Library work.
+Entity <rs232_demo> compiled.
+Entity <rs232_demo> (Architecture <a>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <rs232_demo> in library <work> (architecture <a>).
+
+Analyzing hierarchy for entity <rs_232> in library <work> (architecture <a>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <rs232_demo> in library <work> (Architecture <a>).
+Entity <rs232_demo> analyzed. Unit <rs232_demo> generated.
+
+Analyzing Entity <rs_232> in library <work> (Architecture <a>).
+Entity <rs_232> analyzed. Unit <rs_232> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <rs_232>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd".
+    Found finite state machine <FSM_0> for signal <tx_routine>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | resetn (negative)                              |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | tx_idle                                        |
+    | Power Up State     | tx_idle                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <rx_routine>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 14                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | resetn (negative)                              |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | rx_idle                                        |
+    | Power Up State     | rx_idle                                        |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <rxd_en>.
+    Found 1-bit register for signal <txd>.
+    Found 8-bit register for signal <uart_data_in>.
+    Found 8-bit register for signal <cnt_rx_bit_rate>.
+    Found 8-bit adder for signal <cnt_rx_bit_rate$addsub0000> created at line 133.
+    Found 3-bit register for signal <cnt_rx_data>.
+    Found 3-bit adder for signal <cnt_rx_data$addsub0000> created at line 150.
+    Found 8-bit register for signal <cnt_tx_bit_rate>.
+    Found 8-bit adder for signal <cnt_tx_bit_rate$addsub0000> created at line 256.
+    Found 3-bit register for signal <cnt_tx_data>.
+    Found 3-bit adder for signal <cnt_tx_data$addsub0000> created at line 271.
+    Found 16-bit register for signal <reg_rxd>.
+    Found 8-bit register for signal <rx_bit_add>.
+    Found 8-bit adder for signal <rx_bit_add$addsub0000>.
+    Found 8-bit register for signal <rx_data>.
+    Found 8-bit comparator greatequal for signal <rx_data$cmp_ge0000> created at line 166.
+    Found 9-bit comparator greatequal for signal <rxd_en$cmp_ge0000> created at line 184.
+    Found 8-bit register for signal <tx_data>.
+    Found 1-bit register for signal <tx_parity_chk>.
+    Found 1-bit xor9 for signal <tx_parity_chk$xor0000> created at line 300.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred  73 D-type flip-flop(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred   1 Xor(s).
+Unit <rs_232> synthesized.
+
+
+Synthesizing Unit <rs232_demo>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd".
+    Found 1-bit register for signal <clk_25m>.
+    Found 8-bit register for signal <reg_data_in0>.
+    Found 8-bit register for signal <reg_data_in1>.
+    Found 8-bit register for signal <reg_data_in2>.
+    Found 8-bit register for signal <reg_data_in3>.
+    Found 8-bit register for signal <reg_data_in4>.
+    Found 8-bit register for signal <reg_data_in5>.
+    Found 8-bit register for signal <reg_data_in6>.
+    Found 8-bit register for signal <reg_data_in7>.
+    Found 8-bit register for signal <reg_rxd_en>.
+    Summary:
+	inferred  73 D-type flip-flop(s).
+Unit <rs232_demo> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 3-bit adder                                           : 2
+ 8-bit adder                                           : 3
+# Registers                                            : 22
+ 1-bit register                                        : 4
+ 16-bit register                                       : 1
+ 3-bit register                                        : 2
+ 8-bit register                                        : 15
+# Comparators                                          : 2
+ 8-bit comparator greatequal                           : 1
+ 9-bit comparator greatequal                           : 1
+# Xors                                                 : 1
+ 1-bit xor9                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <u_rs_232/rx_routine/FSM> on signal <rx_routine[1:3]> with sequential encoding.
+-----------------------
+ State     | Encoding
+-----------------------
+ rx_idle   | 000
+ rx_start  | 001
+ data_rx   | 010
+ rx_parity | 011
+ rx_stop   | 100
+-----------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <u_rs_232/tx_routine/FSM> on signal <tx_routine[1:3]> with sequential encoding.
+-----------------------
+ State     | Encoding
+-----------------------
+ tx_idle   | 000
+ tx_start  | 001
+ data_tx   | 010
+ tx_parity | 011
+ tx_stop   | 100
+-----------------------
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 3-bit adder                                           : 2
+ 8-bit adder                                           : 3
+# Registers                                            : 152
+ Flip-Flops                                            : 152
+# Comparators                                          : 2
+ 8-bit comparator greatequal                           : 1
+ 9-bit comparator greatequal                           : 1
+# Xors                                                 : 1
+ 1-bit xor9                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <rs232_demo> ...
+
+Optimizing unit <rs_232> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block rs232_demo, actual ratio is 0.
+FlipFlop u_rs_232/cnt_rx_bit_rate_0 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <rs232_demo> :
+	Found 8-bit shift register for signal <reg_rxd_en_7>.
+	Found 8-bit shift register for signal <reg_data_in7_0>.
+	Found 8-bit shift register for signal <reg_data_in7_1>.
+	Found 8-bit shift register for signal <reg_data_in7_2>.
+	Found 8-bit shift register for signal <reg_data_in7_3>.
+	Found 8-bit shift register for signal <reg_data_in7_4>.
+	Found 8-bit shift register for signal <reg_data_in7_5>.
+	Found 8-bit shift register for signal <reg_data_in7_6>.
+	Found 8-bit shift register for signal <reg_data_in7_7>.
+Unit <rs232_demo> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 81
+ Flip-Flops                                            : 81
+# Shift Registers                                      : 9
+ 8-bit shift register                                  : 9
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : rs232_demo.ngr
+Top Level Output File Name         : rs232_demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 6
+
+Cell Usage :
+# BELS                             : 153
+#      GND                         : 1
+#      LUT2                        : 17
+#      LUT2_D                      : 2
+#      LUT2_L                      : 1
+#      LUT3                        : 23
+#      LUT3_D                      : 2
+#      LUT3_L                      : 6
+#      LUT4                        : 71
+#      LUT4_D                      : 10
+#      LUT4_L                      : 18
+#      MUXF5                       : 1
+#      VCC                         : 1
+# FlipFlops/Latches                : 106
+#      FD                          : 9
+#      FDC                         : 64
+#      FDCE                        : 31
+#      FDP                         : 1
+#      FDR                         : 1
+# Shift Registers                  : 9
+#      SRL16                       : 9
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 5
+#      IBUF                        : 4
+#      OBUF                        : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                       91  out of  16640     0%  
+ Number of Slice Flip Flops:            106  out of  33280     0%  
+ Number of 4 input LUTs:                159  out of  33280     0%  
+    Number used as logic:               150
+    Number used as Shift registers:       9
+ Number of IOs:                           6
+ Number of bonded IOBs:                   6  out of    519     1%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 1     |
+clk_25m1                           | BUFG                   | 114   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 96    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.078ns (Maximum Frequency: 164.528MHz)
+   Minimum input arrival time before clock: 4.523ns
+   Maximum output required time after clock: 5.531ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 1.907ns (frequency: 524.384MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.907ns (Levels of Logic = 0)
+  Source:            clk_25m (FF)
+  Destination:       clk_25m (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: clk_25m to clk_25m
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.447  clk_25m (clk_25m1)
+     FDR:R                     0.869          clk_25m
+    ----------------------------------------
+    Total                      1.907ns (1.460ns logic, 0.447ns route)
+                                       (76.6% logic, 23.4% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_25m1'
+  Clock period: 6.078ns (frequency: 164.528MHz)
+  Total number of paths / destination ports: 995 / 143
+-------------------------------------------------------------------------
+Delay:               6.078ns (Levels of Logic = 3)
+  Source:            u_rs_232/cnt_rx_bit_rate_1 (FF)
+  Destination:       u_rs_232/rx_bit_add_7 (FF)
+  Source Clock:      clk_25m1 rising
+  Destination Clock: clk_25m1 rising
+
+  Data Path: u_rs_232/cnt_rx_bit_rate_1 to u_rs_232/rx_bit_add_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             12   0.591   1.041  u_rs_232/cnt_rx_bit_rate_1 (u_rs_232/cnt_rx_bit_rate_1)
+     LUT2:I1->O            1   0.643   0.423  u_rs_232/rx_data_cmp_eq00001_SW1 (N29)
+     LUT4:I3->O           13   0.648   1.015  u_rs_232/rx_routine_cmp_eq00011 (u_rs_232/rx_routine_cmp_eq0001)
+     LUT3:I2->O            8   0.648   0.757  u_rs_232/rx_bit_add_not00011 (u_rs_232/rx_bit_add_not0001)
+     FDCE:CE                   0.312          u_rs_232/rx_bit_add_0
+    ----------------------------------------
+    Total                      6.078ns (2.842ns logic, 3.236ns route)
+                                       (46.8% logic, 53.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_25m1'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              4.523ns (Levels of Logic = 4)
+  Source:            parity_en (PAD)
+  Destination:       u_rs_232/rx_routine_FSM_FFd3 (FF)
+  Destination Clock: clk_25m1 rising
+
+  Data Path: parity_en to u_rs_232/rx_routine_FSM_FFd3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   0.849   0.812  parity_en_IBUF (parity_en_IBUF)
+     LUT3_L:I0->LO         1   0.648   0.103  u_rs_232/rx_routine_FSM_FFd3-In5 (u_rs_232/rx_routine_FSM_FFd3-In5)
+     LUT4:I3->O            1   0.648   0.563  u_rs_232/rx_routine_FSM_FFd3-In11 (u_rs_232/rx_routine_FSM_FFd3-In11)
+     LUT4:I0->O            1   0.648   0.000  u_rs_232/rx_routine_FSM_FFd3-In168 (u_rs_232/rx_routine_FSM_FFd3-In)
+     FDC:D                     0.252          u_rs_232/rx_routine_FSM_FFd3
+    ----------------------------------------
+    Total                      4.523ns (3.045ns logic, 1.478ns route)
+                                       (67.3% logic, 32.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_25m1'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              5.531ns (Levels of Logic = 1)
+  Source:            u_rs_232/txd (FF)
+  Destination:       txd (PAD)
+  Source Clock:      clk_25m1 rising
+
+  Data Path: u_rs_232/txd to txd
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q              1   0.591   0.420  u_rs_232/txd (u_rs_232/txd)
+     OBUF:I->O                 4.520          txd_OBUF (txd)
+    ----------------------------------------
+    Total                      5.531ns (5.111ns logic, 0.420ns route)
+                                       (92.4% logic, 7.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 15.00 secs
+Total CPU time to Xst completion: 15.13 secs
+ 
+--> 
+
+Total memory usage is 206884 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

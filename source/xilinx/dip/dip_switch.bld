@@ -1,0 +1,42 @@
+Release 10.1.01 ngdbuild K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\10.1\ISE\bin\nt\unwrapped\ngdbuild.exe -ise F:/HANBACK
+Product/HBE-COMBO III/source/xilinx/dip/dip_switch.ise -intstyle ise -dd _ngo
+-nt timestamp -i -p xc3sd1800a-fg676-4 dip_switch.ngc dip_switch.ngd
+
+Reading NGO file "F:/HANBACK Product/HBE-COMBO
+III/source/xilinx/dip/dip_switch.ngc" ...
+Reading in constraint information from 'dip_switch.ucf'...
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+WARNING:NgdBuild:1012 - The constraint <NET "seg_com<1>" LOC = R2>
+   [dip_switch.ucf(2)] is overridden on the design object seg_com<1> by the
+   constraint <NET "seg_com<1>" LOC = P8> [dip_switch.ucf(21)].
+WARNING:NgdBuild:1012 - The constraint <NET "seg_com<4>" LOC = P6>
+   [dip_switch.ucf(3)] is overridden on the design object seg_com<4> by the
+   constraint <NET "seg_com<4>" LOC = R4> [dip_switch.ucf(24)].
+Done...
+Checking Partitions ...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   2
+
+Total memory usage is 75648 kilobytes
+
+Writing NGD file "dip_switch.ngd" ...
+
+Writing NGDBUILD log file "dip_switch.bld"...

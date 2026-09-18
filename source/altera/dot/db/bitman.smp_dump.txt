@@ -1,0 +1,7 @@
+
+State Machine - |bitman|en_state
+Name en_state.move_right en_state.move_left en_state.jump en_state.stand 
+en_state.stand 0 0 0 0 
+en_state.jump 0 0 1 1 
+en_state.move_left 0 1 0 1 
+en_state.move_right 1 0 0 1 

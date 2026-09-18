@@ -1,0 +1,468 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Reading design: vfd_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "vfd_demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "vfd_demo"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : vfd_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : vfd_demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.vhd" in Library work.
+Entity <vfd_demo> compiled.
+Entity <vfd_demo> (Architecture <a>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <vfd_demo> in library <work> (architecture <a>) with generics.
+	cnt_max = 4
+	display_delay = 399
+	lcd_char = 16
+	stable_delay = 19
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing generic Entity <vfd_demo> in library <work> (Architecture <a>).
+	cnt_max = 4
+	display_delay = 399
+	lcd_char = 16
+	stable_delay = 19
+Entity <vfd_demo> analyzed. Unit <vfd_demo> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <vfd_demo>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.vhd".
+    Found finite state machine <FSM_0> for signal <lcd_routine>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 8                                              |
+    | Clock              | clk_d (rising_edge)                            |
+    | Clock enable       | lcd_routine$cmp_eq0000 (positive)              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | delay_20m                                      |
+    | Power Up State     | delay_20m                                      |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 17x16-bit ROM for signal <cnt_line$rom0000>.
+    Found 1-bit register for signal <vfd_e>.
+    Found 1-bit register for signal <vfd_rs>.
+    Found 8-bit register for signal <vfd_data>.
+    Found 1-bit register for signal <clk_d>.
+    Found 15-bit up counter for signal <cnt>.
+    Found 2-bit up counter for signal <cnt_brightness>.
+    Found 3-bit up counter for signal <cnt_clk>.
+    Found 5-bit register for signal <cnt_delay_20m>.
+    Found 5-bit adder for signal <cnt_delay_20m$addsub0000> created at line 127.
+    Found 9-bit register for signal <cnt_delay_2s>.
+    Found 9-bit adder for signal <cnt_delay_2s$addsub0000> created at line 146.
+    Found 5-bit register for signal <cnt_line>.
+    Found 5-bit adder for signal <cnt_line$addsub0000> created at line 165.
+    Found 3-bit comparator greatequal for signal <vfd_e$cmp_ge0000> created at line 229.
+    Found 3-bit comparator lessequal for signal <vfd_e$cmp_le0000> created at line 229.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   3 Counter(s).
+	inferred  30 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+Unit <vfd_demo> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 17x16-bit ROM                                         : 1
+# Adders/Subtractors                                   : 3
+ 5-bit adder                                           : 2
+ 9-bit adder                                           : 1
+# Counters                                             : 3
+ 15-bit up counter                                     : 1
+ 2-bit up counter                                      : 1
+ 3-bit up counter                                      : 1
+# Registers                                            : 7
+ 1-bit register                                        : 3
+ 5-bit register                                        : 2
+ 8-bit register                                        : 1
+ 9-bit register                                        : 1
+# Comparators                                          : 2
+ 3-bit comparator greatequal                           : 1
+ 3-bit comparator lessequal                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <lcd_routine/FSM> on signal <lcd_routine[1:3]> with gray encoding.
+----------------------------
+ State          | Encoding
+----------------------------
+ delay_20m      | 000
+ function_set   | 001
+ entry_mode     | 011
+ disp_on        | 010
+ disp_line1     | 110
+ disp_line2     | 111
+ delay_2s       | 101
+ brightness_set | 100
+----------------------------
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 17x16-bit ROM                                         : 1
+# Adders/Subtractors                                   : 3
+ 5-bit adder                                           : 2
+ 9-bit adder                                           : 1
+# Counters                                             : 3
+ 15-bit up counter                                     : 1
+ 2-bit up counter                                      : 1
+ 3-bit up counter                                      : 1
+# Registers                                            : 33
+ Flip-Flops                                            : 33
+# Comparators                                          : 2
+ 3-bit comparator greatequal                           : 1
+ 3-bit comparator lessequal                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <vfd_demo> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block vfd_demo, actual ratio is 0.
+FlipFlop cnt_line_0 has been replicated 2 time(s)
+FlipFlop cnt_line_1 has been replicated 2 time(s)
+FlipFlop cnt_line_2 has been replicated 2 time(s)
+FlipFlop cnt_line_3 has been replicated 2 time(s)
+FlipFlop cnt_line_4 has been replicated 1 time(s)
+FlipFlop lcd_routine_FSM_FFd3 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 63
+ Flip-Flops                                            : 63
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : vfd_demo.ngr
+Top Level Output File Name         : vfd_demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 13
+
+Cell Usage :
+# BELS                             : 178
+#      GND                         : 1
+#      INV                         : 4
+#      LUT1                        : 22
+#      LUT2                        : 16
+#      LUT2_D                      : 1
+#      LUT2_L                      : 2
+#      LUT3                        : 16
+#      LUT3_D                      : 1
+#      LUT3_L                      : 2
+#      LUT4                        : 51
+#      LUT4_D                      : 3
+#      LUT4_L                      : 7
+#      MUXCY                       : 22
+#      MUXF5                       : 7
+#      VCC                         : 1
+#      XORCY                       : 22
+# FlipFlops/Latches                : 63
+#      FDC                         : 13
+#      FDCE                        : 34
+#      FDE                         : 1
+#      FDR                         : 15
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 12
+#      IBUF                        : 1
+#      OBUF                        : 11
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                       66  out of  16640     0%  
+ Number of Slice Flip Flops:             63  out of  33280     0%  
+ Number of 4 input LUTs:                125  out of  33280     0%  
+ Number of IOs:                          13
+ Number of bonded IOBs:                  13  out of    519     2%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 16    |
+clk_d1                             | BUFG                   | 47    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst                                | IBUF                   | 47    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 5.475ns (Maximum Frequency: 182.648MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 5.531ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.875ns (frequency: 205.128MHz)
+  Total number of paths / destination ports: 361 / 32
+-------------------------------------------------------------------------
+Delay:               4.875ns (Levels of Logic = 2)
+  Source:            cnt_5 (FF)
+  Destination:       cnt_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: cnt_5 to cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.590  cnt_5 (cnt_5)
+     LUT4:I0->O            1   0.648   0.500  cnt_cmp_eq000013 (cnt_cmp_eq000013)
+     LUT4:I1->O           16   0.643   1.034  cnt_cmp_eq000058 (cnt_cmp_eq0000)
+     FDR:R                     0.869          cnt_0
+    ----------------------------------------
+    Total                      4.875ns (2.751ns logic, 2.124ns route)
+                                       (56.4% logic, 43.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_d1'
+  Clock period: 5.475ns (frequency: 182.648MHz)
+  Total number of paths / destination ports: 731 / 81
+-------------------------------------------------------------------------
+Delay:               5.475ns (Levels of Logic = 4)
+  Source:            cnt_delay_2s_3 (FF)
+  Destination:       cnt_delay_2s_0 (FF)
+  Source Clock:      clk_d1 rising
+  Destination Clock: clk_d1 rising
+
+  Data Path: cnt_delay_2s_3 to cnt_delay_2s_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             2   0.591   0.590  cnt_delay_2s_3 (cnt_delay_2s_3)
+     LUT3:I0->O            1   0.648   0.452  lcd_routine_cmp_eq00035 (lcd_routine_cmp_eq00035)
+     LUT4_D:I2->LO         1   0.648   0.103  lcd_routine_cmp_eq000321 (N40)
+     LUT4:I3->O            9   0.648   0.900  cnt_delay_2s_mux0001<0>11 (N6)
+     LUT2:I1->O            1   0.643   0.000  cnt_delay_2s_mux0001<7>1 (cnt_delay_2s_mux0001<7>)
+     FDCE:D                    0.252          cnt_delay_2s_1
+    ----------------------------------------
+    Total                      5.475ns (3.430ns logic, 2.045ns route)
+                                       (62.6% logic, 37.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_d1'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              5.531ns (Levels of Logic = 1)
+  Source:            vfd_rs (FF)
+  Destination:       vfd_rs (PAD)
+  Source Clock:      clk_d1 rising
+
+  Data Path: vfd_rs to vfd_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              1   0.591   0.420  vfd_rs (vfd_rs_OBUF)
+     OBUF:I->O                 4.520          vfd_rs_OBUF (vfd_rs)
+    ----------------------------------------
+    Total                      5.531ns (5.111ns logic, 0.420ns route)
+                                       (92.4% logic, 7.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 15.00 secs
+Total CPU time to Xst completion: 14.58 secs
+ 
+--> 
+
+Total memory usage is 205860 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

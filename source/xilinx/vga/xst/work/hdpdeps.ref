@@ -1,0 +1,22 @@
+V3 11
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd" 2007/01/05.10:50:11 K.34
+EN work/interface_vga 1210249304 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd" \
+      PB ieee/std_logic_1164 1203817036 PH ieee/NUMERIC_STD 1203817036
+AR work/interface_vga/hb 1210249305 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd" \
+      EN work/interface_vga 1210249304
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd" 2006/05/04.15:24:14 K.34
+EN work/vga_data 1210249302 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd" \
+      PB ieee/std_logic_1164 1203817036 PB ieee/STD_LOGIC_UNSIGNED 1203817038
+AR work/vga_data/data 1210249303 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd" \
+      EN work/vga_data 1210249302
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd" 2008/05/08.21:21:37 K.34
+EN work/vga_demo 1210249306 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/vga_demo/hb 1210249307 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd" \
+      EN work/vga_demo 1210249306 CP vga_data CP interface_vga

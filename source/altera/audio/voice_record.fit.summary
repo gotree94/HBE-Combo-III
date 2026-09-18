@@ -1,0 +1,14 @@
+Fitter Status : Successful - Thu Jun 05 21:59:55 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : voice_record
+Top-level Entity Name : voice_record
+Family : Cyclone II
+Device : EP2C70F672C8
+Timing Models : Final
+Total logic elements : 250 / 68,416 ( < 1 % )
+Total registers : 187
+Total pins : 58 / 422 ( 14 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,152,000 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 300 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )

@@ -1,0 +1,46 @@
+|piezo_demo
+clk => clk_1m.CLK
+clk => cnt_1m[0].CLK
+clk => cnt_1m[1].CLK
+clk => cnt_1m[2].CLK
+clk => cnt_1m[3].CLK
+clk => cnt_1m[4].CLK
+key[0] => Equal1.IN5
+key[0] => Equal3.IN4
+key[0] => Equal5.IN4
+key[0] => Equal7.IN4
+key[0] => Equal9.IN4
+key[0] => Equal11.IN4
+key[1] => Equal1.IN4
+key[1] => Equal3.IN5
+key[1] => Equal5.IN3
+key[1] => Equal7.IN3
+key[1] => Equal9.IN3
+key[1] => Equal11.IN3
+key[2] => Equal1.IN3
+key[2] => Equal3.IN3
+key[2] => Equal5.IN5
+key[2] => Equal7.IN2
+key[2] => Equal9.IN2
+key[2] => Equal11.IN2
+key[3] => Equal1.IN2
+key[3] => Equal3.IN2
+key[3] => Equal5.IN2
+key[3] => Equal7.IN5
+key[3] => Equal9.IN1
+key[3] => Equal11.IN1
+key[4] => Equal1.IN1
+key[4] => Equal3.IN1
+key[4] => Equal5.IN1
+key[4] => Equal7.IN1
+key[4] => Equal9.IN5
+key[4] => Equal11.IN0
+key[5] => Equal1.IN0
+key[5] => Equal3.IN0
+key[5] => Equal5.IN0
+key[5] => Equal7.IN0
+key[5] => Equal9.IN0
+key[5] => Equal11.IN5
+piezo <= p_clk.DB_MAX_OUTPUT_PORT_TYPE
+
+

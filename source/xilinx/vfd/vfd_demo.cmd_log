@@ -1,0 +1,13 @@
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "vfd_demo.ngc" vfd_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o vfd_demo_map.ncd vfd_demo.ngd vfd_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -w -intstyle ise -ol std -t 1 vfd_demo_map.ncd vfd_demo.ncd vfd_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -v 3 -s 4 -xml vfd_demo vfd_demo.ncd -o vfd_demo.twr vfd_demo.pcf -ucf vfd_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -f vfd_demo.ut vfd_demo.ncd
+xst -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -ifn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.xst" -ofn "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.syr"
+ngdbuild -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3sd1800a-fg676-4 "vfd_demo.ngc" vfd_demo.ngd
+map -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -p xc3sd1800a-fg676-4 -cm area -pr off -k 4 -c 100 -o vfd_demo_map.ncd vfd_demo.ngd vfd_demo.pcf
+par -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -w -intstyle ise -ol std -t 1 vfd_demo_map.ncd vfd_demo.ncd vfd_demo.pcf
+trce -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -v 3 -s 4 -xml vfd_demo vfd_demo.ncd -o vfd_demo.twr vfd_demo.pcf -ucf vfd_demo.ucf
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -f vfd_demo.ut vfd_demo.ncd
+bitgen -ise "F:/HANBACK Product/HBE-COMBO III/CD/source/xilinx/vfd/vfd_demo.ise" -intstyle ise -f vfd_demo.ut vfd_demo.ncd

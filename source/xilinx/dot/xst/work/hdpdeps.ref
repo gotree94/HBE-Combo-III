@@ -1,0 +1,16 @@
+V3 7
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd" 2008/05/08.09:44:23 K.34
+EN work/bitman 1210207471 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd" \
+      PB ieee/std_logic_1164 1203817036 PB ieee/STD_LOGIC_UNSIGNED 1203817038 \
+      PB ieee/std_logic_arith 1203817037 PH ieee/NUMERIC_STD 1203817036
+AR work/bitman/mush 1210207472 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/bitman.vhd" \
+      EN work/bitman 1210207471 CP rom_data
+FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/rom_data.vhd" 2008/05/07.20:53:40 K.34
+EN work/rom_data 1210207469 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/rom_data.vhd" \
+      PB ieee/std_logic_1164 1203817036
+AR work/rom_data/rom_data_a 1210207470 \
+      FL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/dot/rom_data.vhd" \
+      EN work/rom_data 1210207469

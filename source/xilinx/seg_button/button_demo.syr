@@ -1,0 +1,364 @@
+Release 10.1.01 - xst K.34 (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.25 secs
+ 
+--> Parameter xsthdpdir set to F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.25 secs
+ 
+--> Reading design: button_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "button_demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "button_demo"
+Output Format                      : NGC
+Target Device                      : xc3sd1800a-4-fg676
+
+---- Source Options
+Top Module Name                    : button_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : button_demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/button_demo.vhd" in Library work.
+Entity <button_demo> compiled.
+Entity <button_demo> (Architecture <hb>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <button_demo> in library <work> (architecture <hb>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <button_demo> in library <work> (Architecture <hb>).
+Entity <button_demo> analyzed. Unit <button_demo> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <button_demo>.
+    Related source file is "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_button/button_demo.vhd".
+    Using one-hot encoding for signal <button_data>.
+    Found 8-bit register for signal <seg_data>.
+    Found 17-bit register for signal <button_data>.
+    Summary:
+	inferred  25 D-type flip-flop(s).
+Unit <button_demo> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 2
+ 17-bit register                                       : 1
+ 8-bit register                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '3sd1800a.nph' in environment C:\Xilinx\10.1\ISE.
+WARNING:Xst:1710 - FF/Latch <seg_data_0> (without init value) has a constant value of 0 in block <button_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <button_data_16> of sequential type is unconnected in block <button_demo>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 23
+ Flip-Flops                                            : 23
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <button_demo> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block button_demo, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 23
+ Flip-Flops                                            : 23
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : button_demo.ngr
+Top Level Output File Name         : button_demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 25
+
+Cell Usage :
+# BELS                             : 53
+#      GND                         : 1
+#      LUT2                        : 6
+#      LUT3                        : 19
+#      LUT4                        : 20
+#      LUT4_L                      : 7
+# FlipFlops/Latches                : 23
+#      FD                          : 1
+#      FDR                         : 15
+#      FDS                         : 7
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 24
+#      IBUF                        : 16
+#      OBUF                        : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3sd1800afg676-4 
+
+ Number of Slices:                       29  out of  16640     0%  
+ Number of Slice Flip Flops:             23  out of  33280     0%  
+ Number of 4 input LUTs:                 52  out of  33280     0%  
+ Number of IOs:                          25
+ Number of bonded IOBs:                  25  out of    519     4%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 23    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 3.410ns (Maximum Frequency: 293.255MHz)
+   Minimum input arrival time before clock: 7.572ns
+   Maximum output required time after clock: 5.531ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 3.410ns (frequency: 293.255MHz)
+  Total number of paths / destination ports: 77 / 14
+-------------------------------------------------------------------------
+Delay:               3.410ns (Levels of Logic = 2)
+  Source:            button_data_9 (FF)
+  Destination:       seg_data_1 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: button_data_9 to seg_data_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              5   0.591   0.776  button_data_9 (button_data_9)
+     LUT4:I0->O            1   0.648   0.500  seg_data_mux0001<6>9 (seg_data_mux0001<6>9)
+     LUT2:I1->O            1   0.643   0.000  seg_data_mux0001<6>231 (seg_data_mux0001<6>23)
+     FDS:D                     0.252          seg_data_1
+    ----------------------------------------
+    Total                      3.410ns (2.134ns logic, 1.276ns route)
+                                       (62.6% logic, 37.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 256 / 31
+-------------------------------------------------------------------------
+Offset:              7.572ns (Levels of Logic = 6)
+  Source:            button_sw<3> (PAD)
+  Destination:       button_data_10 (FF)
+  Destination Clock: clk rising
+
+  Data Path: button_sw<3> to button_data_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.849   0.730  button_sw_3_IBUF (button_sw_3_IBUF)
+     LUT3:I0->O            3   0.648   0.563  button_data_cmp_eq0006111 (N8)
+     LUT4:I2->O            4   0.648   0.590  button_data_cmp_eq001311 (N21)
+     LUT4:I3->O            3   0.648   0.674  button_data_cmp_eq000811 (N1)
+     LUT3:I0->O            3   0.648   0.674  button_data_cmp_eq001011 (N7)
+     LUT3:I0->O            1   0.648   0.000  button_data_cmp_eq001012 (button_data_cmp_eq00101)
+     FDR:D                     0.252          button_data_10
+    ----------------------------------------
+    Total                      7.572ns (4.341ns logic, 3.231ns route)
+                                       (57.3% logic, 42.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 7 / 7
+-------------------------------------------------------------------------
+Offset:              5.531ns (Levels of Logic = 1)
+  Source:            seg_data_7 (FF)
+  Destination:       seg_data<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: seg_data_7 to seg_data<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              1   0.591   0.420  seg_data_7 (seg_data_7)
+     OBUF:I->O                 4.520          seg_data_7_OBUF (seg_data<7>)
+    ----------------------------------------
+    Total                      5.531ns (5.111ns logic, 0.420ns route)
+                                       (92.4% logic, 7.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 14.00 secs
+Total CPU time to Xst completion: 13.72 secs
+ 
+--> 
+
+Total memory usage is 213540 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

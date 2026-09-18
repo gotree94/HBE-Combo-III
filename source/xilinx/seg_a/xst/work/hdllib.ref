@@ -1,0 +1,6 @@
+EN sep NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/sep.vhd" sub00/vhpl00 1210247461
+AR sep gk "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/sep.vhd" sub00/vhpl01 1210247462
+EN decod NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/decod.vhd" sub00/vhpl02 1210247463
+AR stop_watch gk "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/stop_watch.vhd" sub00/vhpl05 1210247466
+EN stop_watch NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/stop_watch.vhd" sub00/vhpl04 1210247465
+AR decod gk "F:/HANBACK Product/HBE-COMBO III/source/xilinx/seg_a/decod.vhd" sub00/vhpl03 1210247464

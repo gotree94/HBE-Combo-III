@@ -1,0 +1,62 @@
+# Copyright (C) 1991-2006 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+
+# The default values for assignments are stored in the file
+#		bitman_assignment_defaults.qdf
+# If this file doesn't exist, and for assignments not listed, see file
+#		assignment_defaults.qdf
+
+# Altera recommends that you do not modify this file. This
+# file is updated automatically by the Quartus II software
+# and any changes you make may be lost or overwritten.
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C70F672C8
+set_global_assignment -name TOP_LEVEL_ENTITY bitman
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 6.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:28:09  MARCH 10, 2008"
+set_global_assignment -name LAST_QUARTUS_VERSION 6.0
+set_global_assignment -name VHDL_FILE bitman.vhd
+set_location_assignment PIN_C21 -to dot_d[12]
+set_location_assignment PIN_C23 -to dot_scan[2]
+set_location_assignment PIN_B23 -to dot_scan[9]
+set_location_assignment PIN_D17 -to dot_d[4]
+set_location_assignment PIN_L20 -to dot_d[9]
+set_location_assignment PIN_D3 -to ~nCSO~
+set_location_assignment PIN_B21 -to dot_scan[5]
+set_location_assignment PIN_K21 -to dot_scan[0]
+set_location_assignment PIN_M20 -to dot_d[1]
+set_location_assignment PIN_V4 -to reset
+set_location_assignment PIN_L19 -to dot_d[6]
+set_location_assignment PIN_K24 -to dot_scan[7]
+set_location_assignment PIN_E3 -to ~ASDO~
+set_location_assignment PIN_C19 -to dot_d[11]
+set_location_assignment PIN_M21 -to dot_d[2]
+set_location_assignment PIN_K22 -to dot_scan[3]
+set_location_assignment PIN_D18 -to dot_d[7]
+set_location_assignment PIN_K25 -to dot_scan[8]
+set_location_assignment PIN_AE24 -to ~LVDS195p/nCEO~
+set_location_assignment PIN_D16 -to dot_d[3]
+set_location_assignment PIN_C17 -to dot_d[8]
+set_location_assignment PIN_B22 -to dot_scan[6]
+set_location_assignment PIN_L23 -to dot_d[13]
+set_location_assignment PIN_C22 -to dot_scan[1]
+set_location_assignment PIN_D15 -to dot_d[0]
+set_location_assignment PIN_K26 -to dot_d[5]
+set_location_assignment PIN_L21 -to dot_d[10]
+set_location_assignment PIN_K23 -to dot_scan[4]
+set_location_assignment PIN_N2 -to clk_50MHz
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"

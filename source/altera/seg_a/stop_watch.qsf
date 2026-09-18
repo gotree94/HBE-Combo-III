@@ -1,0 +1,62 @@
+# Copyright (C) 1991-2006 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+
+# The default values for assignments are stored in the file
+#		stop_watch_assignment_defaults.qdf
+# If this file doesn't exist, and for assignments not listed, see file
+#		assignment_defaults.qdf
+
+# Altera recommends that you do not modify this file. This
+# file is updated automatically by the Quartus II software
+# and any changes you make may be lost or overwritten.
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C70F672C8
+set_global_assignment -name TOP_LEVEL_ENTITY stop_watch
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 6.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:32:11  MARCH 10, 2008"
+set_global_assignment -name LAST_QUARTUS_VERSION 6.0
+set_global_assignment -name VHDL_FILE decod.vhd
+set_global_assignment -name VHDL_FILE sep.vhd
+set_global_assignment -name VHDL_FILE stop_watch.vhd
+set_location_assignment PIN_R2 -to seg_data[2]
+set_location_assignment PIN_U3 -to seg_com[3]
+set_location_assignment PIN_M4 -to seg_data[6]
+set_location_assignment PIN_AF7 -to led_data[4]
+set_location_assignment PIN_R3 -to seg_data[3]
+set_location_assignment PIN_T7 -to seg_com[0]
+set_location_assignment PIN_N2 -to clk
+set_location_assignment PIN_V4 -to ~ASDO~
+set_location_assignment PIN_R7 -to seg_com[5]
+set_location_assignment PIN_T4 -to seg_data[0]
+set_location_assignment PIN_AE10 -to led_data[1]
+set_location_assignment PIN_M5 -to seg_data[7]
+set_location_assignment PIN_U2 -to seg_com[2]
+set_location_assignment PIN_T3 -to seg_com[7]
+set_location_assignment PIN_R4 -to seg_data[4]
+set_location_assignment PIN_V4 -to stop
+set_location_assignment PIN_D3 -to ~nCSO~
+set_location_assignment PIN_AF8 -to led_data[3]
+set_location_assignment PIN_P7 -to seg_data[1]
+set_location_assignment PIN_R6 -to seg_com[4]
+set_location_assignment PIN_AE11 -to led_data[0]
+set_location_assignment PIN_R5 -to seg_data[5]
+set_location_assignment PIN_U1 -to seg_com[1]
+set_location_assignment PIN_V3 -to lap
+set_location_assignment PIN_AE24 -to ~LVDS195p/nCEO~
+set_location_assignment PIN_T2 -to seg_com[6]
+set_location_assignment PIN_AF9 -to led_data[2]
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"

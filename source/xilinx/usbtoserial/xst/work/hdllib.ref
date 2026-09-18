@@ -1,0 +1,4 @@
+AR rs_232 a "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd" sub00/vhpl01 1210248185
+AR rs232_demo a "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd" sub00/vhpl03 1210248187
+EN rs232_demo NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs232_demo.vhd" sub00/vhpl02 1210248186
+EN rs_232 NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/usbtoserial/rs_232.vhd" sub00/vhpl00 1210248184

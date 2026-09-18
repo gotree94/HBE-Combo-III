@@ -1,0 +1,16 @@
+iMPACT Version: 10.1.01
+
+iMPACT log file Started on Wed May 07 19:32:06 2008
+
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBOIII/source/xilinx/piezo/piezo_demo.vhd" in Library work.
+Entity <piezo_demo> compiled.
+Entity <piezo_demo> (Architecture <hb>) compiled.
+No DRC error found.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBOIII/source/xilinx/seg_a/stop_watch.vhd" in Library work.
+Entity <stop_watch> compiled.
+Entity <stop_watch> (Architecture <gk>) compiled.
+No DRC error found.
+Compiling vhdl file "F:/HANBACK Product/HBE-COMBOIII/source/xilinx/seg_a/../seg_button/button_demo.vhd" in Library work.
+Entity <button_demo> compiled.
+Entity <button_demo> (Architecture <hb>) compiled.
+No DRC error found.

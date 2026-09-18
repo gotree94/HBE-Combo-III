@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="rom_data" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+rom_data YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [9 : 0] 
+    .douta(douta)); // Bus [13 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="rom_data" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component rom_data
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(9 downto 0);
+    douta: OUT std_logic_VECTOR(13 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : rom_data
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

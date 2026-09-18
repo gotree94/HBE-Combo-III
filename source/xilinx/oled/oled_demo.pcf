@@ -1,0 +1,22 @@
+//! **************************************************************************
+// Written by: Map K.34 on Wed May 07 19:29:30 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "oled_d<0>" LOCATE = SITE "P18" LEVEL 1;
+COMP "oled_d<1>" LOCATE = SITE "R19" LEVEL 1;
+COMP "oled_d<2>" LOCATE = SITE "E14" LEVEL 1;
+COMP "oled_d<3>" LOCATE = SITE "D26" LEVEL 1;
+COMP "oled_d<4>" LOCATE = SITE "R18" LEVEL 1;
+COMP "oled_d<5>" LOCATE = SITE "R17" LEVEL 1;
+COMP "oled_d<6>" LOCATE = SITE "D25" LEVEL 1;
+COMP "oled_d<7>" LOCATE = SITE "F15" LEVEL 1;
+COMP "oled_wn" LOCATE = SITE "E17" LEVEL 1;
+COMP "reset" LOCATE = SITE "D5" LEVEL 1;
+COMP "clk_50MHz" LOCATE = SITE "F13" LEVEL 1;
+COMP "oled_dc" LOCATE = SITE "P20" LEVEL 1;
+COMP "oled_rn" LOCATE = SITE "E15" LEVEL 1;
+COMP "oled_cs" LOCATE = SITE "D20" LEVEL 1;
+COMP "oled_rstn" LOCATE = SITE "P21" LEVEL 1;
+SCHEMATIC END;
+

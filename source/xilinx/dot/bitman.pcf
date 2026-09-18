@@ -1,0 +1,33 @@
+//! **************************************************************************
+// Written by: Map K.34 on Thu May 08 20:25:29 2008
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "dot_scan<0>" LOCATE = SITE "C21" LEVEL 1;
+COMP "dot_scan<1>" LOCATE = SITE "N17" LEVEL 1;
+COMP "dot_scan<2>" LOCATE = SITE "M26" LEVEL 1;
+COMP "dot_scan<3>" LOCATE = SITE "C20" LEVEL 1;
+COMP "dot_scan<4>" LOCATE = SITE "C18" LEVEL 1;
+COMP "dot_scan<5>" LOCATE = SITE "M25" LEVEL 1;
+COMP "dot_scan<6>" LOCATE = SITE "M23" LEVEL 1;
+COMP "dot_scan<7>" LOCATE = SITE "D18" LEVEL 1;
+COMP "dot_scan<8>" LOCATE = SITE "D17" LEVEL 1;
+COMP "dot_scan<9>" LOCATE = SITE "M22" LEVEL 1;
+COMP "clk_50MHz" LOCATE = SITE "F13" LEVEL 1;
+COMP "dot_d<0>" LOCATE = SITE "D21" LEVEL 1;
+COMP "dot_d<1>" LOCATE = SITE "P22" LEVEL 1;
+COMP "reset" LOCATE = SITE "D5" LEVEL 1;
+COMP "dot_d<2>" LOCATE = SITE "P23" LEVEL 1;
+COMP "dot_d<3>" LOCATE = SITE "D22" LEVEL 1;
+COMP "dot_d<4>" LOCATE = SITE "D23" LEVEL 1;
+COMP "dot_d<5>" LOCATE = SITE "N18" LEVEL 1;
+COMP "dot_d<10>" LOCATE = SITE "N21" LEVEL 1;
+COMP "dot_d<6>" LOCATE = SITE "N19" LEVEL 1;
+COMP "dot_d<11>" LOCATE = SITE "C26" LEVEL 1;
+COMP "dot_d<7>" LOCATE = SITE "D24" LEVEL 1;
+COMP "dot_d<12>" LOCATE = SITE "D16" LEVEL 1;
+COMP "dot_d<8>" LOCATE = SITE "C25" LEVEL 1;
+COMP "dot_d<13>" LOCATE = SITE "N24" LEVEL 1;
+COMP "dot_d<9>" LOCATE = SITE "N20" LEVEL 1;
+SCHEMATIC END;
+

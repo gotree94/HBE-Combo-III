@@ -1,0 +1,15 @@
+NET "clk_50MHz" LOC = F13;
+NET "oled_cs" LOC = D20;
+NET "oled_d<0>" LOC = P18;
+NET "oled_d<1>" LOC = R19;
+NET "oled_d<2>" LOC = E14;
+NET "oled_d<3>" LOC = D26;
+NET "oled_d<4>" LOC = R18;
+NET "oled_d<5>" LOC = R17;
+NET "oled_d<6>" LOC = D25;
+NET "oled_d<7>" LOC = F15;
+NET "oled_dc" LOC = P20;
+NET "oled_rn" LOC = E15;
+NET "oled_rstn" LOC = P21;
+NET "oled_wn" LOC = E17;
+NET "reset" LOC = D5;

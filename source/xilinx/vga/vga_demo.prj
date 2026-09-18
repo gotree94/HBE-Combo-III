@@ -1,0 +1,3 @@
+vhdl work "vga_data.vhd"
+vhdl work "interface_vga.vhd"
+vhdl work "vga_demo.vhd"

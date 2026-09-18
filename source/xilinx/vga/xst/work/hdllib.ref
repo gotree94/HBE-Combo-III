@@ -1,0 +1,6 @@
+AR interface_vga hb "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd" sub00/vhpl03 1210249305
+EN vga_data NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd" sub00/vhpl00 1210249302
+AR vga_data data "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_data.vhd" sub00/vhpl01 1210249303
+EN interface_vga NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/interface_vga.vhd" sub00/vhpl02 1210249304
+EN vga_demo NULL "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd" sub00/vhpl04 1210249306
+AR vga_demo hb "F:/HANBACK Product/HBE-COMBO III/source/xilinx/vga/vga_demo.vhd" sub00/vhpl05 1210249307

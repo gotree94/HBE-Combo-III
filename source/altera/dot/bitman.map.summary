@@ -1,0 +1,12 @@
+Analysis & Synthesis Status : Successful - Thu Jun 05 22:02:46 2008
+Quartus II Version : 6.0 Build 178 04/27/2006 SJ Full Version
+Revision Name : bitman
+Top-level Entity Name : bitman
+Family : Cyclone II
+Total logic elements : 261
+Total registers : 96
+Total pins : 26
+Total virtual pins : 0
+Total memory bits : 14,336
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
