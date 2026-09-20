@@ -17,9 +17,9 @@
 | 5 | [`HBE-Combo3_markdown/05_부록.md`](HBE-Combo3_markdown/05_부록.md) | 부록: <br>장비 사용 주의사항, <br>Unused Pin 설정, <br>**HBE-COMBO III Pin map** <br>(Altera / Xilinx 모듈별 27개 블록) |
 
 
-![](../img/ALTERA_FPGA.png)
+![](img/ALTERA_FPGA.png)
 
-![](../img/XILINX_FPGA.png)
+![](img/XILINX_FPGA.png)
 
 
 
