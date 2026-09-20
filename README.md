@@ -16,13 +16,12 @@
 | 4 | [`HBE-Combo3_markdown/04_설계S_W_기본사용법.md`](HBE-Combo3_markdown/04_설계S_W_기본사용법.md) | 설계 S/W 기본 사용법: <br>Design Flow, <br>Quartus II / ISE 설계 |
 | 5 | [`HBE-Combo3_markdown/05_부록.md`](HBE-Combo3_markdown/05_부록.md) | 부록: <br>장비 사용 주의사항, <br>Unused Pin 설정, <br>**HBE-COMBO III Pin map** <br>(Altera / Xilinx 모듈별 27개 블록) |
 
-## 변환 규칙 요약
 
-- 장 제목은 `#`/`##`, 절 제목은 `###`로 승격
-- 그림 캡션 `[그림 n-m]` → 블록 인용(`> **그림 n-m** · 제목`)
-- 번호 항목 `n)` → `**n)** …`
-- Pin map 표는 단어 좌표 기반으로 재구성 (병합/빈 셀, 4~5열 혼재 처리)
-- 페이지 번호·반복 머리말·그림의 배선 목록 등 노이즈 제거, 대량 숫자는 ` ```text ` 블록 처리
+![](../img/ALTERA_FPGA.png)
+
+![](../img/XILINX_FPGA.png)
+
+
 
 ## 원본
 
