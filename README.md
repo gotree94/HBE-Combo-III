@@ -1,4 +1,4 @@
-# HBE-COMBO III User's Guide (마크다운 변환본)
+# HBE-COMBO III User's Guide 
 
 원본 PDF `HBE-Combo3_User's_Guide.pdf`(249쪽)를 장(chapter) 단위 마크다운으로 변환한 결과입니다.
 
