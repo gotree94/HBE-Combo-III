@@ -1,8 +1,12 @@
 # HBE-COMBO III User's Guide 
 
-![](img/image6.png)
+<p align="center">
+  <img src="img/image6.png">
+</p>
 
-![](img/image8.jpeg)
+<p align="center">
+  <img src="img/image8.jpeg">
+</p>
 
 * 보드: **HBE-COMBO III**
    * Altera(Quartus II)
