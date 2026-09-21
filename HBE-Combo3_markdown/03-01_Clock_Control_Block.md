@@ -26,7 +26,8 @@ Clock Select의 2-digit 7-Segment를 통해 현재 어떠한 클럭이 선택되
 따라서 Clock Select SW를 통해 AVR 또는 CPLD에서 클럭을 선택하고, 선택된 클럭은 FPGA로 전달이 됩니다. <br>
 
 클럭 표시부는 Clock Select SW를 통해 선택되어진 클럭을 2개의 7-Segment를 통해 표시해 줍니다.  <br>
-클럭의 선택은 Clock Select SW에 있는 숫자를 통해 확인할 수도 있고, 7-Segment를 통해 간편하게 확인할 수 있습니다. <br>
+클럭의 선택은 Clock Select SW에 있는 숫자를 통해 확인할 수도 있고, <br>
+7-Segment를 통해 간편하게 확인할 수 있습니다. <br>
 
 <p align="center">
   <img src="../img/image41.png">
