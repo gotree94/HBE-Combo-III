@@ -1,10 +1,10 @@
 # HBE-COMBO III User's Guide 
 
-원본 PDF `HBE-Combo3_User's_Guide.pdf`(249쪽)를 장(chapter) 단위 마크다운으로 변환한 결과입니다.
+* 보드: **HBE-COMBO III**
+   * Altera(Quartus II)
+   * Xilinx(ISE) FPGA 훈련용 콤보 보드
+   * ARM
 
-- 보드: **HBE-COMBO III** — Altera(Quartus II) / Xilinx(ISE) FPGA 훈련용 콤보 보드
-- 변환 도구: PyMuPDF 기반 스크립트(`pdf_gen.py`), 출력은 UTF-8
-- 페이지 구성: 인쇄번호 = PDF쪽수 − 10
 
 ## 목차
 
@@ -20,8 +20,6 @@
 ![](img/ALTERA_FPGA.png)
 
 ![](img/XILINX_FPGA.png)
-
-
 
 ## 원본
 
