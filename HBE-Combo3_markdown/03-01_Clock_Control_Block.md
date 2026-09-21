@@ -90,10 +90,10 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
 
 | FPGA Signal | Altera | Xilinx | Description |
 |:---:|:---:|:---:|:---:|
-| CLK_MAIN[] | N2 | F13 | Main Clock Input |
-| CLK_MAIN[] | N25 | AF14 | Main Clock Input |
-| CLK_USER[] | A13 | B14 | User Clock Input |
-| CLK_USER[] | D13 | AF13 | User Clock Input |
+| CLK_MAIN[0] | N2 | F13 | Main Clock Input |
+| CLK_MAIN[1] | N25 | AF14 | Main Clock Input |
+| CLK_USER[0] | A13 | B14 | User Clock Input |
+| CLK_USER[1] | D13 | AF13 | User Clock Input |
 
 
 **5) CPLD**
