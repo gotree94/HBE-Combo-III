@@ -20,12 +20,14 @@
 | 4 | [`04_설계S_W_기본사용법.md`](HBE-Combo3_markdown/04_설계S_W_기본사용법.md) | 설계 S/W 기본 사용법: <br>Design Flow, Quartus II / ISE 설계 |
 | 5 | [`05_부록.md`](HBE-Combo3_markdown/05_부록.md) | 부록: <br>장비 사용 주의사항, <br>Unused Pin 설정, **HBE-COMBO III Pin map** (Altera / Xilinx 모듈별 27개 블록) |
 
+<br><br><br>
 ---
 
 ## ALTERA FPGA
 
 ![](img/ALTERA_FPGA.png)
 
+<br><br><br>
 ---
 
 ## XILINX FPGA
