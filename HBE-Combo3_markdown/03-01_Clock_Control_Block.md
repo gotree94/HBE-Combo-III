@@ -2,7 +2,7 @@
 
 [← 목차로 돌아가기](03_제품_사용하기.md)
 
-**1) 구성**
+## 1) 구성
 
 장비 내부에는 사용자가 원하는 클럭을 선택해서 사용할 수 있도록 Clock Control Block을 두고 있습니다. <br>
 여기에는 50, 25MHz의 두 종류의 클럭을 입력받아 0 ~ 250MHz의 클럭을 FPGA로 전달하고 있습니다.  <br>
@@ -36,7 +36,7 @@ Clock Select의 2-digit 7-Segment를 통해 현재 어떠한 클럭이 선택되
 
 > **그림 3-1** · Clock Control Block 구성
 
-**2) 동작**
+## 2) 동작
 
 장비에서 사용하는 클럭은 기본으로 Base Board에 있는 50MHz를 가지고 사용하게 됩니다.  <br>
 따라서 클럭 제어 스위치를 조절하면 7-Segment에 현재 FPGA 디바이스 모듈로 공급되는 클럭 값이 표시되고 있습니다. <br> <br>
@@ -79,7 +79,7 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
 | 54 | 85MHz | 55 | 90MHz | 56 | 95MHz | 57 | 100MHz |
 | 58 | 125MHz | 59 | 150MHz | 5A | 200MHz | 5B | 250MHz |
 
-**3) 회로도**
+## 3) 회로도
 
 <p align="center">
   <img src="../img/image43-1.png">
@@ -103,7 +103,7 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
 ```
 
 
-**4) 핀 구성표**
+## 4) 핀 구성표
 
 | FPGA Signal | Altera | Xilinx | Description |
 |:---:|:---:|:---:|:---:|
@@ -113,7 +113,7 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
 | CLK_USER[1] | D13 | AF13 | User Clock Input |
 
 
-**5) CPLD**
+## 5) CPLD
 
 ```verilog
 module cpld_clock_divider (
@@ -194,7 +194,7 @@ end architecture Behavioral;
 ```
 
 
-**6) ATMEGA**
+## 6) ATMEGA
 
 ```c
 #define F_CPU 7372800UL
