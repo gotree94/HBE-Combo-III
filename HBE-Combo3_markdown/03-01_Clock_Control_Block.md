@@ -93,3 +93,208 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
 | CLK_MAIN[] | N25 | AF14 | Main Clock Input |
 | CLK_USER[] | A13 | B14 | User Clock Input |
 | CLK_USER[] | D13 | AF13 | User Clock Input |
+
+
+**5) CPLD**
+
+```verilog
+module cpld_clock_divider (
+    input  wire       CLK1_IN,      // Pin 37: GCLK1 (ICS307 CLK_OUT 입력)
+    input  wire [7:0] CLK_SEL,      // Pin 2,3,5,6,8,10,11,12 (CLK_SEL1~8)
+    output reg        CLK_OUT       // Pin 18: IO13 (IDT49FCT3805 입력으로 전달)
+);
+
+    // 16비트 카운터 (필요에 따라 분주율 확장 가능)
+    reg [15:0] clk_divider = 16'd0;
+
+    always @(posedge CLK1_IN) begin
+        clk_divider <= clk_divider + 1'b1;
+    end
+
+    // CLK_SEL[7:0] 설정값에 따른 클럭 출력 선택
+    always @(*) begin
+        case (CLK_SEL)
+            8'h00:   CLK_OUT = CLK1_IN;         // 바이패스 (분주 없음)
+            8'h01:   CLK_OUT = clk_divider[0];  // 1/2 분주
+            8'h02:   CLK_OUT = clk_divider[1];  // 1/4 분주
+            8'h03:   CLK_OUT = clk_divider[2];  // 1/8 분주
+            8'h04:   CLK_OUT = clk_divider[3];  // 1/16 분주
+            8'h05:   CLK_OUT = clk_divider[7];  // 1/256 분주
+            8'h06:   CLK_OUT = clk_divider[11]; // 1/4096 분주
+            8'h07:   CLK_OUT = clk_divider[15]; // 1/65536 분주 (저주파 대역)
+            default: CLK_OUT = CLK1_IN;         // 기본값: 바이패스
+        endcase
+    end
+
+endmodule
+
+```
+
+```VHDL
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity cpld_clock_divider is
+    Port (
+        CLK1_IN : in  STD_LOGIC;                    -- GCLK1 (Pin 37)
+        CLK_SEL : in  STD_LOGIC_VECTOR (7 downto 0);-- IO0~IO7
+        CLK_OUT : out STD_LOGIC                     -- IO13 (Pin 18)
+    );
+end cpld_clock_divider;
+
+architecture Behavioral of cpld_clock_divider is
+    signal clk_divider : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+begin
+
+    -- 카운터 기반 분주기
+    process(CLK1_IN)
+    begin
+        if rising_edge(CLK1_IN) then
+            clk_divider <= clk_divider + 1;
+        end if;
+    end process;
+
+    -- CLK_SEL 멀티플렉싱
+    process(CLK_SEL, CLK1_IN, clk_divider)
+    begin
+        case CLK_SEL is
+            when x"00"  => CLK_OUT <= CLK1_IN;
+            when x"01"  => CLK_OUT <= clk_divider(0);
+            when x"02"  => CLK_OUT <= clk_divider(1);
+            when x"03"  => CLK_OUT <= clk_divider(2);
+            when x"04"  => CLK_OUT <= clk_divider(3);
+            when x"05"  => CLK_OUT <= clk_divider(7);
+            when x"06"  => CLK_OUT <= clk_divider(11);
+            when x"07"  => CLK_OUT <= clk_divider(15);
+            when others => CLK_OUT <= CLK1_IN;
+        end case;
+    end process;
+
+end architecture Behavioral;
+
+```
+
+
+**6) ATMEGA**
+
+```c
+#define F_CPU 7372800UL
+#include <avr/io.h>
+#include <util/delay.h>
+
+// PIN 정의 (PORTC)
+#define C_CLK      PC0
+#define C_DIN      PC1
+#define C_CS       PC2
+#define CLK_SELECT PC3
+#define CLKSEG_S1  PC5
+#define CLKSEG_S2  PC7
+
+// 7-Segment 애노드/캐소드 패턴 (Common Anode 기준)
+// 0~9 Hex 패턴 (A~G + DP)
+const uint8_t SEG_PATTERNS[16] = {
+    0xC0, // 0
+    0xF9, // 1
+    0xA4, // 2
+    0xB0, // 3
+    0x99, // 4
+    0x92, // 5
+    0x82, // 6
+    0xF8, // 7
+    0x80, // 8
+    0x90, // 9
+    0x88, // A
+    0x83, // b
+    0xC6, // C
+    0xA1, // d
+    0x86, // E
+    0x8E  // F
+};
+
+// ICS307G-03LF 3-Wire Bit-Bang 전송 함수 (24비트 제어 워드)
+void ICS307_WriteWord(uint32_t data) {
+    // CS Low 설정 (전송 시작 준비)
+    PORTC &= ~(1 << C_CS);
+    PORTC &= ~(1 << C_CLK);
+    _delay_us(1);
+
+    // MSB부터 24비트 시프트 전송
+    for (int i = 23; i >= 0; i--) {
+        if (data & ((uint32_t)1 << i)) {
+            PORTC |= (1 << C_DIN);
+        } else {
+            PORTC &= ~(1 << C_DIN);
+        }
+        _delay_us(1);
+
+        // Clock High
+        PORTC |= (1 << C_CLK);
+        _delay_us(1);
+        // Clock Low
+        PORTC &= ~(1 << C_CLK);
+        _delay_us(1);
+    }
+
+    // CS High / Strobe (데이터 래치)
+    PORTC |= (1 << C_CS);
+    _delay_us(2);
+    PORTC &= ~(1 << C_CS);
+}
+
+// 7-Segment 다이내믹 디스플레이 출력 (2자리)
+void Display_Hex8(uint8_t value) {
+    uint8_t high_nibble = (value >> 4) & 0x0F;
+    uint8_t low_nibble  = value & 0x0F;
+
+    // Digit 1 (십의 자리 / High Nibble)
+    PORTC &= ~(1 << CLKSEG_S2); // S2 Off
+    PORTD = SEG_PATTERNS[high_nibble];
+    PORTC |= (1 << CLKSEG_S1);  // S1 On
+    _delay_ms(2);
+
+    // Digit 2 (일의 자리 / Low Nibble)
+    PORTC &= ~(1 << CLKSEG_S1); // S1 Off
+    PORTD = SEG_PATTERNS[low_nibble];
+    PORTC |= (1 << CLKSEG_S2);  // S2 On
+    _delay_ms(2);
+}
+
+int main(void) {
+    // 1. GPIO 방향 설정
+    DDRA = 0x00; // PORTA 입력 (SW2, SW3 스위치/CPLD 입력 읽기)
+    PORTA = 0xFF; // 풀업 저항 활성화
+
+    DDRC |= (1 << C_CLK) | (1 << C_DIN) | (1 << C_CS) | (1 << CLK_SELECT) | (1 << CLKSEG_S1) | (1 << CLKSEG_S2);
+    DDRD = 0xFF; // PORTD 전체 출력 (7-Segment Segment 데이터선)
+
+    // 2. 초기 상태 설정
+    PORTC &= ~(1 << CLK_SELECT); // OSC1 (CLK1) 선택
+
+    // 3. ICS307 초기 주파수 레지스터 설정값 전송 (예시 데이터 워드)
+    // ICS307 데이터시트에 따른 R, V, S 비트 설정
+    uint32_t ics307_config_word = 0x123456; 
+    ICS307_WriteWord(ics307_config_word);
+
+    uint8_t sw_val = 0;
+
+    while (1) {
+        // DIP 스위치 / CPLD 입력 상태 읽기 (Active-Low일 경우 반전)
+        sw_val = ~PINA;
+
+        // MUX 클럭 선택 제어 (스위치 7번 비트에 따라 OSC1 / OSC2 변경)
+        if (sw_val & 0x80) {
+            PORTC |= (1 << CLK_SELECT);  // CLK2 선택
+        } else {
+            PORTC &= ~(1 << CLK_SELECT); // CLK1 선택
+        }
+
+        // 7-Segment 표시 업데이트
+        Display_Hex8(sw_val);
+    }
+
+    return 0;
+}
+
+```
+
