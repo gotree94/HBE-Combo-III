@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="img/image8.jpeg">
+  <img src="img/image8.jpeg" width="30%">
 </p>
 
 * 보드: **HBE-COMBO III**
