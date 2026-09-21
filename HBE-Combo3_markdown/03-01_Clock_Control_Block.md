@@ -82,6 +82,7 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
 **3) 회로도**
 
 <p align="center">
+  <img src="../img/image43-1.png">
   <img src="../img/image43-2.png">
 </p>
 
