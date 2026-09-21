@@ -16,10 +16,10 @@ SD 카드는 SPI 통신 방식을 통해 데이터를 주고 받는 형식을 �
 
 | FPGA Signal | Altera | Xilinx | Description |
 |:-------:|:-------:|:-------:|:-------:|
-| SD_DATA[] | J1 | K5 | SD data 0 |
-| SD_DATA[] | H6 | K4 | SD data 1 |
-| SD_DATA[] | H4 | K3 | SD data 2 |
-| SD_DATA[] | J8 | L3 | SD data 3 |
+| SD_DATA[0] | J1 | K5 | SD data 0 |
+| SD_DATA[1] | H6 | K4 | SD data 1 |
+| SD_DATA[2] | H4 | K3 | SD data 2 |
+| SD_DATA[3] | J8 | L3 | SD data 3 |
 | SD_CMD | J3 | K7 | SD CMD |
 | SD_CLK | J2 | K6 | SD Clock |
 
