@@ -102,3 +102,28 @@
 > 기본 포함되어 있지 않습니다. 원본 BSP(또는 플래시 덤프로 복원한 커널
 > 설정/드라이버 바이너리)가 필요하며, 입수 전까지는 부트로그 기반으로
 > 최대한 많은 정보를 복원하는 것이 목표가 됩니다.
+
+
+```
+~ # ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:11:22:33:44:55
+          inet addr:192.168.123.119  Bcast:192.168.123.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:770 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:16
+          RX bytes:52325 (51.0 KiB)  TX bytes:0 (0.0 B)
+          Interrupt:11
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+~ #
+```
+
+
