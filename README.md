@@ -1,5 +1,9 @@
 # HBE-COMBO III User's Guide 
 
+![](img/image6.png)
+
+![](img/image8.jpeg)
+
 * 보드: **HBE-COMBO III**
    * Altera(Quartus II)
    * Xilinx(ISE) FPGA 훈련용 콤보 보드
@@ -24,3 +28,5 @@
 ## 원본
 
 - `HBE-Combo3_User's_Guide.pdf` (9.5 MB)
+
+
