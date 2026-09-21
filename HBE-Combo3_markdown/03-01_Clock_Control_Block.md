@@ -86,6 +86,23 @@ Main Clock과 User Clock은 서로 다른 입력 전용 핀으로 연결되어 �
   <img src="../img/image43-2.png">
 </p>
 
+```
+[오실레이터 (DC35/DC36)]
+       │ (CLK1, CLK2)
+       ▼
+[U14: FST3257QSC] ──(CLK_INPUT)──▶ [U10: ICS307G-03LF] ──(CLK1 out / CLK_OUT)
+(CLK_SELECT by MCU)                    │ (Bit-bang Control: C_DIN, C_CLK, C_CS)
+                                       ▼
+                             [U26: EPM3064ATC44 CPLD] ──(GCLK1 입력 / CLK_OUT 출력)
+                                       │ (Control: CLK_SEL1~8 from MCU/SW)
+                                       ▼
+                             [U15: IDT49FCT3805]
+                                       │ (1-to-10 Fanout Buffer)
+                                       ▼
+                                   [FPGA_CLK]
+```
+
+
 **4) 핀 구성표**
 
 | FPGA Signal | Altera | Xilinx | Description |
