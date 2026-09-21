@@ -8,11 +8,10 @@
 
 보드에서 모듈 의 구성은 아래의 그림과 같습니다.
 
-```
-dot_d7  dot_d0  dot_d1  dot_d2  dot_d3  dot_d4  dot_d5  dot_d6
-dot_d8  dot_d9  dot_d10 dot_d11 dot_d12 dot_d13
-dot_scan1 dot_scan0 dot_scan2 dot_scan3 dot_scan4 dot_scan5 dot_scan6 dot_scan7 dot_scan8 dot_scan9
-```
+
+![](../img/image85.jpeg)
+
+![](../img/image86.png)
 
 > **그림 3-7** · Dot matrix LED 구성
 
@@ -20,7 +19,13 @@ dot_d0~dot_d13은 해당 열에 표시될 데이터 입력이 되며 데이터 �
 
 **2)** 동작
 
-다음은 아래 그림의 한글과 영문을 동시에 display하기 위한 방법에 대해 살펴보겠습 니다. 처음으로 dot_d13~dot_d0에 00000001100010 인 첫째 열의 데이터를 입력하고 dot_scan9~ dot_scan0에 1111111110 의 값을 입력하면 첫째 열의 원하는 dot LED 가 켜지게 됩니다. 둘째로 dot_d13~dot_d0에 11110010010010 인 둘째 열의 데이터 를 입력하고 dot_scan9~dot_scan0에 1111111101 의 값을 입력하면 둘째 열의 원하 는 dot LED가 켜지게 됩니다. 이를 열 다섯 번째 열까지 반복하며, 반복되는 주기를 약 1m초 이하로 해서 반복하게 되면 눈의 잔상효과에 의해서 한 이라는 글자가 dot matrix LED 모듈에 표시됩니다. 이를 정리하면 다음과 같습니다.
+다음은 아래 그림의 한글과 영문을 동시에 display하기 위한 방법에 대해 살펴보겠습 니다. 
+
+처음으로 dot_d13~dot_d0에 00000001100010 인 첫째 열의 데이터를 입력하고 dot_scan9~ dot_scan0에 1111111110 의 값을 입력하면 첫째 열의 원하는 dot LED 가 켜지게 됩니다. 둘째로 dot_d13~dot_d0에 11110010010010 인 둘째 열의 데이터 를 입력하고 dot_scan9~dot_scan0에 1111111101 의 값을 입력하면 둘째 열의 원하 는 dot LED가 켜지게 됩니다. 이를 열 다섯 번째 열까지 반복하며, 반복되는 주기를 약 1m초 이하로 해서 반복하게 되면 눈의 잔상효과에 의해서 한 이라는 글자가 dot matrix LED 모듈에 표시됩니다. 
+
+![](../img/image87.png)
+
+이를 정리하면 다음과 같습니다.
 
 | 구분 | dot_d13~dot_d0 | dot_scan9~dot_scan0 |
 |:---:|:---:|:---:|
