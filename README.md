@@ -5,9 +5,8 @@
 </p>
 
 * 보드: **HBE-COMBO III**
-   * Altera(Quartus II)
-   * Xilinx(ISE) FPGA 훈련용 콤보 보드
-   * ARM
+   * Altera(Quartus II) / Xilinx(Vivado) FPGA 훈련용 콤보 보드
+   * ARM926EJS
 
 
 ## 목차
