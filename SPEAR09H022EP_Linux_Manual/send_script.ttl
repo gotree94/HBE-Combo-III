@@ -1,0 +1,25 @@
+;==============================================================================
+; send_script.ttl - send env_collect.sh to the board via serial, line by line
+; How to use:
+;   1) On the board, type:  cat > /tmp/env_collect.sh
+;   2) Then run this macro:  Control > Macro > send_script.ttl  (or F2)
+;      * macro sends the file slowly (no data loss) and closes the file with Ctrl-D
+;   3) On the board, type:  sh /tmp/env_collect.sh
+;==============================================================================
+fileopen fh 'C:\Users\Administrator\Desktop\SPEAR09H022EP_Linux_Manual\env_collect.sh' 0
+if result < 0 then
+  messagebox 'env_collect.sh not found' 'Error'
+  end
+endif
+while 1
+  filereadln fh s
+  if result < 0 break
+  sendln s
+  pause 50
+endwhile
+fileclose fh
+; send Ctrl-D to close 'cat' input (0x04)
+pause 200
+send $04
+pause 200
+statusmsg 'Done. Now type: sh /tmp/env_collect.sh'

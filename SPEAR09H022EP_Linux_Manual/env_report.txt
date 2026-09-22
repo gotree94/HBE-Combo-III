@@ -1,0 +1,577 @@
+/tmp # ./env_collect.sh
+===== uname -a =====
+Linux (none) 2.6.10_dev-versatile926ejs #1 Thu Jul 3 15:10:58 KST 2008 armv5tejl unknown
+===== /proc/version =====
+Linux version 2.6.10_dev-versatile926ejs (root@localhost.localdomain) (gcc version 3.3.3 (DENX ELDK 3.1.1 3.3.3-9)) #1 Thu Jul 3 15:10:58 KST 2008
+===== /proc/cmdline =====
+console=ttyS0 root=/dev/ram0 initrd=0x00800040,7M
+===== /proc/cpuinfo =====
+Processor       : ARM926EJ-Sid(wb) rev 4 (v5l)
+BogoMIPS        : 132.71
+Features        : swp half thumb fastmult edsp java
+CPU implementer : 0x41
+CPU architecture: 5TEJ
+CPU variant     : 0x0
+CPU part        : 0x926
+CPU revision    : 4
+Cache type      : write-back
+Cache clean     : cp15 c7 ops
+Cache lockdown  : format C
+Cache format    : Harvard
+I size          : 32768
+I assoc         : 4
+I line length   : 32
+I sets          : 256
+D size          : 16384
+D assoc         : 4
+D line length   : 32
+D sets          : 128
+
+Hardware        : STM-spearhead
+Revision        : 0000
+Serial          : 0000000000000000
+===== /proc/meminfo =====
+MemTotal:        29612 kB
+MemFree:         22256 kB
+Buffers:          4092 kB
+Cached:            940 kB
+SwapCached:          0 kB
+Active:           1368 kB
+Inactive:         4048 kB
+HighTotal:           0 kB
+HighFree:            0 kB
+LowTotal:        29612 kB
+LowFree:         22256 kB
+SwapTotal:           0 kB
+SwapFree:            0 kB
+Dirty:              12 kB
+Writeback:           0 kB
+Mapped:           1088 kB
+Slab:             1348 kB
+CommitLimit:     14804 kB
+Committed_AS:     6776 kB
+PageTables:         60 kB
+VmallocTotal:   352256 kB
+VmallocUsed:        68 kB
+VmallocChunk:   352184 kB
+===== /proc/mtd =====
+dev:    size   erasesize  name
+mtd0: 00050000 00010000 "UBoot"
+mtd1: 00420000 00010000 "kernel"
+mtd2: 00280000 00010000 "initrd"
+mtd3: 00100000 00010000 "JFFS2-I"
+mtd4: 00800000 00010000 "JFFS2-II"
+mtd5: 00900000 00010000 "JFFS2-Merge"
+===== /proc/partitions =====
+major minor  #blocks  name
+
+  31     0        320 mtdblock0
+  31     1       4224 mtdblock1
+  31     2       2560 mtdblock2
+  31     3       1024 mtdblock3
+  31     4       8192 mtdblock4
+  31     5       9216 mtdblock5
+===== /proc/iomem =====
+00000000-01ffffff : System RAM
+  00020000-0024776f : Kernel text
+  00248000-002db0b3 : Kernel data
+10000000-100007ff : spearhead_udc1
+10000800-10007fff : spearhead_udc1
+10008000-10008fff : spearhead_udc1
+f000a000-f000afff : ohci_hcd0
+f000e000-f000efff : ohci_hcd1
+===== /proc/interrupts =====
+           CPU0
+  4:          0   Spearhead smi
+  5:          1   spear-rtc alarm
+  6:          0   ohci_hcd
+  7:          0   ohci_hcd
+ 11:          0   eth0
+ 13:          0   tmr3
+ 14:          0   tmr2
+ 15:          0   dma1
+ 16:          0   dma0
+ 18:     650511   Spearhead Timer Tick
+ 21:     255213   serial_spearhead
+Err:          0
+===== /proc/devices =====
+Character devices:
+  1 mem
+  2 pty
+  3 ttyp
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+  7 vcs
+ 10 misc
+ 13 input
+ 21 sg
+ 90 mtd
+128 ptm
+136 pts
+180 usb
+206 watchdog
+250 i2c
+251 SpearHead_gDMA
+252 SpearHead_Timer
+253 SpearHead_ADC
+254 spearhead_gpio
+
+Block devices:
+  1 ramdisk
+  8 sd
+ 31 mtdblock
+ 65 sd
+ 66 sd
+ 67 sd
+ 68 sd
+ 69 sd
+ 70 sd
+ 71 sd
+128 sd
+129 sd
+130 sd
+131 sd
+132 sd
+133 sd
+134 sd
+135 sd
+===== /proc/modules =====
+===== lsmod =====
+Module                  Size  Used by    Not tainted
+===== /proc/mounts =====
+rootfs / rootfs rw 0 0
+/dev/root / ext2 rw 0 0
+/proc /proc proc rw,nodiratime 0 0
+/dev/mtdblock5 /root jffs2 rw,noatime 0 0
+===== df -h =====
+Filesystem                Size      Used Available Use% Mounted on
+/dev/ram0                 3.9M      2.8M      1.2M  71% /
+/dev/mtdblock5            9.0M    388.0k      8.6M   4% /root
+===== ifconfig -a =====
+eth0      Link encap:Ethernet  HWaddr 00:11:22:33:44:55
+          inet addr:192.168.123.119  Bcast:192.168.123.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:16
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:11
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+===== /proc/net/dev =====
+Inter-|   Receive                                                |  Transmit
+ face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
+    lo:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0
+  eth0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0
+===== /proc/net/arp =====
+IP address       HW type     Flags       HW address            Mask     Device
+===== route =====
+===== ps =====
+  PID  Uid     VmSize Stat Command
+    1 root        520 S   init
+    2 root            SW< [ksoftirqd/0]
+    3 root            SW< [desched/0]
+    4 root            SW< [events/0]
+    5 root            SW< [khelper]
+   10 root            SW< [kthread]
+   18 root            SW< [kblockd/0]
+   36 root            SW  [khubd]
+   72 root            SW  [pdflush]
+   73 root            SW  [pdflush]
+   75 root            SW< [aio/0]
+   74 root            SW  [kswapd0]
+  685 root            SW  [mtdblockd]
+  723 root            SWN [jffs2_gcd_mtd5]
+  725 root        328 S   /bin/led_test
+  728 root        768 S   -sh
+  761 root        496 S   /bin/sh ./env_collect.sh
+  836 root        612 R   ps
+  837 root        412 S   tee -a /tmp/env_report.txt
+===== hostname / date / uptime =====
+(none)
+Thu Jan  1 01:48:26 UTC 1970
+ 01:48:26 up  1:48, load average: 0.16, 0.03, 0.01
+===== busybox =====
+BusyBox v1.00 (2008.04.23-05:33+0000) multi-call binary
+
+Usage: busybox [function] [arguments]...
+   or: [function] [arguments]...
+
+        BusyBox is a multi-call binary that combines many common Unix
+        utilities into a single executable.  Most people will create a
+        link to busybox for each function they wish to use, and BusyBox
+        will act like whatever it was invoked as.
+
+Currently defined functions:
+        [, ash, basename, bunzip2, busybox, bzcat, cat, chgrp, chmod,
+        chown, chroot, chvt, clear, cmp, cp, cut, date, dd, deallocvt,
+        df, dirname, dmesg, du, echo, egrep, env, expr, false, fgrep,
+        find, free, grep, gunzip, gzip, halt, head, hexdump, hostname,
+        id, ifconfig, init, insmod, install, kill, killall, klogd, linuxrc,
+        ln, logger, ls, lsmod, mkdir, mknod, mktemp, modprobe, more, mount,
+        mv, openvt, pidof, ping, pivot_root, poweroff, printf, ps, pwd,
+        readlink, reboot, reset, rm, rmdir, rmmod, sed, sh, sleep, sort,
+        strings, swapoff, swapon, sync, syslogd, tail, tar, tee, test,
+        time, touch, tr, true, tty, umount, uname, uniq, unzip, uptime,
+        usleep, vi, wc, wget, which, whoami, xargs, yes, zcat
+
+===== tool check =====
+  gzip: OK
+  gunzip: OK
+  zcat: OK
+  tar: OK
+  dd: OK
+  mknod: OK
+  mount: OK
+  umount: OK
+  losetup: -
+  blkid: -
+  insmod: OK
+  rmmod: OK
+  modprobe: OK
+  md5sum: -
+  hexdump: OK
+  od: -
+  strings: OK
+  ifconfig: OK
+  route: -
+  udhcpc: -
+  wget: OK
+  nc: -
+  telnetd: -
+  httpd: -
+  syslogd: OK
+  klogd: OK
+  mdev: -
+  vi: OK
+  sed: OK
+  grep: OK
+  awk: -
+  dmesg: OK
+  cksum: -
+  uudecode: -
+  uuencode: -
+  sz: -
+  rz: -
+===== kernel config (/proc/config.gz) =====
+#
+# Automatically generated make config: don't edit
+# Linux kernel version: 2.6.10_dev-versatile926ejs
+# Thu Jul  3 15:08:20 2008
+#
+CONFIG_ARM=y
+CONFIG_MMU=y
+# CONFIG_MPU is not set
+# CONFIG_NO_MU is not set
+CONFIG_UID16=y
+CONFIG_GENERIC_IOMAP=y
+
+#
+# Code maturity level options
+#
+CONFIG_EXPERIMENTAL=y
+CONFIG_CLEAN_COMPILE=y
+CONFIG_BROKEN_ON_SMP=y
+CONFIG_LOCK_KERNEL=y
+
+#
+# General setup
+#
+CONFIG_LOCALVERSION=""
+CONFIG_SWAP=y
+CONFIG_SYSVIPC=y
+CONFIG_SYSVIPC_SEMMNI=128
+CONFIG_SYSVIPC_SEMMSL=250
+# CONFIG_POSIX_MQUEUE is not set
+# CONFIG_BSD_PROCESS_ACCT is not set
+CONFIG_SYSCTL=y
+# CONFIG_AUDIT is not set
+CONFIG_LOG_BUF_SHIFT=14
+CONFIG_HOTPLUG=y
+CONFIG_KOBJECT_UEVENT=y
+CONFIG_IKCONFIG=y
+CONFIG_IKCONFIG_PROC=y
+# CONFIG_EMBEDDED is not set
+CONFIG_KALLSYMS=y
+# CONFIG_KALLSYMS_EXTRA_PASS is not set
+CONFIG_FUTEX=y
+CONFIG_EPOLL=y
+CONFIG_CC_OPTIMIZE_FOR_SIZE=y
+CONFIG_SHMEM=y
+CONFIG_CC_ALIGN_FUNCTIONS=0
+CONFIG_CC_ALIGN_LABELS=0
+CONFIG_CC_ALIGN_LOOPS=0
+CONFIG_CC_ALIGN_JUMPS=0
+# CONFIG_BOOT_FLIGHT_RECORDER is not set
+CONFIG_LOCKLESS=y
+CONFIG_BOOT_FLIGHT_BUFFERS=4
+CONFIG_BOOT_FLIGHT_SIZE=524288
+CONFIG_FLIGHT_PROC_BUFFERS=8
+CONFIG_FLIGHT_PROC_SIZE=8192
+CONFIG_NEWEV=y
+CONFIG_CSTM=y
+# CONFIG_TINY_SHMEM is not set
+
+#
+# Loadable module support
+#
+CONFIG_MODULES=y
+CONFIG_MODULE_UNLOAD=y
+CONFIG_MODULE_FORCE_UNLOAD=y
+CONFIG_OBSOLETE_MODPARM=y
+CONFIG_MODVERSIONS=y
+# CONFIG_MODULE_SRCVERSION_ALL is not set
+CONFIG_KMOD=y
+
+#
+# System Type
+#
+# CONFIG_ARCH_CLPS7500 is not set
+# CONFIG_ARCH_CLPS711X is not set
+# CONFIG_ARCH_CO285 is not set
+# CONFIG_ARCH_EBSA110 is not set
+# CONFIG_ARCH_CAMELOT is not set
+# CONFIG_ARCH_FOOTBRIDGE is not set
+# CONFIG_ARCH_INTEGRATOR is not set
+# CONFIG_ARCH_IOP3XX is not set
+===== boot scripts =====
+--- /etc/inittab ---
+# This is run first except when booting in single-user mode.
+::sysinit:/etc/rc.sh
+
+# /bin/sh invocations on selected ttys
+#
+# Start an "askfirst" shell on /dev/ttyS1
+#ttyS1::askfirst:-/bin/sh
+
+#
+# Start internet super daemon; do NOT background!
+#::respawn:/usr/sbin/xinetd -stayalive -reuse -pidfile /tmp/xinetd.pid
+
+# Start user application
+#::respawn:/bin/application
+# Must be last 'respawn' entry to avoid ^C problem
+# Start a shell on the console
+::respawn:-/bin/sh
+--- /etc/rc.sh ---
+#!/bin/sh
+
+/sbin/ifconfig lo 127.0.0.1
+
+>/etc/mtab
+
+# mount /proc so "reboot" works
+/bin/mount -t proc proc /proc
+/bin/mount -t jffs2 /dev/mtdblock5 /root
+
+/sbin/ifconfig eth0 192.168.123.119
+/bin/led_test &
+
+/root/user_setup
+--- /etc/profile ---
+--- /etc/passwd ---
+root:$1$KLhNmW89$T1WMWbgTB/Dfrx0FdS465.:0:0:root:/:/bin/sh
+bin:*:1:1:bin:/bin:
+daemon:*:2:2:daemon:/sbin:
+halt:*:7:0:halt:/sbin:/sbin/halt
+ftp:*:14:50:FTP User:/
+nobody:*:99:99:Nobody:/:
+target:$1$x4Rc1j78$n5FVlLwarSyMYoZaMlijU1:200:100:Test User:/home:/bin/sh
+--- /etc/group ---
+root:*:0:root
+bin:*:1:root,bin,daemon
+daemon:*:2:root,bin,daemon
+sys:*:3:root,bin
+tty:*:5:
+disk:*:6:root
+lp:*:7:daemon
+mem:*:8:
+kmem:*:9:
+ftp:*:50:
+nobody:*:99:
+users:*:100:
+--- /etc/hosts ---
+10.0.0.2 tyan
+===== dir listing =====
+--- ls /bin ---
+drwxr-xr-x    2 root     root         1024 Jun  5  2008 .
+drwxr-xr-x   15 root     root         1024 Jan  1 00:29 ..
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 ash -> busybox
+-rwxr-xr-x    1 root     root       327268 Apr 23  2008 busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 cat -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 chgrp -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 chmod -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 chown -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 cp -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 date -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 dd -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 df -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 dmesg -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 echo -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 egrep -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 false -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 fgrep -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 grep -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 gunzip -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 gzip -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 hostname -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 kill -> busybox
+-rwxr-xr-x    1 root     root        13634 Jun  5  2008 led_test
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 ln -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 ls -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 mkdir -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 mknod -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 mktemp -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 more -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 mount -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 mv -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 pidof -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 ping -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 ps -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 pwd -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 rm -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 rmdir -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 sed -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 sh -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 sleep -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 sync -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 tar -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 touch -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 true -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 umount -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 uname -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 usleep -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 vi -> busybox
+lrwxrwxrwx    1 root     root            7 Apr 23  2008 zcat -> busybox
+--- ls /sbin ---
+drwxr-xr-x    2 root     root         1024 Apr 23  2008 .
+drwxr-xr-x   15 root     root         1024 Jan  1 00:29 ..
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 halt -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 ifconfig -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 init -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 insmod -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 klogd -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 lsmod -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 modprobe -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 pivot_root -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 poweroff -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 reboot -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 rmmod -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 swapoff -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 swapon -> ../bin/busybox
+lrwxrwxrwx    1 root     root           14 Apr 23  2008 syslogd -> ../bin/busybox
+--- ls /usr/bin ---
+drwxr-xr-x    2 root     root         1024 Apr 23  2008 .
+drwxr-xr-x    4 root     root         1024 Apr 23  2008 ..
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 [ -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 basename -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 bunzip2 -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 bzcat -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 chvt -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 clear -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 cmp -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 cut -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 deallocvt -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 dirname -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 du -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 env -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 expr -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 find -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 free -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 head -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 hexdump -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 id -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 install -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 killall -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 logger -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 openvt -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 printf -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 readlink -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 reset -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 sort -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 strings -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 tail -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 tee -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 test -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 time -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 tr -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 tty -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 uniq -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 unzip -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 uptime -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 wc -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 wget -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 which -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 whoami -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 xargs -> ../../bin/busybox
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 yes -> ../../bin/busybox
+--- ls /usr/sbin ---
+drwxr-xr-x    2 root     root         1024 Apr 23  2008 .
+drwxr-xr-x    4 root     root         1024 Apr 23  2008 ..
+lrwxrwxrwx    1 root     root           17 Apr 23  2008 chroot -> ../../bin/busybox
+--- ls /etc ---
+drwxr-xr-x    5 1543     1543         1024 Jan  1 00:00 .
+drwxr-xr-x   15 root     root         1024 Jan  1 00:29 ..
+-rw-------    1 1543     1543          484 Jun 24  2002 ftpaccess
+-rw-------    1 1543     1543            0 Jun 24  2002 ftpusers
+-rw-r--r--    1 1543     1543          174 Nov  1  2000 group
+-rw-r--r--    1 1543     1543           17 Nov  1  2000 host.conf
+-rw-r--r--    1 1543     1543           14 Nov  1  2000 hosts
+-rw-r--r--    1 1543     1543          409 Nov 23  2000 inetd.conf
+-rw-r--r--    1 1543     1543          471 Apr 23  2008 inittab
+-rw-r--r--    1 root     root            0 Jan  1 00:00 mtab
+-rw-r--r--    1 1543     1543          160 Nov 18  2000 nsswitch.conf
+drwxr-xr-x    2 1543     1543         1024 Mar  6  2005 pam.d
+-rw-r--r--    1 1543     1543          261 Jun 23  2002 passwd
+-rwxr-xr-x    1 1543     1543            0 Jun  5  2001 profile
+-rw-r--r--    1 1543     1543          362 Nov  1  2000 protocols
+-rwxr-xr-x    1 root     root          226 Aug 27  2008 rc.sh
+-rw-r--r--    1 1543     1543          492 Nov  1  2000 services
+-rw-r--r--    1 1543     1543           29 Jun 24  2002 shells
+drwxr-xr-x    3 1543     1543         1024 Mar  6  2005 terminfo
+-rw-r--r--    1 1543     1543          288 Jun 23  2002 xinetd.conf
+drwxr-xr-x    2 1543     1543         1024 Mar  6  2005 xinetd.d
+--- ls /root ---
+drwxr-xr-x    3 root     root            0 Jan  1 00:00 .
+drwxr-xr-x   15 root     root         1024 Jan  1 00:29 ..
+--- ls /home ---
+drwxr-xr-x    2 1543     1543         1024 Mar  6  2005 .
+drwxr-xr-x   15 root     root         1024 Jan  1 00:29 ..
+--- ls /lib ---
+drwxr-xr-x    4 1543     1543         1024 Apr 23  2008 .
+drwxr-xr-x   15 root     root         1024 Jan  1 00:29 ..
+-rwxr-xr-x    1 1543     1543        83508 Mar  6  2005 ld-2.3.1.so
+lrwxrwxrwx    1 1543     1543           11 Mar  6  2005 ld-linux.so.2 -> ld-2.3.1.so
+-rwxr-xr-x    1 1543     1543      1222592 Mar  6  2005 libc-2.3.1.so
+lrwxrwxrwx    1 1543     1543           13 Mar  6  2005 libc.so.6 -> libc-2.3.1.so
+-rwxr-xr-x    1 1543     1543        19512 Mar  6  2005 libcrypt-2.3.1.so
+lrwxrwxrwx    1 1543     1543           17 Mar  6  2005 libcrypt.so.1 -> libcrypt-2.3.1.so
+-rwxr-xr-x    1 1543     1543         9700 Mar  6  2005 libdl-2.3.1.so
+lrwxrwxrwx    1 1543     1543           14 Mar  6  2005 libdl.so.2 -> libdl-2.3.1.so
+-rwxr-xr-x    1 1543     1543       679092 Mar  6  2005 libm-2.3.1.so
+lrwxrwxrwx    1 1543     1543           13 Mar  6  2005 libm.so.6 -> libm-2.3.1.so
+-rwxr-xr-x    1 1543     1543        71652 Mar  6  2005 libnsl-2.3.1.so
+lrwxrwxrwx    1 1543     1543           15 Mar  6  2005 libnsl.so.1 -> libnsl-2.3.1.so
+-rwxr-xr-x    1 1543     1543        46744 Mar  6  2005 libnss_compat-2.3.1.so
+lrwxrwxrwx    1 1543     1543           22 Mar  6  2005 libnss_compat.so.2 -> libnss_compat-2.3.1.so
+-rwxr-xr-x    1 1543     1543        44924 Mar  6  2005 libnss_files-2.3.1.so
+lrwxrwxrwx    1 1543     1543           21 Mar  6  2005 libnss_files.so.2 -> libnss_files-2.3.1.so
+lrwxrwxrwx    1 1543     1543           14 Mar  6  2005 libpam.so.0 -> libpam.so.0.75
+-rwxr-xr-x    1 1543     1543        33760 Mar  6  2005 libpam.so.0.75
+lrwxrwxrwx    1 1543     1543           19 Mar  6  2005 libpam_misc.so.0 -> libpam_misc.so.0.75
+-rwxr-xr-x    1 1543     1543         9196 Mar  6  2005 libpam_misc.so.0.75
+-rwxr-xr-x    1 1543     1543        58948 Mar  6  2005 libresolv-2.3.1.so
+lrwxrwxrwx    1 1543     1543           18 Mar  6  2005 libresolv.so.2 -> libresolv-2.3.1.so
+-rwxr-xr-x    1 1543     1543         8280 Mar  6  2005 libutil-2.3.1.so
+lrwxrwxrwx    1 1543     1543           16 Mar  6  2005 libutil.so.1 -> libutil-2.3.1.so

@@ -1,0 +1,10 @@
+;==============================================================================
+; recv_report.ttl - receive /tmp/env_report.txt from the board via ZMODEM
+; Requirements:
+;   - board BusyBox must have 'sz' (check the tool list output)
+;   - on the board, run:   sz /tmp/env_report.txt
+;   - then run this macro to save the file to this PC
+;==============================================================================
+setdir 'C:\Users\Administrator\Desktop\SPEAR09H022EP_Linux_Manual\board_results'
+zmodemrecv
+statusmsg 'ZMODEM receive done'

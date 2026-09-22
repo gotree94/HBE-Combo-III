@@ -1,0 +1,23 @@
+;==============================================================================
+; send_script2.ttl - send env_collect2.sh to the board line by line (no data loss)
+; How to use:
+;   1) on the board:   cat > /tmp/env_collect2.sh
+;   2) run this macro: Control > Macro > send_script2.ttl
+;   3) on the board:   sh /tmp/env_collect2.sh
+;==============================================================================
+fileopen fh 'C:\Users\Administrator\Desktop\SPEAR09H022EP_Linux_Manual\env_collect2.sh' 0
+if result < 0 then
+  messagebox 'env_collect2.sh not found' 'Error'
+  end
+endif
+while 1
+  filereadln fh s
+  if result < 0 break
+  sendln s
+  pause 50
+endwhile
+fileclose fh
+pause 200
+send $04
+pause 200
+statusmsg 'Done. Now type: sh /tmp/env_collect2.sh'
