@@ -42,3 +42,98 @@ ASIC의 단점에 대한 대안으로 PLD을 사용한 IC 개발 및 제품의 �
 ## 2.3. FPGA Architecture
 
 이 절에서는 HBE-Combo III 장비에서 사용하는 ALTERA FPGA 디바이스의 하드웨어 특징에 대하여 간단하게 설명하고 있다. FPGA의 내부 Architecture에 대해서 자세하게 알아두면 좋지만,그 특징을 이해하는 데에도 시간이 많이 걸리기 때문에 실제로 장비에 사용하는 Cyclone IIFPGA Device가 갖고 있는 주요 특징과 기본 Architecture에 대해서 간략하게 설명하도록 하겠다.다음의 그림은 이 Cyclone II 디바이스의 내부 Architecture에 대한 블록도이다. 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다. 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다. Logic Element아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다. 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다. LUT는 논리회로가 구성되는 곳이다. LUT는 다른 Logic Element 또는 IO의 입력 신호를 4개 받아서 출력시키는 구조로 구성되어 있다. 4개 이상의 입력 신호를 받는 논리 회로의 경우에는 LUT 옆에 붙어 있는Carry Chain을 통해서 다른 Logic Element와 연결되어 회로가 구성된다. 또, 플립플롭이 사용되는 회로의 경우에는 Logic Element에 포함되어 있는 플립플롭을 사용하도록 구성된다. LUT와 플립플롭을 거쳐서 만들어진 신호는 Routing 신호선을 통해서 다른 Logic Element 또는FPGA의 Routing Bus로 이루어진 있는 Interconnection Bus에 연결되도록 구성되어 있다.보통 1개의 Logic Element에는 약 20개의 논리 게이트가 합성되지만, 그렇다고 해서 AND 게이트를 20개를 사용하였을 때 1개의 Logic Element에 구성된다는 말은 아니다. 이 LogicElement는 FPGA내에 수만~수십만개가 구성되어 있다. LAB(Logic Array Block)위의 Logic Element는 각각 1개씩 FPGA에 구성되어 있지 않다. 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다. LAB와 LAB는Interconnection Bus를 통해 연결된다.이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다. M4K RAM Block아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다. Embedded Multiplier Block아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다. Cyclone II Device Feature아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다. Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
+
+
+
+
+---
+
+
+시리즈별 트랜지스터 및 회로 구조 비교 다이어그램
+========================================================================================
+ 1. 일반 BJT 기반 (포화 영역 진입, Storage Time 딜레이 발생)
+========================================================================================
+
+  [74 표준 TTL]                  [74L 저전력]                   [74H 고속]
+  · 표준 BJT                     · 표준 BJT                     · 표준 BJT
+  · 기본 저항 (R_standard)       · 고저항 (R × 10)              · 저저항 (R ÷ 2) + Darlington
+  
+     C                              C                              C
+     |                              |                              |
+  B--|--E                        B--|--E                        B--|--E
+     |                              |                              |
+   (표준 사이즈)                  (표준 사이즈)                  (표준 사이즈)
+
+
+========================================================================================
+ 2. 쇼트키 BJT 기반 (쇼트키 다이오드 클램핑으로 포화 방지 -> 고속 동작)
+========================================================================================
+
+  [74S 쇼트키]                   [74LS 저전력 쇼트키]           [74AS Advanced 쇼트키]
+  · 쇼트키 BJT (S-Diode 통합)    · 쇼트키 BJT                   · 미세 공정 쇼트키 BJT
+  · 저저항 (전류↑)               · 고저항 (전류↓)               · 핑거 구조 / 기생 Cap 최적화
+
+     C                              C                              C
+     |                              |                              |
+  B--+--[ S-Diode ]--C           B--+--[ S-Diode ]--C           B--+--[ S-Diode ]--C
+     |                              |                              |
+     |--E                           |--E                           |--E
+     |                              |                              |
+   (표준 쇼트키)                  (표준 쇼트키)                  (미세화된 쇼트키)
+
+
+========================================================================================
+ 3. Advanced 미세 공정 + 저전력 쇼트키
+========================================================================================
+
+  [74ALS Advanced Low-Power]
+  · 극미세 공정 쇼트키 BJT
+  · 최적화된 고저항 + 입력 다이오드 네트워크 개선
+
+     C
+     |
+  B--+--[ S-Diode ]--C
+     |
+     |--E
+     |
+  (초미세 공정)
+========================================================================================
+트랜지스터 형상 및 소자 차이 상세 비교표
+시리즈	BJT 내부 소자 형상 (Schottky 유무)	트랜지스터 물리적 크기 & 공정	내부 저항 크기 스케일	핵심 차이점 요약
+74 (표준)	일반 NPN BJT	Standard BJT	Standard (예: 4 kΩ,1.6 kΩ)	기본 토템폴(Totem-pole) 구조. 포화(Saturation)로 인한 딜레이 존재.
+74L (저전력)	일반 NPN BJT	Standard BJT	High (약 10배 확대)	저항을 크게 만들어 전류(소비전력)를 줄임. RC 지연으로 속도는 매우 느림.
+74H (고속)	일반 NPN BJT	Standard BJT	Low (약 1/2 수준)	저항을 줄여 전류 공급을 늘림. 출력단에 달링턴 페어(Darlington Pair) 적용.
+74S (쇼트키)	쇼트키 BJT (Base-Collector에 Metal-Silicide 접합)	Standard Schottky BJT	Low	쇼트키 다이오드가 B-C 접합에 다이렉트로 형성되어 포화 방지. 속도 대폭 향상.
+74LS (저전력 쇼트키)	쇼트키 BJT	Standard Schottky BJT	High	74S의 쇼트키 포화 방지 기술 + 74L의 고저항 설계를 결합해 전력과 속도 절충.
+74AS (Advanced S)	쇼트키 BJT (미세 에피택셜 공정)	Sub-micron 미세 패턴	Optimized Low	BJT의 베이스 폭(Base Width)과 C-B 접합 면적을 줄여 기생 용량(Capacitance) 최소화.
+74ALS (Advanced LS)	쇼트키 BJT (미세 에피택셜 공정)	Sub-micron 미세 패턴	Optimized High	미세 공정으로 기생 용량을 줄이고 저항 네트워크를 최적화하여 최저 전력 + 고속 구현.
+핵심 정리
+소자의 차이:
+
+74, 74L, 74H는 일반 PN 접합 트랜지스터를 사용합니다.
+
+74S, 74LS, 74AS, 74ALS는 베이스와 콜렉터 사이에 금속-반도체 접합인 쇼트키 다이오드(Schottky Diode)가 일체형으로 내장된 쇼트키 트랜지스터를 사용합니다.
+
+크기 및 형태(공정)의 차이:
+
+74 / 74L / 74H / 74S / 74LS는 초기 BJT 에피택셜 공정을 사용하여 트랜지스터의 에미터, 베이스, 콜렉터 영역이 비교적 큽니다.
+
+74AS / 74ALS는 공정 기술 발전으로 트랜지스터의 물리적 전극 크기 및 핑거(Finger) 구조가 미세화되어, 소자 내부의 기생 캐패시턴스(C 
+jc
+​
+ ,C 
+je
+​
+ )가 대폭 줄어들었습니다.
+
+회로 내부 저항의 차이:
+
+저전력 계열(L, LS, ALS)은 저항 수치를 크게 설계하여 회로 전체에 흐르는 DC 전류를 낮췄습니다.
+
+고속 계열(H, S, AS)은 저항 수치를 낮춰 트랜지스터 기생 용량을 빠르게 충·방전할 수 있도록 전류를 크게 흘립니다.
+
+
+![](../img/001-001.png)
+
+
+
