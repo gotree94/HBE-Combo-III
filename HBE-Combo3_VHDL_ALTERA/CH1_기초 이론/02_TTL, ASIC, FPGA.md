@@ -120,7 +120,9 @@ ASIC의 단점에 대한 대안으로 PLD을 사용한 IC 개발 및 제품의 �
    * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
 
 * Cyclone II Device Feature
-   * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다. Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
+   * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다.
+   * Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.
+   * FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
 
 
 
