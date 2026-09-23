@@ -19,7 +19,7 @@
 |:----------:|:----------:|:----------:|:----------:|:----------:|
 | 74 시리즈 | 표준 TTL | 10ns | 10mW | 0 ~ 35 MHz | 
 | 74L 시리즈 | 저전력 TTL | 33ns | 1mW | 0 ~ 3 MHz | 
-| 74H 시리즈 | 고속 TTL | 6n | s22mW | 0 ~ 50 MHz | 
+| 74H 시리즈 | 고속 TTL | 6ns | 22mW | 0 ~ 50 MHz | 
 | 74S 시리즈 | Schottky TTL | 3ns | 19mW | 0 ~ 125 MHz | 
 | 74LS 시리즈 | 저전압 Schottky TTL | 95ns | 2mW | 0 ~ 45 MHz | 
 | 74AS 시리즈 | Advanced Schottky TTL | 15ns | 22mW | 0 ~ 200 MHz | 
