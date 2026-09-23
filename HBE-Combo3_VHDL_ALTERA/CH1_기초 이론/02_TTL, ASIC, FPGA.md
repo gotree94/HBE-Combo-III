@@ -59,7 +59,9 @@
       * standard cell이나 full-custom IC에 비해 silicon 면적을 비효율적으로 많이 사용(약 die의 75%가 routing 영역, 25%가 gate 영역)하여 Die 비용이 높다.
       * 또한 전력소모가 크고 스위칭 속도가 떨어진다.
 
-#### Standard Cell위의 Gate Array와 같이 반주문형 집적 회로의 하나이다. 미리 작성된 표준 기능 블록(Cell)등을 조합하여 사용자의 요구에 맞도록 설계되는 특징을 갖고 있다. 일반적으로 CAD 시스템을이용하여 자동 설계된다. Full Custom IC와 Gate Array의 중간적인 특징을 갖고 있다.z장점 : Gate Array보다 효율적인 silicon영역을 사용하며 silicon 전달 거리가 줄어들어chip 속도가 향상된다.z단점 : 본질적인 Processing cost 부담이 없으므로 설계 비용이 증가하나, 대량 생산 시비용이 감소하는 이점이 있다. Gate Array 방법에 비해 개발 속도가 느리다. Full Custom ICGate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을 직접 설계하는 주문형LSI이다. 모든 설계과정을 일일이 수작업으로 Design한다. 개발 소요 비용과 시간은 가장 많이들지만, 전기적 성능과 실리콘 면적의 사용도가 극대화 된다는 장점을 갖고 있다.z장점 : 대량 생산 시 저가격으로 최고 성능의 chip을 얻을 수 있다.z단점 : 설계 시간이 많이 걸리고, 설계를 위한 고급 전문 인력이 필요하며, NRE cost가많이 든다. ASSP (Application Specific Standard Products)특정용도 또는 응용을 대상으로 하는 전용 표준 제품의 집적 회로(IC)나 LSI를 말하는 것으로,각종 컴퓨터 주변기기 또는 통신용 controller 등이 대표적이다.이것은 처음에는 특정 사용자의 요구에 의해 반도체 제조 회사가 신규로 제작한 IC 인데, 이IC의 평판이 좋아 일반 사용자에게 판매되고, 또, 전용 표준 제품이 되어서 생겨나는 경우가많다.
+#### Standard Cell
+
+위의 Gate Array와 같이 반주문형 집적 회로의 하나이다. 미리 작성된 표준 기능 블록(Cell)등을 조합하여 사용자의 요구에 맞도록 설계되는 특징을 갖고 있다. 일반적으로 CAD 시스템을이용하여 자동 설계된다. Full Custom IC와 Gate Array의 중간적인 특징을 갖고 있다.z장점 : Gate Array보다 효율적인 silicon영역을 사용하며 silicon 전달 거리가 줄어들어chip 속도가 향상된다.z단점 : 본질적인 Processing cost 부담이 없으므로 설계 비용이 증가하나, 대량 생산 시비용이 감소하는 이점이 있다. Gate Array 방법에 비해 개발 속도가 느리다. Full Custom ICGate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을 직접 설계하는 주문형LSI이다. 모든 설계과정을 일일이 수작업으로 Design한다. 개발 소요 비용과 시간은 가장 많이들지만, 전기적 성능과 실리콘 면적의 사용도가 극대화 된다는 장점을 갖고 있다.z장점 : 대량 생산 시 저가격으로 최고 성능의 chip을 얻을 수 있다.z단점 : 설계 시간이 많이 걸리고, 설계를 위한 고급 전문 인력이 필요하며, NRE cost가많이 든다. ASSP (Application Specific Standard Products)특정용도 또는 응용을 대상으로 하는 전용 표준 제품의 집적 회로(IC)나 LSI를 말하는 것으로,각종 컴퓨터 주변기기 또는 통신용 controller 등이 대표적이다.이것은 처음에는 특정 사용자의 요구에 의해 반도체 제조 회사가 신규로 제작한 IC 인데, 이IC의 평판이 좋아 일반 사용자에게 판매되고, 또, 전용 표준 제품이 되어서 생겨나는 경우가많다.
 
 ### (3) PLD (Programmable Logic Device)
 
