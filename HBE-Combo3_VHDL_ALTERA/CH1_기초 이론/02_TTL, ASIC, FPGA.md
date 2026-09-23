@@ -77,7 +77,9 @@
       * 본질적인 Processing cost 부담이 없으므로 설계 비용이 증가하나, 대량 생산 시비용이 감소하는 이점이 있다.
       * Gate Array 방법에 비해 개발 속도가 느리다.
 
-* Full Custom ICGate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을 직접 설계하는 주문형LSI이다. 모든 설계과정을 일일이 수작업으로 Design한다. 개발 소요 비용과 시간은 가장 많이들지만, 전기적 성능과 실리콘 면적의 사용도가 극대화 된다는 장점을 갖고 있다.z장점 : 대량 생산 시 저가격으로 최고 성능의 chip을 얻을 수 있다.z단점 : 설계 시간이 많이 걸리고, 설계를 위한 고급 전문 인력이 필요하며, NRE cost가많이 든다. ASSP (Application Specific Standard Products)특정용도 또는 응용을 대상으로 하는 전용 표준 제품의 집적 회로(IC)나 LSI를 말하는 것으로,각종 컴퓨터 주변기기 또는 통신용 controller 등이 대표적이다.이것은 처음에는 특정 사용자의 요구에 의해 반도체 제조 회사가 신규로 제작한 IC 인데, 이IC의 평판이 좋아 일반 사용자에게 판매되고, 또, 전용 표준 제품이 되어서 생겨나는 경우가많다.
+* Full Custom ICGate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을 직접 설계하는 주문형LSI이다. 모든 설계과정을 일일이 수작업으로 Design한다. 개발 소요 비용과 시간은 가장 많이들지만, 전기적 성능과 실리콘 면적의 사용도가 극대화 된다는 장점을 갖고 있다.z장점 : 대량 생산 시 저가격으로 최고 성능의 chip을 얻을 수 있다.z단점 : 설계 시간이 많이 걸리고, 설계를 위한 고급 전문 인력이 필요하며, NRE cost가많이 든다.
+
+*  ASSP (Application Specific Standard Products)특정용도 또는 응용을 대상으로 하는 전용 표준 제품의 집적 회로(IC)나 LSI를 말하는 것으로,각종 컴퓨터 주변기기 또는 통신용 controller 등이 대표적이다.이것은 처음에는 특정 사용자의 요구에 의해 반도체 제조 회사가 신규로 제작한 IC 인데, 이IC의 평판이 좋아 일반 사용자에게 판매되고, 또, 전용 표준 제품이 되어서 생겨나는 경우가많다.
 
 ### (3) PLD (Programmable Logic Device)
 
@@ -89,7 +91,36 @@ ASIC의 단점에 대한 대안으로 PLD을 사용한 IC 개발 및 제품의 �
 
 ## 2.3. FPGA Architecture
 
-이 절에서는 HBE-Combo III 장비에서 사용하는 ALTERA FPGA 디바이스의 하드웨어 특징에 대하여 간단하게 설명하고 있다. FPGA의 내부 Architecture에 대해서 자세하게 알아두면 좋지만,그 특징을 이해하는 데에도 시간이 많이 걸리기 때문에 실제로 장비에 사용하는 Cyclone IIFPGA Device가 갖고 있는 주요 특징과 기본 Architecture에 대해서 간략하게 설명하도록 하겠다.다음의 그림은 이 Cyclone II 디바이스의 내부 Architecture에 대한 블록도이다. 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다. 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다. Logic Element아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다. 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다. LUT는 논리회로가 구성되는 곳이다. LUT는 다른 Logic Element 또는 IO의 입력 신호를 4개 받아서 출력시키는 구조로 구성되어 있다. 4개 이상의 입력 신호를 받는 논리 회로의 경우에는 LUT 옆에 붙어 있는Carry Chain을 통해서 다른 Logic Element와 연결되어 회로가 구성된다. 또, 플립플롭이 사용되는 회로의 경우에는 Logic Element에 포함되어 있는 플립플롭을 사용하도록 구성된다. LUT와 플립플롭을 거쳐서 만들어진 신호는 Routing 신호선을 통해서 다른 Logic Element 또는FPGA의 Routing Bus로 이루어진 있는 Interconnection Bus에 연결되도록 구성되어 있다.보통 1개의 Logic Element에는 약 20개의 논리 게이트가 합성되지만, 그렇다고 해서 AND 게이트를 20개를 사용하였을 때 1개의 Logic Element에 구성된다는 말은 아니다. 이 LogicElement는 FPGA내에 수만~수십만개가 구성되어 있다. LAB(Logic Array Block)위의 Logic Element는 각각 1개씩 FPGA에 구성되어 있지 않다. 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다. LAB와 LAB는Interconnection Bus를 통해 연결된다.이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다. M4K RAM Block아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다. Embedded Multiplier Block아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다. Cyclone II Device Feature아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다. Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
+* 이 절에서는 HBE-Combo III 장비에서 사용하는 ALTERA FPGA 디바이스의 하드웨어 특징에 대하여 간단하게 설명하고 있다.
+* FPGA의 내부 Architecture에 대해서 자세하게 알아두면 좋지만,그 특징을 이해하는 데에도 시간이 많이 걸리기 때문에 실제로 장비에 사용하는 Cyclone IIFPGA Device가 갖고 있는 주요 특징과 기본 Architecture에 대해서 간략하게 설명하도록 하겠다.
+* 다음의 그림은 이 Cyclone II 디바이스의 내부 Architecture에 대한 블록도이다.
+* 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다.
+* 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
+
+* Logic Element
+   * 아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다.
+   * 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.
+   * 위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다.
+   * LUT는 논리회로가 구성되는 곳이다. LUT는 다른 Logic Element 또는 IO의 입력 신호를 4개 받아서 출력시키는 구조로 구성되어 있다.
+   * 4개 이상의 입력 신호를 받는 논리 회로의 경우에는 LUT 옆에 붙어 있는Carry Chain을 통해서 다른 Logic Element와 연결되어 회로가 구성된다.
+   * 또, 플립플롭이 사용되는 회로의 경우에는 Logic Element에 포함되어 있는 플립플롭을 사용하도록 구성된다.
+   * LUT와 플립플롭을 거쳐서 만들어진 신호는 Routing 신호선을 통해서 다른 Logic Element 또는FPGA의 Routing Bus로 이루어진 있는 Interconnection Bus에 연결되도록 구성되어 있다.
+   * 보통 1개의 Logic Element에는 약 20개의 논리 게이트가 합성되지만, 그렇다고 해서 AND 게이트를 20개를 사용하였을 때 1개의 Logic Element에 구성된다는 말은 아니다.
+   * 이 LogicElement는 FPGA내에 수만~수십만개가 구성되어 있다.
+
+* LAB(Logic Array Block)
+   * 위의 Logic Element는 각각 1개씩 FPGA에 구성되어 있지 않다.
+   * 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다.
+   * LAB와 LAB는Interconnection Bus를 통해 연결된다.이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
+
+* M4K RAM Block
+   * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
+
+* Embedded Multiplier Block
+   * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
+
+* Cyclone II Device Feature
+   * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다. Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
 
 
 
