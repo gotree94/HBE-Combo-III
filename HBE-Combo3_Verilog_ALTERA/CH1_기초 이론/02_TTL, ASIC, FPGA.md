@@ -19,8 +19,10 @@
 * 아래 그림은 각각 AND 게이트가 4개로 이루어진 7408의 내부 블록도와 트랜지스터에 의해구성된 AND 게이트의 모습을 나타내고 있다.
 * 같은 7408 IC라고 하더라도 74LS08, 74S08등의 품명이 있으며 이 품명은 아래와 같은 특징을갖고 있다.
 
-![](../img/001.png)
+<p align="center"> <img src="../img/001.png"> </p>
 
+<div align="center">
+  
 | 시리즈 명 | 특징 | 전달 지연시간 | 소비 전력 | 클럭 입력주파수 | 
 |:----------:|:----------:|:----------:|:----------:|:----------:|
 | 74 시리즈 | 표준 TTL | 10ns | 10mW | 0 ~ 35 MHz | 
@@ -31,9 +33,13 @@
 | 74AS 시리즈 | Advanced Schottky TTL | 15ns | 22mW | 0 ~ 200 MHz | 
 | 74ALS 시리즈 | 저전력 Advanced TTL | 4ns | 1mW | 0 ~ 100 MHz | 
 
+</div>
+
 * 이외에도 74F 시리즈, 74HC 시리즈 등이 있다.
 * 74시리즈는 현재 0번부터 시작하여 600번 대까지의 제품이 나와 있으며, <br>기본 게이트 종류에서부터 디코더, 플립플롭, 레지스터, 카운터 등 많은 종류가 포함되어 있다.
 
+<div align="center">
+  
 | 분류 |  종 류 | 
 |:------:| :------:| 
 | 0 ~ 30 번대 | 게이트 | 
@@ -43,9 +49,11 @@
 | 90 번대 | 카운터, 레지스터 | 
 | 200 번대, 300 번대 | 100 번대 이하의 개량 | 
 
+</div>
+
 ### (2) ASIC (Application Specific IC)
 
-![](../verilog-media/image2.jpeg)
+<p align="center"> <img src="../verilog-media/image2.jpeg"> </p>
 
 * ASIC은 특정한 전자·정보통신 제품에 사용할 목적으로 설계된 비 메모리 반도체 칩이다.
 * 이것은 전자제품을 제조하는 업체가 반도체 설계 업체에 개발을 주문하는 형태로 제작되는데, 전자제품의 성능을 좌우하는 핵심 기능을 포함한다.
@@ -119,7 +127,7 @@
 
 * 아래 그림은 ASIC의 분류를 도식화하여 나타낸 것이다.
 
-![](../verilog-media/image3.png)
+<p align="center"> <img src="../verilog-media/image3.png"> </p>
 
 * 사용자의 목적에 맞는 IC를 설계한다는 측면에서 PLD도 ASIC에 포함시켜 두고 있다.
 
@@ -144,12 +152,12 @@
 * 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다.
 * 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
 
-![](../verilog-media/image4.png)
+<p align="center"> <img src="../verilog-media/image4.png"> </p>
 
 * Logic Element
    * 아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다.
 
-![](../verilog-media/image5.png)
+<p align="center"> <img src="../verilog-media/image5.png"> </p>
 
    * 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.
    * 위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다.
@@ -164,29 +172,43 @@
    * 위의 Logic Element는 각각 1개씩 FPGA에 구성되어 있지 않다.
    * 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다.
 
-![](../verilog-media/image6.png)
+<p align="center"> <img src="../verilog-media/image6.png"> </p>
    
    * LAB와 LAB는Interconnection Bus를 통해 연결된다.이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
 
-![](../verilog-media/image7.png)
+<p align="center"> <img src="../verilog-media/image7.png"> </p>
 
-* M4K RAM Block
+* **M4K RAM Block**
+   * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.
 
+   * Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.
+   * 즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.
+   * 물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.
 
-![](../verilog-media/image8.png)
-![](../verilog-media/image9.png)
+<p align="center"> <img src="../verilog-media/image8.png"> </p>
 
-   * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
+   * 또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
 
-* Embedded Multiplier Block
+* **Embedded Multiplier Block**
    * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
 
-* Cyclone II Device Feature
+<p align="center"> <img src="../verilog-media/image9.png"> </p>
+
+* **Cyclone II Device Feature**
    * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다.
    * Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.
-   * FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
 
+<div align="center">
+  
+| Feature | EP2C5 | EP2C8 | EP2C15 | EP2C20 | EP2C35 | EP2C50 | EP2C75 |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:| 
+| LEs | 4,608 | 8,256 | 14,448 | 18,752 | 33,216 | 50,528 | 68,416 |
+| M4K RAM Blocks(4Kbits + 512parity bits)  | 2 |  2 | 4 |  4 |  4 |  4 |  4 |  
+| Total RAM bits | 119,808 | 165,888 | 239,616 | 239,616 | 483,840 | 594,432 | 1,152,000 |
+| Embedded Multipliers  | 2 |  2 | 4 |  4 |  4 |  4 |  4 | 
+| PLLs | 2 |  2 | 4 |  4 |  4 |  4 |  4 | 
 
+</div>
 
 
 ---
