@@ -126,18 +126,22 @@
 
 * 아래 그림은 ASIC의 분류를 도식화하여 나타낸 것이다.
 
-![](../vhdl-media/image4.png) 
+<p align="center"> <img src="../vhdl-media/image4.png"> </p>
 
 * 사용자의 목적에 맞는 IC를 설계한다는 측면에서 PLD도 ASIC에 포함시켜 두고 있다.
 
 * 아래 표는 위에서 분류한 각 항목에 대한 특징을 비교한 것이다.
 
+<div align="center">
+  
 | | 공간활용 | NRE 비용 | 설계 변경 | 호환성 | 개발 기간 |
 |:----:|:----:|:----:|:----:|:----:|:----:|
 | PLD | 중 ~ 저 | 저 | 용이 | 여러가지 |  |
 | FPGA | 중 | 저 | 설계 변경 | 여러가지 | 1달 이상 |
 | Semi Custom | 고 ~ 중 | 중 | 불편 | 보통 한 가지 | 1달 이상 |
 | Full Custom | 고 | 고 | 불편 | 한가지 | 3달 이상 |
+
+</div>
 
 ## 2.3. FPGA Architecture
 
@@ -148,13 +152,13 @@
 * 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다.
 * 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
 
-![](../vhdl-media/image5.png)
+<p align="center"> <img src="../vhdl-media/image5.png"> </p>
 
 * Logic Element
    * 아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다.
    * 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.
 
-![](../vhdl-media/image6.png)
+<p align="center"> <img src="../vhdl-media/image6.png"> </p>
    
    * 위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다.
    * LUT는 논리회로가 구성되는 곳이다. LUT는 다른 Logic Element 또는 IO의 입력 신호를 4개 받아서 출력시키는 구조로 구성되어 있다.
@@ -170,11 +174,11 @@
    * 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다.
    * LAB와 LAB는Interconnection Bus를 통해 연결된다.
 
-![](../vhdl-media/image7.png)
+<p align="center"> <img src="../vhdl-media/image7.png"> </p>
    
    * 이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
 
-![](../vhdl-media/image8.png)
+<p align="center"> <img src="../vhdl-media/image8.png"> </p>
 
 * M4K RAM Block
    * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.
@@ -183,7 +187,7 @@
    * 즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.
    * 물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.
 
-![](../vhdl-media/image9.png)
+<p align="center"> <img src="../vhdl-media/image9.png"> </p>
 
       
    * 또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
@@ -191,12 +195,14 @@
 * Embedded Multiplier Block
    * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
 
-![](../vhdl-media/image10.png)   
+<p align="center"> <img src="../vhdl-media/image10.png"> </p>
 
 * Cyclone II Device Feature
    * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다.
    * Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.
 
+<div align="center">
+  
 | Feature | EP2C5 | EP2C8 | EP2C15 | EP2C20 | EP2C35 | EP2C50 | EP2C75 |
 |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:| 
 | LEs | 4,608 | 8,256 | 14,448 | 18,752 | 33,216 | 50,528 | 68,416 |
@@ -205,7 +211,7 @@
 | Embedded Multipliers  | 2 |  2 | 4 |  4 |  4 |  4 |  4 | 
 | PLLs | 2 |  2 | 4 |  4 |  4 |  4 |  4 | 
 
-
+</div>
 
 
 ---
