@@ -171,18 +171,31 @@
 * M4K RAM Block
    * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.
 
+   * Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.
+   * 즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.
+   * 물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.
 
 ![](../vhdl-media/image9.png)
-![](../vhdl-media/image10.png)   
-   * Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
+
+      
+   * 또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
 
 * Embedded Multiplier Block
    * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
 
+![](../vhdl-media/image10.png)   
+
 * Cyclone II Device Feature
    * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다.
    * Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.
-   * FeatureEP2C5EP2C8EP2C15EP2C20EP2C35EP2C50EP2C75LEs4,6088,25614,44818,75233,21650,52868,416M4K RAM Blocks(4Kbits + 512parity bits)Total RAM bits119,808165,888239,616239,616483,840594,4321,152,000EmbeddedMultipliersPLLs
+
+| Feature | EP2C5 | EP2C8 | EP2C15 | EP2C20 | EP2C35 | EP2C50 | EP2C75 |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:| 
+| LEs | 4,608 | 8,256 | 14,448 | 18,752 | 33,216 | 50,528 | 68,416 |
+| M4K RAM Blocks(4Kbits + 512parity bits)  | 2 |  2 | 4 |  4 |  4 |  4 |  4 |  
+| Total RAM bits | 119,808 | 165,888 | 239,616 | 239,616 | 483,840 | 594,432 | 1,152,000 |
+| Embedded Multipliers  | 2 |  2 | 4 |  4 |  4 |  4 |  4 | 
+| PLLs | 2 |  2 | 4 |  4 |  4 |  4 |  4 | 
 
 
 
