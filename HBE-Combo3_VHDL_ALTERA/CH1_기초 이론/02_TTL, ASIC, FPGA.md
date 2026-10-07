@@ -141,16 +141,13 @@
 * 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
 
 ![](../vhdl-media/image5.png)
-![](../vhdl-media/image6.png)
-![](../vhdl-media/image7.png)
-![](../vhdl-media/image8.png)
-![](../vhdl-media/image9.png)
-![](../vhdl-media/image10.png)
-
 
 * Logic Element
    * 아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다.
    * 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.
+
+![](../vhdl-media/image6.png)
+   
    * 위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다.
    * LUT는 논리회로가 구성되는 곳이다. LUT는 다른 Logic Element 또는 IO의 입력 신호를 4개 받아서 출력시키는 구조로 구성되어 있다.
    * 4개 이상의 입력 신호를 받는 논리 회로의 경우에는 LUT 옆에 붙어 있는Carry Chain을 통해서 다른 Logic Element와 연결되어 회로가 구성된다.
@@ -160,12 +157,24 @@
    * 이 LogicElement는 FPGA내에 수만~수십만개가 구성되어 있다.
 
 * LAB(Logic Array Block)
+
    * 위의 Logic Element는 각각 1개씩 FPGA에 구성되어 있지 않다.
    * 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다.
-   * LAB와 LAB는Interconnection Bus를 통해 연결된다.이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
+   * LAB와 LAB는Interconnection Bus를 통해 연결된다.
+
+![](../vhdl-media/image7.png)
+   
+   * 이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
+
+![](../vhdl-media/image8.png)
 
 * M4K RAM Block
-   * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
+   * 아래 그림은 FPGA 내부에서 메모리를 설계하는데 최적화되도록 구성된 M4K RAM Block에 대한 블록도이다.
+
+
+![](../vhdl-media/image9.png)
+![](../vhdl-media/image10.png)   
+   * Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Element를 사용해서 메모리를설계할 수 도 있지만, 회로의 최적화와 동작 속도를 빠르게 하기 위해서는 M4K RAM Block을사용하는 것이 좋다. 일반적으로 사용하는 메모리는 IC로써 하드웨어 적으로 구성되기 때문에Address와 Data의 비트 수가 고정되어 있는데, FPGA 내에 구성된 M4K RAM Block은 일정 메모리의 용량을 갖고 있지만, Address와 Data의 비트 수는 가변적이다. 예를 들어 1개의 M4KRAM Block은 약 4kbit의 메모리를 설계 할 수 있는데, 이것은 4kbit = 4 x 1024 = 4096개의데이터를 저장할 수 있음을 의미한다. 만약 4비트의 데이터를 저장하는 메모리를 설계할 경우에는 총 1024개의 address를 갖고 있는 메모리를 설계할 수 있다. 같은 용량을 두고 8비트의데이터를 사용할 경우에는 512개의 address를 갖는 메모리를 설계할 수 있다.즉, 4096 = 4 bit X 1024 = 8 bit X 512 = 16 bit X 256 = … 의 구성이 가능해 진다.물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
 
 * Embedded Multiplier Block
    * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
