@@ -119,7 +119,7 @@
 
 * 아래 그림은 ASIC의 분류를 도식화하여 나타낸 것이다.
 
-![](../vhdl-media/image3-1.png)
+![](../vhdl-media/image3.png)
 
 * 사용자의 목적에 맞는 IC를 설계한다는 측면에서 PLD도 ASIC에 포함시켜 두고 있다.
 
