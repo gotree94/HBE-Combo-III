@@ -144,12 +144,12 @@
 * 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다.
 * 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
 
-![](verilog-media/image4.png)
-![](verilog-media/image5.png)
-![](verilog-media/image6.png)
-![](verilog-media/image7.png)
-![](verilog-media/image8.png)
-![](verilog-media/image9.png)
+![](../verilog-media/image4.png)
+![](../verilog-media/image5.png)
+![](../verilog-media/image6.png)
+![](../verilog-media/image7.png)
+![](../verilog-media/image8.png)
+![](../verilog-media/image9.png)
 
 * Logic Element
    * 아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다.
