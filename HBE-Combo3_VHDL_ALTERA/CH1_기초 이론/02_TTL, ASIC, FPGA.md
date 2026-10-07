@@ -21,7 +21,8 @@
 
 <p align="center"> <img src="../img/001.png"> </p>
 
-
+<div align="center">
+  
 | 시리즈 명 | 특징 | 전달 지연시간 | 소비 전력 | 클럭 입력주파수 | 
 |:----------:|:----------:|:----------:|:----------:|:----------:|
 | 74 시리즈 | 표준 TTL | 10ns | 10mW | 0 ~ 35 MHz | 
@@ -31,6 +32,8 @@
 | 74LS 시리즈 | 저전압 Schottky TTL | 95ns | 2mW | 0 ~ 45 MHz | 
 | 74AS 시리즈 | Advanced Schottky TTL | 15ns | 22mW | 0 ~ 200 MHz | 
 | 74ALS 시리즈 | 저전력 Advanced TTL | 4ns | 1mW | 0 ~ 100 MHz | 
+
+</div>
 
 * 이외에도 74F 시리즈, 74HC 시리즈 등이 있다.
 
