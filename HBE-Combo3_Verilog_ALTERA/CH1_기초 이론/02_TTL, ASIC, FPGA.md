@@ -24,7 +24,6 @@
 
 <br>
 
-
 ## 2.2. TTL, ASIC, PLD
 
 
@@ -191,6 +190,12 @@ Gate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을
 </div>
 
 * 공간 활용NRE 비용설계 변경호환성개발 기간PLD중~저저용이여러 가지FPGA중저용이여러 가지1 주 이내Semi Custom고~중중불편보통 한 가지1 달 이상Full Custom고고불편한가지3 달 이상
+
+<br>
+
+---
+
+<br>
 
 ## 2.3. FPGA Architecture
 
