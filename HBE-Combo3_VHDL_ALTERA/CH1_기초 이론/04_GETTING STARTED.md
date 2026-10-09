@@ -30,8 +30,44 @@ Quartus II 프로그램을 이용하여 로직을 설계하기 위해서는 먼�
 
 <br><br>
 
+아래 그림과 같이 New Project 창에서 Next 버튼을 누른다.
 
-아래 그림과 같이 New Project 창에서 Next 버튼을 누른다.z다음 그림과 같이 작업폴더와 프로젝트 이름을 선언한다.Working Directory : E:\ WORK \ COUNT_8BITProject Name : COUNT_8BITTop-Level Entity Name : COUNT_8BITz아래 그림은 프로젝트에 포함시킬 로직 파일을 추가하는 것인데, 아직 설계된 파일이없기 때문에 Next 버튼을 누른다.z아래 그림은 디바이스를 설정하는 창이다 아래 그림과 같이 Device Family와 device를선택한다.Device Family : Cyclone IIDevice : EP2C70F672C8z다음 그림은 EDA 툴을 설정하는 창이다. 이것은 Quartus II에서 사용하는 컴파일러와시뮬레이터가 아닌 더 좋은 EDA 벤더의 소프트웨어를 사용하고자 할 때 이곳에서설정할 수 있다.z아래 그림과 같이 프로젝트 선언에 대한 요약을 확인하고, Finish 버튼을 눌러 프로젝트선언을 완료한다.
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image13.png"> </p>
+
+<br><br>
+
+다음 그림과 같이 작업폴더와 프로젝트 이름을 선언한다.
+   * Working Directory : E:\ WORK \ COUNT_8BIT
+   * Project Name : COUNT_8BIT
+   * Top-Level Entity Name : COUNT_8BIT
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image14.png"> </p>
+
+<br><br>
+
+아래 그림은 프로젝트에 포함시킬 로직 파일을 추가하는 것인데, 아직 설계된 파일이없기 때문에 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image15.png"> </p>
+
+<br><br>
+
+아래 그림은 디바이스를 설정하는 창이다 아래 그림과 같이 Device Family와 device를선택한다.
+   * Device Family : Cyclone II
+   * Device : EP2C70F672C8
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image16.png"> </p>
+
+<br><br>
+
+다음 그림은 EDA 툴을 설정하는 창이다. 이것은 Quartus II에서 사용하는 컴파일러와시뮬레이터가 아닌 더 좋은 EDA 벤더의 소프트웨어를 사용하고자 할 때 이곳에서설정할 수 있다.z아래 그림과 같이 프로젝트 선언에 대한 요약을 확인하고, Finish 버튼을 눌러 프로젝트선언을 완료한다.
 
 ### (2) 로직 설계
 
