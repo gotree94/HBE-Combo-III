@@ -77,19 +77,26 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-* 아래그림과 같이 프로그램 폴더를 설정하고, Next 버튼을 누른다.
-
 <br><br>
 
 <p align="center"> <img src="../vhdl-media/image244.jpeg"> </p>
 
 <br><br>
 
-* 아래 그림과 같이 Install 요약 정보를 확인한 후 Next 버튼을 누른다.
+* 아래그림과 같이 프로그램 폴더를 설정하고, Next 버튼을 누른다.
 
 <br><br>
 
 <p align="center"> <img src="../vhdl-media/image245.jpeg"> </p>
+
+<br><br>
+
+
+* 아래 그림과 같이 Install 요약 정보를 확인한 후 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image246.jpeg"> </p>
 
 <br><br>
 
@@ -98,17 +105,17 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image246.jpeg"> </p>
-
-<br><br>
-
-* 아래 그림에서 Finish 버튼을 눌러 프로그램의 설치를 완료한다.CH4 부 록
-<br><br>
-
 <p align="center"> <img src="../vhdl-media/image247.png"> </p>
 
 <br><br>
 
+* 아래 그림에서 Finish 버튼을 눌러 프로그램의 설치를 완료한다.CH4 부 록
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image248.jpeg"> </p>
+
+<br><br>
 
 ## 20.3.  License 설정
 
