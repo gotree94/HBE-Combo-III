@@ -485,11 +485,17 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image50.png"> </p>
+
+<br><br>
+
 ③ 아래 그림과 같이 Programmer의 Start 버튼을 눌러 FPGA 디바이스로의 프로그래밍을진행한다.이 부분에서 Hardware Setup이 잘 설정되었는지, Mode가 JTAG으로 설정되었는지,Program/Configure이 체크 되었는지를 확인해야 한다.
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image50.png"> </p>
+<p align="center"> <img src="../vhdl-media/image51.png"> </p>
 
 <br><br>
 
