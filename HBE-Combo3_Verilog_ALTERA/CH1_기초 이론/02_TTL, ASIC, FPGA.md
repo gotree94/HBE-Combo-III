@@ -27,12 +27,6 @@
 
 ## 2.2. TTL, ASIC, PLD
 
-<br>
-
----
-
-<br>
-
 
 ### (1) TTL (Transistor Transistor Logic)
 
