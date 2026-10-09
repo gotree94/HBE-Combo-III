@@ -247,7 +247,7 @@ integer K[63:0];  // an array of 64 integers
 |:-----:|:-----:|:-----:|
 | ~ | Bitwise negation |  | 
 | & | Bitwise AND |  | 
-| | | Bitwise OR | | 
+| '|' | Bitwise OR | | 
 | ^ | Bitwise XOR | | 
 | ~& | Bitwise NAND | | 
 | ~| | Bitwise NOR |  | 
