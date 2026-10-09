@@ -386,13 +386,29 @@ always 문은 이 always 라는 이름이 말하는 것과 같이 항상 반복�
 
 아래에 이 initial 문과 always 문이 사용되는 예가 표시되어 있다.
 
-```
-EX)initial        //초기 지정beginclk = 0;reset = 0;enable = 0;data = 0;endalways @(posedge clk)  // clk 의 rising edge 에서 항상 이루어짐beginif (reset == 1)   // reset 의 값이 1 일 때 수행 , if (reset) 과 같음q <= 0;elseq <= d;end
+```verilog
+EX)
+initial // 초기값 지정
+ begin
+  clk    = 0;
+  reset  = 0;
+  enable = 0;
+  data   = 0;
+ end
+
+always @(posedge clk) // clk 의 rising edge 에서  항상 이루어짐
+ begin
+  if (reset == 1) begin  // reset 의 값이 1 일 때  수행  , if (reset) 과 같음
+    q <= 0;
+  end else begin
+    q <= d;
+  end
+end
 ```
 
 Procedural 블록 안에서는 register(reg)로 선언된 변수만 값을 받을 수 있다는 것에 주의해야한다. Wire 로 선언된 변수에는 그 값을 받을 수 없다.아래에 직접 사용하는 예를 들어보았다.
 
-```
+```verilog
 EX)  wire clk, reset;
      reg enable, data;
 
@@ -416,7 +432,7 @@ always @(d, enable)
 
 Procedural 블록을 사용해서 아래와 같이 조합논리 회로를 설계할 수 있다.
 
-```
+```verilog
 EX) module adder(a, b, sum, carry);
       input a, b;
       output sum, carry;
@@ -434,7 +450,7 @@ endmodule
 
 위의 1 비트 예제에서 뿐만 아니라 아래와 같이 버스의 연산에서도 사용될 수 있다.
 
-```
+```verilog
 EX) module adder4(a, b, sum, carry);
       input [3:0] a, b;
       output [3:0] sum;
@@ -452,16 +468,114 @@ EX) module adder4(a, b, sum, carry);
 
 ### (2) if ~ else 문
 
-Verilog HDL은 initial이나 always에서 사용되는 많은 제어문을 갖고 있다. 이 제어문은 대부분C언어와 유사한 구조를 갖고 있다. 크게 다른 부분은 C언어에서 { } 괄호로 사용되었던 부분이Verilog HDL에서는 begin과 end를 사용한다는 점이 다르다. Verilog HDL에서 { }괄호는 bit배열의 연결에서 사용한다.if ~ else 문은 아래와 같은 구조로 사용된다.if (condition) statements;if (condition) statements;else statements;EX)if (condition) statements;else if (condition) statements;………..…………else statements;// simple if 문if (enable) q <= d;// 그 외의 경우가 있는 경우if (reset == 1’b1) q <= 0;else q <= 1;// 여러 개의 조건이 있는 if ~ else if 문if (reset = 1’b0) counter <= 4’b0000;else if (enable == 1’b1 && up_en = 1’b1) counter <= counter + 1’b1;else if (enable == 1’b1 && down_en = 1’b1) counter <= counter - 1’b1;else counter <= counter;
+Verilog HDL은 initial이나 always에서 사용되는 많은 제어문을 갖고 있다. 이 제어문은 대부분C언어와 유사한 구조를 갖고 있다. 크게 다른 부분은 C언어에서 { } 괄호로 사용되었던 부분이Verilog HDL에서는 begin과 end를 사용한다는 점이 다르다. Verilog HDL에서 { }괄호는 bit배열의 연결에서 사용한다.
+
+if ~ else 문은 아래와 같은 구조로 사용된다.
+
+```verilog
+if (condition) statements;
+
+if (condition) statements;
+else statements;
+
+if (condition) statements;
+else if (condition) statements;
+…………
+…………
+else statements;
+
+EX) // simple if 문
+if (enable) q <= d;
+
+// 그 외의 경우가 있는 경우
+if (reset == 1’b1) q <= 0;
+else q <= 1;
+
+// 여러 개의 조건이 있는 if ~ else if 문
+if (reset = 1’b0) counter <= 4’b0000;
+else if (enable == 1’b1 && up_en = 1’b1) counter <= counter + 1’b1;
+else if (enable == 1’b1 && down_en = 1’b1) counter <= counter - 1’b1;
+else counter <= counter;
+```
 
 ### (3) case 문
 
-case문은 case의 연속된 값을 비교하고, 그 case 조건에 맞았을 때 해당하는 구문 또는 구문들을 실행한다. case문은 단독 또는 다중의 구문을 지원하며, 다중 구문으로 구성되었을 때에는 키워드 begin ~ end를 사용해야 한다.case 문은 아래와 같은 구조를 갖고 있다.case ( <expression> )<case1> : <statement><case1> : <statement>default : <statement>endcaseEX)module mux(a, b, c, d, sel, y);input a, b, c, d;input [1:0] sel;output y;reg buff;wire y;always @(a, b, c, d, sel)case(sel)0 : buff = a;1 : buff = b;2 : buff = c;3 : buff = d;default : buff = 0;endcaseassign y = buff;endmodule위의 예제는 4 x 2 MUX를 설계한 것이다. a, b, c, d의 4개의 입력을 sel의 값에 의해 y에 연결할 것인지를 결정하는 구조가 설계되어 있다. 여기에서 설계된 always문은 a, b, c, d, sel의 값이 변할 때 마다 always 문이 수행되며, sel의 값에 따라서 buff 변수에 a, b, c, d가 연결되어출력하도록 설계 되어 있다. 이 buff 변수에 저장된 값은 always문 밖에서 y에 전달한다.
+case문은 case의 연속된 값을 비교하고, 그 case 조건에 맞았을 때 해당하는 구문 또는 구문들을 실행한다. case문은 단독 또는 다중의 구문을 지원하며, 다중 구문으로 구성되었을 때에는 키워드 begin ~ end를 사용해야 한다.
+
+case 문은 아래와 같은 구조를 갖고 있다.
+
+```verilog
+case ( <expression> )
+ <case1> : <statement>
+ <case1> : <statement>
+…………
+…………
+ default : <statement>
+endcase
+
+EX)
+
+module mux(a, b, c, d, sel, y);
+
+input a, b, c, d;
+input [1:0] sel;
+output y;
+
+reg buff;
+wire y;
+
+always @(a, b, c, d, sel)
+ case(sel)
+  0 : buff = a;
+  1 : buff = b;
+  2 : buff = c;
+  3 : buff = d;
+  default : buff = 0;
+ endcase
+
+assign y = buff;
+
+endmodule
+```
+
+위의 예제는 4 x 2 MUX를 설계한 것이다. a, b, c, d의 4개의 입력을 sel의 값에 의해 y에 연결할 것인지를 결정하는 구조가 설계되어 있다. 여기에서 설계된 always문은 a, b, c, d, sel의 값이 변할 때 마다 always 문이 수행되며, sel의 값에 따라서 buff 변수에 a, b, c, d가 연결되어출력하도록 설계 되어 있다. 이 buff 변수에 저장된 값은 always문 밖에서 y에 전달한다.
 
 ### (4) Named Block
 
-begin의 키워드 후에 : block_name 의 방법으로 각 블록의 이름을 정할 수 있다. 이것은 후에 블록의 특징을 인식하기 쉽게 해준다.아래는 위에서 설계한 1 비트 adder 에 블록의 이름을 설정하였다.EX)module adder(a, b, sum, carry);input a, b;output sum, carry;reg sum, carry;always @(a, b)begin : adder_block{carry, sum} = a + b;endendmodule
+begin의 키워드 후에 : block_name 의 방법으로 각 블록의 이름을 정할 수 있다. 이것은 후에 블록의 특징을 인식하기 쉽게 해준다.아래는 위에서 설계한 1 비트 adder 에 블록의 이름을 설정하였다.
+
+```verilog
+EX)
+module adder(a, b, sum, carry);
+ input a, b;
+ output sum, carry;
+
+ reg sum, carry;
+
+ always @(a, b)
+ begin : adder_block
+  {carry, sum} = a + b;
+ end
+
+endmodule
+```
 
 ### (5) 연속 할당 문
 
-앞의 예제에서 always 블록 밖에서 y 에 buff 의 데이터를 전달하는데, assign 문을 사용하였다.이 assign 문을 연속 할당문이라고 하고, 이것은 net(wire)의 데이터에만 연결이 된다. 이것은구조적으로 실제 연결이 된다.아래는 연속 할당문의 특징이다.Tri-state buffer 를 모델링하여 사용할 수 있다.조합 논리를 모델링하여 사용할 수 있다.Procedural 블록(always 블록과 initial 블록)의 외부에서 사용한다.연속 할당문의 왼쪽에는 반드시 net(wire) 형 변수가 위치해야 한다.이 연속 할당문은 아래와 같은 구조로 사용된다.EX)assign <net> = <expression>;module adder(a, b, sum, carry);input a, b;output sum, carry;assign {carry, sum} = a + b;endmodulemodule tri_buf(a, b, enable)input a, enable;output b;assign b = (enable) ? a : 1’bz;endmodule위의 예제는 각각 1 비트 adder 와 tri-state 버퍼가 설계되었다.1비트 adder에서 a와 b의 더한 값을 carry와 sum에 전달하였다. 앞에서 설명하였었지만,{ carry, sum }은 carry와 sum의 데이터를 결합시키는 것을 의미한다.Tri-state 버퍼에서 ( ) ? : 구문이 사용되었다 b = (enable) ? a : 1’bz; 에서 enable의 값이 1일때에는 a의 값이 b에 전달되며, enable의 값이 0일 때에는 1’bz의 값이 b에 전달된다.
+앞의 예제에서 always 블록 밖에서 y 에 buff 의 데이터를 전달하는데, assign 문을 사용하였다.이 assign 문을 연속 할당문이라고 하고, 이것은 net(wire)의 데이터에만 연결이 된다. 이것은구조적으로 실제 연결이 된다.
+
+아래는 연속 할당문의 특징이다.
+   * Tri-state buffer 를 모델링하여 사용할 수 있다.
+   * 조합 논리를 모델링하여 사용할 수 있다.
+   * Procedural 블록(always 블록과 initial 블록)의 외부에서 사용한다.
+   * 연속 할당문의 왼쪽에는 반드시 net(wire) 형 변수가 위치해야 한다.
+
+이 연속 할당문은 아래와 같은 구조로 사용된다.
+
+```
+EX)assign <net> = <expression>;module adder(a, b, sum, carry);input a, b;output sum, carry;assign {carry, sum} = a + b;endmodulemodule tri_buf(a, b, enable)input a, enable;output b;assign b = (enable) ? a : 1’bz;endmodule
+```
+
+위의 예제는 각각 1 비트 adder 와 tri-state 버퍼가 설계되었다.1비트 adder에서 a와 b의 더한 값을 carry와 sum에 전달하였다. 앞에서 설명하였었지만,{ carry, sum }은 carry와 sum의 데이터를 결합시키는 것을 의미한다.
+
+Tri-state 버퍼에서 ( ) ? : 구문이 사용되었다 b = (enable) ? a : 1’bz; 에서 enable의 값이 1일때에는 a의 값이 b에 전달되며, enable의 값이 0일 때에는 1’bz의 값이 b에 전달된다.
