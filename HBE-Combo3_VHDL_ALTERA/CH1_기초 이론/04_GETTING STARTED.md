@@ -356,9 +356,53 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
+위에서 파일을 추가시키면 아래 그림과 같이 Workspace창에서 프로젝트에 선택한파일이 추가된 것을 확인할 수 있다.
 
+<br><br>
 
-위에서 파일을 추가시키면 아래 그림과 같이 Workspace창에서 프로젝트에 선택한파일이 추가된 것을 확인할 수 있다.z추가한 파일을 검증하기 위하여 아래 그림과 같이 Compile > Compile All 메뉴를선택하여 추가한 파일에 대한 컴파일을 실행시킨다.z컴파일이 끝나면 아래 그림과 같이 Status와 메시지를 통해 컴파일의 성공을 확인할 수있다.z시뮬레이션을 하기 위하여 아래 그림과 같이 Simulate > Start Simulation 메뉴를선택한다.z위의 메뉴를 선택하면 Start Simulation 창이 나타나는데, 여기에서 아래 그림과 같이시뮬레이션 하려고 하는 파일을 선택하면 된다.Design 탭의 Work – tb_count_8bit를 선택하고, OK 버튼을 누른다.z아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.z아래 그림과 같이 Workspace의 sim 탭에서 tb_count_8bit를 마우스로 드래그하여 Wave창에 위치시킨다.z마우스로 Drag & Drop하여 tb_count_8bit를 끌어오면, 아래 그림과 같이 입/출력 신호가나타나는 것을 확인할 수 있다.z시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(TB_COUNT_8BIT)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
+<p align="center"> <img src="../vhdl-media/image35.png"> </p>
+
+<br><br>
+
+추가한 파일을 검증하기 위하여 아래 그림과 같이 Compile > Compile All 메뉴를선택하여 추가한 파일에 대한 컴파일을 실행시킨다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image36.png"> </p>
+
+<br><br>
+
+컴파일이 끝나면 아래 그림과 같이 Status와 메시지를 통해 컴파일의 성공을 확인할 수있다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image37.png"> </p>
+
+<br><br>
+
+시뮬레이션을 하기 위하여 아래 그림과 같이 Simulate > Start Simulation 메뉴를선택한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image38.png"> </p>
+
+<br><br>
+
+위의 메뉴를 선택하면 Start Simulation 창이 나타나는데, 여기에서 아래 그림과 같이시뮬레이션 하려고 하는 파일을 선택하면 된다.Design 탭의 Work – tb_count_8bit를 선택하고, OK 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image39.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image40.png"> </p>
+
+<br><br>
+
+아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.z아래 그림과 같이 Workspace의 sim 탭에서 tb_count_8bit를 마우스로 드래그하여 Wave창에 위치시킨다.z마우스로 Drag & Drop하여 tb_count_8bit를 끌어오면, 아래 그림과 같이 입/출력 신호가나타나는 것을 확인할 수 있다.z시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(TB_COUNT_8BIT)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
 
 ## 4.4. HBE-Combo III를 이용한 동작 검증
 
