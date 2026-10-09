@@ -388,6 +388,8 @@ END HB;
 
 연산자가 연속으로 있을 경우 다음의 표와 같이 우선순위가 결정되고, 괄호가 있을 경우 괄호안의 연산자부터 수행한다.
 
+<div align="center">
+    
 | 구분 | 종류 | 우선순위 | 
 |:-----:|:-----:|:-----:|
 | 논리 연산자(logical operator) | and Logical AND | 6 | 
@@ -414,6 +416,9 @@ END HB;
 | | abs Absolute Value | 1 | 
 | | not Complement | 1 | 
 
+</div>
+
+    
 ## 5.4. VHDL 기본 문법
 
 이 절에서는 VHDL에서 가장 많이 사용하는 IF문과 CASE문에 대하여 설명하고 있다.
