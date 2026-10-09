@@ -46,7 +46,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image241.jpeg"> </p>
+<p align="center"> <img src="../vhdl-media/image241.png"> </p>
 
 <br><br>
 
