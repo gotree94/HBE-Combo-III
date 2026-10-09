@@ -405,7 +405,7 @@ END HB;
 | 산술 연산자(Arithmetic operator) |  + Addition |  4 |
 | | - Subtraction | 4 |
 | 부호 연산자(Sign operator) | + Unary Plus | 3 |
-| | - Unary minus| | 3 |
+| | - Unary minus | 3 |
 | 산술 연산자(Arithmetic operator) | * multiplication | 2 | 
 | | / Divisio | 2 | 
 | | nmod Modulation | 2 | 
