@@ -243,15 +243,15 @@ integer K[63:0];  // an array of 64 integers
 
 여기에서 Unknown(‘x’)의 연산은 예외적인 값을 갖는다. 예를 들어 FALSE와 x의 AND연산은 x의 값을 갖지만, TRUE와 x의 OR연산은 TRUE의 값을 갖는다.
 
-| Operator | 명칭 | 비고 | 
+| Operator | 명칭 | 비고 |
 |:-----:|:-----:|:-----:|
-| `~` | Bitwise negation |  | 
-| `&` | Bitwise AND |  | 
-| `|` | Bitwise OR | | 
-| `^` | Bitwise XOR | | 
-| `~&` | Bitwise NAND | | 
-| `~|` | Bitwise NOR |  | 
-| `~^ or ^~` | NOT XOR |  | 
+| `~` | Bitwise negation |  |
+| `&` | Bitwise AND |  |
+| `\|` | Bitwise OR |  |
+| `^` | Bitwise XOR |  |
+| `~&` | Bitwise NAND |  |
+| `~\|` | Bitwise NOR |  |
+| `~^` or `^~` | Bitwise XNOR |  |
 
 ### (5) 그 밖의 연산자
 
