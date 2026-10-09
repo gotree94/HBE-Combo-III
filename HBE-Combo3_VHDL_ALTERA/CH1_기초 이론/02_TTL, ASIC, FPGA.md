@@ -1,5 +1,11 @@
 # 2. TTL, ASIC, FPGA
 
+<br>
+
+---
+
+<br>
+
 ## 2.1. 개요
 
 * 디지털 시스템을 구성하는데 사용하는 직접회로(Integrated Circuit)는 크게 범용 IC와 ASIC으로 분류할 수 있다.
@@ -10,6 +16,13 @@
 반도체 제조 공정에서 칩으로 생산하여 특정 용도에 맞도록 사용한다.<br>
 즉, 사용자가 요구하는 특정 용도로 동작하도록 설계된 IC를 의미한다. <br>
 이 절에서는 위에서 소개한 TTL과 ASIC 그리고, FPGA에 대한 소개와 각각의 특징에 대하여설명하도록 하겠다.
+
+<br>
+
+---
+
+<br>
+
 
 ## 2.2. TTL, ASIC, PLD
 
@@ -150,6 +163,12 @@ Gate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을
 
 </div>
 
+<br>
+
+---
+
+<br>
+
 ## 2.3. FPGA Architecture
 
 * 이 절에서는 HBE-Combo III 장비에서 사용하는 ALTERA FPGA 디바이스의 하드웨어 특징에 대하여 간단하게 설명하고 있다.
@@ -219,7 +238,11 @@ Gate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을
 </div>
 
 
+<br>
+
 ---
+
+<br>
 
 
 ## 시리즈별 트랜지스터 및 회로 구조 비교 다이어그램
