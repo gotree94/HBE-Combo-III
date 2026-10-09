@@ -220,13 +220,41 @@ Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 �
 | RESETN | N2 | FPGA_RESET | COUNT_OUT[4] | AF8 | LED4 | 
 | CLK | V4 | SW1 | COUNT_OUT[3] | AF7 | LED5 | 
 | COUNT_OUT[7] | AE11 | LED1 | COUNT_OUT[2] | AF6 | LED6 | 
-| COUNT_OUT[6] | AE10L | ED2C | OUNT_OUT[1] | AF5 | LED7 | 
+| COUNT_OUT[6] | AE10 | LED2C | OUNT_OUT[1] | AF5 | LED7 | 
 | COUNT_OUT[5] | AF9 | LED3C | OUNT_OUT[0] | B3 | LED8 | 
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image26.png"> </p>
+
+<br><br>
 
 ### (4) Compile
 
-컴파일은 설계된 로직을 합성하여 FPGA에서 사용할 수 있도록 네트 리스트로 변경하는 과정을 수행하는 것이다. 이 때, 앞에서 설정한 디바이스와 핀 설정을 바탕으로 실제 타겟이 되는디바이스에 맞는 Place & Route 과정이 이루어 지며, 최종 목적인 프로그래밍 파일이 생성된다.다음 그림과 같이 Processing > Start Compilation 메뉴를 선택하여 컴파일을 진행 시킨다.컴파일이 완료가 되면 프로그램의 오른쪽 창에 나오는 Compilation Report를 통해서 컴파일한 결과 등을 확인할 수 있다. 이 창을 살펴보면 COUNT_8BIT 프로젝트는 Cyclone II Family의EP2C70F672 디바이스를 사용하며, 총 8개의 Logic Element를 사용하고, 입출력 핀의 수를 10개 사용하는 프로젝트라는 것을 알 수 있다. 물론 옆의 메뉴를 선택하여 세세한 항목도 확인할 수 있다.
+컴파일은 설계된 로직을 합성하여 FPGA에서 사용할 수 있도록 네트 리스트로 변경하는 과정을 수행하는 것이다. 이 때, 앞에서 설정한 디바이스와 핀 설정을 바탕으로 실제 타겟이 되는디바이스에 맞는 Place & Route 과정이 이루어 지며, 최종 목적인 프로그래밍 파일이 생성된다.
+
+다음 그림과 같이 Processing > Start Compilation 메뉴를 선택하여 컴파일을 진행 시킨다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image27.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image28.png"> </p>
+
+<br><br>
+
+컴파일이 완료가 되면 프로그램의 오른쪽 창에 나오는 Compilation Report를 통해서 컴파일한 결과 등을 확인할 수 있다. 이 창을 살펴보면 COUNT_8BIT 프로젝트는 Cyclone II Family의EP2C70F672 디바이스를 사용하며, 총 8개의 Logic Element를 사용하고, 입출력 핀의 수를 10개 사용하는 프로젝트라는 것을 알 수 있다. 물론 옆의 메뉴를 선택하여 세세한 항목도 확인할 수 있다.
+
+<br>
+
+---
+
+<br>
+
 
 ## 4.3. ModelSim 소프트웨어를 이용한 시뮬레이션
 
