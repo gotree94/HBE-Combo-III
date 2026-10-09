@@ -109,13 +109,63 @@ assignment adder_out = reg_a + reg_b;
 
 ## 5.4. 어휘 규정
 
-Verilog HDL의 어휘 규정은 C++언어와 매우 가까우며 아래와 같은 특징을 갖고 있다.주석은 // 으로 표시되며 /*와 */에 의하여 여러 줄의 주석처리도 할 수 있다.module 과 같은 키워드는 모두 소문자로 사용해야 한다.여백은 빈칸(space), 탭(tab), 줄 바꿈 등을 포함한다. 이들 문자는 다른 어휘토큰과 분리하기 위해 사용되는 경우를 제외하고는 무시된다. 그러나 여백(blank)와 탭은 문자열에서중요하게 취급된다.데이터 값은 아래의 형식에 따라 사용된다.549         // 32bit decimal number‘h 8AF9     // hex number‘o 7460     // octal number8ab        // hex 포맷은 앞에 ‘h 가 사용되어야 하기 때문에 오류4’b11    // 4 비트 2 진수 00115’D3       // 5 비트 decimal 33’b10x     // 3 비트 2 진수 10x   x 는 unknown8’hz       // 8 비트 hexadecimal z, z 는 high impedance
+Verilog HDL의 어휘 규정은 C++언어와 매우 가까우며 아래와 같은 특징을 갖고 있다.
+
+* 주석은 // 으로 표시되며 /*와 */에 의하여 여러 줄의 주석처리도 할 수 있다.
+* module 과 같은 키워드는 모두 소문자로 사용해야 한다.
+* 여백은 빈칸(space), 탭(tab), 줄 바꿈 등을 포함한다. 이들 문자는 다른 어휘토큰과 분리하기 위해 사용되는 경우를 제외하고는 무시된다. 그러나 여백(blank)와 탭은 문자열에서중요하게 취급된다.
+
+데이터 값은 아래의 형식에 따라 사용된다.
+
+```
+549         // 32bit decimal number
+‘h 8AF9     // hex number
+‘o 7460     // octal number
+8ab        // hex 포맷은 앞에 ‘h 가 사용되어야 하기 때문에 오류
+
+4’b11    // 4 비트 2 진수 0011
+5’D3       // 5 비트 decimal 3
+3’b10x     // 3 비트 2 진수 10x   x 는 unknown
+8’hz       // 8 비트 hexadecimal z, z 는 high impedance
+```
 
 ## 5.5. Data type
 
 ### (1) 물리적 데이터형
 
-Verilog HDL의 주요 목적은 디지털 하드웨어를 모델링 하는데 있다. 여기에 사용하는 기본적인 data형은 register(reg)와 wire(wire)의 모델링이다.reg 는 variable data 형으로 특징은 아래와 같다.latch 또는 flip-flop 과 같은 register 의 역할.일시적으로 데이터를 저장하는 변수를 의미함.하드웨어 레지스터를 의미하지는 않음.Always, initial 문 등에서 사용됨.wire 는 net data 형으로 아래와 같은 특징을 갖고 있다.entity 와 각 게이트 구조사이의 물리적 연결의 역할.값 저장이 불가능.assign 문에서 사용됨.reg 와 wire data 형은 아래의 값만을 가지며, 이에 의해서 각 상태가 표현된다.data 값의 미0logical zero or falselogical one or truexUnknown logical valuezHigh impedance of tristate gatereg 변수에서 시뮬레이션이 시작할 때, x로 초기화 된다. wire 변수에서 x값은 다른 어떤 것과도 연결이 되지 않았음을 의미한다.아래의 예와 같이 Data type declaration 구문에서 Register또는 wire의 사이즈를 설정할 수 있다.EX)reg [7:0] A, B;wire [3:0] Dataout;reg [0:3] C;위의 예에서 A와 B는 8비트 형태의 register라고 선언되어 있다. C도 4비트의 register 변수인데 비트의 확장 순서에 유의해야 한다. Dataout은 4비트의 폭을 갖는 wire 변수로 선언되었다.Register와 wire의 비트는 [<start bit> : <end bit>]로 표현된다. 각각의 변수에 아래와 같이그 데이터의 값을 전달해 줄 수 있다.EX)Initial begin : int1A = 8’b00111010;B = { A[3:0] , 4’b1100 };End위의 예에서 B는 상위 4비트에는 A의 하위 4비트의 값이 저장되며, B의 하위 4비트에는“1100”의 값이 전달되도록 구성되어 있다. 이렇게 해서 B에는 “10101100”의 값이 전달된다.위와 같이 { }는 두 개 이상의 값을 콤마(,)를 이용해서 합칠 때 사용한다. 이것은 아래의 형태로 표현할 수 있다.EX){repetition_number{exp1, exp2, …, expn}}C = {2{4’b1100}} ; // C = 8’b11001100
+Verilog HDL의 주요 목적은 디지털 하드웨어를 모델링 하는데 있다. 여기에 사용하는 기본적인 data형은 register(reg)와 wire(wire)의 모델링이다.
+
+reg 는 variable data 형으로 특징은 아래와 같다.
+   * latch 또는 flip-flop 과 같은 register 의 역할.
+   * 일시적으로 데이터를 저장하는 변수를 의미함.
+   * 하드웨어 레지스터를 의미하지는 않음.
+   * Always, initial 문 등에서 사용됨.
+
+wire 는 net data 형으로 아래와 같은 특징을 갖고 있다.
+   * entity 와 각 게이트 구조사이의 물리적 연결의 역할.
+   * 값 저장이 불가능.
+   * assign 문에서 사용됨.
+
+reg 와 wire data 형은 아래의 값만을 가지며, 이에 의해서 각 상태가 표현된다.
+
+| data 값 | 의 미 | 
+|:-------:|:-------:|
+| 0 | logical zero or false | 
+| 1 | logical one or true| 
+| x | Unknown logical value | 
+| z | High impedance of tristate gate | 
+
+reg 변수에서 시뮬레이션이 시작할 때, x로 초기화 된다. wire 변수에서 x값은 다른 어떤 것과도 연결이 되지 않았음을 의미한다.
+
+아래의 예와 같이 Data type declaration 구문에서 Register또는 wire의 사이즈를 설정할 수 있다.
+
+```
+EX) reg [7:0] A, B;
+    wire [3:0] Dataout;
+    reg [0:3] C;
+```
+
+위의 예에서 A와 B는 8비트 형태의 register라고 선언되어 있다. C도 4비트의 register 변수인데 비트의 확장 순서에 유의해야 한다. Dataout은 4비트의 폭을 갖는 wire 변수로 선언되었다.Register와 wire의 비트는 [<start bit> : <end bit>]로 표현된다. 각각의 변수에 아래와 같이그 데이터의 값을 전달해 줄 수 있다.EX)Initial begin : int1A = 8’b00111010;B = { A[3:0] , 4’b1100 };End위의 예에서 B는 상위 4비트에는 A의 하위 4비트의 값이 저장되며, B의 하위 4비트에는“1100”의 값이 전달되도록 구성되어 있다. 이렇게 해서 B에는 “10101100”의 값이 전달된다.위와 같이 { }는 두 개 이상의 값을 콤마(,)를 이용해서 합칠 때 사용한다. 이것은 아래의 형태로 표현할 수 있다.EX){repetition_number{exp1, exp2, …, expn}}C = {2{4’b1100}} ; // C = 8’b11001100
 
 ### (2) 추상 데이터형
 
