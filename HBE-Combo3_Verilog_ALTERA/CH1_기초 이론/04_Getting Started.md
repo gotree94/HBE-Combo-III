@@ -113,7 +113,54 @@ Quartus II 프로그램을 이용하여 로직을 설계하기 위해서는 먼�
 
 ### (2) 로직 설계
 
-앞에서 기획한 내용의 8비트 카운터를 설계하도록 하겠다.다음의 순서대로 설계가 진행되어 프로젝트에 포함된다.아래 그림과 같이 Quartus II 프로그램의 File > New 메뉴을 선택한다.나타나는 New 창에서 아래 그림과 같이 Verilog HDL File을 선택한다.아래와 같이 Verilog HDL 로직을 설계하고, COUNT_8BIT.VHD라는 이름으로 저장한다.저장하는 폴더는 “E:\ WORK \ COUNT_8BIT \ RTL” 이다.로직에 대한 설명은 넘기겠다. 다음 장의 CH2. 논리 회로에서 카운터 로직의 설명에비슷한 예제가 설계되어 있다.//COUNT_8BIT.Vmodule COUNT_8BIT(RESETN, CLK,COUNT_OUTinput RESETN;input CLK;output [7:0] COUNT_OUT;reg [7:0] COUNT_OUT;always @(posedge CLK)beginif (~RESETN)COUNT_OUT <= 8'B00000000;elseCOUNT_OUT <= COUNT_OUT + 1;endendmodule위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.V 파일이 추가되었는지를 확인한다.아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
+앞에서 기획한 내용의 8비트 카운터를 설계하도록 하겠다.
+
+다음의 순서대로 설계가 진행되어 프로젝트에 포함된다.
+
+아래 그림과 같이 Quartus II 프로그램의 File > New 메뉴을 선택한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image18.png"> </p>
+
+<br><br>
+
+나타나는 New 창에서 아래 그림과 같이 Verilog HDL File을 선택한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image19.png"> </p>
+
+<br><br>
+
+아래와 같이 Verilog HDL 로직을 설계하고, COUNT_8BIT.VHD라는 이름으로 저장한다.저장하는 폴더는 “E:\ WORK \ COUNT_8BIT \ RTL” 이다.로직에 대한 설명은 넘기겠다. 다음 장의 CH2. 논리 회로에서 카운터 로직의 설명에비슷한 예제가 설계되어 있다.
+
+```verilog
+//COUNT_8BIT.V
+
+module COUNT_8BIT(
+  RESETN, CLK,
+  COUNT_OUT
+);
+
+input RESETN;
+input CLK;
+output [7:0] COUNT_OUT;
+
+reg [7:0] COUNT_OUT;
+
+always @(posedge CLK)
+begin
+  if (~RESETN)
+    COUNT_OUT <= 8'B00000000;
+  else
+    COUNT_OUT <= COUNT_OUT + 1;
+  end
+
+endmodule
+```
+
+위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.V 파일이 추가되었는지를 확인한다.아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
 
 ### (3) Assignment
 
