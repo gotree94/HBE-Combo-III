@@ -439,7 +439,20 @@ END HB;
 또, 아래와 같이 조건적 병행처리 문을 사용하여 아래와 같이 설계할 수도 있다. 합성의 결과는 같다.
 
 ```
---EXAM_IF1.VHDENTITY EXAM_IF1 ISPORT(A, B, SE: IN BIT;Q: OUT BIT);END EXAM_IF1;ARCHITECTURE HB OF EXAM_IF1 ISBEGINQ <= (A AND B) WHEN SEL = '1' ELSE (A OR B);END HB;
+--EXAM_IF1.VHD
+
+ENTITY EXAM_IF1 IS
+PORT(
+    A, B, SE: IN BIT;
+    Q: OUT BIT);
+END EXAM_IF1;
+
+ARCHITECTURE HB OF EXAM_IF1 IS
+BEGIN
+
+Q <= (A AND B) WHEN SEL = '1' ELSE (A OR B);
+
+END HB;
 ```
 
 IF문에서 else문을 제외하였을 때에는 조건이 거짓일 경우에 수행되어야 하는 구문이 없기 때문에 과거의 출력 값을 그대로 유지하게 된다. 조건이 거짓이리 때의 출력은 과거의 출력 값을 갖고 있어야 하기 때문에 합성하는 과정에서 기억소자가 구성된다.
@@ -449,7 +462,34 @@ IF문에서 else문을 제외하였을 때에는 조건이 거짓일 경우에 �
 아래의 예제는 이 래치와 플립플롭을 구성한 예제이다.
 
 ```
---EXAM_MEM.VHDENTITY EXAM_MEM ISPORT(D, CLK: IN BIT;Q1, Q2: OUT BIT);END EXAM_MEM;ARCHITECTURE HB OF EXAM_MEM ISBEGIN-- LATCHPROCESS(CLK, D)BEGINIF CLK = '1' THENQ1 <= D;END IF;END PROCESS;-- FLIP-FLOPPROCESS(CLK)BEGINIF CLK'EVENT AND CLK = '1' THENQ2 <= D;END IF;END PROCESS;END HB;
+--EXAM_MEM.VHD
+
+ENTITY EXAM_MEM IS
+PORT(
+    D, CLK: IN BIT;
+    Q1, Q2: OUT BIT);
+END EXAM_MEM;
+
+ARCHITECTURE HB OF EXAM_MEM IS
+BEGIN
+
+-- LATCH
+PROCESS(CLK, D)
+BEGIN
+    IF CLK = '1' THEN
+        Q1 <= D;
+    END IF;
+END PROCESS;
+
+-- FLIP-FLOP
+PROCESS(CLK)
+BEGIN
+    IF CLK'EVENT AND CLK = '1' THEN
+        Q2 <= D;
+    END IF;
+END PROCESS;
+
+END HB;
 ```
 
 12~18라인의 PROCESS문이 래치를 구성한 부분이고, 20~26라인의 PROCESS문이 플립플롭을구성한 부분이다.
@@ -547,7 +587,15 @@ PACKAGE 문은 PACKAGE 선언에서 선언한 부 프로그램의 구체적 내�
 패키지 파일의 구성은 아래와 같다.
 
 ```
--- PACKAGE 선언PACKAGE [패키지 이름] IS[선언문]END [패키지 이름]-- PACKAGE 문PACKAGE BODY [패키지 이름] IS[문장]END [패키지 이름];
+-- PACKAGE 선언
+PACKAGE [패키지 이름] IS
+    [선언문]
+END [패키지 이름]
+
+-- PACKAGE 문
+PACKAGE BODY [패키지 이름] IS
+    [문장]
+END [패키지 이름];
 ```
 
 아래 예제는 위의 패키지 형식으로 선언한 예를 나타내고 있습니다.
@@ -557,13 +605,32 @@ PACKAGE 문은 PACKAGE 선언에서 선언한 부 프로그램의 구체적 내�
 
 IBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-PACKAGE OVER ISTYPE INT_UNSI IS RECORDINT : INTEGER RANGE 0 TO 10;UNSI: UNSIGNED(4 DOWNTO 0);END RECORD;FUNCTION "+" (A,B : INT_UNSI) RETURN INT_UNSI;END OVER;PACKAGE BODY OVER ISFUNCTION "+" (A,B : INT_UNSI) RETURN INT_UNSI ISVARIABLE Y : INT_UNSI;BEGINY.INT := A.INT + B.INT;Y.UNSI := A.UNSI + B.UNSI;RETURN Y;END "+";END OVER;
+
+PACKAGE OVER IS
+TYPE INT_UNSI IS RECORD
+    INT : INTEGER RANGE 0 TO 10;
+    UNSI: UNSIGNED(4 DOWNTO 0);
+    END RECORD;
+FUNCTION "+" (A,B : INT_UNSI) RETURN INT_UNSI;
+END OVER;
+
+PACKAGE BODY OVER IS
+FUNCTION "+" (A,B : INT_UNSI) RETURN INT_UNSI IS
+    VARIABLE Y : INT_UNSI;
+BEGIN
+    Y.INT := A.INT + B.INT;
+    Y.UNSI := A.UNSI + B.UNSI;
+    RETURN Y;
+END "+";
+
+END OVER;
 ```
 
 실제 패키지를 사용하기 위해서는 아래와 같은 형식으로 패키지를 불러올 수 있다.
 
 ```
-LIBRARY [라이브러리 이름];USE [라이브러리 이름].[패키지 이름].[내용];
+LIBRARY [라이브러리 이름];
+USE [라이브러리 이름].[패키지 이름].[내용];
 ```
 
 만일 사용하려는 패키지가 현재 작업 폴더(working directory)에 있다면 다음과 같이 use 구문만 사용하여도 패키지를 사용할 수가 있습니다.
@@ -579,7 +646,20 @@ LIBRARY BASE_LIB;
 USE BASE_LIB.SAMPLE.ALL;
 
 ENTITY AND_BODY IS
-PORT(X, Y: IN THREE_LEVEL_LOGIC:Z: OUT THREE_LEVEL_LOGIC);END AND_BODY;ARCHITECTURE HB OF AND_BODY ISBEGINPROCESS(X, Y)BEGINZ <= X AND Y;     --  "AND" PACKAGE USEEND PROCESS;END HB;
+PORT(
+    X, Y: IN THREE_LEVEL_LOGIC:
+    Z: OUT THREE_LEVEL_LOGIC);
+END AND_BODY;
+
+ARCHITECTURE HB OF AND_BODY IS
+BEGIN
+
+PROCESS(X, Y)
+BEGIN
+    Z <= X AND Y;     --  "AND" PACKAGE USE
+END PROCESS;
+
+END HB;
 ```
 
 ### (2) COMPONENT 문
@@ -593,11 +673,18 @@ VHDL문에서 이전에 설계되었던 로직을 불러오기 위해서는 아�
 아래에서 이 COMPONENT 선언의 형식과 실제 선언하는 예를 보여주고 있습니다.
 
 ```
-COMPONENT [식별어]PORT([포트이름]);END COMPONENT;
+COMPONENT [식별어]
+PORT([포트이름]);
+END COMPONENT;
 ```
 
 ```
-COMPONENT AND_2  -- 2 INPUT AND GATEPORT(A, B : IN STD_LOGIC;Y : OUT STD_LOGICEND COMPONENT;
+COMPONENT AND_2  -- 2 INPUT AND GATE
+PORT(
+    A, B : IN STD_LOGIC;
+    Y : OUT STD_LOGIC
+);
+END COMPONENT;
 ```
 
 #### ■ COMPONENT 사례화 문(Component Instantiation Statement)
@@ -607,13 +694,31 @@ COMPONENT 선언에서 선언된 COMPONENT를 사용하여 실제로 로직의 �
 아래에서 이 COMPONENT 사례화 문의 형식이다.
 
 ```
-[레이블] : [COMPONENT 식별어]PORT MAP([결합리스트]);
+[레이블] : [COMPONENT 식별어]
+PORT MAP([결합리스트]);
 ```
 
 아래의 COMPONENT 문에 대한 예제로, 로직은 2입력 AND게이트와 2입력 OR 게이트를COMPONENT로 불러와 설계한 로직이다. A와 B의 AND 연산한 결과 값과 C를 OR 연산하여Y에 출력하는 예제이다.
 
 ```
---AND_OR.VHDUSE WORK.COMPONENT_SET;ENTITY AND_OR ISPORT(A, B, C : IN BIT;Y : OUT BITEND AND_OR;ARCHITECTURE STRUCTURAL OF AND_OR ISCOMPONENT AND_2PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;COMPONENT OR_2PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;SIGNAL TEMP : BIT;--- COMPONENT INSTANTITION STATEMENTSBEGINANDG : AND_2 PORT MAP(A, B, TEMP);ORG   : OR_2 PORT MAP(TEMP, C, Y);END STRUCTURAL;
+--AND_OR.VHD
+USE WORK.COMPONENT_SET;
+ENTITY AND_OR IS
+PORT(
+    A, B, C : IN BIT;
+    Y : OUT BIT
+END AND_OR;
+
+ARCHITECTURE STRUCTURAL OF AND_OR IS
+
+COMPONENT AND_2
+PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;COMPONENT OR_2PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;SIGNAL TEMP : BIT;--- COMPONENT INSTANTITION STATEMENTSBEGINANDG : AND_2 PORT MAP(A, B, TEMP);ORG   : OR_2 PORT MAP(TEMP, C, Y);END STRUCTURAL;
 ```
 
 위의 예제를 논리 회로를 이용해서 아래와 같이 구현 할 수 있다.
+
+<br><br>
+
+<p align="center"> <img src="../img/image55.png"> </p>
+
+<br><br>
