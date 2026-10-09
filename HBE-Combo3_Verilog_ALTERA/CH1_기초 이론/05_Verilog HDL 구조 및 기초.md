@@ -229,11 +229,29 @@ integer K[63:0];  // an array of 64 integers
 
 ### (3) 논리 연산자
 
-논리 연산자는 논리 피연산자를 연산하여, TRUE(‘1’)이나 FALSE(‘0)과 같은 논리 값을 반환해준다. 일반적으로 if문이나 while문에서 사용된다. Boolean 연산자와 논리 연산자를 혼동하지 않도록 주의해야 한다. 예를 들어 !는 논리적으로 NOT을 의미하지만, Boolean 연산자에서는 ~이NOT을 의미한다. 논리 연산에서 !(5==6)은 TRUE의 값을 갖으며, Boolean 연산에서 ~{1,0,1,1}은 “0100”의 값을 갖는다는 것을 유의해야 한다.Operator명칭비고Logical negationLogical ANDLogical OR
+논리 연산자는 논리 피연산자를 연산하여, TRUE(‘1’)이나 FALSE(‘0)과 같은 논리 값을 반환해준다. 일반적으로 if문이나 while문에서 사용된다. Boolean 연산자와 논리 연산자를 혼동하지 않도록 주의해야 한다. 예를 들어 !는 논리적으로 NOT을 의미하지만, Boolean 연산자에서는 ~이NOT을 의미한다. 논리 연산에서 !(5==6)은 TRUE의 값을 갖으며, Boolean 연산에서 ~{1,0,1,1}은 “0100”의 값을 갖는다는 것을 유의해야 한다.
+
+| Operator | 명칭 | 비고 | 
+|:-----:|:-----:|:-----:|
+| ~ | Logical negation |  | 
+| && | Logical AND |  | 
+| || | Logical OR |  | 
 
 ### (4) 비트 연산자
 
-비트 연산자는 피연산자 또는 피연산자의 비트값을 연산한다. 예를 들어 A & B는 A와 B의 각각의 bit를 대응하여 AND한다.여기에서 Unknown(‘x’)의 연산은 예외적인 값을 갖는다. 예를 들어 FALSE와 x의 AND연산은 x의 값을 갖지만, TRUE와 x의 OR연산은 TRUE의 값을 갖는다.Operator명칭비고Bitwise negationBitwise ANDBitwise ORBitwise XORBitwise NANDBitwise NOR~^ or ^~NOT XOR
+비트 연산자는 피연산자 또는 피연산자의 비트값을 연산한다. 예를 들어 A & B는 A와 B의 각각의 bit를 대응하여 AND한다.
+
+여기에서 Unknown(‘x’)의 연산은 예외적인 값을 갖는다. 예를 들어 FALSE와 x의 AND연산은 x의 값을 갖지만, TRUE와 x의 OR연산은 TRUE의 값을 갖는다.
+
+| Operator | 명칭 | 비고 | 
+|:-----:|:-----:|:-----:|
+| ~ | Bitwise negation |  | 
+| & | Bitwise AND |  | 
+| | | Bitwise OR | | 
+| ^ | Bitwise XOR | | 
+| ~& | Bitwise NAND | | 
+| ~| | Bitwise NOR |  | 
+| ~^ or ^~ | NOT XOR |  | 
 
 ### (5) 그 밖의 연산자
 
