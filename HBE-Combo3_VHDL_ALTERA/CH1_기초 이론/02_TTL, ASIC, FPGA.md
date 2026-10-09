@@ -31,7 +31,11 @@
 * 아래 그림은 각각 AND 게이트가 4개로 이루어진 7408의 내부 블록도와 트랜지스터에 의해구성된 AND 게이트의 모습을 나타내고 있다.
 * 같은 7408 IC라고 하더라도 74LS08, 74S08등의 품명이 있으며 이 품명은 아래와 같은 특징을갖고 있다.
 
+<br><br>
+
 <p align="center"> <img src="../img/001.png"> </p>
+
+<br><br>
 
 <div align="center">
   
@@ -51,6 +55,8 @@
 
 
 * 74시리즈는 현재 0번부터 시작하여 600번 대까지의 제품이 나와 있으며, <br>기본 게이트 종류에서부터 디코더, 플립플롭, 레지스터, 카운터 등 많은 종류가 포함되어 있다.
+
+<br><br>
 
 <div align="center">
   
@@ -73,7 +79,11 @@
 
 ### (2) ASIC (Application Specific IC)
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media//image3.jpeg"> </p> 
+
+<br><br>
 
 ASIC은 특정한 전자·정보통신 제품에 사용할 목적으로 설계된 비 메모리 반도체 칩이다. 이것은 전자제품을 제조하는 업체가 반도체 설계 업체에 개발을 주문하는 형태로 제작되는데, 전자제품의 성능을 좌우하는 핵심 기능을 포함한다.
 
@@ -166,11 +176,17 @@ ASIC에서 사용하는 로직의 일부분을 테스트하는 것이 아니라,
 
 * 아래 그림은 ASIC의 분류를 도식화하여 나타낸 것이다.
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media/image4.png"> </p>
+
+<br><br>
 
 * 사용자의 목적에 맞는 IC를 설계한다는 측면에서 PLD도 ASIC에 포함시켜 두고 있다.
 
 * 아래 표는 위에서 분류한 각 항목에 대한 특징을 비교한 것이다.
+
+<br><br>
 
 <div align="center">
   
@@ -195,13 +211,21 @@ ASIC에서 사용하는 로직의 일부분을 테스트하는 것이 아니라,
 
 다음의 그림은 이 Cyclone II 디바이스의 내부 Architecture에 대한 블록도이다. 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다. 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media/image5.png"> </p>
+
+<br><br>
 
 #### ■ Logic Element
 
 아래의 그림은 FPGA를 구성하는 가장 기본 블록인 Logic Element의 내부 구조를 보여주는 그림이다. 사용자가 FPGA를 이용하여 회로 또는 시스템을 설계하였다면, 설계한 회로 또는 시스템에서 사용되는 논리 회로가 이 Logic Element에서 구성된다.
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media/image6.png"> </p>
+
+<br><br>
 
 위의 Logic Element 블록도에서 보이듯이 Logic Element는 크게 Look-Up Table(LUT)과Programmable Register, Routing 선으로 이루어지는 것을 알 수 있다. LUT는 논리회로가 구성되는 곳이다. LUT는 다른 Logic Element 또는 IO의 입력 신호를 4개 받아서 출력시키는 구조로 구성되어 있다. 4개 이상의 입력 신호를 받는 논리 회로의 경우에는 LUT 옆에 붙어 있는Carry Chain을 통해서 다른 Logic Element와 연결되어 회로가 구성된다. 또, 플립플롭이 사용되는 회로의 경우에는 Logic Element에 포함되어 있는 플립플롭을 사용하도록 구성된다. LUT와 플립플롭을 거쳐서 만들어진 신호는 Routing 신호선을 통해서 다른 Logic Element 또는FPGA의 Routing Bus로 이루어진 있는 Interconnection Bus에 연결되도록 구성되어 있다. 보통 1개의 Logic Element에는 약 20개의 논리 게이트가 합성되지만, 그렇다고 해서 AND 게이트를 20개를 사용하였을 때 1개의 Logic Element에 구성된다는 말은 아니다. 이 LogicElement는 FPGA내에 수만~수십만개가 구성되어 있다.
 
@@ -209,11 +233,19 @@ ASIC에서 사용하는 로직의 일부분을 테스트하는 것이 아니라,
 
 위의 Logic Element는 각각 1개씩 FPGA에 구성되어 있지 않다. 아래 그림에서 처럼 16개의Logic Element가 묶여져서 구성되는 Logic Array Block으로 FPGA는 구성된다. LAB와 LAB는Interconnection Bus를 통해 연결된다.
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media/image7.png"> </p>
+
+<br><br>
    
-   * 이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
+이 Interconnection Bus는 아래 그림과 같이 Row와 Column Interconnect Connection으로 구성되어 FPGA내에 LAB를 더 많이 구성할 수 있도록 도와준다.
+
+<br><br>
 
 <p align="center"> <img src="../vhdl-media/image8.png"> </p>
+
+<br><br>
 
 #### ■ M4K RAM Block
 
@@ -225,7 +257,11 @@ Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Elem
 
 물론 FPGA내에 M4K RAM Block이 여러 개 구성되어 있기 때문에 설계되는 용량이 4kbit를초과할 경우에는 다른 Block과 연결되어 FPGA에서 지원하는 메모리 용량까지 설계할 수 있다.
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media/image9.png"> </p>
+
+<br><br>
 
 또, M4K RAM Block는 Interconnect Connection과 연결되어 있어서 이 블록을 필요로 하는 로직과 빠르게 연결할 수 있도록 구성되어 있다.
 
@@ -235,11 +271,17 @@ Logic Element에도 플립플롭이 구성되어 있기 때문에 이 Logic Elem
 
    * 아래의 그림은 Cyclone II 내부에 구성되어 있는 Embedded Multiplier Block의 블록도를 나타낸 것이다.1개의 Embedded Multiplier Block에는 18bit X 18bit곱셈 연산을 할 수 있는 블록이 구성되어있다. 사용하는 방법에 따라서 1개의 블록에서 9bit X 9bit 곱셈 연산 2개를 구성도 가능하다.이것은 DSP와 같은 신호처리 시스템을 설계하거나, 연산을 많이 하는 시스템을 설계할 때 도움이 많이 된다. M4K RAM Block과 마찬가지로, 이런 연산회로를 Logic Element로 설계할 수도 있지만, 설계의 최적화와 동작 performance의 향상을 위해서 이런 연산을 위한 전용 블록인 Embedded Multiplier Block이 Cyclone II 디바이스 내부에 구성되어 있다.
 
+<br><br>
+
 <p align="center"> <img src="../vhdl-media/image10.png"> </p>
+
+<br><br>
 
 #### ■ Cyclone II Device Feature
    * 아래의 표는 Cyclone II 디바이스 Family의 특징을 보여주는 표이다.
    * Cyclone II 디바이스에는디바이스에 설계할 수 있는 게이트의 크기와 Package에 따라 디바이스 모델명에 차이를 갖고있다.
+
+<br><br>
 
 <div align="center">
   
