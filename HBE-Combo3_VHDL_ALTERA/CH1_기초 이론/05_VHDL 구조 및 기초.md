@@ -27,14 +27,14 @@ LIBRARY 선언 부는 PACKAGE 선언 부라고 할 수 있다. 이 부분의 역
 
 LIBRARY는 아래와 같은 형식으로 선언된다. LIBRARY 이름과 그 LIBRARY에 포함되어 있는PACKAGE를 불러와 사용한다.
 
-```
+```vhdl
 LIBRARY [라이브러리 이름];
 USE [라이브러리 이름].[패키지 이름].[내용];
 ```
 
 아래는 이 LIBRARY를 선언한 것인데, VHDL에서 가장 많이 사용되는 IEEE 라이브러리와 이 라이브러리에 속해 있는 PACKAGE를 선언한 예를 보여주고 있다.
 
-```
+```vhdl
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
@@ -46,7 +46,7 @@ ENTITY 선언은 설계한 로직의 외부적 인터페이스를 정의하는 �
 
 ENTITY는 아래와 같은 형식으로 선언된다. ENTITY 이름과 ENTITY에 포함된 포트 리스트를 불러와 사용할 수 있다.
 
-```
+```vhdl
 ENTITY [엔티티 이름] IS
 PORT ( [포트 리스트]
 [포트 이름] : [모드] [데이터 형];
@@ -148,7 +148,7 @@ VHDL에서 값을 가질 수 있는 모든 것을 객체라 하고 이러한 객
 
 객체는 아래와 같이 선언되어 사용된다.
 
-```
+```vhdl
 SIGNAL CARRY : STD_LOGIC;
 ```
 
@@ -290,9 +290,18 @@ END HB;
 
 관계 연산자는 비교함수를 만드는데 사용되며, 대부분의 자료형을 지원한다. 아래 표는 관계연산자의 종류를 나타낸 것이다.
 
-연산자의미같음같지 않음왼쪽의 값이 작음왼쪽의 값이 작거나 같음왼쪽의 값이 큼왼쪽의 값이 크거나 같음아래의 예는 관계 연산자가 VHDL 구문에서 어떻게 이용되고 있는지 설명되어 있다.
+| 연산자 | 의미 | 
+|:------:|:------:|
+| = | 같음 | 
+| /= | 같지 않음 | 
+| < | 왼쪽의 값이 작음 | 
+| <= | 왼쪽의 값이 작거나 같음| 
+| > | 왼쪽의 값이 큼 | 
+| >= | 왼쪽의 값이 크거나 같음 | 
 
-```
+아래의 예는 관계 연산자가 VHDL 구문에서 어떻게 이용되고 있는지 설명되어 있다.
+
+```vhdl
 VARIABLE NUM1: REAL := 100.0;
 VARIABLE NUM2: STD_LOGIC_VECTOR(3 DOWNTO 0) := “0000”;
 VARIABLE NUM3, NUM4: STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -311,7 +320,8 @@ NUM2 < “1000”;   -- NUM2 는 오른쪽 보다 작음
 연산자의미덧셈(addition)뺄셈(subtraction)곱셈(multiplication)나눗셈(division)mod모듈(module)rem나머지(remainder)abs절대값(absolute value)제곱(exponentiation)
 
 아래 예제는 산술 연산자가 VHDL 구문에서 어떻게 사용되고 있는지 설명되어 있다.
-```
+
+```vhdl
 Y1 <= A + B;-- A 더하기 B
 Y2 <= A - B;-- A 빼기 B
 Y3 <= A * B;-- A 곱하기 B
@@ -324,7 +334,7 @@ Y6 <= ABS A;-- A 의 절대값
 
 연결 연산자는 ‘&’의 기호를 사용하며, 원하는 새로운 형태의 1차원 배열을 만드는데 편리한기능을 제공한다. 아래 예제에서 이 연결 연산자를 사용하는 것을 보여주고 있다.
 
-```
+```vhdl
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
@@ -362,7 +372,7 @@ END HB;
 
 IF 문은 어떤 조건에 의하여 그 조건이 만족하면 구문에 속한 내용대로 실행시키는 구문이다.아래의 예제는 이 IF문을 사용하여 구성한 예이다.
 
-```
+```vhdl
 --EXAM_IF.VHDENTITY EXAM_IF ISPORT(A, B, SE: IN BIT;Q: OUT BIT);END EXAM_IF;ARCHITECTURE HB OF EXAM_IF ISBEGINPROCESS(A,B,SEL)BEGINIF SEL = '1' THENQ <= A AND B;ELSEQ <= A OR B;END IF;END PROCESS;END HB;
 ```
 
