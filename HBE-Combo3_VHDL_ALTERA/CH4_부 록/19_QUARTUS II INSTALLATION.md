@@ -18,7 +18,7 @@ Quartus II는 하나의 소프트웨어 안에서 로직을 설계하고, 시뮬
 
 Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web Edition 버전을 사용할 수있다. 아래에 이 Web Edition을 다운로드 받는 방법은 소개되어 있다. (이 문서는 2008년 6월을 기준으로 작성된 것으로 Quartus II 8.0 소프트웨어의 내용을 담고 있다. 이 내용은 홈페이지 내용과 위치 등이 달라질 수 있다.)
 
-아래와 같이 ALTERA사의 홈페이지(http://www.altera.com)에 접속을 한다.z오른쪽 상단의 Download를 클릭한다.
+아래와 같이 ALTERA사의 홈페이지(http://www.altera.com)에 접속을 한다.
 
 <br><br>
 
@@ -26,7 +26,7 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 <br><br>
 
-오른쪽 상단의 Download Center의 창에서 아래 그림과 같이 Quartus II Web Edition의 Software를선택한다.
+오른쪽 상단의 Download를 클릭한다.
 
 <br><br>
 
@@ -34,7 +34,7 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 <br><br>
 
-아래 그림과 같이 선택하여, Quartus II Web Edition Software의 Windows 버전을Download 한다.
+오른쪽 상단의 Download Center의 창에서 아래 그림과 같이 Quartus II Web Edition의 Software를선택한다.
 
 <br><br>
 
@@ -42,7 +42,8 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 <br><br>
 
-Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 Quartus II Web Edition을 다운로드 받을 수 있다.
+
+아래 그림과 같이 선택하여, Quartus II Web Edition Software의 Windows 버전을Download 한다.
 
 <br><br>
 
@@ -55,6 +56,10 @@ Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time 
 <p align="center"> <img src="../vhdl-media/image211.jpeg"> </p>
 
 <br><br>
+
+Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 Quartus II Web Edition을 다운로드 받을 수 있다.
+
+
 
 ## 19.3.  프로그램 설치
 
