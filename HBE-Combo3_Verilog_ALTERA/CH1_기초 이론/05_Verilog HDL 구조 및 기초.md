@@ -117,7 +117,7 @@ Verilog HDL의 어휘 규정은 C++언어와 매우 가까우며 아래와 같�
 
 데이터 값은 아래의 형식에 따라 사용된다.
 
-```
+```verilog
 549         // 32bit decimal number
 ‘h 8AF9     // hex number
 ‘o 7460     // octal number
