@@ -51,14 +51,15 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 <br><br>
 
-<br><br>
-
-<p align="center"> <img src="../vhdl-media/image211.jpeg"> </p>
-
-<br><br>
-
 Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 Quartus II Web Edition을 다운로드 받을 수 있다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image211.png"> </p>
+
+<p align="center"> <img src="../vhdl-media/image212.png"> </p>
+
+<br><br>
 
 
 ## 19.3.  프로그램 설치
