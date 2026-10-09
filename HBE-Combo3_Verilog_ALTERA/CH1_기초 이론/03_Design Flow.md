@@ -4,7 +4,7 @@
 
 <br><br>
 
-<p align="center"> <img src="../img/image10.png"> </p>
+<p align="center"> <img src="../verilog-media/image10.png"> </p>
 
 <br><br>
 
