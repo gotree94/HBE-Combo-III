@@ -392,11 +392,12 @@ END HB;
 4        SIGNAL E,F,G,H : BOOLEAN;
 5
 6    BEGIN
-7        Z <= X AND Y;
-8        D <= (A AND B) AND C;
-8        E <= (F NAND G) XOR H;
-10
-11    END HB;
+7
+8        Z <= X AND Y;
+9        D <= (A AND B) AND C;
+10        E <= (F NAND G) XOR H;
+11
+12    END HB;
 ```
 
 #### ■ 관계 연산자
@@ -486,6 +487,28 @@ END PROCESS;
 END HB;
 ```
 
+```vhdl
+1    LIBRARY IEEE;
+2    USE IEEE.STD_LOGIC_1164.ALL;
+3
+4    ENTITY CON_OPER IS
+5    PORT(
+6        A,B     : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+7        Y       : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+8    END CON_OPER;
+9
+10    ARCHITECTURE HB OF CON_OPER IS
+11        CONSTANT C  : STD_LOGIC_VECTOR(1 DOWNTO 0) := "11";
+12    BEGIN
+13
+14    PROCESS(A,B)
+15    BEGIN
+16        Y <= A & B & C;
+17    END PROCESS;
+18
+19    END HB;
+```
+
 이 예제에서 입력신호 A에 “011”이 입력되고, 입력신호 B에 “110”이 입력된다고 가정하면, 상수 C는 초기 값이 “11”로 선언 되어 있으므로 출력 포트 Y에는 “01111011”이 출력된다.
 
 #### ■ 연산자의 우선 순위
@@ -555,6 +578,30 @@ END PROCESS;
 END HB;
 ```
 
+```vhdl
+1    --EXAM_IF.VHD
+2
+3    ENTITY EXAM_IF IS
+4    PORT(
+5        A, B, SE: IN BIT;
+6        Q: OUT BIT);
+7    END EXAM_IF;
+8
+9    ARCHITECTURE HB OF EXAM_IF IS
+10    BEGIN
+11
+12    PROCESS(A,B,SEL)
+13    BEGIN
+14        IF SEL = '1' THEN
+15            Q <= A AND B;
+16        ELSE
+17            Q <= A OR B;
+18        END IF;
+19    END PROCESS;
+20    
+21    END HB;
+```
+
 이 회로는 MUX회로를 구성한 것이다. 12~19라인은 합성의 과정은 if문의 조건(sel = ‘1’)을 검사하여, 참이면 그 구문에 속한 내용(a and b)을 실행하여 출력 변수인 q에 전달하고, 거짓이면 다른 내용(a or b)를 수행하여 q에 전달하도록 하는 구문이다. 이 라인에서 설계된 내용은21라인의 병행처리문인 WHEN ELSE문으로 바꾸어 사용할 수 있다.
 
 이 회로를 논리 회로로 구성해 보면 아래와 같이 구성되는 것을 확인할 수 있다.
@@ -584,6 +631,24 @@ Q <= (A AND B) WHEN SEL = '1' ELSE (A OR B);
 
 END HB;
 ```
+
+```vhdl
+1    --EXAM_IF1.VHD
+2
+3    ENTITY EXAM_IF1 IS
+4    PORT(
+5        A, B, SE: IN BIT;
+6        Q: OUT BIT);
+7    END EXAM_IF1;
+8
+9    ARCHITECTURE HB OF EXAM_IF1 IS
+10    BEGIN
+11    
+12    Q <= (A AND B) WHEN SEL = '1' ELSE (A OR B);
+13    
+14    END HB;
+```
+
 
 IF문에서 else문을 제외하였을 때에는 조건이 거짓일 경우에 수행되어야 하는 구문이 없기 때문에 과거의 출력 값을 그대로 유지하게 된다. 조건이 거짓이리 때의 출력은 과거의 출력 값을 갖고 있어야 하기 때문에 합성하는 과정에서 기억소자가 구성된다.
 
@@ -620,6 +685,37 @@ BEGIN
 END PROCESS;
 
 END HB;
+```
+
+```vhdl
+1    --EXAM_MEM.VHD
+2
+3    ENTITY EXAM_MEM IS
+4    PORT(
+5        D, CLK: IN BIT;
+6        Q1, Q2: OUT BIT);
+7    END EXAM_MEM;
+8
+9    ARCHITECTURE HB OF EXAM_MEM IS
+10    BEGIN
+11
+12    -- LATCH
+13    PROCESS(CLK, D)
+14    BEGIN
+15        IF CLK = '1' THEN
+16            Q1 <= D;
+17        END IF;
+18    END PROCESS;
+19
+20    -- FLIP-FLOP
+21    PROCESS(CLK)
+22    BEGIN
+23        IF CLK'EVENT AND CLK = '1' THEN
+24            Q2 <= D;
+25        END IF;
+26    END PROCESS;
+27
+28    END HB;
 ```
 
 12~18라인의 PROCESS문이 래치를 구성한 부분이고, 20~26라인의 PROCESS문이 플립플롭을구성한 부분이다.
@@ -660,6 +756,33 @@ END PROCESS;
 END HB;
 ```
 
+```vhdl
+1    -- EXAM_CASE.VHD
+2
+3    ENTITY EXAM_CASE IS
+4    PORT(
+5        A, B, C, D : IN BIT;
+6        SEL     : IN BIT_VECTOR(1 DOWNTO 0);
+7        Q       : OUT BIT);
+8    END EXAM_CASE;
+9
+10    ARCHITECTURE HB OF EXAM_CASE IS
+11    BEGIN
+12
+13    PROCESS(SEL, A, B, C, D)
+14    BEGIN
+15        CASE SEL IS
+16            WHEN "00" => Q <= A;
+17            WHEN "01" => Q <= B;
+18            WHEN "10" => Q <= C;
+19            WHEN OTHERS => Q <= D;
+20        END CASE;
+21    END PROCESS;
+22
+23    END HB;
+```
+
+
 sel의 신호 값에 의하여 MUX의 입력단자(a, b, c, d)의 값이 출력 q로 연결된다. CASE 문에서others를 사용하지 않을 때에는 수식의 모든 경우의 값이 when에서 나열되어야 한다.
 
 위에서 설계한 로직을 논리 회로로 표현하면 아래와 같다.
@@ -693,6 +816,28 @@ Q <=    A WHEN "00",
         D WHEN OTHERS;
 
 END HB;
+```
+
+```vhdl
+1    -- EXAM_CASE1.VHD
+2
+3    ENTITY EXAM_CASE1 IS
+4    PORT(
+5        A, B, C, D : IN BIT;
+6        SEL     : IN BIT_VECTOR(1 DOWNTO 0);
+7        Q       : OUT BIT);
+8    END EXAM_CASE1;
+9
+10    ARCHITECTURE HB OF EXAM_CASE1 IS
+11    BEGIN
+12    
+13    WITH SEL SELECT
+14    Q <=    A WHEN "00",
+15            B WHEN "01",
+16            C WHEN "01",
+17            D WHEN OTHERS;
+18
+19    END HB;
 ```
 
 ## 5.5. 구조적 표현
@@ -757,6 +902,32 @@ END "+";
 END OVER;
 ```
 
+```vhdl
+1    -- OVER.VHDL
+2
+3    IBRARY IEEE;
+4    USE IEEE.STD_LOGIC_1164.ALL;
+5    
+6    PACKAGE OVER IS
+7    TYPE INT_UNSI IS RECORD
+8        INT : INTEGER RANGE 0 TO 10;
+9        UNSI: UNSIGNED(4 DOWNTO 0);
+10        END RECORD;
+11    FUNCTION "+" (A,B : INT_UNSI) RETURN INT_UNSI;
+12    END OVER;
+13
+14    PACKAGE BODY OVER IS
+15    FUNCTION "+" (A,B : INT_UNSI) RETURN INT_UNSI IS
+16        VARIABLE Y : INT_UNSI;
+17    BEGIN
+18        Y.INT := A.INT + B.INT;
+19        Y.UNSI := A.UNSI + B.UNSI;
+20        RETURN Y;
+21    END "+";
+22
+23    END OVER;
+```
+
 실제 패키지를 사용하기 위해서는 아래와 같은 형식으로 패키지를 불러올 수 있다.
 
 ```vhdl
@@ -793,6 +964,27 @@ END PROCESS;
 END HB;
 ```
 
+```vhdl
+1    LIBRARY BASE_LIB;
+2    USE BASE_LIB.SAMPLE.ALL;
+3
+4    ENTITY AND_BODY IS
+5    PORT(
+6        X, Y: IN THREE_LEVEL_LOGIC:
+7        Z: OUT THREE_LEVEL_LOGIC);
+8    END AND_BODY;
+9
+10    ARCHITECTURE HB OF AND_BODY IS
+11    BEGIN
+12
+13    PROCESS(X, Y)
+14    BEGIN
+15        Z <= X AND Y;     --  "AND" PACKAGE USE
+16    END PROCESS;
+17    
+18    END HB;
+```
+
 ### (2) COMPONENT 문
 
 COMPONENT 문은 이전에 설계한 ENTITY를 COMPONENT 로 간주하여 구조적으로 설계한다.구조적으로 표현하기 위해서 먼저 사용하려고 하는 COMPONENT를 선언하고 PORT MAP을통하여 COMPONENT를 사례화한다.
@@ -816,6 +1008,15 @@ PORT(
     Y : OUT STD_LOGIC
 );
 END COMPONENT;
+```
+
+```
+1    COMPONENT AND_2  -- 2 INPUT AND GATE
+2    PORT(
+3        A, B : IN STD_LOGIC;
+4        Y : OUT STD_LOGIC
+5    );
+6    END COMPONENT;
 ```
 
 #### ■ COMPONENT 사례화 문(Component Instantiation Statement)
@@ -843,8 +1044,61 @@ END AND_OR;
 ARCHITECTURE STRUCTURAL OF AND_OR IS
 
 COMPONENT AND_2
-PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;COMPONENT OR_2PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;SIGNAL TEMP : BIT;--- COMPONENT INSTANTITION STATEMENTSBEGINANDG : AND_2 PORT MAP(A, B, TEMP);ORG   : OR_2 PORT MAP(TEMP, C, Y);END STRUCTURAL;
+PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);
+END COMPONENT;
+
+COMPONENT OR_2
+PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);
+END COMPONENT;
+
+SIGNAL TEMP : BIT;
+
+--- COMPONENT INSTANTITION STATEMENTS
+
+BEGIN
+
+ANDG : AND_2 PORT MAP(A, B, TEMP);
+
+ORG   : OR_2 PORT MAP(TEMP, C, Y);
+
+END STRUCTURAL;
 ```
+
+```vhdl
+1    --AND_OR.VHD
+2
+3    USE WORK.COMPONENT_SET;
+4
+5    ENTITY AND_OR IS
+6    PORT(
+7        A, B, C : IN BIT;
+8        Y : OUT BIT
+9    );
+10    END AND_OR;
+11
+12    ARCHITECTURE STRUCTURAL OF AND_OR IS
+13
+14    COMPONENT AND_2
+15    PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);
+16    END COMPONENT;
+17    
+18    COMPONENT OR_2
+19    PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);
+20    END COMPONENT;
+21
+22    SIGNAL TEMP : BIT;
+23
+24    --- COMPONENT INSTANTITION STATEMENTS
+25
+26    BEGIN
+27
+28    ANDG : AND_2 PORT MAP(A, B, TEMP);
+29
+30    ORG   : OR_2 PORT MAP(TEMP, C, Y);
+31
+32 END STRUCTURAL;
+```
+
 
 위의 예제를 논리 회로를 이용해서 아래와 같이 구현 할 수 있다.
 
