@@ -372,7 +372,54 @@ EX) buf U1(out1, out2, in);
 
 ### (3) 3 state 버퍼 게이트 primitive
 
-Bufif0, bufif1, notif0, notif1는 3 state driver를 모델링하는 논리 게이트 소자이며, 출력은 0, 1,z이 될 수 있다. 3상태 버퍼 게이트에서는 하나의 출력과 하나의 데이터 입력, 그리고 제어 입력을 갖는다.데이터 입력값과 제어 입력값의 일부 조합에 대해 이들 게이트 소자의 출력은 특정값에 대한우선권 없이 두 값 중에서 어느 값이라도 출력될 수 있다.이 3 state 버트 게이트 소자는 아래와 같이 선언되어 사용된다.EX)bufif0 bf0(out0, in, control);bufif1 buf1(out1, in, control);아래의 표는 3 state 버퍼 게이트의 진리표를 나타낸 것으로 표에서 L과 H의 출력결과가 있는데, 여기에서 L은 게이트 출력이 0 또는 z가 될 수 있는 경우를 나타내며, H는 게이트 출력이1또는 z가 될 수 있는 경우를 나타낸다.bufif0Control signalData0xz00zLLzHHxxzxxzxzxxbufif1Control signalData0xz0z0LLzHHxzxxxzzxxxnotif0Control signalData0xz0zHH0zLLxxzxxzxzxxnotif1Control signalData0xz0zHHz0LLxzxxxzzxxx
+Bufif0, bufif1, notif0, notif1는 3 state driver를 모델링하는 논리 게이트 소자이며, 출력은 0, 1,z이 될 수 있다. 3상태 버퍼 게이트에서는 하나의 출력과 하나의 데이터 입력, 그리고 제어 입력을 갖는다.
+
+데이터 입력값과 제어 입력값의 일부 조합에 대해 이들 게이트 소자의 출력은 특정값에 대한우선권 없이 두 값 중에서 어느 값이라도 출력될 수 있다.
+
+이 3 state 버트 게이트 소자는 아래와 같이 선언되어 사용된다.
+
+```
+EX) bufif0 bf0(out0, in, control);
+    bufif1 buf1(out1, in, control);
+```
+
+아래의 표는 3 state 버퍼 게이트의 진리표를 나타낸 것으로 표에서 L과 H의 출력결과가 있는데, 여기에서 L은 게이트 출력이 0 또는 z가 될 수 있는 경우를 나타내며, H는 게이트 출력이1또는 z가 될 수 있는 경우를 나타낸다.
+
+**bufif0**
+
+| Data \ Control | 0 | 1 | x | z |
+|:-----:|:-----:|:-----:|:-----:|:-----:|
+| **0** | 0 | z | L | L |
+| **1** | 1 | z | H | H |
+| **x** | x | z | x | x |
+| **z** | x | z | x | x |
+
+**bufif1**
+
+| Data \ Control | 0 | 1 | x | z |
+|:-----:|:-----:|:-----:|:-----:|:-----:|
+| **0** | z | 0 | L | L |
+| **1** | z | 1 | H | H |
+| **x** | z | x | x | x |
+| **z** | z | x | x | x |
+
+**notif0**
+
+| Data \ Control | 0 | 1 | x | z |
+|:-----:|:-----:|:-----:|:-----:|:-----:|
+| **0** | 1 | z | H | H |
+| **1** | 0 | z | L | L |
+| **x** | x | z | x | x |
+| **z** | x | z | x | x |
+
+**notif1**
+
+| Data \ Control | 0 | 1 | x | z |
+|:-----:|:-----:|:-----:|:-----:|:-----:|
+| **0** | z | 1 | H | H |
+| **1** | z | 0 | L | L |
+| **x** | z | x | x | x |
+| **z** | z | x | x | x |
 
 ## 5.8. 행위 수준 모델링
 
