@@ -40,6 +40,12 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 ```
 
+```vhdl
+1    LIBRARY IEEE;
+2    USE IEEE.STD_LOGIC_1164.ALL;
+3    USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+```
+
 ### (2) ENTITY문에서의 포트 선언
 
 ENTITY 선언은 설계한 로직의 외부적 인터페이스를 정의하는 것이다. 외부에서 VHDL을 볼때 연결되는 단자(포트)라고 생각하면 된다. 이러한 ENTITY에서 선언된 포트는 FPGA의 I/O 핀을 통해 연결되는 포트가 된다. 회로에는 VHDL로 설계된 로직에는 하나의 ENTITY 선언만이존재하는 반면에 표현 방법에 따라 여러 개의 아키텍처 문이 존재할 수 있다. 만일 다수의 아키텍처를 갖는 ENTITY 가있을 경우 구성(configuration) 에 의하여 그 연결관계(entity-architecture mapping)를 설정해 주어야 한다.
@@ -76,6 +82,17 @@ RESETN : IN STD_LOGIC;
     COUNT_OUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 );
 END COUNT_8BIT;
+```
+
+```vhdl
+1    ENTITY COUNT_8BIT IS
+2    PORT(
+3    RESETN : IN STD_LOGIC;
+4        CLK : IN STD_LOGIC;
+5
+6        COUNT_OUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+7    );
+8    END COUNT_8BIT;
 ```
 
 ### (3) ARCHITECTURE 문에서의 로직 설계
@@ -145,6 +162,32 @@ COUNT_OUT <= CNT_8BIT;
 END HB;
 ```
 
+```vhdl
+1    ARCHITECTURE HB OF COUNT_8BIT IS
+2
+3    SIGNAL CNT_8BIT : STD_LOGIC_VECTOR(7 DOWNTO 0);
+4
+5    BEGIN
+6
+7    PROCESS(RESETN, CLK)
+8    BEGIN
+9      IF RESETN = '0' THEN
+10        CNT_8BIT <= (OTHERS => '0');
+11      ELSIF CLK'EVENT AND CLK = '1' THEN
+12        IF CNT_8BIT = "11111111" THEN
+13          CNT_8BIT <= (OTHERS => '0');
+14        ELSE
+15          CNT_8BIT <= CNT_8BIT + 1;
+16        END IF;
+17      END IF;
+18    END PROCESS;
+19
+20    COUNT_OUT <= CNT_8BIT;
+21    
+22    END HB;
+```
+
+
 ## 5.3. 객체와 연산자
 
 ### (1) 객체
@@ -210,7 +253,7 @@ END LATCH_MULT;
 
 ARCHITECTURE HB OF LATCH_MULT IS
 
-    SIGNAL M2 : STD_LOGIC;  -- SIGNAL DECLARATION
+SIGNAL M2 : STD_LOGIC;  -- SIGNAL DECLARATION
 
 BEGIN
 
@@ -219,24 +262,71 @@ PROCESS(EN1, EN2, EN3, A1, A2, A3, B2, B3, C2, C3)
 BEGIN
 
 -- SIGNAL ASSIGNMENT
-    IF EN1 = '1' THEN
-        Y1 <= A1;
-    END IF;
+IF EN1 = '1' THEN
+    Y1 <= A1;
+END IF;
 
 -- TWO LATCH
-    IF EN2 = '1' THEN
-        M2 <= A2 NAND B2;
-        Y2 <= M2 NOR C2;
-    END IF;
+IF EN2 = '1' THEN
+    M2 <= A2 NAND B2;
+    Y2 <= M2 NOR C2;
+END IF;
 
 -- VARIABLE ASSIGNMENT
-    IF EN3 = '1' THEN
-        M3 := A3 NAND B3;
-        Y3 <= M3 NOR C3;
-    END IF;
+IF EN3 = '1' THEN
+    M3 := A3 NAND B3;
+    Y3 <= M3 NOR C3;
+END IF;
+
 END PROCESS;
 
 END HB;
+```
+
+```vhdl
+1    LIBRARY IEEE;
+2    USE IEEE.STD_LOGIC_1164.ALL;
+3    USE IEEE.NUMERIC_STD.ALL;
+4
+5    ENTITY LATCH_MULT IS
+6    PORT(
+7      EN1, EN2, EN3 : IN STD_LOGIC;
+8      A1, A2, A3     : IN STD_LOGIC;
+9      B2, B3          : IN STD_LOGIC;
+10      C2, C3          : IN STD_LOGIC;
+11      Y1, Y2, Y3    : OUT STD_LOGIC
+12    );
+13    END LATCH_MULT;
+14
+15    ARCHITECTURE HB OF LATCH_MULT IS
+16
+17        SIGNAL M2 : STD_LOGIC;  -- SIGNAL DECLARATION
+18
+19    BEGIN
+20
+21    PROCESS(EN1, EN2, EN3, A1, A2, A3, B2, B3, C2, C3)
+22        VARIABLE M3 : STD_LOGIC;   -- VARIABLE DECLARATION
+23    BEGIN
+24
+25    -- SIGNAL ASSIGNMENT
+26        IF EN1 = '1' THEN
+27            Y1 <= A1;
+28        END IF;
+29
+30    -- TWO LATCH
+31        IF EN2 = '1' THEN
+32            M2 <= A2 NAND B2;
+33            Y2 <= M2 NOR C2;
+34        END IF;
+35
+36    -- VARIABLE ASSIGNMENT
+37        IF EN3 = '1' THEN
+38            M3 := A3 NAND B3;
+39            Y3 <= M3 NOR C3;
+40        END IF;
+41    END PROCESS;
+42
+43    END HB;
 ```
 
 #### ■ Constant
@@ -293,6 +383,20 @@ BEGIN
     D <= (A AND B) AND C;
     E <= (F NAND G) XOR H;
 END HB;
+```
+
+```vhdl
+1    ARCHITECTURE HB OF LOGIC_OPER IS
+2        SIGNAL Z,X,Y: BIT_VECTOR(3 DOWNTO 0);
+3        SIGNAL A,B,C,D : STD_LOGIC;
+4        SIGNAL E,F,G,H : BOOLEAN;
+5
+6    BEGIN
+7        Z <= X AND Y;
+8        D <= (A AND B) AND C;
+8        E <= (F NAND G) XOR H;
+10
+11    END HB;
 ```
 
 #### ■ 관계 연산자
