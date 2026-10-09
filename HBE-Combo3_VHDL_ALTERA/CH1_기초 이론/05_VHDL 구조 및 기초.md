@@ -396,8 +396,23 @@ END HB;
 |  | nor Logical NOR | 6 | 
 |  | xor Logical Exclusive OR | 6 | 
 | 관계 연산자(relational operator) | = Equal | 5 | 
-|  | /= Not Equal| 5 |
-|  | < Less Than or Equal<= Less Than or Equal> Greater Than or Equal>= Greater Than or Equal연결 연산자(concatenation operator)& Concatenation산술 연산자(Arithmetic operator)+ Addition- Subtraction부호 연산자(Sign operator)+ Unary Plus- Unary minus산술 연산자(Arithmetic operator)* multiplication/ Divisionmod Modulationrem Remember기타 연산자** Exponentiationabs Absolute Valuenot Complement
+|  | /= Not Equal | 5 |
+|  | < Less Than or Equal |   5 |
+|  | <= Less Than or Equal |   5 |
+|  | > Greater Than or Equal |  5 |
+|  | >= Greater Than or Equal |  5 |
+| 연결 연산자(concatenation operator) | & Concatenation |  4 |
+| 산술 연산자(Arithmetic operator) |  + Addition |  4 |
+| | - Subtraction |  4 |
+| 부호 연산자(Sign operator) | + Unary Plus|  3 |
+| | - Unary minus| |  3 |
+| 산술 연산자(Arithmetic operator) | * multiplication | 2 | 
+| | / Divisio | 2 | 
+| | nmod | Modulation | 2 | 
+| | rem Remember | 2 | 
+| 기타 연산자 | ** Exponentiation | 1 | 
+| | abs Absolute Value | 1 | 
+| | not Complement | 1 | 
 
 ## 5.4. VHDL 기본 문법
 
