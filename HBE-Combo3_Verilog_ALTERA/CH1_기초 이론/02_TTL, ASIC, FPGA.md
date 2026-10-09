@@ -1,5 +1,10 @@
 # 2. TTL, ASIC, FPGA
 
+
+<br>
+---
+<br>
+
 ## 2.1. 개요
 
 * 디지털 시스템을 구성하는데 사용하는 직접회로(Integrated Circuit)는 크게 범용 IC와 ASIC으로 분류할 수 있다.
@@ -11,7 +16,17 @@
 즉, 사용자가 요구하는 특정 용도로 동작하도록 설계된 IC를 의미한다. <br>
 이 절에서는 위에서 소개한 TTL과 ASIC 그리고, FPGA에 대한 소개와 각각의 특징에 대하여설명하도록 하겠다.
 
+<br>
+---
+<br>
+
+
 ## 2.2. TTL, ASIC, PLD
+
+<br>
+---
+<br>
+
 
 ### (1) TTL (Transistor Transistor Logic)
 
@@ -50,6 +65,11 @@
 | 200 번대, 300 번대 | 100 번대 이하의 개량 | 
 
 </div>
+
+<br>
+---
+<br>
+
 
 ### (2) ASIC (Application Specific IC)
 
@@ -110,6 +130,11 @@ Gate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을
 
 * 이것은 처음에는 특정 사용자의 요구에 의해 반도체 제조 회사가 신규로 제작한 IC 인데, 이IC의 평판이 좋아 일반 사용자에게 판매되고, 또, 전용 표준 제품이 되어서 생겨나는 경우가많다.
 
+<br>
+---
+<br>
+
+
 ### (3) PLD (Programmable Logic Device)
 
 * ASIC의 단점에 대한 대안으로 PLD을 사용한 IC 개발 및 제품의 개발이 활발하게 이루어지고있다.
@@ -129,6 +154,10 @@ Gate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을
   * NRE 비용이 들지 않는다.
 * 단점 :
   * silicon 면적의 사용이 비효율적이고, 개별 단가가 비싸다.
+
+<br>
+---
+<br>
 
 ### (4) 특징 비교
 
