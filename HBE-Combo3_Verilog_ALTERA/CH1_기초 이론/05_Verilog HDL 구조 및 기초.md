@@ -75,7 +75,37 @@ EX)   input [3:0] A, B;
       output Cout;
 ```
 
-위에서 Port type에 input, output, inout을 선언하여 포트 리스트에 있는 각 포트명의 타입을선언하고, port name에서 포트 리스트에 있는 해당 포트명을 선언해 주면 된다.Data type declarations 구문에서는 모듈에서 사용할 변수를 선언해 주는 블록으로, 모듈에서사용할 변수의 data형을 선언한다. data형은 아래와 같이 선언하여 사용한다.EX)<data type> <data name>;reg alu_reg;reg [7:0] alu_reg;wire adder_out;wire [3:0] adder_out;가장 많이 사용되는 data형은 위의 예와 같이 register(reg)와 wire(wire)이다.각각에 대하여 간단하게 설명하면 reg는 latch 또는 flip-flop을 나타내는 레지스터의 data형으로 일시적으로 데이터를 저장하는 변수를 의미한다. 이것은 하드웨어 레지스터를 의미하지는않고, always문이나 initial문 등에서 사용되는 data형이다.Wire 는 배선(net)이라 할 수 있다. 이 data 형은 값의 저장은 불가능하며, 주로 assign 문에서사용된다.circuit functionality 구문은 실제 시스템이 설계되는 블록으로 initial 구문, always 문, 그리고assignment 문이나 서브 모듈의 호출에 의해서 구성된다.EX)always @(posedge clk)beginif (cnt >= 4) cnt = 0;else cnt = cnt + 1;endassignment adder_out = reg_a + reg_b;
+위에서 Port type에 input, output, inout을 선언하여 포트 리스트에 있는 각 포트명의 타입을선언하고, port name에서 포트 리스트에 있는 해당 포트명을 선언해 주면 된다.
+
+Data type declarations 구문에서는 모듈에서 사용할 변수를 선언해 주는 블록으로, 모듈에서사용할 변수의 data형을 선언한다. data형은 아래와 같이 선언하여 사용한다.
+
+```verilog
+  <data type> <data name>;
+
+EX) reg alu_reg;
+    reg [7:0] alu_reg;
+
+    wire adder_out;
+    wire [3:0] adder_out;
+```
+
+가장 많이 사용되는 data형은 위의 예와 같이 register(reg)와 wire(wire)이다.
+
+각각에 대하여 간단하게 설명하면 reg는 latch 또는 flip-flop을 나타내는 레지스터의 data형으로 일시적으로 데이터를 저장하는 변수를 의미한다. 이것은 하드웨어 레지스터를 의미하지는않고, always문이나 initial문 등에서 사용되는 data형이다.
+
+Wire 는 배선(net)이라 할 수 있다. 이 data 형은 값의 저장은 불가능하며, 주로 assign 문에서사용된다.
+
+circuit functionality 구문은 실제 시스템이 설계되는 블록으로 initial 구문, always 문, 그리고assignment 문이나 서브 모듈의 호출에 의해서 구성된다.
+
+```verilog
+EX)always @(posedge clk)
+ begin
+  if (cnt >= 4) cnt = 0;
+  else cnt = cnt + 1;
+ end
+
+assignment adder_out = reg_a + reg_b;
+```
 
 ## 5.4. 어휘 규정
 
