@@ -402,7 +402,37 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.z아래 그림과 같이 Workspace의 sim 탭에서 tb_count_8bit를 마우스로 드래그하여 Wave창에 위치시킨다.z마우스로 Drag & Drop하여 tb_count_8bit를 끌어오면, 아래 그림과 같이 입/출력 신호가나타나는 것을 확인할 수 있다.z시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(TB_COUNT_8BIT)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
+아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image41.png"> </p>
+
+<br><br>
+
+아래 그림과 같이 Workspace의 sim 탭에서 tb_count_8bit를 마우스로 드래그하여 Wave창에 위치시킨다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image42.png"> </p>
+
+<br><br>
+
+마우스로 Drag & Drop하여 tb_count_8bit를 끌어오면, 아래 그림과 같이 입/출력 신호가나타나는 것을 확인할 수 있다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image43.png"> </p>
+
+<br><br>
+
+시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(TB_COUNT_8BIT)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image44.png"> </p>
+
+<br><br>
 
 ## 4.4. HBE-Combo III를 이용한 동작 검증
 
