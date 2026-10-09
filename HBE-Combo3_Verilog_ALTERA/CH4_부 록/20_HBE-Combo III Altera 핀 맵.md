@@ -1,5 +1,213 @@
 # 20. HBE-Combo III Altera 핀 맵
 
-> 출처 : 「HBE-Combo III로 배우는 VerilogHDL를 이용한 디지털 회로설계(ALTERA) v1.0 최종 20081006-p337」 4장 「20. HBE-Combo III Altera 핀 맵」 (원본 도서 325~331쪽)
+4장 「21. HBE-COMBO III 핀 맵」
 
- FPGA DEVICEManufactureFamilyDeviceALTERACyclone IIEP2C70F672-5 CLOCKNet NamePin NumberCLK1N2CLK2N25 RESETNet NamePin NumberFPGA_RESETC5 LEDNet NamePin NumberLED1AE11LED2AE10LED3AF9LED4AF8LED5AF7LED6AF6LED7AF5LED8B3LED9B2LED10AF13LED11Y25LED12AF23LED13G1LED14G2LED15AA24LED16AF10 Button SwitchNet NamePin NumberSW1V4SW2V3SW3V2SW4W4SW5W3SW6W2SW7W1SW8V7SW9Y4SW10Y3SW11Y2SW12Y1SW13W6SW14AA4SW15AA3SW16AA2 BUS SwitchNet NamePin NumberBUS SW1T6BUS SW2V1BUS SW3U7BUS SW4U6BUS SW5U5BUS SW6U4BUS SW7V6BUS SW8V5 7-Segment 1 DigitNet NamePin NumberSEG_AM3SEG_BM2SEG_CL7SEG_DL6SEG_EL4SEG_FP6SEG_GP4SEG_HP3 7-Segment 4DigitNet NamePin NumberSEG_DATA_AM5SEG_DATA_BM4SEG_DATA_CR5SEG_DATA_DR4SEG_DATA_ER3SEG_DATA_FR2SEG_DATA_GP7SEG_DATA_HT4SEG_COM1T3SEG_COM2T2SEG_COM3R7SEG_COM4R6SEG_COM5U3SEG_COM6U2SEG_COM7U1SEG_COM8T7 PIEZONet NamePin NumberPIEZOK6 STEP MOTORNet NamePin NumberSTEP_AAA23STEP_BAB24STEP_ANY26STEP_BNAB23STEP_SENSORAA26 VFDNet NamePin NumberVFD_RSJ5VFD_RWJ4VFD_EK5VFD_D7K7VFD_D6K8VFD_D5L2VFD_D4L3VFD_D3K1VFD_D2K2VFD_D1K3VFD_D0K4 RS-232Net NamePin NumberUART_TXDF7UART_RXDH3USB_TXDH1USB_RXDH2 SRAMNet NamePin NumberSRAM_CSH26SRAM_WEJ20SRAM_OEJ21SRAM1_LBG23SRAM1_UBG24SRAM2_LBH23SRAM2_LBH24SDRAM_D31Y24SDRAM_D30Y23SDRAM_D29Y22SDRAM_D28Y21SDRAM_D27W26SDRAM_D26W25SDRAM_D25W24SDRAM_D24W23SDRAM_D23W21SDRAM_D22V26SDRAM_D21V25SDRAM_D20V24SDRAM_D19V23SDRAM_D18V22SDRAM_D17U26SDRAM_D16U25SDRAM_D15U24SDRAM_D14U23SDRAM_D13U22SDRAM_D12U21SDRAM_D11U20SDRAM_D10T25SDRAM_D9T24SDRAM_D8T23SDRAM_D7T22SDRAM_D6T21SDRAM_D5T20SDRAM_D4R25SDRAM_D3R24SDRAM_D2R20SDRAM_D1P24SDRAM_D0P23SRAM_A17G22SRAM_A16G21SRAM_A15F26SRAM_A14F25SRAM_A13F24SRAM_A12F20SRAM_A11E26SRAM_A10E25SRAM_A9E24SRAM_A8E23SRAM_A7E22SRAM_A6D26SRAM_A5D25SRAM_A4D23SRAM_A3C25SRAM_A2C24SRAM_A1B25SRAM_A0B24집필진이 장겸    ㈜ 한백전자 선임연구원장 의기    ㈜ 한백전자 책임연구원HBE-COMBO III 로 배우는 VerilogHDL 를 이용한디지털 회로 설계 (ALTERA 편)저자   : ㈜ 한백전자 기술연구소발행처 : ㈜ 한백전자발행일 : 2008 년 10 월 10 일주소 : 대전광역시 유성구 궁동 487-1전화 : (042) 610-1111 / 팩스 : (042) 610-1199Web Site : http://www.hanback.co.kr가격 :  16,000 원ISBN : 978-89-93327-16-8 93560※ 이 책의 저작권은 저자에게 있으며, 저자의 동의 없이복사·인용·복제·전제를 금합니다.
+## ■ FPGA DEVICE
+| Manufacture | Family | Device | 
+|:----:|:-----:|:-----:|
+| ALTERA | Cyclone II | EP2C70F672-5 | 
+
+## ■ CLOCK
+| Net Name | Pin Number |
+|:----:|:-----:|
+| CLK1 | N2 | 
+| CLK2 | N25 | 
+
+## ■ RESET
+| Net Name | Pin Number |
+|:----:|:-----:|
+| FPGA_RESET | C5 | 
+
+## ■ LED
+| Net Name | Pin Number |
+|:----:|:-----:|
+| LED1 | AE11 | 
+| LED2 | AE10 | 
+| LED3 | AF9 | 
+| LED4 | AF8 | 
+| LED5 | AF7 | 
+| LED6 | AF6 | 
+| LED7 | AF5 | 
+| LED8 | B3 | 
+| LED9 | B2 | 
+| LED10 | AF13 | 
+| LED11 | Y25 | 
+| LED12 | AF23 | 
+| LED13 | G1 | 
+| LED14 | G2 | 
+| LED15 | AA24 | 
+| LED16 | AF10 | 
+
+## ■ Button Switch
+| Net Name | Pin Number |
+|:----:|:-----:|
+| SW1 | V4 | 
+| SW2 | V3 | 
+| SW3 | V2 | 
+| SW4 | W4 | 
+| SW5 | W3 | 
+| SW6 | W2 | 
+| SW7 | W1 | 
+| SW8 | V7 | 
+| SW9 | Y4 | 
+| SW10 | Y3 | 
+| SW11 | Y2 | 
+| SW12 | Y1 | 
+| SW13 | W6 | 
+| SW14 | AA4 | 
+| SW15 | AA3 | 
+| SW16 | AA2 | 
+
+## ■ BUS Switch
+| Net Name | Pin Number |
+|:----:|:-----:|
+| BUS SW1 | T6 | 
+| BUS SW2 | V1 | 
+| BUS SW3 | U7 | 
+| BUS SW4 | U6 | 
+| BUS SW5 | U5 | 
+| BUS SW6 | U4 | 
+| BUS SW7 | V6 | 
+| BUS SW8 | V5 | 
+
+## ■ 7-Segment 1 Digit
+| Net Name | Pin Number |
+|:----:|:-----:|
+| SEG_A | M3 | 
+| SEG_B | M2 | 
+| SEG_C | L7 | 
+| SEG_D | L6 | 
+| SEG_E | L4 | 
+| SEG_F | P6 | 
+| SEG_G | P4 | 
+| SEG_H | P3 | 
+
+## ■ 7-Segment 4Digit
+| Net Name | Pin Number |
+|:----:|:-----:|
+| SEG_DATA_A | M5 | 
+| SEG_DATA_B | M4 | 
+| SEG_DATA_C | R5 | 
+| SEG_DATA_D | R4 | 
+| SEG_DATA_E | R3 | 
+| SEG_DATA_F | R2 | 
+| SEG_DATA_G | P7 | 
+| SEG_DATA_H | T4 | 
+| SEG_COM1 | T3 | 
+| SEG_COM2 | T2 | 
+| SEG_COM3 | R7 | 
+| SEG_COM4 | R6 | 
+| SEG_COM5 | U3 | 
+| SEG_COM6 | U2 | 
+| SEG_COM7 | U1 | 
+| SEG_COM8 | T7 | 
+
+## ■ PIEZO
+| Net Name | Pin Number |
+|:----:|:-----:|
+| PIEZO | K6 | 
+
+## ■ STEP MOTOR
+| Net Name | Pin Number |
+|:----:|:-----:|
+| STEP_A | AA23| 
+| STEP_B | AB24| 
+| STEP_AN | Y26 | 
+| STEP_BN | AB23 | 
+| STEP_SENSOR | AA26 | 
+
+## ■ VFD
+| Net Name | Pin Number |
+|:----:|:-----:|
+| VFD_RS | J5 | 
+| VFD_RW | J4 | 
+| VFD_E | K5 | 
+| VFD_D7 | K7 | 
+| VFD_D6 | K8 | 
+| VFD_D5 | L2 | 
+| VFD_D4 | L3 | 
+| VFD_D3 | K1 | 
+| VFD_D2 | K2 | 
+| VFD_D1 | K3 | 
+| VFD_D0 | K4 | 
+
+## ■ RS-232
+| Net Name | Pin Number |
+|:----:|:-----:|
+| UART_TXD | F7 | 
+| UART_RXD | H3 | 
+| USB_TXD | H1 | 
+| USB_RXD | H2 | 
+
+## ■ SRAM
+| Net Name | Pin Number |
+|:----:|:-----:|
+| SRAM_CS | H26 | 
+| SRAM_WE | J20 | 
+| SRAM_OE | J21 | 
+| SRAM1_LB | G23 | 
+| SRAM1_UB | G24 | 
+| SRAM2_LB | H23 | 
+| SRAM2_LB | H24 | 
+| SDRAM_D31 | Y24 | 
+| SDRAM_D30 | Y23 | 
+| SDRAM_D29 | Y22 | 
+| SDRAM_D28 | Y21 | 
+| SDRAM_D27 | W26 | 
+| SDRAM_D26 | W25 | 
+| SDRAM_D25 | W24 | 
+| SDRAM_D24 | W23 | 
+| SDRAM_D23 | W21 | 
+| SDRAM_D22 | V26 | 
+| SDRAM_D21 | V25 | 
+| SDRAM_D20 | V24 | 
+| SDRAM_D19 | V23 | 
+| SDRAM_D18 | V22 | 
+| SDRAM_D17 | U26 | 
+| SDRAM_D16 | U25 | 
+| SDRAM_D15 | U24 | 
+| SDRAM_D14 | U23 | 
+| SDRAM_D13 | U22 | 
+| SDRAM_D12 | U21 | 
+| SDRAM_D11 | U20 | 
+| SDRAM_D10 | T25 | 
+| SDRAM_D9 | T24 | 
+| SDRAM_D8 | T23 | 
+| SDRAM_D7 | T22 | 
+| SDRAM_D6 | T21 | 
+| SDRAM_D5 | T20 | 
+| SDRAM_D4 | R25 | 
+| SDRAM_D3 | R24 | 
+| SDRAM_D2 | R20 | 
+| SDRAM_D1 | P24 | 
+| SDRAM_D0 | P23 | 
+| SRAM_A17 | G22 | 
+| SRAM_A16 | G21 | 
+| SRAM_A15 | F26 | 
+| SRAM_A14 | F25 | 
+| SRAM_A13 | F24 |
+| SRAM_A12 | F20 | 
+| SRAM_A11 | E26 | 
+| SRAM_A10 | E25 | 
+| SRAM_A9 | E24 | 
+| SRAM_A8 | E23 |
+| SRAM_A7 | E22 | 
+| SRAM_A6 | D26 | 
+| SRAM_A5 | D25 | 
+| SRAM_A4 | D23 | 
+| SRAM_A3 | C25 | 
+| SRAM_A2 | C24 | 
+| SRAM_A1 | B25 | 
+| SRAM_A0 | B24 | 
+
+---
+
+* HBE-COMBO III 로 배우는VHDL 을 이용한 디지털 회로 설계 (ALTERA 편)
+* 저자   : ㈜ 한백전자 기술연구소
+* 발행처 : ㈜ 한백전자발행일 : 2008 년 6 월 24 일
+* 주소 : 대전광역시 유성구 궁동 487-1
+* 전화 : (042) 610-1111 / 팩스 : (042) 610-1199
+* Web Site : http://www.hanback.co.kr
+* 가격 :  18,000 원
+* ISBN :  978-89-93327-04-5 93560
+* ※ 이 책의 저작권은 저자에게 있으며, 저자의 동의 없이복사·인용·복제·전제를 금합니다.
