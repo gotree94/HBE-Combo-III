@@ -83,7 +83,7 @@ ENTITY가 외부의 신호와 연결되는 port를 선언한 구문이라면, Ar
 
 이 ARCHITECTURE 문은 아래와 같은 형식으로 사용된다.
 
-```
+```vhdl
 ARCHITECTURE [아키텍처이름] OF [엔티티 이름] IN
     [선언문]
 BEGIN
@@ -101,7 +101,7 @@ ARCHITECTURE와 BEGIN 사이에서 선언되는 신호를 내부신호(internal 
 
 이 PROCESS문은 아래와 같은 형식으로 사용된다.
 
-```
+```vhdl
 [레이블 :] PROCESS([감지신호 리스트])[선언문]BEGIN[순차문]END PROCESS [프로세서 레이블];
 ```
 
@@ -115,7 +115,7 @@ VHDL의 회로 내부를 동작을 설계하는 방법은 크게 순차문(Seque
 
 아래의 예제는 이 ARCHITECTURE문을 보여주고 있다. 여기에서 사용한 PROCESS문은 RESETN과 CLK의 신호의 변화가 있을 때만 수행된다.
 
-```
+```vhdl
 ARCHITECTURE HB OF COUNT_8BIT IS
 
 SIGNAL CNT_8BIT : STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -158,7 +158,7 @@ SIGNAL CARRY : STD_LOGIC;
 
 Signal은 VHDL 합성 할 때 선(Wire)으로 연결이 되며, 각 심볼에 연결되어 사용하는 외적 변수이다. Signal에서 값을 대입하기 위해서는 ‘<=’’의 기호를 사용하고, 초기에 값을 지정해 주기 위해서는 ‘:=’’의 기호를 사용한다. 아래 예제에 Signal의 선언 방법과 값의 대입 방법이 설명되어 있다.
 
-```
+```vhdl
 SIGNAL    SIG : STD_LOGIC;
     -- sig 를 std_logic 로 선언
 SIGNAL    COUNT1 : STD_LOGIC_VECTOR(3 DOWNTO 0);  -- 내림차순
@@ -177,7 +177,7 @@ COUNT2 <= (OTHERS => ‘0’); -- 4bit 변수 COUNT2 의 모든 값을 ‘0’�
 
 VHDL에서 사용하는 variable 변수는 PROCESS문 내에서만 사용하는 내적 변수로서 중간 연산단계에 주로 이용을 한다. 이러한 variable 변수의 값의 전달은 “:=’’을 사용하여 값을 대입하게 된다. 또한 PROCESS문 내에서의 값을 전달 시점은 signal 변수는 PROCESS문이 끝난 시점에 값이 전달되는 반면, variable 변수는 값의 전달이 선언된 지점에서 바로 전달이 값의 대입이 이루어진다. 아래 예제에 Variable의 선언방법과 값의 대입방법이 설명되어 있다.
 
-```
+```vhdl
 VARIABLE TEMP1, TEMP2 : STD_LOGIC;
     -- variable 이름을 temp1, temp2 로 하고 bit 단위로 선언
 TEMP1 := '1;
@@ -188,7 +188,7 @@ TEMP2 := A OR B;
 
 #### ■ signal 및 variable 사용 예
 
-```
+```vhdl
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
@@ -240,7 +240,7 @@ Constant는 초기에 선언한 상수의 값을 유지하는데 사용하며, �
 
 아래 예제에 Constant의 선언방법과 값의 대입방법이 설명되어 있다.
 
-```
+```vhdl
 CONSTANT SIZE : INTEGER RANGE 0 TO 127 := 56;
     -- SIZE 는 0~127 범위의 INTEGER 형이고, 56 의 값을 갖음
 
