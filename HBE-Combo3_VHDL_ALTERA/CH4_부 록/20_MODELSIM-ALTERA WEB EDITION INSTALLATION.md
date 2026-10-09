@@ -1,8 +1,8 @@
 # 20. MODELSIM-ALTERA WEB EDITION INSTALLATION
 
-> 출처 : 「HBE-Combo III 로 배우는 VHDL을 이용한 디지털 회로 설계  ALTERA V1 최종 20080616-p371」 4장 「20. MODELSIM-ALTERA WEB EDITION INSTALLATION」 (원본 도서 349~358쪽)
+「20. MODELSIM-ALTERA WEB EDITION INSTALLATION」 (원본 도서 349~358쪽)
 
-CH4 부 록ModelSim 소프트웨어는 유명한 시뮬레이션 프로그램 중 하나이다. 이 중 ModelSim-AlteraWeb Edition은 Altera사에서 Quartus II 프로그램과 연동하기 위하여 Mentor사와 계약을 맺고ModelSim의 Altera Edition을 무료로 사용할 수 있도록 제공하고 있다.이 장에서는 이 ModelSim 소프트웨어를 설치하는 방법에 대하여 설명하고 있다.
+ModelSim 소프트웨어는 유명한 시뮬레이션 프로그램 중 하나이다. 이 중 ModelSim-AlteraWeb Edition은 Altera사에서 Quartus II 프로그램과 연동하기 위하여 Mentor사와 계약을 맺고ModelSim의 Altera Edition을 무료로 사용할 수 있도록 제공하고 있다.이 장에서는 이 ModelSim 소프트웨어를 설치하는 방법에 대하여 설명하고 있다.
 
 ## 20.1.  ModelSim-Altera Web Edition Download
 
