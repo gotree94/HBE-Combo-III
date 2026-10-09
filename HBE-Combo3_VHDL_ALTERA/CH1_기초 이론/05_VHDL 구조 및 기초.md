@@ -15,8 +15,11 @@ Library를 통해 VHDL구문의 사용 함수를 정의하고, entity를 통해 
 
 아래 그림은 VHDL의 구조를 도식화 하여 나타낸 것이다.
 
-![](../img/003.png)
+<br><br>
 
+<p align="center"> <img src="../img/003.png"> </p>
+
+<br><br>
 
 ### (1) LIBRARY 선언
 
