@@ -54,6 +54,13 @@ Download Center의 창에서 아래 그림과 같이 Quartus II Web Edition의 S
 
 Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 Quartus II Web Edition을 다운로드 받을 수 있다.
 
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image184.jpeg"> </p>
+
+<p align="center"> <img src="../verilog-media/image185.jpeg"> </p>
+
+<br><br>
 
 ## 18.3.  프로그램 설치
 
