@@ -173,11 +173,56 @@ COUNT_OUT <= CNT_8BIT;
 END HB;
 ```
 
-위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.VHD 파일이 추가되었는지를 확인한다.z아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
+위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.VHD 파일이 추가되었는지를 확인한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image21.png"> </p>
+
+<br><br>
+
+아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image22.png"> </p>
+
+<br><br>
 
 ### (3) Assignment
 
-Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 로직에서 사용하는 입출력단자를 하드웨어와 연결하기 위하여 핀을 설정하는 것이다.z디바이스 설정은 처음 프로젝트 선언에서 하였지만, 아래 그림과 같이 Assignments >Device 메뉴를 선택하여 설정한 디바이스를 확인한다.z아래 그림과 같이 Assignment > Assignment Edition 메뉴를 선택 한 후, AssignmentEdition창에서 아래의 표와 같이 핀을 설정한다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNN2FPGA_RESETCOUNT_OUT[4]AF8LED4CLKV4SW1COUNT_OUT[3]AF7LED5COUNT_OUT[7]AE11LED1COUNT_OUT[2]AF6LED6COUNT_OUT[6]AE10LED2COUNT_OUT[1]AF5LED7COUNT_OUT[5]AF9LED3COUNT_OUT[0]B3LED8
+Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 로직에서 사용하는 입출력단자를 하드웨어와 연결하기 위하여 핀을 설정하는 것이다.
+
+디바이스 설정은 처음 프로젝트 선언에서 하였지만, 아래 그림과 같이 Assignments >Device 메뉴를 선택하여 설정한 디바이스를 확인한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image23.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image24.png"> </p>
+
+<br><br>
+
+아래 그림과 같이 Assignment > Assignment Edition 메뉴를 선택 한 후, AssignmentEdition창에서 아래의 표와 같이 핀을 설정한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image25.png"> </p>
+
+<br><br>
+
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | 포트 이름 | 핀 번호 | 하드웨어 설명 | 
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+| RESETN | N2 | FPGA_RESET | COUNT_OUT[4] | AF8 | LED4 | 
+| CLK | V4 | SW1 | COUNT_OUT[3] | AF7 | LED5 | 
+| COUNT_OUT[7] | AE11 | LED1 | COUNT_OUT[2] | AF6 | LED6 | 
+| COUNT_OUT[6] | AE10L | ED2C | OUNT_OUT[1] | AF5 | LED7 | 
+| COUNT_OUT[5] | AF9 | LED3C | OUNT_OUT[0] | B3 | LED8 | 
+
 
 ### (4) Compile
 
