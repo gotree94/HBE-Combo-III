@@ -21,6 +21,13 @@ Library를 통해 VHDL구문의 사용 함수를 정의하고, entity를 통해 
 
 <br><br>
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image53.png"> </p>
+
+<br><br>
+
+
 ### (1) LIBRARY 선언
 
 LIBRARY 선언 부는 PACKAGE 선언 부라고 할 수 있다. 이 부분의 역할은 VHDL에서 사용할라이브러리를 지정하는 것이다. 따라서 설계 시에 사용하는 VHDL구문의 예약어와 기호에 대한 지원을 위해 library를 선언해 주는 역할을 한다. 이러한 library의 선언은 설계자가 어떠한것을 설계하느냐에 따라서 라이브러리 선언 부에 해당되는 라이브러리를 찾아 선언해 주면된다. 보통 IEEE의 STD_LOGIC_1164라는 라이브러리를 기본으로 선언하여 사용한다. 라이브러리 선언은 기본으로 제공하는 라이브러리를 이용하여 설계하여도 되고 사용자가 만든 라이브러리를 이용하여 설계할 수도 있다.
@@ -432,9 +439,10 @@ END HB;
 
 <br><br>
 
-<p align="center"> <img src="../img/image53.png"> </p>
+<p align="center"> <img src="../vhdl-media/image53.png"> </p>
 
 <br><br>
+
 
 또, 아래와 같이 조건적 병행처리 문을 사용하여 아래와 같이 설계할 수도 있다. 합성의 결과는 같다.
 
@@ -536,9 +544,10 @@ sel의 신호 값에 의하여 MUX의 입력단자(a, b, c, d)의 값이 출력 
 
 <br><br>
 
-<p align="center"> <img src="../img/image54.png"> </p>
+<p align="center"> <img src="../vhdl-media/image54.png"> </p>
 
 <br><br>
+
 
 위의 예제는 아래와 같이 선택적 병행처리 문을 사용하여 설계할 수도 있다. 합성의 결과는같다.
 
