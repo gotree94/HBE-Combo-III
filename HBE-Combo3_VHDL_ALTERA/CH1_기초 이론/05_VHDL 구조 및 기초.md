@@ -438,7 +438,7 @@ END HB;
 
 또, 아래와 같이 조건적 병행처리 문을 사용하여 아래와 같이 설계할 수도 있다. 합성의 결과는 같다.
 
-```
+```vhdl
 --EXAM_IF1.VHD
 
 ENTITY EXAM_IF1 IS
@@ -461,7 +461,7 @@ IF문에서 else문을 제외하였을 때에는 조건이 거짓일 경우에 �
 
 아래의 예제는 이 래치와 플립플롭을 구성한 예제이다.
 
-```
+```vhdl
 --EXAM_MEM.VHD
 
 ENTITY EXAM_MEM IS
@@ -586,7 +586,7 @@ PACKAGE 문은 PACKAGE 선언에서 선언한 부 프로그램의 구체적 내�
 
 패키지 파일의 구성은 아래와 같다.
 
-```
+```vhdl
 -- PACKAGE 선언
 PACKAGE [패키지 이름] IS
     [선언문]
@@ -600,7 +600,7 @@ END [패키지 이름];
 
 아래 예제는 위의 패키지 형식으로 선언한 예를 나타내고 있습니다.
 
-```
+```vhdl
 -- OVER.VHDL
 
 IBRARY IEEE;
@@ -628,20 +628,20 @@ END OVER;
 
 실제 패키지를 사용하기 위해서는 아래와 같은 형식으로 패키지를 불러올 수 있다.
 
-```
+```vhdl
 LIBRARY [라이브러리 이름];
 USE [라이브러리 이름].[패키지 이름].[내용];
 ```
 
 만일 사용하려는 패키지가 현재 작업 폴더(working directory)에 있다면 다음과 같이 use 구문만 사용하여도 패키지를 사용할 수가 있습니다.
 
-```
+```vhdl
 USE WORK.[패키지 이름].[내용];
 ```
 
 아래는 실제 패키지를 사용한 예입니다.
 
-```
+```vhdl
 LIBRARY BASE_LIB;
 USE BASE_LIB.SAMPLE.ALL;
 
@@ -672,7 +672,7 @@ VHDL문에서 이전에 설계되었던 로직을 불러오기 위해서는 아�
 
 아래에서 이 COMPONENT 선언의 형식과 실제 선언하는 예를 보여주고 있습니다.
 
-```
+```vhdl
 COMPONENT [식별어]
 PORT([포트이름]);
 END COMPONENT;
@@ -693,14 +693,14 @@ COMPONENT 선언에서 선언된 COMPONENT를 사용하여 실제로 로직의 �
 
 아래에서 이 COMPONENT 사례화 문의 형식이다.
 
-```
+```vhdl
 [레이블] : [COMPONENT 식별어]
 PORT MAP([결합리스트]);
 ```
 
 아래의 COMPONENT 문에 대한 예제로, 로직은 2입력 AND게이트와 2입력 OR 게이트를COMPONENT로 불러와 설계한 로직이다. A와 B의 AND 연산한 결과 값과 C를 OR 연산하여Y에 출력하는 예제이다.
 
-```
+```vhdl
 --AND_OR.VHD
 USE WORK.COMPONENT_SET;
 ENTITY AND_OR IS
