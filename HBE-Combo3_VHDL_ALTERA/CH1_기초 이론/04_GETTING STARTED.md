@@ -1,16 +1,37 @@
 # 4. GETTING STARTED
 
-이 장에서는 앞장에서 말한 시스템을 설계하는 순서를 이용하여 간단한 시스템을 설계하고,컴파일, 시뮬레이션, 하드웨어에 프로그래밍 하여 동작을 확인하는 방법에 대하여 설명하겠다.시스템을 설계하고, 컴파일 하는 과정은 Altera사의 Quartus II 소프트웨어를 사용하여 진행하고, 시뮬레이션은 Mentor사의 ModelSim 소프트웨어를 이용하여 진행한다. 마지막으로 프로그래밍할 장비는 HBE-Combo III이다.
+이 장에서는 앞장에서 말한 시스템을 설계하는 순서를 이용하여 간단한 시스템을 설계하고,컴파일, 시뮬레이션, 하드웨어에 프로그래밍 하여 동작을 확인하는 방법에 대하여 설명하겠다.
+
+시스템을 설계하고, 컴파일 하는 과정은 Altera사의 Quartus II 소프트웨어를 사용하여 진행하고, 시뮬레이션은 Mentor사의 ModelSim 소프트웨어를 이용하여 진행한다. 마지막으로 프로그래밍할 장비는 HBE-Combo III이다.
 
 ## 4.1. 설계 기획
 
-설계하고자 하는 시스템은 RESET 신호가 있는 8비트 up counter이다. 이 8비트 카운터는RESETN과 CLK의 입력을 받아 COUNT_OUT이라는 8비트 출력 포트로 연산된 결과를 출력하도록 구성되어 있다.RESETN의 신호가 0일 때 모든 데이터가 0으로 초기화되며, RESETN의 신호가 1일 때 시스템이 동작 한다. 카운터의 동작은 클럭의 Rising Edge일 때 동작하도록 구성되어 있다.RESETN의 신호는 HBE-COMBO III 장비의 FPGA RESET핀과 연결하고, CLK는 장비의 버튼 스위치 SW1과 연결한다. 출력 COUNT_OUT은 LED1~8에 연결하여 출력 결과가 LED를 통해서 확인할 수 있도록 구성한다.Getting Started
+설계하고자 하는 시스템은 RESET 신호가 있는 8비트 up counter이다. 이 8비트 카운터는RESETN과 CLK의 입력을 받아 COUNT_OUT이라는 8비트 출력 포트로 연산된 결과를 출력하도록 구성되어 있다.
+
+RESETN의 신호가 0일 때 모든 데이터가 0으로 초기화되며, RESETN의 신호가 1일 때 시스템이 동작 한다. 카운터의 동작은 클럭의 Rising Edge일 때 동작하도록 구성되어 있다.
+
+RESETN의 신호는 HBE-COMBO III 장비의 FPGA RESET핀과 연결하고, CLK는 장비의 버튼 스위치 SW1과 연결한다. 출력 COUNT_OUT은 LED1~8에 연결하여 출력 결과가 LED를 통해서 확인할 수 있도록 구성한다.Getting Started
 
 ## 4.2. Quartus II를 이용한 로직 설계 및 합성
 
 ### (1) 프로젝트 선언
 
-Quartus II 프로그램을 이용하여 로직을 설계하기 위해서는 먼저 프로젝트 선언을 해주어야한다. 이것은 설계하는 로직에 대한 사항을 프로젝트 단위로 관리하도록 하는 것이다. 하나의프로젝트에는 설계파일, 핀 설정파일, 네트 리스트 파일, 타이밍 정보 파일, 네트 리스트 파일,프로그래밍 파일 등 로직을 설계하는 데에서 만들어지는 모든 파일들이 여기에 포함된다.다음의 순서대로 설계할 프로젝트를 선언한다.z먼저 윈도우 XP의 시작 > 프로그램 > Altera > Quartus II 8.0 Web Edition > Quartus II8.0 Web Edition 메뉴를 선택하여 프로그램을 실행시킨다.z아래 그림과 같이 Quartus II 프로그램의 File > New Project 메뉴를 선택한다.z아래 그림과 같이 New Project 창에서 Next 버튼을 누른다.z다음 그림과 같이 작업폴더와 프로젝트 이름을 선언한다.Working Directory : E:\ WORK \ COUNT_8BITProject Name : COUNT_8BITTop-Level Entity Name : COUNT_8BITz아래 그림은 프로젝트에 포함시킬 로직 파일을 추가하는 것인데, 아직 설계된 파일이없기 때문에 Next 버튼을 누른다.z아래 그림은 디바이스를 설정하는 창이다 아래 그림과 같이 Device Family와 device를선택한다.Device Family : Cyclone IIDevice : EP2C70F672C8z다음 그림은 EDA 툴을 설정하는 창이다. 이것은 Quartus II에서 사용하는 컴파일러와시뮬레이터가 아닌 더 좋은 EDA 벤더의 소프트웨어를 사용하고자 할 때 이곳에서설정할 수 있다.z아래 그림과 같이 프로젝트 선언에 대한 요약을 확인하고, Finish 버튼을 눌러 프로젝트선언을 완료한다.
+Quartus II 프로그램을 이용하여 로직을 설계하기 위해서는 먼저 프로젝트 선언을 해주어야한다. 이것은 설계하는 로직에 대한 사항을 프로젝트 단위로 관리하도록 하는 것이다. 하나의프로젝트에는 설계파일, 핀 설정파일, 네트 리스트 파일, 타이밍 정보 파일, 네트 리스트 파일,프로그래밍 파일 등 로직을 설계하는 데에서 만들어지는 모든 파일들이 여기에 포함된다.
+
+다음의 순서대로 설계할 프로젝트를 선언한다.
+
+먼저 윈도우 XP의 시작 > 프로그램 > Altera > Quartus II 8.0 Web Edition > Quartus II8.0 Web Edition 메뉴를 선택하여 프로그램을 실행시킨다.
+
+아래 그림과 같이 Quartus II 프로그램의 File > New Project 메뉴를 선택한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image12.png"> </p>
+
+<br><br>
+
+
+아래 그림과 같이 New Project 창에서 Next 버튼을 누른다.z다음 그림과 같이 작업폴더와 프로젝트 이름을 선언한다.Working Directory : E:\ WORK \ COUNT_8BITProject Name : COUNT_8BITTop-Level Entity Name : COUNT_8BITz아래 그림은 프로젝트에 포함시킬 로직 파일을 추가하는 것인데, 아직 설계된 파일이없기 때문에 Next 버튼을 누른다.z아래 그림은 디바이스를 설정하는 창이다 아래 그림과 같이 Device Family와 device를선택한다.Device Family : Cyclone IIDevice : EP2C70F672C8z다음 그림은 EDA 툴을 설정하는 창이다. 이것은 Quartus II에서 사용하는 컴파일러와시뮬레이터가 아닌 더 좋은 EDA 벤더의 소프트웨어를 사용하고자 할 때 이곳에서설정할 수 있다.z아래 그림과 같이 프로젝트 선언에 대한 요약을 확인하고, Finish 버튼을 눌러 프로젝트선언을 완료한다.
 
 ### (2) 로직 설계
 
