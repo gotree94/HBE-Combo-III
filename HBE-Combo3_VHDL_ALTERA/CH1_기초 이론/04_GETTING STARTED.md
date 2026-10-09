@@ -111,7 +111,69 @@ Quartus II 프로그램을 이용하여 로직을 설계하기 위해서는 먼�
 
 ### (2) 로직 설계
 
-앞에서 기획한 내용의 8비트 카운터를 설계하도록 하겠다.다음의 순서대로 설계가 진행되어 프로젝트에 포함된다.z아래 그림과 같이 Quartus II 프로그램의 File > New 메뉴을 선택한다.z나타나는 New 창에서 아래 그림과 같이 VHDL File을 선택한다.z아래와 같이 VHDL로직을 설계하고, COUNT_8BIT.VHD라는 이름으로 저장한다. 저장하는폴더는 “E:\ WORK \ COUNT_8BIT” 이다.로직에 대한 설명은 넘기겠다. 다음 장의 CH2. 논리 회로에서 카운터 로직의 설명에비슷한 예제가 설계되어 있다.--COUNT_8BIT.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.STD_LOGIC_UNSIGNED.ALL;ENTITY COUNT_8BIT ISPORT (RESETN : IN STD_LOGIC;  -- RESETCLK : IN STD_LOGIC;      -- CLOCK BUTTONCOUNT_OUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)  -- LED OUTPUTEND COUNT_8BIT;ARCHITECTURE HB OF COUNT_8BIT ISSIGNAL CNT_8BIT : STD_LOGIC_VECTOR(7 DOWNTO 0);BEGINPROCESS (RESETN, CLK)BEGINIF RESETN = '0' THENCNT_8BIT <= (OTHERS => '0');ELSIF CLK'EVENT AND CLK = '1' THENIF CNT_8BIT = "11111111" THENCNT_8BIT <= (OTHERS => '0');ELSECNT_8BIT <= CNT_8BIT + 1;END IF;END IF;END PROCESS;COUNT_OUT <= CNT_8BIT;END HB;z위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.VHD 파일이 추가되었는지를 확인한다.z아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
+앞에서 기획한 내용의 8비트 카운터를 설계하도록 하겠다.
+
+다음의 순서대로 설계가 진행되어 프로젝트에 포함된다.
+
+아래 그림과 같이 Quartus II 프로그램의 File > New 메뉴을 선택한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image19.png"> </p>
+
+<br><br>
+
+나타나는 New 창에서 아래 그림과 같이 VHDL File을 선택한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image20.png"> </p>
+
+<br><br>
+
+아래와 같이 VHDL로직을 설계하고, COUNT_8BIT.VHD라는 이름으로 저장한다. 저장하는폴더는 “E:\ WORK \ COUNT_8BIT” 이다.로직에 대한 설명은 넘기겠다. 다음 장의 CH2. 논리 회로에서 카운터 로직의 설명에비슷한 예제가 설계되어 있다.
+
+```vhdl
+--COUNT_8BIT.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY COUNT_8BIT IS
+PORT (
+  RESETN : IN STD_LOGIC;  -- RESET
+  CLK : IN STD_LOGIC;      -- CLOCK BUTTON
+
+  COUNT_OUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)  -- LED OUTPUT
+);
+END COUNT_8BIT;
+
+ARCHITECTURE HB OF COUNT_8BIT IS
+
+SIGNAL CNT_8BIT : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+BEGIN
+
+PROCESS (RESETN, CLK)
+BEGIN
+  IF RESETN = '0' THEN
+    CNT_8BIT <= (OTHERS => '0');
+  ELSIF CLK'EVENT AND CLK = '1' THEN
+    IF CNT_8BIT = "11111111" THEN
+      CNT_8BIT <= (OTHERS => '0');
+    ELSE
+      CNT_8BIT <= CNT_8BIT + 1;
+    END IF;
+  END IF;
+END PROCESS;
+
+COUNT_OUT <= CNT_8BIT;
+
+END HB;
+```
+
+위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.VHD 파일이 추가되었는지를 확인한다.z아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
 
 ### (3) Assignment
 
