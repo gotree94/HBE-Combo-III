@@ -265,7 +265,94 @@ B <= REG;
 
 ### (3) 연산자
 
-VHDL에서 사용되는 연산자는 연속으로 사용할 경우 우선 순위에 따라 연산 순서가 결정된다.또한 괄호 안의 연산자를 우선시한다. 연산자에는 논리 연산자, 관계 연산자, 산술 연산자, 순환 연산자, 부호 연산자 등이 있다. 특히 논리 연산자는 두 피 연산자의 자료형이 같아야 하며,and 등의 논리 연산자의 우선 순위가 가장 낮지만, not의 연산자는 우선 순위가 높다. and나or 연산자는 결합법칙이 성립되나, 여러 논리 연산자를 함께 사용할 경우나 nand 혹은 nor을연속해서 사용할 경우 결합법칙이 성립되지 않으므로 괄호를 사용하고 결합순서에 주의 해야한다. 논리 연산자논리 연산자는 논리 조합을 만드는데 사용하며, bit, Boolean, bit_vector를 지원한다. 논리 연산자의 종류에는 or, and, nor, nand, xor, xnor 등이 있다.아래 예제는 논리 연산자를 이용하여 설계한 ARCHITECTURE문이다.ARCHITECTURE HB OF LOGIC_OPER ISSIGNAL Z,X,Y: BIT_VECTOR(3 DOWNTO 0);SIGNAL A,B,C,D : STD_LOGIC;SIGNAL E,F,G,H : BOOLEAN;BEGINZ <= X AND Y;D <= (A AND B) AND C;E <= (F NAND G) XOR H;END HB; 관계 연산자관계 연산자는 비교함수를 만드는데 사용되며, 대부분의 자료형을 지원한다. 아래 표는 관계연산자의 종류를 나타낸 것이다.연산자의미같음같지 않음왼쪽의 값이 작음왼쪽의 값이 작거나 같음왼쪽의 값이 큼왼쪽의 값이 크거나 같음아래의 예는 관계 연산자가 VHDL 구문에서 어떻게 이용되고 있는지 설명되어 있다.VARIABLE NUM1: REAL := 100.0;VARIABLE NUM2: STD_LOGIC_VECTOR(3 DOWNTO 0) := “0000”;VARIABLE NUM3, NUM4: STD_LOGIC_VECTOR(2 DOWNTO 0);NUM1 /= 350;-- NUM1 과 350 는 같지 않음NUM1 = 100;-- NUM1 과 100 은 같음NUM2 /= “1000”;  -- NUM2 와 오른쪽과 같지 않음NUM1 > 45.54;    -- NUM1 은 45.54 보다 큼NUM2 < “1000”;   -- NUM2 는 오른쪽 보다 작음 산술 연산자산술 연산자는 정수와 실수 등의 숫자형만 지원 가능하며, 다른 자료형의 경우 IEEE에서 지원하는 NUMERIC_STD 패키지를 이용하여야 한다. 아래 표는 산술 연산자의 종류를 나타내고 있다.연산자의미덧셈(addition)뺄셈(subtraction)곱셈(multiplication)나눗셈(division)mod모듈(module)rem나머지(remainder)abs절대값(absolute value)제곱(exponentiation)아래 예제는 산술 연산자가 VHDL 구문에서 어떻게 사용되고 있는지 설명되어 있다.Y1 <= A + B;-- A 더하기 BY2 <= A - B;-- A 빼기 BY3 <= A * B;-- A 곱하기 BY4 <= A MOD B;-- A 를 B 로 나눈 모듈Y5 <= A REM B;-- A 를 B 로 나눈 나머지Y6 <= ABS A;-- A 의 절대값 연결 연산자연결 연산자는 ‘&’의 기호를 사용하며, 원하는 새로운 형태의 1차원 배열을 만드는데 편리한기능을 제공한다. 아래 예제에서 이 연결 연산자를 사용하는 것을 보여주고 있다.LIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;ENTITY CON_OPER ISPORT(A,B     : IN STD_LOGIC_VECTOR(2 DOWNTO 0);Y       : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));END CON_OPER;ARCHITECTURE HB OF CON_OPER ISCONSTANT C  : STD_LOGIC_VECTOR(1 DOWNTO 0) := "11";BEGINPROCESS(A,B)BEGINY <= A & B & C;END PROCESS;END HB;이 예제에서 입력신호 A에 “011”이 입력되고, 입력신호 B에 “110”이 입력된다고 가정하면, 상수 C는 초기 값이 “11”로 선언 되어 있으므로 출력 포트 Y에는 “01111011”이 출력된다. 연산자의 우선 순위연산자가 연속으로 있을 경우 다음의 표와 같이 우선순위가 결정되고, 괄호가 있을 경우 괄호안의 연산자부터 수행한다.구분종류우선순위논리 연산자(logical operator)and Logical ANDor Logical ORnand Logical NANDnor Logical NORxor Logical Exclusive OR관계 연산자(relational operator)= Equal/= Not Equal< Less Than or Equal<= Less Than or Equal> Greater Than or Equal>= Greater Than or Equal연결 연산자(concatenation operator)& Concatenation산술 연산자(Arithmetic operator)+ Addition- Subtraction부호 연산자(Sign operator)+ Unary Plus- Unary minus산술 연산자(Arithmetic operator)* multiplication/ Divisionmod Modulationrem Remember기타 연산자** Exponentiationabs Absolute Valuenot Complement
+VHDL에서 사용되는 연산자는 연속으로 사용할 경우 우선 순위에 따라 연산 순서가 결정된다.또한 괄호 안의 연산자를 우선시한다. 연산자에는 논리 연산자, 관계 연산자, 산술 연산자, 순환 연산자, 부호 연산자 등이 있다. 특히 논리 연산자는 두 피 연산자의 자료형이 같아야 하며,and 등의 논리 연산자의 우선 순위가 가장 낮지만, not의 연산자는 우선 순위가 높다. and나or 연산자는 결합법칙이 성립되나, 여러 논리 연산자를 함께 사용할 경우나 nand 혹은 nor을연속해서 사용할 경우 결합법칙이 성립되지 않으므로 괄호를 사용하고 결합순서에 주의 해야한다.
+
+#### ■ 논리 연산자
+
+논리 연산자는 논리 조합을 만드는데 사용하며, bit, Boolean, bit_vector를 지원한다. 논리 연산자의 종류에는 or, and, nor, nand, xor, xnor 등이 있다.
+
+아래 예제는 논리 연산자를 이용하여 설계한 ARCHITECTURE문이다.
+
+```vhdl
+ARCHITECTURE HB OF LOGIC_OPER IS
+    SIGNAL Z,X,Y: BIT_VECTOR(3 DOWNTO 0);
+    SIGNAL A,B,C,D : STD_LOGIC;
+    SIGNAL E,F,G,H : BOOLEAN;
+
+BEGIN
+    Z <= X AND Y;
+    D <= (A AND B) AND C;
+    E <= (F NAND G) XOR H;
+END HB;
+```
+
+#### ■ 관계 연산자
+
+관계 연산자는 비교함수를 만드는데 사용되며, 대부분의 자료형을 지원한다. 아래 표는 관계연산자의 종류를 나타낸 것이다.
+
+연산자의미같음같지 않음왼쪽의 값이 작음왼쪽의 값이 작거나 같음왼쪽의 값이 큼왼쪽의 값이 크거나 같음아래의 예는 관계 연산자가 VHDL 구문에서 어떻게 이용되고 있는지 설명되어 있다.
+
+```
+VARIABLE NUM1: REAL := 100.0;
+VARIABLE NUM2: STD_LOGIC_VECTOR(3 DOWNTO 0) := “0000”;
+VARIABLE NUM3, NUM4: STD_LOGIC_VECTOR(2 DOWNTO 0);
+
+NUM1 /= 350;-- NUM1 과 350 는 같지 않음
+NUM1 = 100;-- NUM1 과 100 은 같음
+NUM2 /= “1000”;  -- NUM2 와 오른쪽과 같지 않음
+NUM1 > 45.54;    -- NUM1 은 45.54 보다 큼
+NUM2 < “1000”;   -- NUM2 는 오른쪽 보다 작음
+````
+
+#### ■ 산술 연산자
+
+산술 연산자는 정수와 실수 등의 숫자형만 지원 가능하며, 다른 자료형의 경우 IEEE에서 지원하는 NUMERIC_STD 패키지를 이용하여야 한다. 아래 표는 산술 연산자의 종류를 나타내고 있다.
+
+연산자의미덧셈(addition)뺄셈(subtraction)곱셈(multiplication)나눗셈(division)mod모듈(module)rem나머지(remainder)abs절대값(absolute value)제곱(exponentiation)
+
+아래 예제는 산술 연산자가 VHDL 구문에서 어떻게 사용되고 있는지 설명되어 있다.
+```
+Y1 <= A + B;-- A 더하기 B
+Y2 <= A - B;-- A 빼기 B
+Y3 <= A * B;-- A 곱하기 B
+Y4 <= A MOD B;-- A 를 B 로 나눈 모듈
+Y5 <= A REM B;-- A 를 B 로 나눈 나머지
+Y6 <= ABS A;-- A 의 절대값
+```
+
+#### ■ 연결 연산자
+
+연결 연산자는 ‘&’의 기호를 사용하며, 원하는 새로운 형태의 1차원 배열을 만드는데 편리한기능을 제공한다. 아래 예제에서 이 연결 연산자를 사용하는 것을 보여주고 있다.
+
+```
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY CON_OPER IS
+PORT(
+    A,B     : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    Y       : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+END CON_OPER;
+
+ARCHITECTURE HB OF CON_OPER IS
+    CONSTANT C  : STD_LOGIC_VECTOR(1 DOWNTO 0) := "11";
+BEGIN
+
+PROCESS(A,B)
+BEGIN
+    Y <= A & B & C;
+END PROCESS;
+
+END HB;
+```
+
+이 예제에서 입력신호 A에 “011”이 입력되고, 입력신호 B에 “110”이 입력된다고 가정하면, 상수 C는 초기 값이 “11”로 선언 되어 있으므로 출력 포트 Y에는 “01111011”이 출력된다.
+
+#### ■ 연산자의 우선 순위
+
+연산자가 연속으로 있을 경우 다음의 표와 같이 우선순위가 결정되고, 괄호가 있을 경우 괄호안의 연산자부터 수행한다.
+
+구분종류우선순위논리 연산자(logical operator)and Logical ANDor Logical ORnand Logical NANDnor Logical NORxor Logical Exclusive OR관계 연산자(relational operator)= Equal/= Not Equal< Less Than or Equal<= Less Than or Equal> Greater Than or Equal>= Greater Than or Equal연결 연산자(concatenation operator)& Concatenation산술 연산자(Arithmetic operator)+ Addition- Subtraction부호 연산자(Sign operator)+ Unary Plus- Unary minus산술 연산자(Arithmetic operator)* multiplication/ Divisionmod Modulationrem Remember기타 연산자** Exponentiationabs Absolute Valuenot Complement
 
 ## 5.4. VHDL 기본 문법
 
@@ -273,7 +360,13 @@ VHDL에서 사용되는 연산자는 연속으로 사용할 경우 우선 순위
 
 ### (1) IF 문
 
-IF 문은 어떤 조건에 의하여 그 조건이 만족하면 구문에 속한 내용대로 실행시키는 구문이다.아래의 예제는 이 IF문을 사용하여 구성한 예이다.--EXAM_IF.VHDENTITY EXAM_IF ISPORT(A, B, SE: IN BIT;Q: OUT BIT);END EXAM_IF;ARCHITECTURE HB OF EXAM_IF ISBEGINPROCESS(A,B,SEL)BEGINIF SEL = '1' THENQ <= A AND B;ELSEQ <= A OR B;END IF;END PROCESS;END HB;이 회로는 MUX회로를 구성한 것이다. 12~19라인은 합성의 과정은 if문의 조건(sel = ‘1’)을 검사하여, 참이면 그 구문에 속한 내용(a and b)을 실행하여 출력 변수인 q에 전달하고, 거짓이면 다른 내용(a or b)를 수행하여 q에 전달하도록 하는 구문이다. 이 라인에서 설계된 내용은21라인의 병행처리문인 WHEN ELSE문으로 바꾸어 사용할 수 있다.이 회로를 논리 회로로 구성해 보면 아래와 같이 구성되는 것을 확인할 수 있다.또, 아래와 같이 조건적 병행처리 문을 사용하여 아래와 같이 설계할 수도 있다. 합성의 결과는 같다.--EXAM_IF1.VHDENTITY EXAM_IF1 ISPORT(A, B, SE: IN BIT;Q: OUT BIT);END EXAM_IF1;ARCHITECTURE HB OF EXAM_IF1 ISBEGINQ <= (A AND B) WHEN SEL = '1' ELSE (A OR B);END HB;IF문에서 else문을 제외하였을 때에는 조건이 거짓일 경우에 수행되어야 하는 구문이 없기 때문에 과거의 출력 값을 그대로 유지하게 된다. 조건이 거짓이리 때의 출력은 과거의 출력 값을 갖고 있어야 하기 때문에 합성하는 과정에서 기억소자가 구성된다.자주 사용되는 기억소자에는 래치(Latch)와 플립플롭(Flip-Flop)이 있다. 이 두 기억소자의 구별은 간단하게 할 수 있다. If의 조건이 레벨 트리거(Level Trigger)에 의해 출력이 변화되는 것이래치로 구성되고, if의 조건이 신호의 상승 또는 하강(Rising edge or Falling edge)에 의해 출력이 변화되면 플립플롭으로 구성된다.아래의 예제는 이 래치와 플립플롭을 구성한 예제이다.--EXAM_MEM.VHDENTITY EXAM_MEM ISPORT(D, CLK: IN BIT;Q1, Q2: OUT BIT);END EXAM_MEM;ARCHITECTURE HB OF EXAM_MEM ISBEGIN-- LATCHPROCESS(CLK, D)BEGINIF CLK = '1' THENQ1 <= D;END IF;END PROCESS;-- FLIP-FLOPPROCESS(CLK)BEGINIF CLK'EVENT AND CLK = '1' THENQ2 <= D;END IF;END PROCESS;END HB;12~18라인의 PROCESS문이 래치를 구성한 부분이고, 20~26라인의 PROCESS문이 플립플롭을구성한 부분이다.첫 번째 process문을 살펴 보면, process문의 감지 신호를 clk와 d의 신호 전체인 것을 볼 수있다. 즉, clk 또는 d의 신호가 변화할 때, clk 신호의 값이 1이면 d의 값을 q1에 전달하고, clk신호의 값이 1이 아니면 q1의 값이 계속 유지되는 레벨 트리거로 동작을 합니다. 바로 래치를구성한 것이다.두 번째 process문의 감지 신호는 첫 번째 process문과 다르게 clk 신호만 감지한다. 다음의 if문 조건에서 “clk’event and clk = ‘1’”이라는 기술은 clk의 신호가 ‘1’로 변화하는 순간 즉 clk의Rising Edge를 나타내는 표현이다. Falling edge(‘0’으로 변화하는 순간)은 “clk’event and clk =‘0’” 이렇게 기술 할 수 있다. 다시 살펴 보면, q2의 값은 clk의 Rising Edge의 순간에만 d값이전달되고, 그 외에는 과거의 값이 유지됩니다. 플립플롭이 구성된 것이다.
+IF 문은 어떤 조건에 의하여 그 조건이 만족하면 구문에 속한 내용대로 실행시키는 구문이다.아래의 예제는 이 IF문을 사용하여 구성한 예이다.
+
+```
+--EXAM_IF.VHDENTITY EXAM_IF ISPORT(A, B, SE: IN BIT;Q: OUT BIT);END EXAM_IF;ARCHITECTURE HB OF EXAM_IF ISBEGINPROCESS(A,B,SEL)BEGINIF SEL = '1' THENQ <= A AND B;ELSEQ <= A OR B;END IF;END PROCESS;END HB;
+```
+
+이 회로는 MUX회로를 구성한 것이다. 12~19라인은 합성의 과정은 if문의 조건(sel = ‘1’)을 검사하여, 참이면 그 구문에 속한 내용(a and b)을 실행하여 출력 변수인 q에 전달하고, 거짓이면 다른 내용(a or b)를 수행하여 q에 전달하도록 하는 구문이다. 이 라인에서 설계된 내용은21라인의 병행처리문인 WHEN ELSE문으로 바꾸어 사용할 수 있다.이 회로를 논리 회로로 구성해 보면 아래와 같이 구성되는 것을 확인할 수 있다.또, 아래와 같이 조건적 병행처리 문을 사용하여 아래와 같이 설계할 수도 있다. 합성의 결과는 같다.--EXAM_IF1.VHDENTITY EXAM_IF1 ISPORT(A, B, SE: IN BIT;Q: OUT BIT);END EXAM_IF1;ARCHITECTURE HB OF EXAM_IF1 ISBEGINQ <= (A AND B) WHEN SEL = '1' ELSE (A OR B);END HB;IF문에서 else문을 제외하였을 때에는 조건이 거짓일 경우에 수행되어야 하는 구문이 없기 때문에 과거의 출력 값을 그대로 유지하게 된다. 조건이 거짓이리 때의 출력은 과거의 출력 값을 갖고 있어야 하기 때문에 합성하는 과정에서 기억소자가 구성된다.자주 사용되는 기억소자에는 래치(Latch)와 플립플롭(Flip-Flop)이 있다. 이 두 기억소자의 구별은 간단하게 할 수 있다. If의 조건이 레벨 트리거(Level Trigger)에 의해 출력이 변화되는 것이래치로 구성되고, if의 조건이 신호의 상승 또는 하강(Rising edge or Falling edge)에 의해 출력이 변화되면 플립플롭으로 구성된다.아래의 예제는 이 래치와 플립플롭을 구성한 예제이다.--EXAM_MEM.VHDENTITY EXAM_MEM ISPORT(D, CLK: IN BIT;Q1, Q2: OUT BIT);END EXAM_MEM;ARCHITECTURE HB OF EXAM_MEM ISBEGIN-- LATCHPROCESS(CLK, D)BEGINIF CLK = '1' THENQ1 <= D;END IF;END PROCESS;-- FLIP-FLOPPROCESS(CLK)BEGINIF CLK'EVENT AND CLK = '1' THENQ2 <= D;END IF;END PROCESS;END HB;12~18라인의 PROCESS문이 래치를 구성한 부분이고, 20~26라인의 PROCESS문이 플립플롭을구성한 부분이다.첫 번째 process문을 살펴 보면, process문의 감지 신호를 clk와 d의 신호 전체인 것을 볼 수있다. 즉, clk 또는 d의 신호가 변화할 때, clk 신호의 값이 1이면 d의 값을 q1에 전달하고, clk신호의 값이 1이 아니면 q1의 값이 계속 유지되는 레벨 트리거로 동작을 합니다. 바로 래치를구성한 것이다.두 번째 process문의 감지 신호는 첫 번째 process문과 다르게 clk 신호만 감지한다. 다음의 if문 조건에서 “clk’event and clk = ‘1’”이라는 기술은 clk의 신호가 ‘1’로 변화하는 순간 즉 clk의Rising Edge를 나타내는 표현이다. Falling edge(‘0’으로 변화하는 순간)은 “clk’event and clk =‘0’” 이렇게 기술 할 수 있다. 다시 살펴 보면, q2의 값은 clk의 Rising Edge의 순간에만 d값이전달되고, 그 외에는 과거의 값이 유지됩니다. 플립플롭이 구성된 것이다.
 
 ### (2) CASE 문
 
