@@ -440,8 +440,63 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 ### (1) 장비 설정
 
-① 아래 그림과 같이 장비에 Power Cable을 연결한다.② 아래 그림과 같이 장비의 JTAG Port에 ByteBlaster II Cable 또는 USB Blaster II Cable을 연결한다.③ 전원 선 옆의 스위치를 조작하여, 장비의 전원을 켠다.
+① 아래 그림과 같이 장비에 Power Cable을 연결한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image45.png"> </p>
+
+<br><br>
+
+② 아래 그림과 같이 장비의 JTAG Port에 ByteBlaster II Cable 또는 USB Blaster II Cable을 연결한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image46.png"> </p>
+
+<br><br>
+
+③ 전원 선 옆의 스위치를 조작하여, 장비의 전원을 켠다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image47.png"> </p>
+
+<br><br>
+
 
 ### (2) 프로그래밍 및 동작 확인
 
-위와 같이 장비에 대한 준비를 끝마쳤다면, Quartus II에서 프로그래밍하여 동작을 확인해 보는 일만 남았다.①Quartus II 소프트웨어에서 아래 그림과 같이 Tools > Programmer 메뉴를 선택하여Quartus II의 Programmer를 실행시킨다.② 아래 그림과 같이 Hardware Setup 버튼을 클릭하여 FPGA에 프로그램 하는데 사용할 프로그래밍 케이블을 선택한다. 아무런 장치도 나타나지 않으면, Hardware Setup 창에서Add Hardware를 선택한다. 프로그래밍 케이블은 USB Port를 사용하는 USB Blaster와Parallel Port를 사용하는 ByteBlaster II를 선택하여 사용할 수 있다.③ 아래 그림과 같이 Programmer의 Start 버튼을 눌러 FPGA 디바이스로의 프로그래밍을진행한다.이 부분에서 Hardware Setup이 잘 설정되었는지, Mode가 JTAG으로 설정되었는지,Program/Configure이 체크 되었는지를 확인해야 한다.④ 프로그래밍이 끝나면 장비를 통해서 동작을 확인해 볼 수 있다.버튼 스위치를 눌러서 8비트 카운터의 동작을 확인해 보기 바란다.
+위와 같이 장비에 대한 준비를 끝마쳤다면, Quartus II에서 프로그래밍하여 동작을 확인해 보는 일만 남았다.
+
+① Quartus II 소프트웨어에서 아래 그림과 같이 Tools > Programmer 메뉴를 선택하여Quartus II의 Programmer를 실행시킨다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image47.png"> </p>
+
+<br><br>
+
+② 아래 그림과 같이 Hardware Setup 버튼을 클릭하여 FPGA에 프로그램 하는데 사용할 프로그래밍 케이블을 선택한다. 아무런 장치도 나타나지 않으면, Hardware Setup 창에서Add Hardware를 선택한다. 프로그래밍 케이블은 USB Port를 사용하는 USB Blaster와Parallel Port를 사용하는 ByteBlaster II를 선택하여 사용할 수 있다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image48.png"> </p>
+
+<br><br>
+
+③ 아래 그림과 같이 Programmer의 Start 버튼을 눌러 FPGA 디바이스로의 프로그래밍을진행한다.이 부분에서 Hardware Setup이 잘 설정되었는지, Mode가 JTAG으로 설정되었는지,Program/Configure이 체크 되었는지를 확인해야 한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image49.png"> </p>
+
+<br><br>
+
+④ 프로그래밍이 끝나면 장비를 통해서 동작을 확인해 볼 수 있다.버튼 스위치를 눌러서 8비트 카운터의 동작을 확인해 보기 바란다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image50.png"> </p>
+
+<br><br>
