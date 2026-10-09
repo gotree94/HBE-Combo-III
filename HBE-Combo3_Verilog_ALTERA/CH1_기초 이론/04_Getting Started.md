@@ -277,7 +277,50 @@ Setting 창에서 왼쪽 Category에서 Device를 선택하면 오른 쪽 설정
 
 ## 4.3. ModelSim 소프트웨어를 이용한 시뮬레이션
 
-이 절에서는 앞에서 설계한 8비트 카운터 로직을 소프트웨어적으로 검증하기 위하여 시뮬레이션 하는 방법을 설명하고 있다. 여기에서 사용하는 시뮬레이션 소프트웨어로 유명한ModelSim이다.시뮬레이션을 할 때에는 출력된 결과를 확인해 볼 수 있도록, 입력 신호의 데이터를 설정해주어야 하는데, 많이 사용하는 방법이 테스트 벤치 파일을 작성하여 시뮬레이션 하는 것이다.아래에 설계되어 있는 Verilog HDL 파일이 이 8 비트 카운터를 시뮬레이션 하기 위한 테스트벤치 파일이다.//COUNT_8BIT_TB.V`timescale 1ns / 1psmodule COUNT_8BIT_TB;// inputreg RESETN, CLK;// outputwire [7:0] COUNT_OUT;// Instantiate the U1COUNT_8BIT U1(RESETN,CLK,COUNT_OUT// Specify input stimulusinitial beginCLK = 0;RESETN = 0;#100 RESETN = 1;end// clock generationalways beginCLK = 0;#25;CLK = 1;#25;endendmodule위의 테스트 벤치 파일을 COUNT_8BIT_TB.V라는 이름으로 RTL 작업 폴더에 저장한다.ModelSim 소프트웨어를 이용하여 시뮬레이션 하는 방법에 대하여 아래에 설명되어 있다.ModelSim 소프트웨어를 실행시킨다.프로그램을 실행시키면, 위의 환경설정에서 등록한 라이브러리가 등록이 되어 있는 것을확인할 수 있다.ModelSim 소프트웨어에서 시뮬레이션을 하기 위해서, 아래 그림과 같이 File > New >Project 메뉴를 선택하여 새로운 프로젝트를 선언한다.Create Project 창에서 아래 그림과 같이 Project Name과 작업 폴더를 지정한다.여기에서는 Quartus II에서 작업한 폴더를 지정하였다.Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포함할 로직 파일(COUNT_8BIT.V)과 테스트 벤치 파일(COUNT_8BIT_TB.V)을 추가시킨다.위에서 파일을 추가시키면 아래 그림과 같이 Workspace창에서 프로젝트에 선택한파일이 추가된 것을 확인할 수 있다.추가한 파일을 검증하기 위하여 아래 그림과 같이 Compile > Compile All 메뉴를선택하여 추가한 파일에 대한 컴파일을 실행시킨다.컴파일이 끝나면 아래 그림과 같이 Status와 메시지를 통해 컴파일의 성공을 확인할 수있다.시뮬레이션을 하기 위하여 아래 그림과 같이 Simulate > Start Simulation 메뉴를선택한다.위의 메뉴를 선택하면 Start Simulation 창이 나타나는데, 여기에서 아래 그림과 같이시뮬레이션 하려고 하는 파일을 선택하면 된다.Design 탭의 Work > COUNT_8BIT_TB를 선택하고, OK 버튼을 누른다.아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.아래 그림과 같이 Workspace의 sim 탭에서 COUNT_8BIT_TB를 마우스로 드래그하여Wave 창에 위치시킨다.마우스로 Drag & Drop하여 COUNT_8BIT_TB를 끌어오면, 아래 그림과 같이 입/출력신호가 나타나는 것을 확인할 수 있다.시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(COUNT_8BIT_TB)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
+이 절에서는 앞에서 설계한 8비트 카운터 로직을 소프트웨어적으로 검증하기 위하여 시뮬레이션 하는 방법을 설명하고 있다. 여기에서 사용하는 시뮬레이션 소프트웨어로 유명한ModelSim이다.시뮬레이션을 할 때에는 출력된 결과를 확인해 볼 수 있도록, 입력 신호의 데이터를 설정해주어야 하는데, 많이 사용하는 방법이 테스트 벤치 파일을 작성하여 시뮬레이션 하는 것이다.아래에 설계되어 있는 Verilog HDL 파일이 이 8 비트 카운터를 시뮬레이션 하기 위한 테스트벤치 파일이다.
+
+```verilog
+//COUNT_8BIT_TB.V
+
+`timescale 1ns / 1ps
+
+module COUNT_8BIT_TB;
+
+// input
+reg RESETN, CLK;
+
+// output
+wire [7:0] COUNT_OUT;
+
+// Instantiate the U1
+COUNT_8BIT U1(
+  RESETN,
+  CLK,
+  COUNT_OUT
+);
+
+// Specify input stimulus
+
+initial begin
+  CLK = 0;
+
+  RESETN = 0;
+
+  #100 RESETN = 1;
+end
+
+// clock generation
+always begin
+  CLK = 0;
+  #25;
+  CLK = 1;
+  #25;
+end
+
+endmodule
+```
+
+위의 테스트 벤치 파일을 COUNT_8BIT_TB.V라는 이름으로 RTL 작업 폴더에 저장한다.ModelSim 소프트웨어를 이용하여 시뮬레이션 하는 방법에 대하여 아래에 설명되어 있다.ModelSim 소프트웨어를 실행시킨다.프로그램을 실행시키면, 위의 환경설정에서 등록한 라이브러리가 등록이 되어 있는 것을확인할 수 있다.ModelSim 소프트웨어에서 시뮬레이션을 하기 위해서, 아래 그림과 같이 File > New >Project 메뉴를 선택하여 새로운 프로젝트를 선언한다.Create Project 창에서 아래 그림과 같이 Project Name과 작업 폴더를 지정한다.여기에서는 Quartus II에서 작업한 폴더를 지정하였다.Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포함할 로직 파일(COUNT_8BIT.V)과 테스트 벤치 파일(COUNT_8BIT_TB.V)을 추가시킨다.위에서 파일을 추가시키면 아래 그림과 같이 Workspace창에서 프로젝트에 선택한파일이 추가된 것을 확인할 수 있다.추가한 파일을 검증하기 위하여 아래 그림과 같이 Compile > Compile All 메뉴를선택하여 추가한 파일에 대한 컴파일을 실행시킨다.컴파일이 끝나면 아래 그림과 같이 Status와 메시지를 통해 컴파일의 성공을 확인할 수있다.시뮬레이션을 하기 위하여 아래 그림과 같이 Simulate > Start Simulation 메뉴를선택한다.위의 메뉴를 선택하면 Start Simulation 창이 나타나는데, 여기에서 아래 그림과 같이시뮬레이션 하려고 하는 파일을 선택하면 된다.Design 탭의 Work > COUNT_8BIT_TB를 선택하고, OK 버튼을 누른다.아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.아래 그림과 같이 Workspace의 sim 탭에서 COUNT_8BIT_TB를 마우스로 드래그하여Wave 창에 위치시킨다.마우스로 Drag & Drop하여 COUNT_8BIT_TB를 끌어오면, 아래 그림과 같이 입/출력신호가 나타나는 것을 확인할 수 있다.시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(COUNT_8BIT_TB)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
 
 ## 4.4. HBE-Combo III를 이용한 동작 검증
 
