@@ -66,6 +66,12 @@
 
 </div>
 
+<br>
+
+---
+
+<br>
+
 ### (2) ASIC (Application Specific IC)
 
 <p align="center"> <img src="../vhdl-media//image3.jpeg"> </p> 
