@@ -465,7 +465,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image48.png"> </p>
+<p align="center"> <img src="../verilog-media/image48.jpeg"> </p>
 
 <br><br>
 
@@ -474,7 +474,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image49.png"> </p>
+<p align="center"> <img src="../verilog-media/image49.jpeg"> </p>
 
 <br><br>
 
@@ -482,7 +482,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image50.png"> </p>
+<p align="center"> <img src="../verilog-media/image50.jpeg"> </p>
 
 <br><br>
 
