@@ -79,13 +79,161 @@ END COUNT_8BIT;
 
 ### (3) ARCHITECTURE 문에서의 로직 설계
 
-ENTITY가 외부의 신호와 연결되는 port를 선언한 구문이라면, Architecture는 이러한 port를통해 입력되는 신호를 사용자가 제어하여 외부로 출력해 주는 역할을 한다. 다시 말해 Entity에서 겉 모습을 정의하고 Architecture에서 설계내용을 정의하게 된다. 아키텍처 문(architecture body)는 병행문(concurrent statement)의 성격을 갖고 있다. 병행문은 다른 PLD언어 또는 네트리스트와 같은 의미로서 디자인 내에서 문장이 놓인 위치에 상관없다. 다시 말해 다른 프로그래밍 언어에서는 문장이 놓인 순서대로 실행 되지만, VHDL은 병행 처리되는구간도 있다. 신호(signal)들에 의하여 각 문장에 값이 전달되며 신호로 값의 할당을 ‘<=’ 표시를 통해 할 수 있다.이 ARCHITECTURE 문은 아래와 같은 형식으로 사용된다.ARCHITECTURE [아키텍처이름] OF [엔티티 이름] IN[선언문]BEGIN[회로의 내부 동작 표현]END [아키텍처_이름];위의 형식에서 선언문의 위치에서는 ARCHITECTURE 문에서 사용할 신호(SIGNAL), 상수(CONSTANT)와 자료형(DATA TYPE)등을 선언한다. 또, 이 위치에서 다른 서브 프로젝트와 연동을 위한 COMPONENT도 선언한다.ARCHITECTURE와 BEGIN 사이에서 선언되는 신호를 내부신호(internal signal)이라 부르며, 모드(mode)로서 "inout"의 특징을 갖는다. 따라서 mode는 별도로 지정을 하지 않는다.회로의 내부 동작 표현의 위치에서는 PROCESS문, 병행문이 사용되어 회로가 구성된다. VHDL에서 하드웨어 기술 언어가 가지는 가장 큰 특징 중 하나는 동시 처리되는 병행문이다. 이는일반 프로그래밍 언어에서만 존재하는 순차문과는 상당한 차이가 있는 처리 방식이다.ARCHITECTURE 문 내부에 서술되는 합성 가능한 VHDL 문장은 PROCESS문의 내부를 제외하고는 병행처리를 하며, 대표적인 것으로 with select문과 when else문이 있다. PROCESS문 자체는 병행 처리문이나 process 내부의 문장들은 예외적으로 순차처리 하게 하여 복잡한 알고리즘의 구현을 편리하게 하고 있다.하나의 병행 처리문은 하나의 PROCESS문으로 설계할 수 있다. PROCESS문은 동작적 표현으로하드웨어 시스템을 모듈 별로 기술하는데 편리하다. 대개 시스템은 하드웨어를 모듈단위로 구성하고 있고, 각 모듈은 병행처리를 하면서 서로간의 통신을 통해 관계를 유지한다. 이러한 모듈 단위의 병행처리를 개별 PROCESS로 볼 수 있다. PROCESS문은 시스템의 각 모듈의 병행처리를 담당하지만 PROCESS문의 내부는 순차처리를 하게 하며 복잡한 알고리즘의 구현을 쉽게 할 뿐만 아니라, PROCESS간의 통신을 원활히 하고 있다.이 PROCESS문은 아래와 같은 형식으로 사용된다.[레이블 :] PROCESS([감지신호 리스트])[선언문]BEGIN[순차문]END PROCESS [프로세서 레이블];PROCESS문에서 레이블은 프로세서를 위해서 지정할 수 있으며 반드시 해야 할 작업은 아니다. PROCESS문은 감지 신호 리스트(Sensitivity list)에서 있는 신호에 변화(event)가 발생하면수행이 시작된다. 이러한 감지 리스트의 위치는 PROCESS 선언 다음에 와도 되고, begin 하위에 wait문을 두어서 사용하여도 된다.VHDL의 회로 내부를 동작을 설계하는 방법은 크게 순차문(Sequential Statement)에 의한 구성과 병행문(Concurrent Statement)에 의한 구성 방법으로 구분할 수 있다.순차문은 문장이 하나씩 차례로 수행되는 구문으로 동작적 기술로 표현된다. PROCESS문의 내부에 기술된 회로의 경우 순차적으로 한 문장씩 수행된다. 예를 들어 IF문과 같은 조건문과CASE문이 이 순차문에 포함됩니다.병행문은 문장이 동시에 수행되는 구문이다. PROCESS문의 내부는 순차문으로 구성되지만,PROCESS문 자체는 병행문이다. 여러 개의 PROCESS문이 있을 경우에는 동시에 수행된다.PROCESS문과 조건적 병행처리문(WHEN 조건 ELSE), 선택적 병행처리문(WITH 수식 SELECT)이이에 속한다. 자료흐름적 기술을 위해서 병행문이 사용되고, COMPONENT문은 구조적 기술을위해서 사용된다.아래의 예제는 이 ARCHITECTURE문을 보여주고 있다. 여기에서 사용한 PROCESS문은 RESETN과 CLK의 신호의 변화가 있을 때만 수행된다.ARCHITECTURE HB OF COUNT_8BIT ISSIGNAL CNT_8BIT : STD_LOGIC_VECTOR(7 DOWNTO 0);BEGINPROCESS(RESETN, CLK)BEGINIF RESETN = '0' THENCNT_8BIT <= (OTHERS => '0');ELSIF CLK'EVENT AND CLK = '1' THENIF CNT_8BIT = "11111111" THENCNT_8BIT <= (OTHERS => '0');ELSECNT_8BIT <= CNT_8BIT + 1;END IF;END IF;END PROCESS;COUNT_OUT <= CNT_8BIT;END HB;
+ENTITY가 외부의 신호와 연결되는 port를 선언한 구문이라면, Architecture는 이러한 port를통해 입력되는 신호를 사용자가 제어하여 외부로 출력해 주는 역할을 한다. 다시 말해 Entity에서 겉 모습을 정의하고 Architecture에서 설계내용을 정의하게 된다. 아키텍처 문(architecture body)는 병행문(concurrent statement)의 성격을 갖고 있다. 병행문은 다른 PLD언어 또는 네트리스트와 같은 의미로서 디자인 내에서 문장이 놓인 위치에 상관없다. 다시 말해 다른 프로그래밍 언어에서는 문장이 놓인 순서대로 실행 되지만, VHDL은 병행 처리되는구간도 있다. 신호(signal)들에 의하여 각 문장에 값이 전달되며 신호로 값의 할당을 ‘<=’ 표시를 통해 할 수 있다.
+
+이 ARCHITECTURE 문은 아래와 같은 형식으로 사용된다.
+
+```
+ARCHITECTURE [아키텍처이름] OF [엔티티 이름] IN
+    [선언문]
+BEGIN
+    [회로의 내부 동작 표현]
+END [아키텍처_이름];
+```
+
+위의 형식에서 선언문의 위치에서는 ARCHITECTURE 문에서 사용할 신호(SIGNAL), 상수(CONSTANT)와 자료형(DATA TYPE)등을 선언한다. 또, 이 위치에서 다른 서브 프로젝트와 연동을 위한 COMPONENT도 선언한다.
+
+ARCHITECTURE와 BEGIN 사이에서 선언되는 신호를 내부신호(internal signal)이라 부르며, 모드(mode)로서 "inout"의 특징을 갖는다. 따라서 mode는 별도로 지정을 하지 않는다.
+
+회로의 내부 동작 표현의 위치에서는 PROCESS문, 병행문이 사용되어 회로가 구성된다. VHDL에서 하드웨어 기술 언어가 가지는 가장 큰 특징 중 하나는 동시 처리되는 병행문이다. 이는일반 프로그래밍 언어에서만 존재하는 순차문과는 상당한 차이가 있는 처리 방식이다.ARCHITECTURE 문 내부에 서술되는 합성 가능한 VHDL 문장은 PROCESS문의 내부를 제외하고는 병행처리를 하며, 대표적인 것으로 with select문과 when else문이 있다. PROCESS문 자체는 병행 처리문이나 process 내부의 문장들은 예외적으로 순차처리 하게 하여 복잡한 알고리즘의 구현을 편리하게 하고 있다.
+
+하나의 병행 처리문은 하나의 PROCESS문으로 설계할 수 있다. PROCESS문은 동작적 표현으로하드웨어 시스템을 모듈 별로 기술하는데 편리하다. 대개 시스템은 하드웨어를 모듈단위로 구성하고 있고, 각 모듈은 병행처리를 하면서 서로간의 통신을 통해 관계를 유지한다. 이러한 모듈 단위의 병행처리를 개별 PROCESS로 볼 수 있다. PROCESS문은 시스템의 각 모듈의 병행처리를 담당하지만 PROCESS문의 내부는 순차처리를 하게 하며 복잡한 알고리즘의 구현을 쉽게 할 뿐만 아니라, PROCESS간의 통신을 원활히 하고 있다.
+
+이 PROCESS문은 아래와 같은 형식으로 사용된다.
+
+```
+[레이블 :] PROCESS([감지신호 리스트])[선언문]BEGIN[순차문]END PROCESS [프로세서 레이블];
+```
+
+PROCESS문에서 레이블은 프로세서를 위해서 지정할 수 있으며 반드시 해야 할 작업은 아니다. PROCESS문은 감지 신호 리스트(Sensitivity list)에서 있는 신호에 변화(event)가 발생하면수행이 시작된다. 이러한 감지 리스트의 위치는 PROCESS 선언 다음에 와도 되고, begin 하위에 wait문을 두어서 사용하여도 된다.
+
+VHDL의 회로 내부를 동작을 설계하는 방법은 크게 순차문(Sequential Statement)에 의한 구성과 병행문(Concurrent Statement)에 의한 구성 방법으로 구분할 수 있다.
+
+순차문은 문장이 하나씩 차례로 수행되는 구문으로 동작적 기술로 표현된다. PROCESS문의 내부에 기술된 회로의 경우 순차적으로 한 문장씩 수행된다. 예를 들어 IF문과 같은 조건문과CASE문이 이 순차문에 포함됩니다.
+
+병행문은 문장이 동시에 수행되는 구문이다. PROCESS문의 내부는 순차문으로 구성되지만,PROCESS문 자체는 병행문이다. 여러 개의 PROCESS문이 있을 경우에는 동시에 수행된다.PROCESS문과 조건적 병행처리문(WHEN 조건 ELSE), 선택적 병행처리문(WITH 수식 SELECT)이이에 속한다. 자료흐름적 기술을 위해서 병행문이 사용되고, COMPONENT문은 구조적 기술을위해서 사용된다.
+
+아래의 예제는 이 ARCHITECTURE문을 보여주고 있다. 여기에서 사용한 PROCESS문은 RESETN과 CLK의 신호의 변화가 있을 때만 수행된다.
+
+```
+ARCHITECTURE HB OF COUNT_8BIT IS
+
+SIGNAL CNT_8BIT : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+BEGIN
+
+PROCESS(RESETN, CLK)
+BEGIN
+  IF RESETN = '0' THEN
+    CNT_8BIT <= (OTHERS => '0');
+  ELSIF CLK'EVENT AND CLK = '1' THEN
+    IF CNT_8BIT = "11111111" THEN
+      CNT_8BIT <= (OTHERS => '0');
+    ELSE
+      CNT_8BIT <= CNT_8BIT + 1;
+    END IF;
+  END IF;
+END PROCESS;
+
+COUNT_OUT <= CNT_8BIT;
+
+END HB;
+```
 
 ## 5.3. 객체와 연산자
 
 ### (1) 객체
 
-VHDL에서 값을 가질 수 있는 모든 것을 객체라 하고 이러한 객체는 자료형(data type)를 갖는다. 그 종류로는 신호(signal), 상수(constant), 변수(variable)의 3가지 종류의 객체가 있다. 이것은 각각 다른 특징을 갖고 표현되므로 잘 선택해서 사용하여야 한다.객체는 아래와 같이 선언되어 사용된다.SIGNAL CARRY : STD_LOGIC;이것을 분석하면,  신호 carry는 ‘0’ 또는 ‘1’을 값으로 갖는 자료형 "std_logic"으로 선언되었다는 것을 의미한다. SignalSignal은 VHDL 합성 할 때 선(Wire)으로 연결이 되며, 각 심볼에 연결되어 사용하는 외적 변수이다. Signal에서 값을 대입하기 위해서는 ‘<=’’의 기호를 사용하고, 초기에 값을 지정해 주기 위해서는 ‘:=’’의 기호를 사용한다. 아래 예제에 Signal의 선언 방법과 값의 대입 방법이 설명되어 있다.SIGNAL    SIG : STD_LOGIC;-- sig 를 std_logic 로 선언SIGNAL    COUNT1 : STD_LOGIC_VECTOR(3 DOWNTO 0);  -- 내림차순-- count1 을 4bit 내림차순으로 선언SIGNAL    COUNT2 : STD_LOGIC_VECTOR(0 TO 3);  -- 올림차순-- count2 를 4bit 올림차순으로 선언SIGNAL    TEMP : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0101";-- temp 를 4bit 로 선언하고 초기값 “0101”을 대입SIG <= ‘1’;  -- SIG 에 ‘1’ 대입COUNT1 <= “1101” –- 4bit 변수 COUNT1 에 “1101” 대입COUNT2 <= (OTHERS => ‘0’); -- 4bit 변수 COUNT2 의 모든 값을 ‘0’으로 대입 VariableVHDL에서 사용하는 variable 변수는 PROCESS문 내에서만 사용하는 내적 변수로서 중간 연산단계에 주로 이용을 한다. 이러한 variable 변수의 값의 전달은 “:=’’을 사용하여 값을 대입하게 된다. 또한 PROCESS문 내에서의 값을 전달 시점은 signal 변수는 PROCESS문이 끝난 시점에 값이 전달되는 반면, variable 변수는 값의 전달이 선언된 지점에서 바로 전달이 값의 대입이 이루어진다. 아래 예제에 Variable의 선언방법과 값의 대입방법이 설명되어 있다.VARIABLE TEMP1, TEMP2 : STD_LOGIC;-- variable 이름을 temp1, temp2 로 하고 bit 단위로 선언TEMP1 := '1;-- :=는 ‘1’ 이라는 값이 대입됨을 표시TEMP2 := A OR B;-- a, b 는 signal 이고, temp2 는 variable 이다. signal 및 variable 사용 예LIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.NUMERIC_STD.ALL;ENTITY LATCH_MULT ISPORT(EN1, EN2, EN3 : IN STD_LOGIC;A1, A2, A3     : IN STD_LOGIC;B2, B3          : IN STD_LOGIC;C2, C3          : IN STD_LOGIC;Y1, Y2, Y3    : OUT STD_LOGICEND LATCH_MULT;ARCHITECTURE HB OF LATCH_MULT ISSIGNAL M2 : STD_LOGIC;  -- SIGNAL DECLARATIONBEGINPROCESS(EN1, EN2, EN3, A1, A2, A3, B2, B3, C2, C3)VARIABLE M3 : STD_LOGIC;   -- VARIABLE DECLARATIONBEGIN-- SIGNAL ASSIGNMENTIF EN1 = '1' THENY1 <= A1;END IF;-- TWO LATCHIF EN2 = '1' THENM2 <= A2 NAND B2;Y2 <= M2 NOR C2;END IF;-- VARIABLE ASSIGNMENTIF EN3 = '1' THENM3 := A3 NAND B3;Y3 <= M3 NOR C3;END IF;END PROCESS;END HB; ConstantConstant는 초기에 선언한 상수의 값을 유지하는데 사용하며, 선언된 초기값을 바꿀 수 없는고정된 값을 갖는다. 선언 방식은 다른 객체의 선언 방식과 유사하며 대입 기호는 variable와마찬가지로 ‘:=’를 사용하여 대입을 한다.아래 예제에 Constant의 선언방법과 값의 대입방법이 설명되어 있다.CONSTANT SIZE : INTEGER RANGE 0 TO 127 := 56;-- SIZE 는 0~127 범위의 INTEGER 형이고, 56 의 값을 갖음CONSTANT REG : STD_LOGIC_VECTOR(3 DOWNTO 0) := “1100”;-- REG 는 4 비트의 STD_LOGIC 형이고 “1100”의 값을 갖음A <= SIZE;-- A 신호에 SIZE 값(56)을 대입B <= REG;-- B 신호에 REG 신호(“1100”) 대입 객체 비교객체형signalvariableconstant사용 조건신호의 선언변수의 선언상수의 선언변경변경 가능변경 가능변경 불가능변경 시점Signal 파형이 인가시점Process문내부에서는process문이끝난 시점에서 값이 변화Process문내부에서만값이유효,내부 연산 후 그값은 무효변경 불가능선언 장소architecturepackageentityprocessfunctionprocedurearchitecturepackageentityprocessfunctionprocedure
+VHDL에서 값을 가질 수 있는 모든 것을 객체라 하고 이러한 객체는 자료형(data type)를 갖는다. 그 종류로는 신호(signal), 상수(constant), 변수(variable)의 3가지 종류의 객체가 있다. 이것은 각각 다른 특징을 갖고 표현되므로 잘 선택해서 사용하여야 한다.
+
+객체는 아래와 같이 선언되어 사용된다.
+
+```
+SIGNAL CARRY : STD_LOGIC;
+```
+
+이것을 분석하면,  신호 carry는 ‘0’ 또는 ‘1’을 값으로 갖는 자료형 "std_logic"으로 선언되었다는 것을 의미한다.
+
+#### ■ Signal
+
+Signal은 VHDL 합성 할 때 선(Wire)으로 연결이 되며, 각 심볼에 연결되어 사용하는 외적 변수이다. Signal에서 값을 대입하기 위해서는 ‘<=’’의 기호를 사용하고, 초기에 값을 지정해 주기 위해서는 ‘:=’’의 기호를 사용한다. 아래 예제에 Signal의 선언 방법과 값의 대입 방법이 설명되어 있다.
+
+```
+SIGNAL    SIG : STD_LOGIC;
+    -- sig 를 std_logic 로 선언
+SIGNAL    COUNT1 : STD_LOGIC_VECTOR(3 DOWNTO 0);  -- 내림차순
+    -- count1 을 4bit 내림차순으로 선언
+SIGNAL    COUNT2 : STD_LOGIC_VECTOR(0 TO 3);  -- 올림차순
+    -- count2 를 4bit 올림차순으로 선언
+SIGNAL    TEMP : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0101";
+    -- temp 를 4bit 로 선언하고 초기값 “0101”을 대입
+
+SIG <= ‘1’;  -- SIG 에 ‘1’ 대입
+COUNT1 <= “1101” –- 4bit 변수 COUNT1 에 “1101” 대입
+COUNT2 <= (OTHERS => ‘0’); -- 4bit 변수 COUNT2 의 모든 값을 ‘0’으로 대입
+```
+
+#### ■ Variable
+
+VHDL에서 사용하는 variable 변수는 PROCESS문 내에서만 사용하는 내적 변수로서 중간 연산단계에 주로 이용을 한다. 이러한 variable 변수의 값의 전달은 “:=’’을 사용하여 값을 대입하게 된다. 또한 PROCESS문 내에서의 값을 전달 시점은 signal 변수는 PROCESS문이 끝난 시점에 값이 전달되는 반면, variable 변수는 값의 전달이 선언된 지점에서 바로 전달이 값의 대입이 이루어진다. 아래 예제에 Variable의 선언방법과 값의 대입방법이 설명되어 있다.
+
+```
+VARIABLE TEMP1, TEMP2 : STD_LOGIC;
+    -- variable 이름을 temp1, temp2 로 하고 bit 단위로 선언
+TEMP1 := '1;
+    -- :=는 ‘1’ 이라는 값이 대입됨을 표시
+TEMP2 := A OR B;
+    -- a, b 는 signal 이고, temp2 는 variable 이다.
+```
+
+#### ■ signal 및 variable 사용 예
+
+```
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+ENTITY LATCH_MULT IS
+PORT(
+  EN1, EN2, EN3 : IN STD_LOGIC;
+  A1, A2, A3     : IN STD_LOGIC;
+  B2, B3          : IN STD_LOGIC;
+  C2, C3          : IN STD_LOGIC;
+  Y1, Y2, Y3    : OUT STD_LOGIC
+);
+END ATCH_MULT;
+
+ARCHITECTURE HB OF LATCH_MULT ISSIGNAL M2 : STD_LOGIC;  -- SIGNAL DECLARATIONBEGINPROCESS(EN1, EN2, EN3, A1, A2, A3, B2, B3, C2, C3)VARIABLE M3 : STD_LOGIC;   -- VARIABLE DECLARATIONBEGIN-- SIGNAL ASSIGNMENTIF EN1 = '1' THENY1 <= A1;END IF;-- TWO LATCHIF EN2 = '1' THENM2 <= A2 NAND B2;Y2 <= M2 NOR C2;END IF;-- VARIABLE ASSIGNMENTIF EN3 = '1' THENM3 := A3 NAND B3;Y3 <= M3 NOR C3;END IF;END PROCESS;END HB;
+
+```
+#### ■ Constant
+
+Constant는 초기에 선언한 상수의 값을 유지하는데 사용하며, 선언된 초기값을 바꿀 수 없는고정된 값을 갖는다. 선언 방식은 다른 객체의 선언 방식과 유사하며 대입 기호는 variable와마찬가지로 ‘:=’를 사용하여 대입을 한다.
+
+아래 예제에 Constant의 선언방법과 값의 대입방법이 설명되어 있다.
+
+```
+CONSTANT SIZE : INTEGER RANGE 0 TO 127 := 56;
+    -- SIZE 는 0~127 범위의 INTEGER 형이고, 56 의 값을 갖음
+
+CONSTANT REG : STD_LOGIC_VECTOR(3 DOWNTO 0) := “1100”;
+    -- REG 는 4 비트의 STD_LOGIC 형이고 “1100”의 값을 갖음
+
+A <= SIZE;
+    -- A 신호에 SIZE 값(56)을 대입
+
+B <= REG;
+    -- B 신호에 REG 신호(“1100”) 대입
+```
+
+#### ■ 객체 비교
+
+| 객체형 | signal | variable | constant | 
+|:-----:|:-----:|:-----:|:-----:|
+| 사용 조건 | 신호의 선언 | 변수의 선언 | 상수의 선언 | 
+| 변경 | 변경 가능 | 변경 가능 | 변경 불가능 | 
+| 변경 시점 | Signal 파형이 인가시점<br>Process문내부에서는 <br>process문이끝난 시점에서 값이 변화 | Process문내부에서만값이유효,<br>내부 연산 후 그값은 무효 | 변경 불가능 | 
+| 선언 장소 | architecture<br>package<br>entity | process<br>function<br>procedure | architecture<br>package<br>entity<br>process<br>function<br>procedure | 
 
 ### (3) 연산자
 
