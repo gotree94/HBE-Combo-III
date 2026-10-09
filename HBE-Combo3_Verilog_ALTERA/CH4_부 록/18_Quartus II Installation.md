@@ -56,9 +56,9 @@ Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time 
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image184.jpeg"> </p>
+<p align="center"> <img src="../verilog-media/image184.png"> </p>
 
-<p align="center"> <img src="../verilog-media/image185.jpeg"> </p>
+<p align="center"> <img src="../verilog-media/image185.png"> </p>
 
 <br><br>
 
