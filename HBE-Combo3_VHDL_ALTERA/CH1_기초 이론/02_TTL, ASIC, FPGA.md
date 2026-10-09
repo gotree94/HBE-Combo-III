@@ -192,12 +192,9 @@ Gate Array와 Standard Cell에 의한 IC 공정과는 다르게 모든 공정을
 
 ## 2.3. FPGA Architecture
 
-* 이 절에서는 HBE-Combo III 장비에서 사용하는 ALTERA FPGA 디바이스의 하드웨어 특징에 대하여 간단하게 설명하고 있다.
-* FPGA의 내부 Architecture에 대해서 자세하게 알아두면 좋지만,그 특징을 이해하는 데에도 시간이 많이 걸리기 때문에 실제로 장비에 사용하는 Cyclone IIFPGA Device가 갖고 있는 주요 특징과 기본 Architecture에 대해서 간략하게 설명하도록 하겠다.
+이 절에서는 HBE-Combo III 장비에서 사용하는 ALTERA FPGA 디바이스의 하드웨어 특징에 대하여 간단하게 설명하고 있다. FPGA의 내부 Architecture에 대해서 자세하게 알아두면 좋지만,그 특징을 이해하는 데에도 시간이 많이 걸리기 때문에 실제로 장비에 사용하는 Cyclone IIFPGA Device가 갖고 있는 주요 특징과 기본 Architecture에 대해서 간략하게 설명하도록 하겠다.
 
-* 다음의 그림은 이 Cyclone II 디바이스의 내부 Architecture에 대한 블록도이다.
-* 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다.
-* 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
+다음의 그림은 이 Cyclone II 디바이스의 내부 Architecture에 대한 블록도이다. 여기에서 볼수 있듯이 Cyclone II 내부 구조는 크게 로직을 설계하는 부분은 논리 게이트가 설계되는Logic Array Block과 데이터를 저장할 수 있는 장소인 메모리가 구성되는 M4K Block, 그리고신호처리 부분에서 연산의 속도를 올려주기 위한 Embedded Multipliers Block으로 나누어 진다. 이 외에 디바이스 외부의 입 출력을 위한 IOEs 블록과 클럭을 관리해 주는 PLL 블록이 구성되어 있다.
 
 <p align="center"> <img src="../vhdl-media/image5.png"> </p>
 
