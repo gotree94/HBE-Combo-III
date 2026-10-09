@@ -71,8 +71,9 @@ END [엔티티 이름]
 ENTITY COUNT_8BIT IS
 PORT(
 RESETN : IN STD_LOGIC;
-CLK : IN STD_LOGIC;
-COUNT_OUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    CLK : IN STD_LOGIC;
+
+    COUNT_OUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 );
 END COUNT_8BIT;
 ```
@@ -102,7 +103,11 @@ ARCHITECTURE와 BEGIN 사이에서 선언되는 신호를 내부신호(internal 
 이 PROCESS문은 아래와 같은 형식으로 사용된다.
 
 ```vhdl
-[레이블 :] PROCESS([감지신호 리스트])[선언문]BEGIN[순차문]END PROCESS [프로세서 레이블];
+[레이블 :] PROCESS([감지신호 리스트])
+        [선언문]
+    BEGIN
+        [순차문]
+END PROCESS [프로세서 레이블];
 ```
 
 PROCESS문에서 레이블은 프로세서를 위해서 지정할 수 있으며 반드시 해야 할 작업은 아니다. PROCESS문은 감지 신호 리스트(Sensitivity list)에서 있는 신호에 변화(event)가 발생하면수행이 시작된다. 이러한 감지 리스트의 위치는 PROCESS 선언 다음에 와도 되고, begin 하위에 wait문을 두어서 사용하여도 된다.
