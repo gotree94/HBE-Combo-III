@@ -73,22 +73,21 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
+* 아래그림과 같이 프로그램 폴더를 설정하고, Next 버튼을 누른다.
+
 <br><br>
 
 <p align="center"> <img src="../vhdl-media/image244.jpeg"> </p>
 
 <br><br>
 
-* 아래그림과 같이 프로그램 폴더를 설정하고, Next 버튼을 누른다.
+* 아래 그림과 같이 Install 요약 정보를 확인한 후 Next 버튼을 누른다.
 
 <br><br>
 
 <p align="center"> <img src="../vhdl-media/image245.jpeg"> </p>
 
 <br><br>
-
-
-* 아래 그림과 같이 Install 요약 정보를 확인한 후 Next 버튼을 누른다.
 
 <br><br>
 
