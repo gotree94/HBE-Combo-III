@@ -719,6 +719,6 @@ PORT(A, B : IN STD_LOGIC;   Y : OUT STD_LOGIC);END COMPONENT;COMPONENT OR_2PORT(
 
 <br><br>
 
-<p align="center"> <img src="../img/image55.png"> </p>
+<p align="center"> <img src="../vhdl-media/image55.png"> </p>
 
 <br><br>
