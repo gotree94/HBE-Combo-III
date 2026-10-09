@@ -427,7 +427,79 @@ Verilog HDL의 추상적인 모델은 행위 수준 모델, RTL 모델, 구조�
 
 ### (1) Procedural 블록
 
-Verilog HDL의 behavioral 코드는 procedure block의 안에 있지만, 그 표현이 때때로procedure 블록의 외부에서 이루어 질 수 있다.Verilog HDL에서 procedural 블록은 initial과 always 문으로 사용된다.먼저 initial문은 타임 0일 때, 한번 이루어지는 초기화 블록이다. 여기에서 타임 0라는 것은 로직의 처음 시작 할 때를 나타낸다.always 문은 이 always 라는 이름이 말하는 것과 같이 항상 반복되어 수행되는 문이다.아래에 이 initial 문과 always 문이 사용되는 예가 표시되어 있다.EX)initial        //초기 지정beginclk = 0;reset = 0;enable = 0;data = 0;endalways @(posedge clk)  // clk 의 rising edge 에서 항상 이루어짐beginif (reset == 1)   // reset 의 값이 1 일 때 수행 , if (reset) 과 같음q <= 0;elseq <= d;endProcedural 블록 안에서는 register(reg)로 선언된 변수만 값을 받을 수 있다는 것에 주의해야한다. Wire 로 선언된 변수에는 그 값을 받을 수 없다.아래에 직접 사용하는 예를 들어보았다.EX)wire clk, reset;reg enable, data;initialbeginclk = 0;       // wire 로 선언되어 있기 때문에 컴파일시 오류가 발생reset = 0;     // wire 로 선언되어 있기 때문에 컴파일시 오류가 발생enable = 0;   // register 로 선언되어 있기 때문에 정상적인 동작을 함.data = 0;     // register 로 선언되어 있기 때문에 정상적인 동작을 함.endProcedural 블록은 항상 begin 으로 시작해서 end 로 끝나는 것을 유의해야 한다.Procedural 블록은 타임 0의 상태에서 활성화가 되며, sensitive의 레벨 변화하는 것을 감지하여 procedure가 실행된다.always @(d, enable)if (enable) q = d;위의 예제에서 always 문은 외부의 다른 신호의 변화에는 동작을 하지 않지만, d 와 enable 의값의 레벨 변화에 따라 동작을 한다.Procedural 블록을 사용해서 아래와 같이 조합논리 회로를 설계할 수 있다.EX)module adder(a, b, sum, carry);input a, b;output sum, carry;reg sum, carry;always @(a, b)begin{carry, sum} = a + b;endendmodule위의 예제는 1비트 adder가 설계된 것으로 a와 b의 값의 레벨의 변하면 always 블록이 실행되어 a와 b를 더한 값을 carry와 sum에 저장하도록 되어 있다. a, b, sum과 carry는 모두 1비트의 변수이고, a와 b를 더한 값은 오버플로어 즉 캐리가 발생하는데, 이 캐리를 받아 들이기위해서 { carry, sum } 구문이 사용되었다.위의 1 비트 예제에서 뿐만 아니라 아래와 같이 버스의 연산에서도 사용될 수 있다.EX)module adder4(a, b, sum, carry);input [3:0] a, b;output [3:0] sum;output carry;reg [3:0] sum;reg carry;always @(a, b)begin{carry, sum} = a + b;endendmodule
+Verilog HDL의 behavioral 코드는 procedure block의 안에 있지만, 그 표현이 때때로procedure 블록의 외부에서 이루어 질 수 있다.
+
+Verilog HDL에서 procedural 블록은 initial과 always 문으로 사용된다.
+
+먼저 initial문은 타임 0일 때, 한번 이루어지는 초기화 블록이다. 여기에서 타임 0라는 것은 로직의 처음 시작 할 때를 나타낸다.
+
+always 문은 이 always 라는 이름이 말하는 것과 같이 항상 반복되어 수행되는 문이다.
+
+아래에 이 initial 문과 always 문이 사용되는 예가 표시되어 있다.
+
+```
+EX)initial        //초기 지정beginclk = 0;reset = 0;enable = 0;data = 0;endalways @(posedge clk)  // clk 의 rising edge 에서 항상 이루어짐beginif (reset == 1)   // reset 의 값이 1 일 때 수행 , if (reset) 과 같음q <= 0;elseq <= d;end
+```
+
+Procedural 블록 안에서는 register(reg)로 선언된 변수만 값을 받을 수 있다는 것에 주의해야한다. Wire 로 선언된 변수에는 그 값을 받을 수 없다.아래에 직접 사용하는 예를 들어보았다.
+
+```
+EX)  wire clk, reset;
+     reg enable, data;
+
+      initial
+        begin
+            clk = 0;       // wire 로 선언되어 있기 때문에 컴파일시 오류가 발생
+            reset = 0;     // wire 로 선언되어 있기 때문에 컴파일시 오류가 발생
+            enable = 0;   // register 로 선언되어 있기 때문에 정상적인 동작을 함.
+            data = 0;     // register 로 선언되어 있기 때문에 정상적인 동작을 함.
+      end
+```
+
+Procedural 블록은 항상 begin 으로 시작해서 end 로 끝나는 것을 유의해야 한다.Procedural 블록은 타임 0의 상태에서 활성화가 되며, sensitive의 레벨 변화하는 것을 감지하여 procedure가 실행된다.
+
+```
+always @(d, enable)
+ if (enable) q = d;
+```
+
+위의 예제에서 always 문은 외부의 다른 신호의 변화에는 동작을 하지 않지만, d 와 enable 의값의 레벨 변화에 따라 동작을 한다.
+
+Procedural 블록을 사용해서 아래와 같이 조합논리 회로를 설계할 수 있다.
+
+```
+EX) module adder(a, b, sum, carry);
+      input a, b;
+      output sum, carry;
+
+      reg sum, carry;
+
+      always @(a, b)
+      begin
+        {carry, sum} = a + b;
+      end
+endmodule
+```
+
+위의 예제는 1비트 adder가 설계된 것으로 a와 b의 값의 레벨의 변하면 always 블록이 실행되어 a와 b를 더한 값을 carry와 sum에 저장하도록 되어 있다. a, b, sum과 carry는 모두 1비트의 변수이고, a와 b를 더한 값은 오버플로어 즉 캐리가 발생하는데, 이 캐리를 받아 들이기위해서 { carry, sum } 구문이 사용되었다.
+
+위의 1 비트 예제에서 뿐만 아니라 아래와 같이 버스의 연산에서도 사용될 수 있다.
+
+```
+EX) module adder4(a, b, sum, carry);
+      input [3:0] a, b;
+      output [3:0] sum;
+      output carry;
+
+      reg [3:0] sum;
+      reg carry;
+
+      always @(a, b)
+      begin
+         {carry, sum} = a + b;
+      end
+   endmodule
+```
 
 ### (2) if ~ else 문
 
