@@ -256,12 +256,16 @@ B <= REG;
 
 #### ■ 객체 비교
 
+<div align="center">
+    
 | 객체형 | signal | variable | constant | 
 |:-----:|:-----:|:-----:|:-----:|
 | 사용 조건 | 신호의 선언 | 변수의 선언 | 상수의 선언 | 
 | 변경 | 변경 가능 | 변경 가능 | 변경 불가능 | 
 | 변경 시점 | Signal 파형이 인가시점<br>Process문내부에서는 <br>process문이끝난 시점에서 값이 변화 | Process문내부에서만값이유효,<br>내부 연산 후 그값은 무효 | 변경 불가능 | 
 | 선언 장소 | architecture<br>package<br>entity | process<br>function<br>procedure | architecture<br>package<br>entity<br>process<br>function<br>procedure | 
+
+</div>
 
 ### (3) 연산자
 
@@ -290,6 +294,8 @@ END HB;
 
 관계 연산자는 비교함수를 만드는데 사용되며, 대부분의 자료형을 지원한다. 아래 표는 관계연산자의 종류를 나타낸 것이다.
 
+<div align="center">
+    
 | 연산자 | 의미 | 
 |:------:|:------:|
 | = | 같음 | 
@@ -298,6 +304,8 @@ END HB;
 | <= | 왼쪽의 값이 작거나 같음| 
 | > | 왼쪽의 값이 큼 | 
 | >= | 왼쪽의 값이 크거나 같음 | 
+
+</div>
 
 아래의 예는 관계 연산자가 VHDL 구문에서 어떻게 이용되고 있는지 설명되어 있다.
 
