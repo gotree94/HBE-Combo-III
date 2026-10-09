@@ -506,18 +506,21 @@ Quartus II 소프트웨어에서 아래 그림과 같이 Tools > Programmer 메�
 
 <br><br>
 
-아래 그림과 같이 Programmer의 Start 버튼을 눌러 FPGA 디바이스로의 프로그래밍을진행한다.이 부분에서 Hardware Setup이 잘 설정되었는지, Mode가 JTAG으로 설정되었는지,Program/Configure이 체크 되었는지를 확인해야 한다.
-
 <br><br>
 
 <p align="center"> <img src="../verilog-media/image53.png"> </p>
 
 <br><br>
 
-프로그래밍이 끝나면 장비를 통해서 동작을 확인해 볼 수 있다.버튼 스위치를 눌러서 8비트 카운터의 동작을 확인해 보기 바란다.
+아래 그림과 같이 Programmer의 Start 버튼을 눌러 FPGA 디바이스로의 프로그래밍을진행한다.이 부분에서 Hardware Setup이 잘 설정되었는지, Mode가 JTAG으로 설정되었는지,Program/Configure이 체크 되었는지를 확인해야 한다.
 
 <br><br>
 
 <p align="center"> <img src="../verilog-media/image54.png"> </p>
 
 <br><br>
+
+프로그래밍이 끝나면 장비를 통해서 동작을 확인해 볼 수 있다.
+버튼 스위치를 눌러서 8비트 카운터의 동작을 확인해 보기 바란다.
+
+
