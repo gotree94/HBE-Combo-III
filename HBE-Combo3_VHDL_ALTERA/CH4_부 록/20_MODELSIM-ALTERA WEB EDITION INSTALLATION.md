@@ -46,7 +46,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image241.jpeg"> </p>
+<p align="center"> <img src="../vhdl-media/image241.png"> </p>
 
 <br><br>
 
@@ -59,7 +59,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image242.jpeg"> </p>
+<p align="center"> <img src="../vhdl-media/image242.png"> </p>
 
 <br><br>
 
@@ -99,7 +99,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 * 아래 그림에서 Finish 버튼을 눌러 프로그램의 설치를 완료한다.CH4 부 록
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image247.jpeg"> </p>
+<p align="center"> <img src="../vhdl-media/image247.png"> </p>
 
 <br><br>
 
