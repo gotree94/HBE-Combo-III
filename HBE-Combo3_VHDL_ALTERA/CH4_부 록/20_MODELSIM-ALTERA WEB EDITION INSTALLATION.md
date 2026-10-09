@@ -12,13 +12,43 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 * 아래와 같이 ALTERA사의 홈페이지(http://www.altera.com)에 접속을 한다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image237.jpeg"> </p>
+
+<br><br>
+
 * 오른쪽 상단의 Download를 클릭한다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image238.jpeg"> </p>
+
+<br><br>
 
 * Download Center의 창에서 아래 그림과 같이 Quartus II Web Edition의 Software를선택한다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image239.jpeg"> </p>
+
+<br><br>
+
 * 아래 그림과 같이 ModelSim-Altera Web Edition의 Windows 버전을 Download 한다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image240.jpeg"> </p>
+
+<br><br>
+
 * Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 ModelSim-Altera Web Edition을 다운로드 받을 수 있다.CH4 부 록
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image241.jpeg"> </p>
+
+<br><br>
 
 ## 20.2.  프로그램 설치
 
@@ -27,16 +57,52 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 * 다운로드 받은 ModelSim-Altera Web Edition 설치 프로그램(80_modelsim_ae_free.exe)을실행시킨다.
 * 아래 그림과 같이 설치 창에서 Next 버튼을 누른다.z아래 그림의 License Agreement 창에서 Yes 버튼을 누른다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image242.jpeg"> </p>
+
+<br><br>
+
 * 아래 그림과 같이 프로그램 설치 폴더를 설정하고, Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image243.jpeg"> </p>
+
+<br><br>
 
 * 아래그림과 같이 프로그램 폴더를 설정하고, Next 버튼을 누른다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image244.jpeg"> </p>
+
+<br><br>
+
 * 아래 그림과 같이 Install 요약 정보를 확인한 후 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image245.jpeg"> </p>
+
+<br><br>
 
 * 위에서 Next 버튼을 누르면 아래 그림과 같이 프로그램의 설치가 시작된다.
 * 프로그램의 설치가 끝나면 Hardware Security Key Driver를 설치할 것이냐는 메시지가나타나는데, Ethernet address를 이용한 License를 사용하기 때문에 아래 그림과 같이“아니오” 버튼을 선택한다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image246.jpeg"> </p>
+
+<br><br>
+
 * 아래 그림에서 Finish 버튼을 눌러 프로그램의 설치를 완료한다.CH4 부 록
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image247.jpeg"> </p>
+
+<br><br>
+
 
 ## 20.3.  License 설정
 
