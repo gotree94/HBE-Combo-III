@@ -21,47 +21,123 @@
 ## ■ LED
 | Net Name | Pin Number |
 |:----:|:-----:|
-LED1AE11LED2AE10LED3AF9LED4AF8LED5AF7HBE-Combo IIIAltera 핀맵LED6AF6LED7AF5LED8B3LED9B2LED10AF13LED11Y25LED12AF23LED13G1LED14G2LED15AA24LED16AF10
+| LED1 | AE11 | 
+| LED2 | AE10 | 
+| LED3 | AF9 | 
+| LED4 | AF8 | 
+| LED5 | AF7 | 
+| LED6 | AF6 | 
+| LED7 | AF5 | 
+| LED8 | B3 | 
+| LED9 | B2 | 
+| LED10 | AF13 | 
+| LED11 | Y25 | 
+| LED12 | AF23 | 
+| LED13 | G1 | 
+| LED14 | G2 | 
+| LED15 | AA24 | 
+| LED16 | AF10 | 
 
 ## ■ Button Switch
 | Net Name | Pin Number |
 |:----:|:-----:|
-SW1V4SW2V3SW3V2SW4W4SW5W3SW6W2SW7W1SW8V7SW9Y4SW10Y3SW11Y2SW12Y1SW13W6SW14AA4SW15AA3SW16AA2
+| SW1 | V4 | 
+| SW2 | V3 | 
+| SW3 | V2 | 
+| SW4 | W4 | 
+| SW5 | W3 | 
+| SW6 | W2 | 
+| SW7 | W1 | 
+| SW8 | V7 | 
+| SW9 | Y4 | 
+| SW10 | Y3 | 
+| SW11 | Y2 | 
+| SW12 | Y1 | 
+| SW13 | W6 | 
+| SW14 | AA4 | 
+| SW15 | AA3 | 
+| SW16 | AA2 | 
 
 ## ■ BUS Switch
 | Net Name | Pin Number |
 |:----:|:-----:|
-BUS SW1T6BUS SW2V1BUS SW3U7BUS SW4U6BUS SW5U5BUS SW6U4BUS SW7V6BUS SW8V5
+| BUS SW1 | T6 | 
+| BUS SW2 | V1 | 
+| BUS SW3 | U7 | 
+| BUS SW4 | U6 | 
+| BUS SW5 | U5 | 
+| BUS SW6 | U4 | 
+| BUS SW7 | V6 | 
+| BUS SW8 | V5 | 
 
 ## ■ 7-Segment 1 Digit
 | Net Name | Pin Number |
 |:----:|:-----:|
-SEG_AM3SEG_BM2SEG_CL7SEG_DL6SEG_EL4CH4 부 록SEG_FP6SEG_GP4SEG_HP3
+| SEG_A | M3 | 
+| SEG_B | M2 | 
+| SEG_C | L7 | 
+| SEG_D | L6 | 
+| SEG_E | L4 | 
+| SEG_F | P6 | 
+| SEG_G | P4 | 
+| SEG_H | P3 | 
 
 ## ■ 7-Segment 4Digit
 | Net Name | Pin Number |
 |:----:|:-----:|
-SEG_DATA_AM5SEG_DATA_BM4SEG_DATA_CR5SEG_DATA_DR4SEG_DATA_ER3SEG_DATA_FR2SEG_DATA_GP7SEG_DATA_HT4SEG_COM1T3SEG_COM2T2SEG_COM3R7SEG_COM4R6SEG_COM5U3SEG_COM6U2SEG_COM7U1SEG_COM8T7
+| SEG_DATA_A | M5 | 
+| SEG_DATA_B | M4 | 
+| SEG_DATA_C | R5 | 
+| SEG_DATA_D | R4 | 
+| SEG_DATA_E | R3 | 
+| SEG_DATA_F | R2 | 
+| SEG_DATA_G | P7 | 
+| SEG_DATA_H | T4 | 
+| SEG_COM1 | T3 | 
+| SEG_COM2 | T2 | 
+| SEG_COM3 | R7 | 
+| SEG_COM4 | R6 | 
+| SEG_COM5 | U3 | 
+| SEG_COM6 | U2 | 
+| SEG_COM7 | U1 | 
+| SEG_COM8 | T7 | 
 
 ## ■ PIEZO
 | Net Name | Pin Number |
 |:----:|:-----:|
-PIEZOK6
+| PIEZO | K6 | 
 
 ## ■ STEP MOTOR
 | Net Name | Pin Number |
 |:----:|:-----:|
-STEP_AAA23STEP_BAB24STEP_ANY26STEP_BNAB23STEP_SENSORAA26
+| STEP_A | AA23| 
+| STEP_B | AB24| 
+| STEP_AN | Y26 | 
+| STEP_BN | AB23 | 
+| STEP_SENSOR | AA26 | 
 
 ## ■ VFD
 | Net Name | Pin Number |
 |:----:|:-----:|
-VFD_RSJ5VFD_RWJ4VFD_EK5VFD_D7K7VFD_D6K8VFD_D5L2VFD_D4L3VFD_D3K1VFD_D2K2VFD_D1K3VFD_D0K4
+| VFD_RS | J5 | 
+| VFD_RW | J4 | 
+| VFD_E | K5 | 
+| VFD_D7 | K7 | 
+| VFD_D6 | K8 | 
+| VFD_D5 | L2 | 
+| VFD_D4 | L3 | 
+| VFD_D3 | K1 | 
+| VFD_D2 | K2 | 
+| VFD_D1 | K3 | 
+| VFD_D0 | K4 | 
 
 ## ■ RS-232
 | Net Name | Pin Number |
 |:----:|:-----:|
-UART_TXDF7UART_RXDH3USB_TXDH1USB_RXDH2
+| UART_TXD | F7 | 
+| UART_RXD | H3 | 
+| USB_TXD | H1 | 
+| USB_RXD | H2 | 
 
 ## ■ SRAM
 | Net Name | Pin Number |
