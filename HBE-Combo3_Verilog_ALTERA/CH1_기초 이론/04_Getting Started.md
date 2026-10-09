@@ -406,17 +406,9 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image41.png"> </p>
-
-<br><br>
-
-<br><br>
-
 <p align="center"> <img src="../verilog-media/image42.png"> </p>
 
 <br><br>
-
-아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.
 
 <br><br>
 
@@ -424,7 +416,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-아래 그림과 같이 Workspace의 sim 탭에서 COUNT_8BIT_TB를 마우스로 드래그하여Wave 창에 위치시킨다.
+아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.
 
 <br><br>
 
@@ -432,11 +424,19 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-마우스로 Drag & Drop하여 COUNT_8BIT_TB를 끌어오면, 아래 그림과 같이 입/출력신호가 나타나는 것을 확인할 수 있다.
+아래 그림과 같이 Workspace의 sim 탭에서 COUNT_8BIT_TB를 마우스로 드래그하여Wave 창에 위치시킨다.
 
 <br><br>
 
 <p align="center"> <img src="../verilog-media/image45.png"> </p>
+
+<br><br>
+
+마우스로 Drag & Drop하여 COUNT_8BIT_TB를 끌어오면, 아래 그림과 같이 입/출력신호가 나타나는 것을 확인할 수 있다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image46.png"> </p>
 
 <br><br>
 
