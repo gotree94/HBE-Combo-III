@@ -61,7 +61,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image214.png"> </p>
+<p align="center"> <img src="../verilog-media/image214.jpeg"> </p>
 
 <br><br>
 
@@ -69,7 +69,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image215.png"> </p>
+<p align="center"> <img src="../verilog-media/image215.jpeg"> </p>
 
 <br><br>
 
@@ -77,7 +77,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image216.png"> </p>
+<p align="center"> <img src="../verilog-media/image216.jpeg"> </p>
 
 <br><br>
 
@@ -85,7 +85,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image217.png"> </p>
+<p align="center"> <img src="../verilog-media/image217.jpeg"> </p>
 
 <br><br>
 
@@ -93,7 +93,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image218.png"> </p>
+<p align="center"> <img src="../verilog-media/image218.jpeg"> </p>
 
 <br><br>
 
@@ -110,7 +110,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image220.png"> </p>
+<p align="center"> <img src="../verilog-media/image220.jpeg"> </p>
 
 <br><br>
 
