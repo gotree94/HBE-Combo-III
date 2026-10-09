@@ -243,7 +243,7 @@ Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 �
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image28.png"> </p>
+<p align="center"> <img src="../vhdl-media/image28.jpeg"> </p>
 
 <br><br>
 
