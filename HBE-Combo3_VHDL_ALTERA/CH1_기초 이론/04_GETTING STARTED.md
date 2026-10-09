@@ -473,7 +473,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image47.png"> </p>
+<p align="center"> <img src="../vhdl-media/image48.png"> </p>
 
 <br><br>
 
@@ -481,7 +481,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image48.png"> </p>
+<p align="center"> <img src="../vhdl-media/image49.png"> </p>
 
 <br><br>
 
@@ -489,14 +489,9 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image49.png"> </p>
+<p align="center"> <img src="../vhdl-media/image50.png"> </p>
 
 <br><br>
 
 ④ 프로그래밍이 끝나면 장비를 통해서 동작을 확인해 볼 수 있다.버튼 스위치를 눌러서 8비트 카운터의 동작을 확인해 보기 바란다.
 
-<br><br>
-
-<p align="center"> <img src="../vhdl-media/image50.png"> </p>
-
-<br><br>
