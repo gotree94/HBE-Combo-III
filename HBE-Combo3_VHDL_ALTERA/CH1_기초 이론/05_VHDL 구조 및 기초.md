@@ -403,12 +403,12 @@ END HB;
 |  | >= Greater Than or Equal |  5 |
 | 연결 연산자(concatenation operator) | & Concatenation |  4 |
 | 산술 연산자(Arithmetic operator) |  + Addition |  4 |
-| | - Subtraction |  4 |
-| 부호 연산자(Sign operator) | + Unary Plus|  3 |
-| | - Unary minus| |  3 |
+| | - Subtraction | 4 |
+| 부호 연산자(Sign operator) | + Unary Plus | 3 |
+| | - Unary minus| | 3 |
 | 산술 연산자(Arithmetic operator) | * multiplication | 2 | 
 | | / Divisio | 2 | 
-| | nmod | Modulation | 2 | 
+| | nmod Modulation | 2 | 
 | | rem Remember | 2 | 
 | 기타 연산자 | ** Exponentiation | 1 | 
 | | abs Absolute Value | 1 | 
