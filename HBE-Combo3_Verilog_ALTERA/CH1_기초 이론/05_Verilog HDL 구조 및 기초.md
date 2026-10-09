@@ -360,7 +360,7 @@ EX) bufif0 bf0(out0, in, control);
 | **z** | x | z | x | x |                     | **z** | z | x | x | x |
 
 
-| notif0 : Data \ Control | 0 | 1 | x | z |:-----:| notif1 : Data \ Control | 0 | 1 | x | z |
+| notif0 : Data \ Control | 0 | 1 | x | z |     | notif1 : Data \ Control | 0 | 1 | x | z |
 |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | **0** | 1 | z | H | H |                    | **0** | z | 1 | H | H |
 | **1** | 0 | z | L | L |                    | **1** | z | 0 | L | L |
