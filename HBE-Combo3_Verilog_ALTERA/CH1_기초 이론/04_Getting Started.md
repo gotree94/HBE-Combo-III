@@ -444,7 +444,7 @@ Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image46.png"> </p>
+<p align="center"> <img src="../verilog-media/image47.png"> </p>
 
 <br><br>
 
