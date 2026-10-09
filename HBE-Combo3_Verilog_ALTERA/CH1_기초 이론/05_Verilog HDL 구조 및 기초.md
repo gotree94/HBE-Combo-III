@@ -168,21 +168,64 @@ EX) reg [7:0] A, B;
     reg [0:3] C;
 ```
 
-위의 예에서 A와 B는 8비트 형태의 register라고 선언되어 있다. C도 4비트의 register 변수인데 비트의 확장 순서에 유의해야 한다. Dataout은 4비트의 폭을 갖는 wire 변수로 선언되었다.Register와 wire의 비트는 [<start bit> : <end bit>]로 표현된다. 각각의 변수에 아래와 같이그 데이터의 값을 전달해 줄 수 있다.EX)Initial begin : int1A = 8’b00111010;B = { A[3:0] , 4’b1100 };End위의 예에서 B는 상위 4비트에는 A의 하위 4비트의 값이 저장되며, B의 하위 4비트에는“1100”의 값이 전달되도록 구성되어 있다. 이렇게 해서 B에는 “10101100”의 값이 전달된다.위와 같이 { }는 두 개 이상의 값을 콤마(,)를 이용해서 합칠 때 사용한다. 이것은 아래의 형태로 표현할 수 있다.EX){repetition_number{exp1, exp2, …, expn}}C = {2{4’b1100}} ; // C = 8’b11001100
+위의 예에서 A와 B는 8비트 형태의 register라고 선언되어 있다. C도 4비트의 register 변수인데 비트의 확장 순서에 유의해야 한다. Dataout은 4비트의 폭을 갖는 wire 변수로 선언되었다.
+
+Register와 wire의 비트는 [<start bit> : <end bit>]로 표현된다. 각각의 변수에 아래와 같이그 데이터의 값을 전달해 줄 수 있다.
+
+```
+EX)Initial begin : int1
+ A = 8’b00111010;
+ B = { A[3:0] , 4’b1100 };
+End
+```
+
+위의 예에서 B는 상위 4비트에는 A의 하위 4비트의 값이 저장되며, B의 하위 4비트에는“1100”의 값이 전달되도록 구성되어 있다. 이렇게 해서 B에는 “10101100”의 값이 전달된다.
+
+위와 같이 { }는 두 개 이상의 값을 콤마(,)를 이용해서 합칠 때 사용한다. 이것은 아래의 형태로 표현할 수 있다.
+
+```
+    {repetition_number{exp1, exp2, …, expn}}
+
+EX) C = {2{4’b1100}} ; // C = 8’b11001100
+```
 
 ### (2) 추상 데이터형
 
-Register 또는 wire외에 Verilog HDL로 회로를 설계하는 데에서 다른 변수도 사용되는데,integer 변수는 수의 카운트를 하는데 사용된다. reg변수는 unsigned형태로 구성되는데,integer변수는 signed의 32비트 integer로 설정되는 것에 유의해야 한다. 이것은 뺄셈 연산에서 중요한 부분이다.Integer 변수는 Data type declaration 구문에서 아래와 같이 선언되어 사용된다.integer Count;  // simple signed 32-bit integerinteger K[63:0];  // an array of 64 integers
+Register 또는 wire외에 Verilog HDL로 회로를 설계하는 데에서 다른 변수도 사용되는데,integer 변수는 수의 카운트를 하는데 사용된다. reg변수는 unsigned형태로 구성되는데,integer변수는 signed의 32비트 integer로 설정되는 것에 유의해야 한다. 이것은 뺄셈 연산에서 중요한 부분이다.
+
+Integer 변수는 Data type declaration 구문에서 아래와 같이 선언되어 사용된다.
+
+```
+integer Count;  // simple signed 32-bit integer
+integer K[63:0];  // an array of 64 integers
+```
 
 ## 5.6. 연산자
 
 ### (1) 2 진 산술 연산자
 
-2진 산술 연산자는 2개의 피연산자를 연산한다. Register와 wire와 같은 피연산자는 unsigned로 연산이 되지만, integer 피연산자는 signed로 연산이 된다. 만약 피연산자의 값이unknown(‘x’)로 설정되었다면, 그 결과는 알 수 없다.Operator명칭비고AdditionSubtractionMultiplicationDivision0 으로 나누면 unkown(‘x’)의 값이 출력된다.Modulus
+2진 산술 연산자는 2개의 피연산자를 연산한다. Register와 wire와 같은 피연산자는 unsigned로 연산이 되지만, integer 피연산자는 signed로 연산이 된다. 만약 피연산자의 값이unknown(‘x’)로 설정되었다면, 그 결과는 알 수 없다.
+
+| Operator | 명칭 | 비고 | 
+|:-----:|:-----:|:-----:|
+| + | Addition |  | 
+| - | Subtraction |  | 
+| * | Multiplication |  | 
+| / | Division | 0 으로 나누면 unkown(‘x’)의 값이 출력된다. | 
+| % |  Modulus |  | 
 
 ### (2) 관계 연산자
 
-관계 연산자는 두 개의 피연산자를 비교하여 TRUE(‘1’)이나 FALSE(‘0)과 같은 논리 값을 반환해준다. 피연산자의 값이 unknown(‘x’)로 설정이라면, 그 관계를 나타내기가 애매하기 때문에,그 결과는 unknown으로 출력된다.Operator명칭비고Greater thanGreater than or equalLess thanLess than or equal논리적으로 같음논리적으로 같지 않음
+관계 연산자는 두 개의 피연산자를 비교하여 TRUE(‘1’)이나 FALSE(‘0)과 같은 논리 값을 반환해준다. 피연산자의 값이 unknown(‘x’)로 설정이라면, 그 관계를 나타내기가 애매하기 때문에,그 결과는 unknown으로 출력된다.
+
+| Operator | 명칭 | 비고 | 
+|:-----:|:-----:|:-----:|
+| > |  Greater than |  | 
+| >= | Greater than or equal|  | 
+| < | Less than |  | 
+| <= | Less than or equal |  | 
+| == | 논리적으로 같음 |  | 
+| != | 논리적으로 같지 않음 |  | 
 
 ### (3) 논리 연산자
 
