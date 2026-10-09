@@ -325,7 +325,20 @@ NUM2 < “1000”;   -- NUM2 는 오른쪽 보다 작음
 
 산술 연산자는 정수와 실수 등의 숫자형만 지원 가능하며, 다른 자료형의 경우 IEEE에서 지원하는 NUMERIC_STD 패키지를 이용하여야 한다. 아래 표는 산술 연산자의 종류를 나타내고 있다.
 
-연산자의미덧셈(addition)뺄셈(subtraction)곱셈(multiplication)나눗셈(division)mod모듈(module)rem나머지(remainder)abs절대값(absolute value)제곱(exponentiation)
+<div align="center">
+    
+| 연산자 | 의미 | 
+|:-----:|:-----:|
+| + | 덧셈(addition) | 
+| - | 뺄셈(subtraction) | 
+| * | 곱셈(multiplication) | 
+| / | 나눗셈(division)mod | 
+| mod | 모듈(module) | 
+| rem | 나머지(remainder) | 
+| abs | 절대값(absolute value) | 
+| ** | 제곱(exponentiation) | 
+
+</div>
 
 아래 예제는 산술 연산자가 VHDL 구문에서 어떻게 사용되고 있는지 설명되어 있다.
 
@@ -371,6 +384,32 @@ END HB;
 연산자가 연속으로 있을 경우 다음의 표와 같이 우선순위가 결정되고, 괄호가 있을 경우 괄호안의 연산자부터 수행한다.
 
 구분종류우선순위논리 연산자(logical operator)and Logical ANDor Logical ORnand Logical NANDnor Logical NORxor Logical Exclusive OR관계 연산자(relational operator)= Equal/= Not Equal< Less Than or Equal<= Less Than or Equal> Greater Than or Equal>= Greater Than or Equal연결 연산자(concatenation operator)& Concatenation산술 연산자(Arithmetic operator)+ Addition- Subtraction부호 연산자(Sign operator)+ Unary Plus- Unary minus산술 연산자(Arithmetic operator)* multiplication/ Divisionmod Modulationrem Remember기타 연산자** Exponentiationabs Absolute Valuenot Complement
+
+| 구분 | 연산자 | 의미 | 비고 |
+|---|---|---|---|
+| **논리 연산자 (Logical Operator)** | `and` | Logical AND |  |
+|  | `or` | Logical OR |  |
+|  | `nand` | Logical NAND |  |
+|  | `nor` | Logical NOR |  |
+|  | `xor` | Logical Exclusive OR |  |
+| **관계 연산자 (Relational Operator)** | `==` | Equal (같음) |  |
+|  | `!=` | Not Equal (같지 않음) |  |
+|  | `<` | Less Than (작음) |  |
+|  | `<=` | Less Than or Equal (작거나 같음) |  |
+|  | `>` | Greater Than (큼) |  |
+|  | `>=` | Greater Than or Equal (크거나 같음) |  |
+| **연결 연산자 (Concatenation Operator)** | `{ ... }` 또는 `&` | Concatenation (비트 연결) | 주로 `{a,b}` 형태 사용 |
+| **산술 연산자 (Arithmetic Operator)** | `+` | Addition (덧셈) |  |
+|  | `-` | Subtraction (뺄셈) |  |
+|  | `*` | Multiplication (곱셈) |  |
+|  | `/` | Division (나눗셈) |  |
+|  | `mod` | Modulus (나머지) |  |
+|  | `rem` | Remainder (나머지) |  |
+| **부호 연산자 (Sign Operator)** | `+` | Unary Plus (단항 +) |  |
+|  | `-` | Unary Minus (단항 -) |  |
+| **기타 연산자 (Other Operators)** | `**` | Exponentiation (거듭제곱) |  |
+|  | `abs()` | Absolute Value (절댓값) | 함수형 형태 |
+|  | `!` 또는 `not` | Complement / Logical NOT (부정) |  |
 
 ## 5.4. VHDL 기본 문법
 
