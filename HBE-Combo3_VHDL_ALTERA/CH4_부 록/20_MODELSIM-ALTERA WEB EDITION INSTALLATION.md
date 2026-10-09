@@ -42,7 +42,7 @@ ModelSim-Altera Web Edition 소프트웨어는 Mentor사의 홈페이지가 아�
 
 <br><br>
 
-* Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 ModelSim-Altera Web Edition을 다운로드 받을 수 있다.CH4 부 록
+* Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time Access버튼을 눌러,해당하는 정보들 등록을 하면 ModelSim-Altera Web Edition을 다운로드 받을 수 있다.
 
 <br><br>
 
