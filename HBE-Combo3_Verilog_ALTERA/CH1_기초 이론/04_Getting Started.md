@@ -160,15 +160,93 @@ begin
 endmodule
 ```
 
-위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.V 파일이 추가되었는지를 확인한다.아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
+위의 설계된 로직 파일을 저장하면 자동으로 프로젝트에 파일이 추가된다. 아래 그림과같이 Quartus II 프로그램의 Project > Add/Remove Files in Project 메뉴을 선택하여프로젝트에 COUNT_8BIT.V 파일이 추가되었는지를 확인한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image20.png"> </p>
+
+<br><br>
+
+아래 그림과 같이 Processing > Start > Start Analysis & Elaboration 메뉴를 선택하여,설계된 로직의 문법 오류 검사를 수행한다. 오류가 있다면 수정한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image21.png"> </p>
+
+<br><br>
 
 ### (3) Assignment
 
-Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 로직에서 사용하는 입출력단자를 하드웨어와 연결하기 위하여 핀을 설정하는 것이다.디바이스 설정은 처음 프로젝트 선언에서 하였지만, 아래 그림과 같이 Assignments >Device 메뉴를 선택하여 설정한 디바이스를 확인한다.아래 그림과 같이 Assignment > Assignment Edition 메뉴를 선택 한 후, AssignmentEdition창에서 아래의 표와 같이 핀을 설정한다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETCOUNT_OUT[4]AF8LED4CLKV4SW1COUNT_OUT[3]AF7LED5COUNT_OUT[7]AE11LED1COUNT_OUT[2]AF6LED6COUNT_OUT[6]AE10LED2COUNT_OUT[1]AF5LED7COUNT_OUT[5]AF9LED3COUNT_OUT[0]B3LED8
+Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 로직에서 사용하는 입출력단자를 하드웨어와 연결하기 위하여 핀을 설정하는 것이다.
+
+디바이스 설정은 처음 프로젝트 선언에서 하였지만, 아래 그림과 같이 Assignments >Device 메뉴를 선택하여 설정한 디바이스를 확인한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image22.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image23.png"> </p>
+
+<br><br>
+
+아래 그림과 같이 Assignment > Assignment Edition 메뉴를 선택 한 후, AssignmentEdition창에서 아래의 표와 같이 핀을 설정한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image24.png"> </p>
+
+<br><br>
+
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | 포트 이름 | 핀 번호 | 하드웨어 설명 | 
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+| RESETN | C5 | FPGA_RESET | COUNT_OUT[4] | AF8 | LED4 | 
+| CLK | V4 | SW1 | COUNT_OUT[3] | AF7 | LED5 | 
+| COUNT_OUT[7] | AE11 | LED1 | COUNT_OUT[2] | AF6 | LED6 | 
+| COUNT_OUT[6] | AE10 | LED2 | COUNT_OUT[1] | AF5 | LED7 | 
+| COUNT_OUT[5] | AF9 | LED3 | COUNT_OUT[0] | B3 | LED8 | 
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image25.png"> </p>
+
+<br><br>
 
 ### (4) Unused Pin Setting
 
-현재 장비에서는 FPGA Module 및 Process 모듈이 장착되어 있고 이 모듈들 간의 AMBA bus를 통해 연결 되어 있다. 따라서 FPGA 설계 시 이러한 AMBA bus에 대한 핀 정의를 해 주어야 한다. 만약 FPGA 설계 시 이러한 핀을 사용하고 있으면 상관이 없지만 사용하지 않을 시FPGA 툴에서는 핀을 사용하지 않은 핀을 GND로 동작을 하게 한다. 이러한 기능으로 인해FPGA에 의해 Processor의 AMBA BUS에 해당되는 핀이 강제적으로 GND로 동작하게 된다.따라서 툴 설계 시 사용하지 않는 핀에 대한 정의를 꼭 해 주셔야 한다.만약 다음에 나오는 핀 설정 작업이 없으면 FPGA 라인에 의한 Processor 모듈의 메인 디바이스가 손상을 입을 수 있기 때문에 이러한 작업을 꼭 해 주기 바란다.먼저 메뉴의 Assignments -> Settings를 선택하여 프로젝트 설정 창을 활성화 한다.Setting 창에서 왼쪽 Category에서 Device를 선택하면 오른 쪽 설정 그림이 바뀌게 된다. 이디바이스 설정 부분에서 ‘Device and Pin Options’ 버튼을 클릭하여 다음 단계로 진행한다.버튼에 의해 생성되는 Device and Pin Options 창에서 위의 메뉴를 ‘Unused Pins’로 선택하고,활성화 되는 옵션에서 Reserve all unused pins를 ‘As input tri-stated’를 선택해 준다.이상의 설정을 마치고 확인을 눌러 설정을 마치고 다시 컴파일 작업을 수행해 주어야 현재설정한 부분에 대해 프로젝트에 적용할 수 있다. 이상으로 Altera Quartus II에 대한 핀 설정작업을 하였다.
+현재 장비에서는 FPGA Module 및 Process 모듈이 장착되어 있고 이 모듈들 간의 AMBA bus를 통해 연결 되어 있다. 따라서 FPGA 설계 시 이러한 AMBA bus에 대한 핀 정의를 해 주어야 한다. 만약 FPGA 설계 시 이러한 핀을 사용하고 있으면 상관이 없지만 사용하지 않을 시FPGA 툴에서는 핀을 사용하지 않은 핀을 GND로 동작을 하게 한다. 이러한 기능으로 인해FPGA에 의해 Processor의 AMBA BUS에 해당되는 핀이 강제적으로 GND로 동작하게 된다.따라서 툴 설계 시 사용하지 않는 핀에 대한 정의를 꼭 해 주셔야 한다.
+
+만약 다음에 나오는 핀 설정 작업이 없으면 FPGA 라인에 의한 Processor 모듈의 메인 디바이스가 손상을 입을 수 있기 때문에 이러한 작업을 꼭 해 주기 바란다.
+
+먼저 메뉴의 Assignments -> Settings를 선택하여 프로젝트 설정 창을 활성화 한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image26.png"> </p>
+
+<br><br>
+
+Setting 창에서 왼쪽 Category에서 Device를 선택하면 오른 쪽 설정 그림이 바뀌게 된다. 이디바이스 설정 부분에서 ‘Device and Pin Options’ 버튼을 클릭하여 다음 단계로 진행한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image27.png"> </p>
+
+<br><br>
+
+버튼에 의해 생성되는 Device and Pin Options 창에서 위의 메뉴를 ‘Unused Pins’로 선택하고,활성화 되는 옵션에서 Reserve all unused pins를 ‘As input tri-stated’를 선택해 준다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image28.png"> </p>
+
+<br><br>
+
+이상의 설정을 마치고 확인을 눌러 설정을 마치고 다시 컴파일 작업을 수행해 주어야 현재설정한 부분에 대해 프로젝트에 적용할 수 있다. 이상으로 Altera Quartus II에 대한 핀 설정작업을 하였다.
 
 ### (5) Compile
 
