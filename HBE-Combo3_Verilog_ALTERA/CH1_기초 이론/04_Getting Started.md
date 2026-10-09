@@ -320,7 +320,57 @@ end
 endmodule
 ```
 
-위의 테스트 벤치 파일을 COUNT_8BIT_TB.V라는 이름으로 RTL 작업 폴더에 저장한다.ModelSim 소프트웨어를 이용하여 시뮬레이션 하는 방법에 대하여 아래에 설명되어 있다.ModelSim 소프트웨어를 실행시킨다.프로그램을 실행시키면, 위의 환경설정에서 등록한 라이브러리가 등록이 되어 있는 것을확인할 수 있다.ModelSim 소프트웨어에서 시뮬레이션을 하기 위해서, 아래 그림과 같이 File > New >Project 메뉴를 선택하여 새로운 프로젝트를 선언한다.Create Project 창에서 아래 그림과 같이 Project Name과 작업 폴더를 지정한다.여기에서는 Quartus II에서 작업한 폴더를 지정하였다.Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포함할 로직 파일(COUNT_8BIT.V)과 테스트 벤치 파일(COUNT_8BIT_TB.V)을 추가시킨다.위에서 파일을 추가시키면 아래 그림과 같이 Workspace창에서 프로젝트에 선택한파일이 추가된 것을 확인할 수 있다.추가한 파일을 검증하기 위하여 아래 그림과 같이 Compile > Compile All 메뉴를선택하여 추가한 파일에 대한 컴파일을 실행시킨다.컴파일이 끝나면 아래 그림과 같이 Status와 메시지를 통해 컴파일의 성공을 확인할 수있다.시뮬레이션을 하기 위하여 아래 그림과 같이 Simulate > Start Simulation 메뉴를선택한다.위의 메뉴를 선택하면 Start Simulation 창이 나타나는데, 여기에서 아래 그림과 같이시뮬레이션 하려고 하는 파일을 선택하면 된다.Design 탭의 Work > COUNT_8BIT_TB를 선택하고, OK 버튼을 누른다.아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.아래 그림과 같이 Workspace의 sim 탭에서 COUNT_8BIT_TB를 마우스로 드래그하여Wave 창에 위치시킨다.마우스로 Drag & Drop하여 COUNT_8BIT_TB를 끌어오면, 아래 그림과 같이 입/출력신호가 나타나는 것을 확인할 수 있다.시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(COUNT_8BIT_TB)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
+위의 테스트 벤치 파일을 COUNT_8BIT_TB.V라는 이름으로 RTL 작업 폴더에 저장한다.
+
+ModelSim 소프트웨어를 이용하여 시뮬레이션 하는 방법에 대하여 아래에 설명되어 있다.
+
+ModelSim 소프트웨어를 실행시킨다.
+
+프로그램을 실행시키면, 위의 환경설정에서 등록한 라이브러리가 등록이 되어 있는 것을확인할 수 있다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image31.png"> </p>
+
+<br><br>
+
+ModelSim 소프트웨어에서 시뮬레이션을 하기 위해서, 아래 그림과 같이 File > New >Project 메뉴를 선택하여 새로운 프로젝트를 선언한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image32.png"> </p>
+
+<br><br>
+
+Create Project 창에서 아래 그림과 같이 Project Name과 작업 폴더를 지정한다.여기에서는 Quartus II에서 작업한 폴더를 지정하였다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image33.png"> </p>
+
+<br><br>
+
+Add items to the Project 창에서 아래 그림과 같이 프로젝트에 포함할 로직 파일(COUNT_8BIT.V)과 테스트 벤치 파일(COUNT_8BIT_TB.V)을 추가시킨다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image34.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image35.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image36.png"> </p>
+
+<br><br>
+
+위에서 파일을 추가시키면 아래 그림과 같이 Workspace창에서 프로젝트에 선택한파일이 추가된 것을 확인할 수 있다.추가한 파일을 검증하기 위하여 아래 그림과 같이 Compile > Compile All 메뉴를선택하여 추가한 파일에 대한 컴파일을 실행시킨다.컴파일이 끝나면 아래 그림과 같이 Status와 메시지를 통해 컴파일의 성공을 확인할 수있다.시뮬레이션을 하기 위하여 아래 그림과 같이 Simulate > Start Simulation 메뉴를선택한다.위의 메뉴를 선택하면 Start Simulation 창이 나타나는데, 여기에서 아래 그림과 같이시뮬레이션 하려고 하는 파일을 선택하면 된다.Design 탭의 Work > COUNT_8BIT_TB를 선택하고, OK 버튼을 누른다.아래 그림과 같이 View > Debug Windows > Wave 메뉴를 선택하여 Wave 창을 활성화시킨다.아래 그림과 같이 Workspace의 sim 탭에서 COUNT_8BIT_TB를 마우스로 드래그하여Wave 창에 위치시킨다.마우스로 Drag & Drop하여 COUNT_8BIT_TB를 끌어오면, 아래 그림과 같이 입/출력신호가 나타나는 것을 확인할 수 있다.시뮬레이션 하는 입력 신호의 값은 테스트 벤치 파일(COUNT_8BIT_TB)에서 설정했기때문에, 아래 그림과 같이 Transcript 탭에서 선택하여 직접 “run 1us”를 type한다.(소문자로 입력해야 한다)이 명령어는 1us만큼 시뮬레이션 하라는 명령어이다. 실행 시키면 아래 그림과 같이wave 창에서 시뮬레이션의 결과를 확인해 볼 수 있다.처음에 나타나는 파형이 너무 커서 잘 안 보이는 경우가 있는데, 파형의 축소를 통해결과를 확인해야 한다.
 
 ## 4.4. HBE-Combo III를 이용한 동작 검증
 
