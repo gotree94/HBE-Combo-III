@@ -408,7 +408,17 @@ BEGIN
 END HB;
 ```
 
-먼저 Top Project 파일인 CH3_WATCH.VHD 파일에 대한 설명을 하겠다.이 VHDL로직은 7~15라인에서 ENTITY로 선언되어 있듯이, 1KHz의 클럭의 입력을 받는 CLK와초기화 동작을 위한 RESETN이 입력으로 선언되어 있다. 출력 결과는 7-Segment의 Common단자에 연결되는 SEG_COM과 7-Segment의 Data에 연결되는 SEG_DATA로 출력이 된다.30~44라인에는 서브 프로젝트를 불러오기 위한 COMPONENT가 선언되어 있다. 이 서브 프로젝트의 내용은 뒤에 설명되어 있다.48~108라인은 실제 시간이 카운트 되는 블록인데, 첫 번째 PROCESS문에서 1KHz의 신호를받아 먼저 1초를 생성하기 위해 CNT를 0~999까지 카운트 하고 있다. 두 번째 PROCESS문에서는 앞에서 카운트한 CNT의 값이 999일 때 SEC를 하나씩 카운트하여 0~59까지 카운트 한다. 시계의 초 영역을 카운트 하는 블록이다. 세 번째 PROCESS문은 CNT의 값이 999이고,SEC의 값이 59까지 카운트 되었을 때마다 MIN을 1씩 카운트 하여 0~59까지 카운트 한다. 시계의 분 영역을 카운트 하는 블록이다. 네 번째 PROCESS 문에서는 같은 방법으로 하여 시계의 시 영역을 카운트 하도록 설계되어 있다.110~116라인은 앞에서 카운트한 시, 분, 초의 값을 7-Segment에 표시할 수 있도록 각각을 십의 자릿수와 일의 자릿수로 분리하는 CH3_WT_SEP COMPONET에 연결되어 있다. 이 컴포넌트에 SEC, MIN, HOUR의 데이터를 입력시키면, 자릿수가 분리된 데이터가 출력된다.118~161라인은 클럭을 CNT_SCAN이라는 변수에 카운트하여 그 카운트한 값에 따라 7-Segment의 Common단자를 선택하고 그에 해당하는 데이터를 NUM이라는 변수로 출력하는블록이다. 이 NUM의 변수는 뒤의 164~166라인의 7-Segment 디코더와 연결되어 7-Segment에 표시하는 데이터가 출력된다. 또, SEG_DOT는 시, 분, 초를 구분하기 위하여 두 번째와 네번째, 여섯 번째의 7-Segment에만 표시되도록 설계되었다.
+먼저 Top Project 파일인 CH3_WATCH.VHD 파일에 대한 설명을 하겠다.
+
+이 VHDL로직은 7~15라인에서 ENTITY로 선언되어 있듯이, 1KHz의 클럭의 입력을 받는 CLK와초기화 동작을 위한 RESETN이 입력으로 선언되어 있다. 출력 결과는 7-Segment의 Common단자에 연결되는 SEG_COM과 7-Segment의 Data에 연결되는 SEG_DATA로 출력이 된다.
+
+30 ~ 44라인에는 서브 프로젝트를 불러오기 위한 COMPONENT가 선언되어 있다. 이 서브 프로젝트의 내용은 뒤에 설명되어 있다.
+
+48 ~ 108라인은 실제 시간이 카운트 되는 블록인데, 첫 번째 PROCESS문에서 1KHz의 신호를받아 먼저 1초를 생성하기 위해 CNT를 0 ~ 999까지 카운트 하고 있다. 두 번째 PROCESS문에서는 앞에서 카운트한 CNT의 값이 999일 때 SEC를 하나씩 카운트하여 0 ~ 59까지 카운트 한다. 시계의 초 영역을 카운트 하는 블록이다. 세 번째 PROCESS문은 CNT의 값이 999이고,SEC의 값이 59까지 카운트 되었을 때마다 MIN을 1씩 카운트 하여 0 ~ 59까지 카운트 한다. 시계의 분 영역을 카운트 하는 블록이다. 네 번째 PROCESS 문에서는 같은 방법으로 하여 시계의 시 영역을 카운트 하도록 설계되어 있다.
+
+110 ~ 116라인은 앞에서 카운트한 시, 분, 초의 값을 7-Segment에 표시할 수 있도록 각각을 십의 자릿수와 일의 자릿수로 분리하는 CH3_WT_SEP COMPONET에 연결되어 있다. 이 컴포넌트에 SEC, MIN, HOUR의 데이터를 입력시키면, 자릿수가 분리된 데이터가 출력된다.
+
+118 ~ 161라인은 클럭을 CNT_SCAN이라는 변수에 카운트하여 그 카운트한 값에 따라 7-Segment의 Common단자를 선택하고 그에 해당하는 데이터를 NUM이라는 변수로 출력하는블록이다. 이 NUM의 변수는 뒤의 164 ~ 166라인의 7-Segment 디코더와 연결되어 7-Segment에 표시하는 데이터가 출력된다. 또, SEG_DOT는 시, 분, 초를 구분하기 위하여 두 번째와 네번째, 여섯 번째의 7-Segment에만 표시되도록 설계되었다.
 
 ```vhdl
 -- CH3_WT_SEP.VHD
@@ -443,7 +453,51 @@ BEGIN
 END HB;
 ```
 
-CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어온 BCD의 값을 22~34라인의 CASE문에서 7-Segment에 표시하기 위한 데이터로 변환하는 블록이 설계되어 있다. 7-Segment Data에는 총 8비트의 출력이 필요하기 때문에 36라인에서 외부 입력으로 들어온DOT 값을 SEG_D와 합치도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.
+CH3_WT_SEP는 두 자릿수의 수(0~99)의 입력을 받아 십의 자릿수의 수와 일의 자릿수의 수로 분리하는 로직이다. 16 ~ 52라인의 PROCESS문에 이 블록이 설계되어 있다. 이 교재에는 같은 내용이 반복되어 있기 때문에 로직의 일부가 삭제되어 있다. 
+
+```vhdl
+-- CH3_WT_DECODER.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY CH3_WT_DECODER IS
+    PORT(
+        BCD      : IN  INTEGER RANGE 0 TO 15;
+        DOT      : IN  STD_LOGIC;
+        SEG_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    );
+END CH3_WT_DECODER;
+
+ARCHITECTURE HB OF CH3_WT_DECODER IS
+    SIGNAL SEG_D : STD_LOGIC_VECTOR(6 DOWNTO 0);
+
+BEGIN
+    PROCESS(BCD)
+    BEGIN
+        CASE BCD IS
+            WHEN 0 => SEG_D <= "1111110";  -- 0
+            WHEN 1 => SEG_D <= "0110000";  -- 1
+            WHEN 2 => SEG_D <= "1101101";  -- 2
+            WHEN 3 => SEG_D <= "1111001";  -- 3
+            WHEN 4 => SEG_D <= "0110011";  -- 4
+            WHEN 5 => SEG_D <= "1011011";  -- 5
+            WHEN 6 => SEG_D <= "1011111";  -- 6
+            WHEN 7 => SEG_D <= "1110000";  -- 7
+            WHEN 8 => SEG_D <= "1111111";  -- 8
+            WHEN 9 => SEG_D <= "1110011";  -- 9
+            WHEN OTHERS => SEG_D <= "0000000";
+        END CASE;
+        SEG_DATA <= SEG_D & DOT;
+    END PROCESS;
+END HB;
+```
+
+CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어온 BCD의 값을 22~34라인의 CASE문에서 7-Segment에 표시하기 위한 데이터로 변환하는 블록이 설계되어 있다. 7-Segment Data에는 총 8비트의 출력이 필요하기 때문에 36라인에서 외부 입력으로 들어온DOT 값을 SEG_D와 합치도록 구성되어 있다.
+
+위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
+
+위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.
 
 | 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
 |-----------|--------|---------------|-|-----------|--------|---------------|
