@@ -50,7 +50,7 @@ HBE-Combo III에는 7-Segment가 1개로 된 것과 8개가 Array로 연결되�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image162.png"> </p>
+<p align="center"> <img src="../verilog-media/image162-0.png"> </p>
 
 <br><br>
 
