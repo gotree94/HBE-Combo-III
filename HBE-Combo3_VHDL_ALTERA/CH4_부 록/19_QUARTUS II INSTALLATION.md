@@ -204,15 +204,7 @@ NIC 넘버는 다음 그림과 같이 Quartus II 프로그램을 실행시켜서
 
 <p align="center"> <img src="../vhdl-media/image228.png"> </p>
 
-<br><br>
-
-<br><br>
-
 <p align="center"> <img src="../vhdl-media/image229.jpeg"> </p>
-
-<br><br>
-
-<br><br>
 
 <p align="center"> <img src="../vhdl-media/image230.png"> </p>
 
@@ -224,10 +216,6 @@ Quartus II Web Edition Licensing Survey를 작성하고 Finish 버튼을 누르�
 <br><br>
 
 <p align="center"> <img src="../vhdl-media/image231.png"> </p>
-
-<br><br>
-
-<br><br>
 
 <p align="center"> <img src="../vhdl-media/image232.png"> </p>
 
