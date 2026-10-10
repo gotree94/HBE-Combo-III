@@ -215,6 +215,12 @@ END HB;
 
 RESETN의 신호 후에 첫 번째 클럭이 발생하였을 때, SEG_COM의 값이 0111111이 되고, 그때의 SEG_DATA가 11111100이 출력된다. 이것은 첫 번째 7-Segment가 선택되어 0이 표시되는 것을 나타낸다. 다음 클럭에서의 동작도 같은 방법으로 파악해 볼 수 있다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image189.jpeg"> </p>
+
+<br><br>
+
 위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
 
 위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.
