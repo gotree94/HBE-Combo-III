@@ -12,7 +12,7 @@
   <tr>
     <td style="padding-right:20px;">
       <table>
-        <tr><th colspan="5">1상 여자</th></tr>
+        <tr><th colspan="6">1상 여자</th></tr>
         <tr><th>클럭</th><th>A</th><th>B</th><th>/A</th><th>/B</th><th>주기</th></tr>
         <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
         <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
@@ -27,7 +27,7 @@
     </td>
     <td style="padding-right:20px;">
       <table>
-        <tr><th colspan="5">2상 여자</th></tr>
+        <tr><th colspan="6">2상 여자</th></tr>
         <tr><th>클럭</th><th>A</th><th>B</th><th>/A</th><th>/B</th><th>주기</th></tr>
         <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
         <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
@@ -42,7 +42,7 @@
     </td>
     <td>
       <table>
-        <tr><th colspan="5">1-2상 여자</th></tr>
+        <tr><th colspan="6">1-2상 여자</th></tr>
         <tr><th>클럭</th><th>A</th><th>B</th><th>/A</th><th>/B</th><th>주기</th></tr>
         <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
         <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
