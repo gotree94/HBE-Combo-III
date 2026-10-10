@@ -104,7 +104,9 @@ module CH3_STEP(RESETN, CLK, STEP_A, STEP_B, STEP_AN, STEP_BN);
 endmodule
 ```
 
-19~41라인에 클럭의 입력을 받아 CNT를 카운트하고, 그 카운트한 값을 비교하여 BUFF 변수에 2상 여자 방식의 데이터를 전달하는 회로가 구성되어 있다. 이 BUFF 데이터는 43~46라인에서 스텝 모터의 제어 신호로 출력된다.이 예제는 아래와 같이 테스트 벤치 파일을 작성하여 시뮬레이션 할 수 있다.
+19~41라인에 클럭의 입력을 받아 CNT를 카운트하고, 그 카운트한 값을 비교하여 BUFF 변수에 2상 여자 방식의 데이터를 전달하는 회로가 구성되어 있다. 이 BUFF 데이터는 43~46라인에서 스텝 모터의 제어 신호로 출력된다.
+
+이 예제는 아래와 같이 테스트 벤치 파일을 작성하여 시뮬레이션 할 수 있다.
 
 ```verilog
 // CH3_STEP.V
@@ -148,7 +150,15 @@ endmodule
 
 이 테스트 벤치 파일은 30~36라인에 시뮬레이션 하기 위해서 필요한 RESETN과 CLK의 신호를 생성하도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.
 
-포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSTEP_BAB24STEPMOTOR BCLKN2CLK1STEP_ANY26STEPMOTOR /ASTEP_AAA23STEPMOTOR ASTEP_BNAB23STEPMOTOR /B
+<div align="center">
+  
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | STEP_B  | AB24 | STEPMOTOR B |
+| CLK | N2 | CLK1 | | STEP_AN | Y26 | STEPMOTOR /A |
+| STEP_A | A23 | STEPMOTOR A | | STEP_BN | AB23 | STEPMOTOR /B |
+
+</div>
 
 핀 설정 후 컴파일 한다.
 
@@ -228,7 +238,16 @@ endmodule
 
 위의 로직에서 40~57라인은 포토 센서로부터 데이터 SENSE를 받아서 회전 수를 카운트하는always문이다. 49~57의 카운트 블록이 SENSE의 값이 0~9까지 총 10회 들어오면 DIRECTION이라는 변수를 현재 값의 반대로 바꾸는 블록이다. 이 DIRECTION이 스텝 모터의 회전의 방향을 나타내는 구문이다.59~75라인은 스텝모터로 보낼 데이터를 생성하는 블록인데, DIRECTION의 값에 따라서 스텝모터에 전달하는 데이터의 순서가 바뀌어 있는 것을 확인 할 수 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.
 
-포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSTEP_ANY26STEPMOTOR /ACLKN2CLK1STEP_BNAB23STEPMOTOR /BSTEP_AAA23STEPMOTOR ASENSEAA26MOTOR_SENSORSTEP_BAB24STEPMOTOR B
+<div align="center">
+  
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | STEP_AN | Y26 | STEPMOTOR /A |
+| CLK | N2 | CLK1 | | STEP_BN | AB23 | STEPMOTOR /B |
+| STEP_A | A23 | STEPMOTOR A | | SENSE  | AA26 | MOTOR_SENSOR |
+| STEP_B | AB24 | STEPMOTOR B | |         |       |              |
+
+</div>
 
 핀 설정 후 컴파일 한다.
 
