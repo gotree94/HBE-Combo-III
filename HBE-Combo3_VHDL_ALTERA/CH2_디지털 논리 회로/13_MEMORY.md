@@ -93,7 +93,7 @@ HBE-Combo III 장비에 구성되어 있는 SRAM은 Address 비트가 18비트�
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image168.png"> </p>
+<p align="center"> <img src="../vhdl-media/image169.png"> </p>
 
 <br><br>
 
