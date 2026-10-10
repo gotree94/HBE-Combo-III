@@ -53,8 +53,52 @@
 
 아래의 로직은 100Hz의 클럭 입력을 받아 스텝 모터를 회전시키는 VHDL 예제이다.
 
-```
--- CH3_STEP.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;ENTITY CH3_STEP ISPORT(RESETN : IN STD_LOGIC;CLK : IN STD_LOGIC;STEP_A, STEP_B : OUT STD_LOGIC;STEP_AN, STEP_BN : OUT STD_LOGICEND CH3_STEP;ARCHITECTURE HB OF CH3_STEP ISSIGNAL REG : STD_LOGIC_VECTOR(3 DOWNTO 0);SIGNAL CNT : INTEGER RANGE 0 TO 3;BEGINPROCESS(RESETN, CLK)BEGINIF RESETN = ‘0’ THENCNT <= 0;REG <= “0000”;ELSIF CLK’EVENT AND CLK = ‘1’ THENIF CNT = 3 THENCNT <= 0;ELSECNT <= CNT + 1;END IF;CASE CNT ISWHEN 0 => REG <= “1100”;WHEN 1 => REG <= “0110”;WHEN 2 => REG <= “0011”;WHEN 3 => REG <= “1001”;END CASE;END IF;END PROCESS;STEP_A <= REG(3);STEP_B <= REG(2);STEP_AN <= REG(1);STEP_BN <= REG(0);END HB;
+```vhdl
+-- CH3_STEP.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY CH3_STEP IS
+    PORT(
+        RESETN             : IN  STD_LOGIC;
+        CLK                : IN  STD_LOGIC;
+        STEP_A, STEP_B     : OUT STD_LOGIC;
+        STEP_AN, STEP_BN   : OUT STD_LOGIC
+    );
+END CH3_STEP;
+
+ARCHITECTURE HB OF CH3_STEP IS
+    SIGNAL REG : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL CNT : INTEGER RANGE 0 TO 3;
+
+BEGIN
+    PROCESS(RESETN, CLK)
+    BEGIN
+        IF RESETN = '0' THEN
+            CNT <= 0;
+            REG <= "0000";
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            IF CNT = 3 THEN
+                CNT <= 0;
+            ELSE
+                CNT <= CNT + 1;
+            END IF;
+
+            CASE CNT IS
+                WHEN 0 => REG <= "1100";
+                WHEN 1 => REG <= "0110";
+                WHEN 2 => REG <= "0011";
+                WHEN 3 => REG <= "1001";
+            END CASE;
+        END IF;
+    END PROCESS;
+
+    STEP_A  <= REG(3);
+    STEP_B  <= REG(2);
+    STEP_AN <= REG(1);
+    STEP_BN <= REG(0);
+END HB;
 ```
 
 22~41라인에 클럭의 입력을 받아 CNT를 카운트하고, 그 카운트한 값을 비교하여 REG의 변수에 2상 여자 방식의 데이터를 전달하는 회로가 구성되어 있다. 이 REG 데이터는 43~46라인에서 스텝 모터의 제어 신호로 출력된다.이 예제는 아래와 같이 테스트 벤치 파일을 작성하여 시뮬레이션 할 수 있다.--TB_CH3_STEP.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.STD_LOGIC_UNSIGNED.ALL;ENTITY TB_CH3_STEP ISEND TB_CH3_STEP;ARCHITECTURE HB OF TB_CH3_STEP ISCOMPONENT CH3_STEPPORT(RESETN : IN STD_LOGIC;CLK : IN STD_LOGIC;STEP_A, STEP_B : OUT STD_LOGIC;STEP_AN, STEP_BN : OUT STD_LOGICEND COMPONENT;SIGNAL RESETN : STD_LOGIC := ‘0’;SIGNAL CLK : STD_LOGIC := ‘0’;SIGNAL STEP_A : STD_LOGIC := ‘0’;SIGNAL STEP_B : STD_LOGIC := ‘0’;SIGNAL STEP_AN : STD_LOGIC := ‘0’;SIGNAL STEP_BN : STD_LOGIC := ‘0’;BEGINPROCESSBEGINWAIT FOR 10 NS;CLK  <= NOT CLK;END PROCESS;RESETN <= ‘0’, ‘1’ AFTER 15NS;U_CH3_STEP : CH3_STEPPORT MAP (RESETN => RESETN,CLK => CLK,STEP_A => STEP_A,STEP_B => STEP_B,STEP_AN => STEP_AN,STEP_BN => STEP_BNEND HB;이 테스트 벤치 파일은 30~36라인에 시뮬레이션 하기 위해서 필요한 RESETN과 CLK의 신호를 생성하도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSTEP_BAB24STEPMOTOR BCLKN2CLK1STEP_ANY26STEPMOTOR /ASTEP_AAA23STEPMOTOR ASTEP_BNAB23STEPMOTOR /B핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 100Hz로 설정하고, 위에서 생성된 프로그래밍파일을 다운로딩 하여 그 동작을 살펴보자.
@@ -63,14 +107,146 @@
 
 HBE-Combo III 장비에는 Step Motor의 회전 수를 검출하기 위하여 포토 센서가 구성되어 있다.아래의 로직은 이 회전 수를 검출하여 10회전이 되면 스텝 모터의 회전 방향을 반대로 돌리는 VHDL 예제이다.
 
-```
--- CH3_STEP_EX.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;ENTITY CH3_STEP_EX ISPORT(RESETN : IN STD_LOGIC;CLK : IN STD_LOGIC;SENSE : IN STD_LOGIC;STEP_A, STEP_B : OUT STD_LOGIC;STEP_AN, STEP_BN : OUT STD_LOGICEND CH3_STEP_EX;ARCHITECTURE HB OF CH3_STEP_EX ISSIGNAL REG : STD_LOGIC_VECTOR(3 DOWNTO 0);SIGNAL CNT : INTEGER RANGE 0 TO 3;SIGNAL CNT_SENSE : INTEGER RANGE 0 TO 9;SIGNAL TMP_SENSE : STD_LOGIC;SIGNAL DIRECTION : STD_LOGIC;BEGINPROCESS(RESETN, CLK)BEGINIF RESETN = ‘0’ THENTMP_SENSE  <= ‘0’;DIRECTION <= ‘0’;ELSIF CLK’EVENT AND CLK = ‘1’ THENTMP_SENSE <= SENSE;IF TMP_SENSE = ‘0’ AND SENSE = ‘1’ THENIF CNT_SENSE >= 9 THENCNT_SENSE <= 0;DIRECTION <= NOT DIRECTION;ELSECNT_SENSE <= CNT_SENSE + 1;END IF;END IF;END IF;END PROCESS;PROCESS(RESETN, CLK)BEGINIF RESETN = ‘0’ THENCNT <= 0;ELSIF CLK’EVENT AND CLK = ‘1’ THENIF CNT = 3 THENCNT <= 0;ELSECNT <= CNT + 1;END IF;IF DIRECTION = ‘0’ THENCASE CNT ISWHEN 0 => REG <= “1100”;WHEN 1 => REG <= “0110”;WHEN 2 => REG <= “0011”;WHEN 3 => REG <= “1001”;END CASE;ELSECASE CNT ISWHEN 0 => REG <= “1001”;WHEN 1 => REG <= “0011”;WHEN 2 => REG <= “0110”;WHEN 3 => REG <= “1100”;END CASE;END IF;END IF;END PROCESS;STEP_A <= REG(3);STEP_B <= REG(2);STEP_AN <= REG(1);STEP_BN <= REG(0);END HB;
+```vhdl
+-- CH3_STEP_EX.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY CH3_STEP_EX IS
+    PORT(
+        RESETN             : IN  STD_LOGIC;
+        CLK                : IN  STD_LOGIC;
+        SENSE              : IN  STD_LOGIC;
+        STEP_A, STEP_B     : OUT STD_LOGIC;
+        STEP_AN, STEP_BN   : OUT STD_LOGIC
+    );
+END CH3_STEP_EX;
+
+ARCHITECTURE HB OF CH3_STEP_EX IS
+    SIGNAL REG         : STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL CNT         : INTEGER RANGE 0 TO 3;
+    SIGNAL CNT_SENSE   : INTEGER RANGE 0 TO 9;
+    SIGNAL TMP_SENSE   : STD_LOGIC;
+    SIGNAL DIRECTION   : STD_LOGIC;
+
+BEGIN
+
+    -- SENSE LATCH (클릭 감지 / 방향 전환)
+    PROCESS(RESETN, CLK)
+    BEGIN
+        IF RESETN = '0' THEN
+            TMP_SENSE <= '0';
+            DIRECTION <= '0';
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            TMP_SENSE <= SENSE;
+            IF TMP_SENSE = '0' AND SENSE = '1' THEN
+                IF CNT_SENSE >= 9 THEN
+                    CNT_SENSE <= 0;
+                    DIRECTION <= NOT DIRECTION;
+                ELSE
+                    CNT_SENSE <= CNT_SENSE + 1;
+                END IF;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    -- STEP SEQUENCE
+    PROCESS(RESETN, CLK)
+    BEGIN
+        IF RESETN = '0' THEN
+            CNT <= 0;
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            IF CNT = 3 THEN
+                CNT <= 0;
+            ELSE
+                CNT <= CNT + 1;
+            END IF;
+
+            IF DIRECTION = '0' THEN
+                CASE CNT IS
+                    WHEN 0 => REG <= "1100";
+                    WHEN 1 => REG <= "0110";
+                    WHEN 2 => REG <= "0011";
+                    WHEN 3 => REG <= "1001";
+                END CASE;
+            ELSE
+                CASE CNT IS
+                    WHEN 0 => REG <= "1001";
+                    WHEN 1 => REG <= "0011";
+                    WHEN 2 => REG <= "0110";
+                    WHEN 3 => REG <= "1100";
+                END CASE;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    STEP_A  <= REG(3);
+    STEP_B  <= REG(2);
+    STEP_AN <= REG(1);
+    STEP_BN <= REG(0);
+END HB;
 ```
 
 위의 로직에서 26~44라인은 포토 센서로부터 데이터 SENSE를 받아서 회전 수를 카운트하는PROCESS 문이다. 32~34라인이 SENSE의 데이터의 Rising Edge상태일 때를 나타내기 위해 사용하는 구문으로 SIGNAL 변수의 값의 업데이트가 PROCESS 문이 끝나는 시점에서 이루어지는 것을 이용한다. 34~41의 카운트 블록이 SENSE의 값이 0~9까지 총 10회 들어오면DIRECTION이라는 변수를 현재 값의 반대로 바꾸는 블록이다. 이 DIRECTION이 스텝 모터의회전의 방향을 나타내는 구문이다.46~73라인은 스텝모터로 보낼 데이터를 생성하는 블록인데, DIRECTION의 값에 따라서 스텝모터에 전달하는 데이터의 순서가 바뀌어 있는 것을 확인 할 수 있다.이 예제는 아래와 같이 테스트 벤치 파일을 작성하여 시뮬레이션 할 수 있다.
 
-```
---TB_CH3_STEP_EX.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.STD_LOGIC_UNSIGNED.ALL;ENTITY TB_CH3_STEP_EX ISEND TB_CH3_STEP_EX;ARCHITECTURE HB OF TB_CH3_STEP_EX ISCOMPONENT CH3_STEP_EXPORT(RESETN : IN STD_LOGIC;CLK : IN STD_LOGIC;SENSE : IN STD_LOGIC;STEP_A, STEP_B : OUT STD_LOGIC;STEP_AN, STEP_BN : OUT STD_LOGICEND COMPONENT;SIGNAL RESETN : STD_LOGIC := ‘0’;SIGNAL CLK : STD_LOGIC := ‘0’;SIGNAL SENSE : STD_LOGIC := ‘0’;SIGNAL STEP_A : STD_LOGIC := ‘0’;SIGNAL STEP_B : STD_LOGIC := ‘0’;SIGNAL STEP_AN : STD_LOGIC := ‘0’;SIGNAL STEP_BN : STD_LOGIC := ‘0’;BEGINPROCESSBEGINWAIT FOR 10 NS;CLK  <= NOT CLK;END PROCESS;RESETN <= ‘0’, ‘1’ AFTER 15NS;PROCESSBEGINWAIT FOR 100 NS;SENSE  <= NOT SENSE;END PROCESS;U_CH3_STEP_EX : CH3_STEP_EXPORT MAP (RESETN => RESETN,CLK => CLK,SENSE => SENSE,STEP_A => STEP_A,STEP_B => STEP_B,STEP_AN => STEP_AN,STEP_BN => STEP_BNEND HB;
+```vhdl
+-- TB_CH3_STEP_EX.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY TB_CH3_STEP_EX IS
+END TB_CH3_STEP_EX;
+
+ARCHITECTURE HB OF TB_CH3_STEP_EX IS
+
+    COMPONENT CH3_STEP_EX
+        PORT(
+            RESETN             : IN  STD_LOGIC;
+            CLK                : IN  STD_LOGIC;
+            SENSE              : IN  STD_LOGIC;
+            STEP_A, STEP_B     : OUT STD_LOGIC;
+            STEP_AN, STEP_BN   : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
+    SIGNAL RESETN   : STD_LOGIC := '0';
+    SIGNAL CLK      : STD_LOGIC := '0';
+    SIGNAL SENSE    : STD_LOGIC := '0';
+    SIGNAL STEP_A   : STD_LOGIC := '0';
+    SIGNAL STEP_B   : STD_LOGIC := '0';
+    SIGNAL STEP_AN  : STD_LOGIC := '0';
+    SIGNAL STEP_BN  : STD_LOGIC := '0';
+
+BEGIN
+
+    PROCESS
+    BEGIN
+        WAIT FOR 10 NS;
+        CLK <= NOT CLK;
+    END PROCESS;
+
+    RESETN <= '0', '1' AFTER 15 NS;
+
+    PROCESS
+    BEGIN
+        WAIT FOR 100 NS;
+        SENSE <= NOT SENSE;
+    END PROCESS;
+
+    U_CH3_STEP_EX : CH3_STEP_EX PORT MAP (
+        RESETN   => RESETN,
+        CLK      => CLK,
+        SENSE    => SENSE,
+        STEP_A   => STEP_A,
+        STEP_B   => STEP_B,
+        STEP_AN  => STEP_AN,
+        STEP_BN  => STEP_BN
+    );
+
+END HB;
 ```
 
 이 테스트 벤치 파일은 이전의 TB_CH3_STEP.VHD 파일과 거의 같다. 다만 포토 센서의 입력에해당하는 SENSE의 값을 생성하기 위하여 40~44라인에 임의로 200NS 주기의 SENSE 파형을발생시키도록 구성하였다. 실제 동작에서의 데이터와는 약간 다르다.아래 그림은 이 테스트 벤치 파일을 ModelSim에서 시뮬레이션 하였을 때의 결과 파형이다.그림에서 커서바가 위치한 부분이 SENSE의 신호가 10번 발생하고, 11번째 발생하였을 때의시점이다. STEP_A, STEP_B, STEP_AN, STEP_BN의 데이터 흐름을 살펴보면 이 순간을 기점으로데이터가 반대로 흐르는 것을 확인할 수 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.
