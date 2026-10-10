@@ -38,7 +38,7 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 <br><br>
 
-오른쪽 상단의 Download Center의 창에서 아래 그림과 같이 Quartus II Web Edition의 Software를선택한다.
+Download Center의 창에서 아래 그림과 같이 Quartus II Web Edition의 Software를선택한다.
 
 <br><br>
 
