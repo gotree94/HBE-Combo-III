@@ -33,7 +33,7 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 <br><br>
 
-<p align="center"> <img src="new2.pnㅎ"> </p>
+<p align="center"> <img src="new2.png"> </p>
 
 <br><br>
 
