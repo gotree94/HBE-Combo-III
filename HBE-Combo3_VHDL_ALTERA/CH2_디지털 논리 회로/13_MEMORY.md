@@ -63,7 +63,9 @@ EPROM 은 기록속도가 매우 늦기 때문에 RAM 처럼 자유롭게 쓰고
 
 ## 13.3.  RAM의 구조 및 특징
 
-DD- RAM(Random Access Memory)RAM은 기억된 정보를 읽어내기도 하고 다른 정보를 기억시킬 수 있는 메모리이다. 또, 전원이 끊어지면 휘발유처럼 기록된 정보도 날아가기 때문에 휘발성 메모리라고 한다. 따라서RAM은 데이터 처리를 위한 일시적 저장 등에 사용된다. 기존의 자기를 이용한 자기 코어에서데이터를 읽을 때에는 앞에서부터 순차적으로 읽어야 했었는데 이 RAM은 TR을 사용하는 IC로 구성되기 때문에 데이터를 읽을 때 순차적이 아닌 랜덤하게 읽을 수 있고, 읽기 또는 쓰기속도가 매우 빠르다.대표적인 RAM의 종류에는 SRAM과 DRAM이 있다.
+### (1) RAM(Random Access Memory)
+
+RAM은 기억된 정보를 읽어내기도 하고 다른 정보를 기억시킬 수 있는 메모리이다. 또, 전원이 끊어지면 휘발유처럼 기록된 정보도 날아가기 때문에 휘발성 메모리라고 한다. 따라서RAM은 데이터 처리를 위한 일시적 저장 등에 사용된다. 기존의 자기를 이용한 자기 코어에서데이터를 읽을 때에는 앞에서부터 순차적으로 읽어야 했었는데 이 RAM은 TR을 사용하는 IC로 구성되기 때문에 데이터를 읽을 때 순차적이 아닌 랜덤하게 읽을 수 있고, 읽기 또는 쓰기속도가 매우 빠르다.대표적인 RAM의 종류에는 SRAM과 DRAM이 있다.
 
 ### (2) RAM 의 종류와 용도
 
@@ -71,7 +73,11 @@ RAM은 외형상 SIP, DIP, SIMM, DIMM으로 나눌 수 있으나 대부분 기�
 
 ### ■ SRAM(Static Random Access Memory)
 
-SRAM이란 플립플롭 방식의 메모리 셀을 가진 임의 접근 기억장치로서, 전원 공급이 계속되는한 저장된 내용을 계속 기억하며 소용량의 메모리나 캐시메모리(cache memory)에 주로 사용한다. SRAM은 DRAM보다 구조가 복잡하다. 한 비트를 구성하는데 SRAM은 6개의 트랜지스터가 필요한 데, DRAM은 한 개의 트랜지스터와 한 개의 콘덴서가 필요하다. 따라서 고밀도 집적에 유리하다. SRAM은 동적 램보다 속도가 5배 정도 빠르며 가격도 비싼 편이다. DRAM(Dynamic Random Access Memory)SRAM이 반도체로 구성된 회로에 의해서 데이터를 기억을 하는 것과는 달리 DRAM은 콘덴서를 이용해서 기억을 한다. 데이터의 기입이란 콘덴서에 전기 충전을 하는 것과 같다. 그런데그 충전된 데이터가 계속 콘덴서에 머무르는 것이 아니고 시간이 지나면 조금씩 방전이 되므로 그 데이터가 방전되기 전에 다시 충전해 주어야 하는 방식이 필요해지고 그 방식을Refresh라고 한다. 따라서 메모리를 사용여부에 상관없이 메모리를 동적으로 만들어야 하기때문에 Dynamic RAM이라고 부르는 것이다.
+SRAM이란 플립플롭 방식의 메모리 셀을 가진 임의 접근 기억장치로서, 전원 공급이 계속되는한 저장된 내용을 계속 기억하며 소용량의 메모리나 캐시메모리(cache memory)에 주로 사용한다. SRAM은 DRAM보다 구조가 복잡하다. 한 비트를 구성하는데 SRAM은 6개의 트랜지스터가 필요한 데, DRAM은 한 개의 트랜지스터와 한 개의 콘덴서가 필요하다. 따라서 고밀도 집적에 유리하다. SRAM은 동적 램보다 속도가 5배 정도 빠르며 가격도 비싼 편이다.
+
+### ■ DRAM(Dynamic Random Access Memory)
+
+SRAM이 반도체로 구성된 회로에 의해서 데이터를 기억을 하는 것과는 달리 DRAM은 콘덴서를 이용해서 기억을 한다. 데이터의 기입이란 콘덴서에 전기 충전을 하는 것과 같다. 그런데그 충전된 데이터가 계속 콘덴서에 머무르는 것이 아니고 시간이 지나면 조금씩 방전이 되므로 그 데이터가 방전되기 전에 다시 충전해 주어야 하는 방식이 필요해지고 그 방식을Refresh라고 한다. 따라서 메모리를 사용여부에 상관없이 메모리를 동적으로 만들어야 하기때문에 Dynamic RAM이라고 부르는 것이다.
 
 ### ■ Synchronous DRAM(SDRAM)
 
@@ -83,11 +89,28 @@ SRAM이란 플립플롭 방식의 메모리 셀을 가진 임의 접근 기억�
 
 ### (1) SRAM에 대하여
 
-HBE-Combo III 장비에 구성되어 있는 SRAM은 Address 비트가 18비트이고, Data가 16비트인4Mbit SRAM이다. 이 SRAM은 아래와 같이 구성되어 있다.아래의 표는 SRAM에서 사용하는 각 입출력 신호선의 특징을 표로 나타낸 것이다. 아래에서설명하고 있는 신호선은 SRAM에 연결되어 있는 FPGA를 기준으로 작성되었다. 즉 OUT은FPGA에서 데이터가 출력되어 SRAM에 전달된다는 뜻이다.신호 이름FPGA 와 연결특 징DATAINOUT데이터를 저장하거나 읽는 신호선ADDRESSOUT데이터를 저장하는 주소 번지/OEOUTOutput Enable 신호로 신호의 값이 ‘0’일 때 데이터의 읽기가가능하다./WE 의 신호는 ‘1’이어야 한다./WEOUTWrite Enable 신호로 신호의 값이 ‘0’일 때 데이터의 쓰기가가능하다./OE 의 신호는 ‘0’이어야 한다./CSOUTChip Select 의 신호로 신호의 값이 ‘0’이어야 SRAM 은 동작을한다. 즉 /CS 의 신호가 ‘1’이면 다른 신호에 상관없이 동작을하지 않는다.
+HBE-Combo III 장비에 구성되어 있는 SRAM은 Address 비트가 18비트이고, Data가 16비트인4Mbit SRAM이다. 이 SRAM은 아래와 같이 구성되어 있다.
+
+아래의 표는 SRAM에서 사용하는 각 입출력 신호선의 특징을 표로 나타낸 것이다. 아래에서설명하고 있는 신호선은 SRAM에 연결되어 있는 FPGA를 기준으로 작성되었다. 즉 OUT은FPGA에서 데이터가 출력되어 SRAM에 전달된다는 뜻이다.
+
+| 신호 이름 | 신호 방향 | 특 징 |
+|-----------|:--------:|------|
+| DATA | IN/OUT | 데이터를 저장하거나 읽는 신호선 |
+| ADDRESS | OUT | 데이터를 저장하는 주소 번지 |
+| /OE | OUT | Output Enable. 값이 `0`일 때 데이터 읽기가 가능하다. `/WE`는 `1`이어야 한다. |
+| /WE | OUT | Write Enable. 값이 `0`일 때 데이터 쓰기가 가능하다. `/OE`는 `0`이어야 한다. |
+| /CS | OUT | Chip Select. 값이 `0`이어야 SRAM이 동작한다. `/CS`가 `1`이면 다른 신호와 무관하게 동작하지 않는다. |
 
 ### (2) SRAM 제어 Timing
 
-SRAM을 제어할 때에는 SRAM에 데이터를 쓸 것인지 또는 읽을 것인지에 따라서 제어하는 신호의 값 및 동작 타이밍이 다르다.아래는 HBE-Combo III 장비의 SRAM에 데이터를 쓰고(Write) 읽는(Read) 동작 타이밍을 나타내고 있다. Write CycleParameterSymbolMinMaxUnitWrite Cycle TimetWCnsChip Select to End of WritetCWnsAddress Set-up TimetAS0nsAddress Valid to End of WritetAWnsWrite Pulse Width (/OE High)tWPnsWrite Pulse Width (/OE Low)tWP1nsWrite Recovery TimetWR0nsWrite to Output High-ZtWHZ0nsData to Write Time OverlaptDWnsData Hold from Write TimetDH0nsEnd of Write to Output Low-ZtOWns Read CycleParameterSymbolMinMaxUnitRead Cycle TimetRCnsAddress Access TimetAAnsChip Select to OutputtCOnsOutput Enable to Valid OutputtOEnsChip Enable to Low-Z OutputtLZnsOutput Enable to Low-Z OutputtOLZ0nsChip Disable to High-Z OutputtHZ0nsOutput Disable to High-Z OutputtOHZ0nsOutput Hold form Address ChangetOHnsChip Selection to Power Up TimetPU0nsChip Selection to Power DownTimetPDns
+SRAM을 제어할 때에는 SRAM에 데이터를 쓸 것인지 또는 읽을 것인지에 따라서 제어하는 신호의 값 및 동작 타이밍이 다르다.
+
+아래는 HBE-Combo III 장비의 SRAM에 데이터를 쓰고(Write) 읽는(Read) 동작 타이밍을 나타내고 있다.
+
+
+
+
+ Write CycleParameterSymbolMinMaxUnitWrite Cycle TimetWCnsChip Select to End of WritetCWnsAddress Set-up TimetAS0nsAddress Valid to End of WritetAWnsWrite Pulse Width (/OE High)tWPnsWrite Pulse Width (/OE Low)tWP1nsWrite Recovery TimetWR0nsWrite to Output High-ZtWHZ0nsData to Write Time OverlaptDWnsData Hold from Write TimetDH0nsEnd of Write to Output Low-ZtOWns Read CycleParameterSymbolMinMaxUnitRead Cycle TimetRCnsAddress Access TimetAAnsChip Select to OutputtCOnsOutput Enable to Valid OutputtOEnsChip Enable to Low-Z OutputtLZnsOutput Enable to Low-Z OutputtOLZ0nsChip Disable to High-Z OutputtHZ0nsOutput Disable to High-Z OutputtOHZ0nsOutput Hold form Address ChangetOHnsChip Selection to Power Up TimetPU0nsChip Selection to Power DownTimetPDns
 
 ### (3) VHDL을 이용한 SRAM 제어
 
