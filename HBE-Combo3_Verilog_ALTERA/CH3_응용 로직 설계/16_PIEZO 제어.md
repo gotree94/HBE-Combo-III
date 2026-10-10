@@ -90,7 +90,18 @@ module TestBench;
 endmodule
 ```
 
-위의 테스트 벤치 파일에서 19~30라인에 이 입력 조건이 설정되었다. 25~30라인은 CLK이1ns마다 반전되는 값을 출력하도록 되어 있다. 즉 2ns의 주기로 클럭이 생성되는 부분이다.20~23라인은 RESETN의 초기 값은 0이고 5ns후에 1의 값이 출력되도록 되어 있다.아래 그림은 ModelSim 을 이용한 시뮬레이션 결과이다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다. RESETN과 CLK의 입력은 각각 FPGA_RESET과 CLK의 핀 번호를 설정하고, 출력 결과인PIEZO는 PIEZO의 핀 번호를 설정한다.
+위의 테스트 벤치 파일에서 19 ~ 30라인에 이 입력 조건이 설정되었다. 25~30라인은 CLK이1ns마다 반전되는 값을 출력하도록 되어 있다. 즉 2ns의 주기로 클럭이 생성되는 부분이다.20 ~ 23라인은 RESETN의 초기 값은 0이고 5ns후에 1의 값이 출력되도록 되어 있다.
+
+아래 그림은 ModelSim 을 이용한 시뮬레이션 결과이다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image176.png"> </p>
+
+<br><br>
+
+
+위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다. RESETN과 CLK의 입력은 각각 FPGA_RESET과 CLK의 핀 번호를 설정하고, 출력 결과인PIEZO는 PIEZO의 핀 번호를 설정한다.
 
 <div align="center">
   
