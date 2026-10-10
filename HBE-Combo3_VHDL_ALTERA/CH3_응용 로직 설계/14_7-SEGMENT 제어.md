@@ -63,7 +63,7 @@ Seg_dat <= “11100000”;
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image174.png"> </p>
+<p align="center"> <img src="../vhdl-media/image174-0.png"> </p>
 
 <br><br>
 
