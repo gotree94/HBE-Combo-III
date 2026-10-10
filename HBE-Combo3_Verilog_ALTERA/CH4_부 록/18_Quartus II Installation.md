@@ -24,6 +24,19 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 아래와 같이 ALTERA 홈페이지([Quartus-web-13.1.0.162](https://www.altera.com/downloads/fpga-development-tools/quartus-ii-web-edition-design-software-version-13-1-windows))에 접속을 한다.
 
+<br><br>
+
+<p align="center"> <img src="new1.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="new2.pnㅎ"> </p>
+
+<br><br>
+
+---
 
 <br><br>
 
