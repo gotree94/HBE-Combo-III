@@ -125,7 +125,55 @@ module CH3_SEG_DISP(RESETN, CLK, SEG_COM, SEG_DATA);
 endmodule
 ```
 
-위의 로직에서 15~26라인의 PROCESS문에서 8개의 7-Segment를 선택하기 위한 카운터CNT_SCAN을 구성하였다.28~85라인의 구문에서 위에서 생성한 CNT_SCAN의 데이터를 이용하여 해당하는 카운터 값이있을 때, 7-Segment를 선택하기 위한 SEG_COM에 데이터를 출력하고, 그에 대한 데이터를SEG_DATA에 데이터를 출력하도록 구성되었다. 이 부분에서 “SEG_COM = 8’hFF” 이런 방법으로 데이터를 넣어 주었는데, 이것은 SEG_COM = 8’b11111111과 동일하게 사용된다.이 예제를 시뮬레이션 하기 위해서 아래와 같이 테스트 벤치 파일을 작성한다. 테스트 벤치파일은 ModelSim등의 소프트웨어에서 시뮬레이션 하기 위해서 입력 신호를 설정해 주는 파일이다. 이 테스트 벤치 파일은 하드웨어적으로 설정되지 않는다. 시뮬레이션만을 위한 파일이다.// CH3_SEG_DISP_TB.V`timescale 10ns / 1psmodule TestBench;// inputreg RESETN, CLK;//outputwire [7:0] SEG_COM, SEG_DATA;// Instantiate the U1CH3_SEG_DISP U1(RESETN, CLK,SEG_COM, SEG_DATA// Specify input stimulusinitial beginRESETN = 0; CLK = 0;#5 RESETN = 1;endalways beginCLK = 0;#1;CLK = 1;#1;endendmodule이 테스트 벤치 파일 CH3_SEG_DISP_TB에서 13~17라인은 테스트 벤치 로직에서 생성한 신호와 CH3_SEG_DISP와 연결을 위한 구문이다.19~30라인은 시뮬레이션 하기 위해 CH3_SEG_DISP에 입력 데이터를 전달해 주는 구문이다.이 중 20~23라인은 RESETN에 전달해주는 신호로 초기 값은 0이고, 50ns(10ns x 5) 후에 1의값으로 바뀐다.25~30라인에 클럭의 10ns마다 CLK의 값이 반전되도록 구성되어 있다. 즉 20NS주기의 CLK을생성하는 구문이다.아래 그림은 ModelSim 소프트웨어에서 위를 시뮬레이션 한 결과이다. ModelSim을 이용한 시뮬레이션 하는 방법은 “CH1.기초”의 “1.3 ModelSim을 이용한 시뮬레이션” 편을 참고하기 바란다.RESETN의 신호 후에 첫 번째 클럭이 발생하였을 때, SEG_COM의 값이 0111111이 되고, 그때의 SEG_DATA가 11111100이 출력된다. 이것은 첫 번째 7-Segment가 선택되어 0이 표시되는 것을 나타낸다. 다음 클럭에서의 동작도 같은 방법으로 파악해 볼 수 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSEG_COM[0]T7SEG_COM8CLKN2CLK1SEG_DATA[7]M5SEG_ DATA_ASEG_COM[7]T3SEG_COM1SEG_DATA[6]M4SEG_ DATA_BSEG_COM[6]T2SEG_COM2SEG_DATA[5]R5SEG_ DATA_CSEG_COM[5]R7SEG_COM3SEG_DATA[4]R4SEG_ DATA_DSEG_COM[4]R6SEG_COM4SEG_DATA[3]R3SEG_ DATA_ESEG_COM[3]U3SEG_COM5SEG_DATA[2]R2SEG_ DATA_FSEG_COM[2]U2SEG_COM6SEG_DATA[1]P7SEG_ DATA_GSEG_COM[1]U1SEG_COM7SEG_DATA[0]T4SEG_ DATA_H핀 설정 후 컴파일 한다. HBE-Combo III 장비에 다운로딩 하고, 그 동작을 살펴보자.먼저 장비에서 클럭의 입력은 100Hz로 설정하고 결과를 확인해 보고, 클럭의 입력을 1Hz로낮추었을 때 데이터가 어떻게 출력되는지를 확인해 보자.
+위의 로직에서 15~26라인의 PROCESS문에서 8개의 7-Segment를 선택하기 위한 카운터CNT_SCAN을 구성하였다.28~85라인의 구문에서 위에서 생성한 CNT_SCAN의 데이터를 이용하여 해당하는 카운터 값이있을 때, 7-Segment를 선택하기 위한 SEG_COM에 데이터를 출력하고, 그에 대한 데이터를SEG_DATA에 데이터를 출력하도록 구성되었다. 이 부분에서 “SEG_COM = 8’hFF” 이런 방법으로 데이터를 넣어 주었는데, 이것은 SEG_COM = 8’b11111111과 동일하게 사용된다.이 예제를 시뮬레이션 하기 위해서 아래와 같이 테스트 벤치 파일을 작성한다. 테스트 벤치파일은 ModelSim등의 소프트웨어에서 시뮬레이션 하기 위해서 입력 신호를 설정해 주는 파일이다. 이 테스트 벤치 파일은 하드웨어적으로 설정되지 않는다. 시뮬레이션만을 위한 파일이다.
+
+```verilog
+// CH3_SEG_DISP_TB.V
+`timescale 10ns / 1ps
+
+module TestBench;
+
+    // input
+    reg RESETN, CLK;
+
+    // output
+    wire [7:0] SEG_COM, SEG_DATA;
+
+    // Instantiate the U1
+    CH3_SEG_DISP U1(RESETN, CLK, SEG_COM, SEG_DATA);
+
+    // Specify input stimulus
+    initial begin
+        RESETN = 0;
+        CLK = 0;
+        #5 RESETN = 1;
+        #100 $stop;
+    end
+
+    always begin
+        CLK = 0;
+        #1 CLK = 1;
+        #1;
+    end
+
+endmodule
+```
+
+이 테스트 벤치 파일 CH3_SEG_DISP_TB에서 13~17라인은 테스트 벤치 로직에서 생성한 신호와 CH3_SEG_DISP와 연결을 위한 구문이다.19~30라인은 시뮬레이션 하기 위해 CH3_SEG_DISP에 입력 데이터를 전달해 주는 구문이다.이 중 20~23라인은 RESETN에 전달해주는 신호로 초기 값은 0이고, 50ns(10ns x 5) 후에 1의값으로 바뀐다.25~30라인에 클럭의 10ns마다 CLK의 값이 반전되도록 구성되어 있다. 즉 20NS주기의 CLK을생성하는 구문이다.아래 그림은 ModelSim 소프트웨어에서 위를 시뮬레이션 한 결과이다. ModelSim을 이용한 시뮬레이션 하는 방법은 “CH1.기초”의 “1.3 ModelSim을 이용한 시뮬레이션” 편을 참고하기 바란다.RESETN의 신호 후에 첫 번째 클럭이 발생하였을 때, SEG_COM의 값이 0111111이 되고, 그때의 SEG_DATA가 11111100이 출력된다. 이것은 첫 번째 7-Segment가 선택되어 0이 표시되는 것을 나타낸다. 다음 클럭에서의 동작도 같은 방법으로 파악해 볼 수 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.
+
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | SEG_COM[0] | T7 | SEG_COM8 |
+| CLK | N2 | CLK1 | | SEG_DATA[7] | M5 | SEG_DATA_A |
+| SEG_COM[7] | T3 | SEG_COM1 | | SEG_DATA[6] | M4 | SEG_DATA_B |
+| SEG_COM[6] | T2 | SEG_COM2 | | SEG_DATA[5] | R5 | SEG_DATA_C |
+| SEG_COM[5] | R7 | SEG_COM3 | | SEG_DATA[4] | R4 | SEG_DATA_D |
+| SEG_COM[4] | R6 | SEG_COM4 | | SEG_DATA[3] | R3 | SEG_DATA_E |
+| SEG_COM[3] | U3 | SEG_COM5 | | SEG_DATA[2] | R2 | SEG_DATA_F |
+| SEG_COM[2] | U2 | SEG_COM6 | | SEG_DATA[1] | P7 | SEG_DATA_G |
+| SEG_COM[1] | U1 | SEG_COM7 | | SEG_DATA[0] | T4 | SEG_DATA_H |
+
+핀 설정 후 컴파일 한다. HBE-Combo III 장비에 다운로딩 하고, 그 동작을 살펴보자.먼저 장비에서 클럭의 입력은 100Hz로 설정하고 결과를 확인해 보고, 클럭의 입력을 1Hz로낮추었을 때 데이터가 어떻게 출력되는지를 확인해 보자.
 
 ## 14.3.  응용 제어
 
