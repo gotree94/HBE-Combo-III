@@ -151,7 +151,7 @@ Quartus II Web Edition은 무료로 사용할 수 있는 소프트웨어이지�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image195.jpeg"> </p>
+<p align="center"> <img src="../verilog-media/image180.jpeg"> </p>
 
 <br><br>
 
@@ -159,7 +159,7 @@ Quartus II Web Edition은 무료로 사용할 수 있는 소프트웨어이지�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image196.jpeg"> </p>
+<p align="center"> <img src="../verilog-media/image195.jpeg"> </p>
 
 <br><br>
 
@@ -167,7 +167,7 @@ Quartus II Web Edition은 무료로 사용할 수 있는 소프트웨어이지�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image197.jpeg"> </p>
+<p align="center"> <img src="../verilog-media/image196.jpeg"> </p>
 
 <br><br>
 
@@ -175,7 +175,7 @@ Quartus II Web Edition은 무료로 사용할 수 있는 소프트웨어이지�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image198.png"> </p>
+<p align="center"> <img src="../verilog-media/image197.jpeg"> </p>
 
 <br><br>
 
@@ -183,7 +183,7 @@ Altera의 홈페이지에 ID가 등록이 되어 있지 않았다면 아래 그�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image199.png"> </p>
+<p align="center"> <img src="../verilog-media/image198.png"> </p>
 
 <br><br>
 
@@ -191,7 +191,7 @@ Registration Field를 채운다. 여기에서 Email Address는 중요하다. Alt
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image200.png"> </p>
+<p align="center"> <img src="../verilog-media/image199.png"> </p>
 
 <br><br>
 
@@ -199,7 +199,7 @@ Registration Field를 채운다. 여기에서 Email Address는 중요하다. Alt
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image201.png"> </p>
+<p align="center"> <img src="../verilog-media/image200.png"> </p>
 
 <br><br>
 
@@ -207,13 +207,13 @@ NIC 넘버는 다음 그림과 같이 Quartus II 프로그램을 실행시켜서
 
 <br><br>
 
+<p align="center"> <img src="../verilog-media/image201.png"> </p>
+
+<br><br>
+
+<br><br>
+
 <p align="center"> <img src="../verilog-media/image202.jpeg"> </p>
-
-<br><br>
-
-<br><br>
-
-<p align="center"> <img src="../verilog-media/image203.png"> </p>
 
 <br><br>
 
@@ -221,13 +221,13 @@ Quartus II Web Edition Licensing Survey를 작성하고 Finish 버튼을 누르�
 
 <br><br>
 
+<p align="center"> <img src="../verilog-media/image203.png"> </p>
+
+<br><br>
+
+<br><br>
+
 <p align="center"> <img src="../verilog-media/image204.png"> </p>
-
-<br><br>
-
-<br><br>
-
-<p align="center"> <img src="../verilog-media/image205.png"> </p>
 
 <br><br>
 
@@ -235,7 +235,7 @@ Quartus II Web Edition Licensing Survey를 작성하고 Finish 버튼을 누르�
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image206.png"> </p>
+<p align="center"> <img src="../verilog-media/image205.png"> </p>
 
 <br><br>
 
@@ -243,21 +243,23 @@ Quartus II Web Edition Licensing Survey를 작성하고 Finish 버튼을 누르�
 
 <br><br>
 
+<p align="center"> <img src="../verilog-media/image206.png"> </p>
+
+<br><br>
+
+<br><br>
+
 <p align="center"> <img src="../verilog-media/image207.png"> </p>
 
 <br><br>
 
-<br><br>
 
-<p align="center"> <img src="../verilog-media/image208.png"> </p>
-
-<br><br>
 
 License의 등록이 끝나면 아래 그림과 같이 Current License의 License Type항목에 WebEdition이 나타나는 것을 확인해 보자.
 
 <br><br>
 
-<p align="center"> <img src="../verilog-media/image209.jpeg"> </p>
+<p align="center"> <img src="../verilog-media/image208.png"> </p>
 
 <br><br>
 
