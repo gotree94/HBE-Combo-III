@@ -68,18 +68,69 @@ Account Sign 창에서 등록하거나, 아래의 그림과 같이 Get One Time 
 ## 18.3.  프로그램 설치
 
 Quartus II Web Edition 프로그램은 다음의 순서로 프로그램을 설치할 수 있다.
+* 다운로드 받은 파일(80_quartus_ee.exe)을 실행시킨다.
 
-다운로드 받은 파일(80_quartus_ee.exe)을 실행시킨다.
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image186.jpeg"> </p>
+
+<br><br>
 
 License Agreement 화면에서 아래 그림과 같이 라이선스를 수락하고, Next 버튼을누른다.
 
-아래 그림과 같이 사용자의 이름을 등록한 후 Next 버튼을 누른다.아래 그림과 같이 프로그램 설치 위치를 선택한 후 Next 버튼을 누른다.
+<br><br>
 
-아래 그림과 같이 프로그램 폴더를 선택한 후 Next 버튼을 누른다.아래 그림과 같이 설치 항목을 Complete로 설정한 후 Next 버튼을 누른다.
+<p align="center"> <img src="../verilog-media/image187.jpeg"> </p>
+
+<br><br>
+
+아래 그림과 같이 사용자의 이름을 등록한 후 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image188.jpeg"> </p>
+
+<br><br>
+
+아래 그림과 같이 프로그램 설치 위치를 선택한 후 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image189.jpeg"> </p>
+
+<br><br>
+
+아래 그림과 같이 프로그램 폴더를 선택한 후 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image190.jpeg"> </p>
+
+<br><br>
+
+아래 그림과 같이 설치 항목을 Complete로 설정한 후 Next 버튼을 누른다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image191.jpeg"> </p>
+
+<br><br>
 
 아래 그림과 같이 인스톨 요약 목록을 확인한 후 Next 버튼을 누른다. 그 후 프로그램이설치되는 것을 확인할 수 있다.아래 그림은 프로그램이 설치되는 화면이다.
 
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image192.jpeg"> </p>
+
+<br><br>
+
 아래 그림과 같이 Finish 버튼을 눌러 프로그램의 설치를 종료한다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image193.jpeg"> </p>
+
+<br><br>
 
 ## 18.4.  License 설정
 
