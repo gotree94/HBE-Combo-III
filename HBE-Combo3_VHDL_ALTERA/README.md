@@ -1,7 +1,5 @@
 # HBE-Combo III 로 배우는 VHDL을 이용한 디지털 회로 설계  ALTERA
 
-* 본 문서는 「HBE-Combo III 로 배우는 VHDL을 이용한 디지털 회로 설계  ALTERA V1 최종 20080616-p371」 교재
-
 ## 목차
 
 ## CH1. 기초 이론
