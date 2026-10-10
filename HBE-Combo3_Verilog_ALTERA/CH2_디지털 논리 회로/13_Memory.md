@@ -119,11 +119,19 @@ SRAM을 제어할 때에는 SRAM에 데이터를 쓸 것인지 또는 읽을 것
 
 ### ■ Write Cycle
 
-ParameterSymbolMinMaxUnitWrite Cycle TimetWCnsChip Select to End of WritetCWnsAddress Set-up TimetAS0nsAddress Valid to End of WritetAWnsWrite Pulse Width (/OE High)tWPnsWrite Pulse Width (/OE Low)tWP1nsWrite Recovery TimetWR0nsWrite to Output High-ZtWHZ0nsData to Write Time OverlaptDWnsData Hold from Write TimetDH0nsEnd of Write to Output Low-ZtOWns
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image158.png"> </p>
+
+<br><br>
 
 ### ■ Read Cycle
 
-ParameterSymbolMinMaxUnitRead Cycle TimetRCnsAddress Access TimetAAnsChip Select to OutputtCOnsOutput Enable to Valid OutputtOEnsChip Enable to Low-Z OutputtLZnsOutput Enable to Low-Z OutputtOLZ0nsChip Disable to High-Z OutputtHZ0nsOutput Disable to High-Z OutputtOHZ0nsOutput Hold form Address ChangetOHnsChip Selection to Power Up TimetPU0nsChip Selection to Power DownTimetPDns
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image159.png"> </p>
+
+<br><br>
 
 ### (3) Verilog HDL을 이용한 SRAM 제어
 
