@@ -13,43 +13,46 @@
     <td style="padding-right:20px;">
       <table>
         <tr><th colspan="5">1상 여자</th></tr>
-        <tr><th>주기</th><th>A</th><th>B</th><th>/A</th><th>/B</th></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>3</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>4</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>5</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>6</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>7</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>        
+        <tr><th>클럭</th><th>A</th><th>B</th><th>/A</th><th>/B</th><th>주기</th></tr>
+        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>3</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>4</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>6</td><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>7</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td></tr>
+        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>        
+        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>        
       </table>
     </td>
     <td style="padding-right:20px;">
       <table>
         <tr><th colspan="5">2상 여자</th></tr>
-        <tr><th>주기</th><th>A</th><th>B</th><th>/A</th><th>/B</th></tr>
-        <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>3</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>4</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>5</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>6</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>7</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>        
+        <tr><th>클럭</th><th>A</th><th>B</th><th>/A</th><th>/B</th><th>주기</th></tr>
+        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>3</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>4</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>6</td><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>7</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td></tr>
+        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>        
+        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>        
       </table>
     </td>
     <td>
       <table>
         <tr><th colspan="5">1-2상 여자</th></tr>
-        <tr><th>주기</th><th>A</th><th>B</th><th>/A</th><th>/B</th></tr>
-        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>3</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>4</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-        <tr><td>5</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>6</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>7</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><th>클럭</th><th>A</th><th>B</th><th>/A</th><th>/B</th><th>주기</th></tr>
+        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>3</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>4</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>5</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>6</td><td>0</td><td>1</td><td>0</td><td>0</td><td>2</td></tr>
+        <tr><td>7</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td></tr>
+        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td></tr>        
+        <tr><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>        
       </table>
     </td>
   </tr>
