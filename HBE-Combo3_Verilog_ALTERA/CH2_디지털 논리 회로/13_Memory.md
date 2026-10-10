@@ -115,4 +115,93 @@ SRAM을 제어할 때에는 SRAM에 데이터를 쓸 것인지 또는 읽을 것
 
 ### (3) Verilog HDL을 이용한 SRAM 제어
 
-다음의 예제는 버튼 및 버스 스위치를 이용하여 간단히 SRAM을 동작 시키는 예제이다.이 예제는 버튼 스위치를 통해 SRAM의 READ, WRITE 발생시키고, 버튼 스위치를 통해 SRAM에 데이터를 입력하고, 버스 스위치를 통해 SRAM의 ADDRESS를 지정하게 된다.장비에 프로그래밍 파일을 다운로딩 하고 버스 스위치로 ADDRESS를 설정하고 버튼 스위치로는 SRAM에 입력 데이터를 설정한다. 이 후 WRITE에 연결된 버튼 스위치를 눌러 설정한ADDRESS와 DATA를 SRAM에 저장시키고, READ에 연결된 버튼 스위치를 눌러 SRAM에서 저장한 데이터를 읽어 LED로 확인할 수 있도록 구성되어 있다.// CH2_SRAM.Vmodule CH2_SRAM(WRITE, READ,ADDRESS, DATA_IN,RAM_CS, RAM_OE, RAM_WE,RAM_ADDRESS, RAM_DATA,LED_OUTinput WRITE, READ;input [7:0] ADDRESS;input [7:0] DATA_IN;output RAM_CS, RAM_OE, RAM_WE;output [17:0] RAM_ADDRESS;inout [15:0] RAM_DATA;output [7:0] LED_OUT;wire RAM_CS, RAM_OE, RAM_WE;wire [17:0] RAM_ADDRESS;wire [15:0] RAM_DATA;wire [7:0] LED_OUT;assign RAM_CS = 1'b0;assign RAM_OE = ~READ;assign RAM_WE = ~ WRITE;assign RAM_ADDRESS = {10'b0000000000 , ADDRESS };assign RAM_DATA = (WRITE) ? {8'b00000000 , DATA_IN} : 16'bzzzzzzzzzzzzzzzz;assign LED_OUT = (READ) ? RAM_DATA[7:0] : 8'b00000000;endmodule위에서 설계된 로직에서 3~17 라인에서 READ, WRITE, DATA_IN, ADDRESS는 스위치를 통해SRAM에 전달해 주기 위한 신호이고, RAM_XX 신호는 SRAM에 직접 연결되어 있는 신호이다.SRAM의 DATA는 INOUT으로 선언해야 됨을 유의해야 한다.24라인에서 SRAM의 Chip Select 신호로 계속 사용하기 위하여 0의 값을 전달해 준다.25~26라인은 각각 SRAM의 Output Enable과 Write Enable의 신호로 버튼 스위치와 연결되어있다.27라인은 SRAM의 ADDRESS로 실제 사용하는 SRAM의 ADDRESS가 18비트이기 때문에 앞의10비트를 고정하고 뒤의 8비트는 스위치의 ADDRESS 입력에 연결되도록 구성되어 있다.28라인은 SRAM의 DATA에 연결되는 부분인데, SRAM의 DATA가 양방향 입출력 포트이어서 데이터를 읽을 때에는 High Impedance의 값을 출력해주어야, 읽는 데이터가 정상적으로 들어온다. 이것을 위해 설계된 부분으로 RAM_DATA는 WRITE가 1일 때(RAM_WE = 0)에만 전달되고,1이 아닐 때에는 High Impedance의 값이 전달된다.29라인은 데이터를 출력해 보기 위한 구문으로 READ 신호가 들어왔을 때에 RAM_DATA의 신호를 LED에 출력하도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.입력 데이터 ADDRESS는 BUS SW1~8에 연결하고, DATA_IN은 버튼 스위치 SW1~8에 연결한다. WRITE와 READ 신호는 각각 SW 9, SW0에 연결한다. 그리고, RAM_.. 신호는 SRAM의 핀번호로 설정하여 SRAM에 연결하도록 한다.  출력 결과 LED_OUT는 LED1~8에 연결하여 저장되었던 데이터를 확인할 수 있도록 한다.포트 이름핀 번호 하드웨어 설명포트 이름핀 번호 하드웨어 설명ADDRESS[7]T6BUS SW1RAM_ADDRESS[7]E22SRAM_ADDR7ADDRESS[6]V1BUS SW2RAM_ADDRESS[6]D26SRAM_ADDR6ADDRESS[5]U7BUS SW3RAM_ADDRESS[5]D25SRAM_ADDR5ADDRESS[4]U6BUS SW4RAM_ADDRESS[4]D23SRAM_ADDR4ADDRESS[3]U5BUS SW5RAM_ADDRESS[3]C25SRAM_ADDR3ADDRESS[2]U4BUS SW6RAM_ADDRESS[2]C24SRAM_ADDR2ADDRESS[1]V6BUS SW7RAM_ADDRESS[1]B25SRAM_ADDR1ADDRESS[0]V5BUS SW8RAM_ADDRESS[0]B24SRAM_ADDR0DATA_IN[7]V4SW1RAM_DATA[15]U24SRAM_DATA15DATA_IN[6]V3SW2RAM_DATA[14]U23SRAM_DATA14DATA_IN[5]V2SW3RAM_DATA[13]U22SRAM_DATA13DATA_IN[4]W4SW4RAM_DATA[12]U21SRAM_DATA12DATA_IN[3]W3SW5RAM_DATA[11]U20SRAM_DATA11DATA_IN[2]W2SW6RAM_DATA[10]T25SRAM_DATA10DATA_IN[1]W1SW7RAM_DATA[9]T24SRAM_DATA9DATA_IN[0]V7SW8RAM_DATA[8]T23SRAM_DATA8WRITEY4SW9RAM_DATA[7]T22SRAM_DATA7READY3SW0RAM_DATA[6]T21SRAM_DATA6RAM_CSH26SRAM_CSRAM_DATA[5]T20SRAM_DATA5RAM_OEJ21SRAM_OERAM_DATA[4]R25SRAM_DATA4RAM_WEJ20SRAM_WERAM_DATA[3]R24SRAM_DATA3RAM_UBG24SRAM1_UBRAM_DATA[2]R20SRAM_DATA2RAM_LBG23SRAM1_LBRAM_DATA[1]P24SRAM_DATA1RAM_ADDRESS[17]G22SRAM_ADDR17RAM_DATA[0]P23SRAM_DATA0RAM_ADDRESS[16]G21SRAM_ADDR16LED_OUT[7]AE11LED1RAM_ADDRESS[15]F26SRAM_ADDR15LED_OUT[6]AE10LED2RAM_ADDRESS[14]F25SRAM_ADDR14LED_OUT[5]AF9LED3RAM_ADDRESS[13]F24SRAM_ADDR13LED_OUT[4]AF8LED4RAM_ADDRESS[12]F20SRAM_ADDR12LED_OUT[3]AF7LED5RAM_ADDRESS[11]E26SRAM_ADDR11LED_OUT[2]AF6LED6RAM_ADDRESS[10]E25SRAM_ADDR10LED_OUT[1]AF5LED7RAM_ADDRESS[9]E24SRAM_ADDR9LED_OUT[0]B3LED8RAM_ADDRESS[8]E23SRAM_ADDR8핀 설정 후 컴파일 한다.HBE-Combo III 장비에 다운로딩 하고, SRAM의 동작 타이밍도를 보고 실험해 보면서 SRAM의제어에 대하여 이해해 보자.동작하는 것을 예로 들면 다음과 같다.BUS SWITCH를 조절하여 ADDRESS를 설정한다. (예, “00000000”)버튼 SWITCH SW1~8을 눌러 입력하려고 하는 DATA_IN을 설정한다.(예, “10101010”)버튼 SWITCH SW9를 눌러 RAM에 데이터를 저장한다.같은 방법으로 ①~③의 동작을 반복하여 여러 개의 데이터를 저장한다. 단ADDRESS와 DATA는 바꾸어준다.BUS SWITCH를 조절하여 읽고자 하는 ADDRESS를 설정한다.버튼 SWITCH SW0을 눌러 LED에 ①~③에서 저장하였던 데이터가 맞게 나오는지를확인한다.
+다음의 예제는 버튼 및 버스 스위치를 이용하여 간단히 SRAM을 동작 시키는 예제이다.이 예제는 버튼 스위치를 통해 SRAM의 READ, WRITE 발생시키고, 버튼 스위치를 통해 SRAM에 데이터를 입력하고, 버스 스위치를 통해 SRAM의 ADDRESS를 지정하게 된다.장비에 프로그래밍 파일을 다운로딩 하고 버스 스위치로 ADDRESS를 설정하고 버튼 스위치로는 SRAM에 입력 데이터를 설정한다. 이 후 WRITE에 연결된 버튼 스위치를 눌러 설정한ADDRESS와 DATA를 SRAM에 저장시키고, READ에 연결된 버튼 스위치를 눌러 SRAM에서 저장한 데이터를 읽어 LED로 확인할 수 있도록 구성되어 있다.
+
+```verilog
+// CH2_SRAM.V
+
+module CH2_SRAM(WRITE, READ, ADDRESS, DATA_IN,
+                RAM_CS, RAM_OE, RAM_WE,
+                RAM_ADDRESS, RAM_DATA, LED_OUT);
+
+    input          WRITE, READ;
+    input  [7:0]   ADDRESS;
+    input  [7:0]   DATA_IN;
+
+    output         RAM_CS, RAM_OE, RAM_WE;
+    output [17:0]  RAM_ADDRESS;
+    inout  [15:0]  RAM_DATA;
+    output [7:0]   LED_OUT;
+
+    assign RAM_CS      = 1'b0;
+    assign RAM_OE      = ~READ;
+    assign RAM_WE      = ~WRITE;
+    assign RAM_ADDRESS = {10'b0000000000, ADDRESS};
+    assign RAM_DATA    = (WRITE) ? {8'b00000000, DATA_IN} : 16'bz;  // 16'bzzzzzzzzzzzzzzzz와 동일
+    assign LED_OUT     = (READ) ? RAM_DATA[7:0] : 8'b00000000;
+
+endmodule
+```
+
+위에서 설계된 로직에서 3~17 라인에서 READ, WRITE, DATA_IN, ADDRESS는 스위치를 통해SRAM에 전달해 주기 위한 신호이고, RAM_XX 신호는 SRAM에 직접 연결되어 있는 신호이다.SRAM의 DATA는 INOUT으로 선언해야 됨을 유의해야 한다.24라인에서 SRAM의 Chip Select 신호로 계속 사용하기 위하여 0의 값을 전달해 준다.25~26라인은 각각 SRAM의 Output Enable과 Write Enable의 신호로 버튼 스위치와 연결되어있다.27라인은 SRAM의 ADDRESS로 실제 사용하는 SRAM의 ADDRESS가 18비트이기 때문에 앞의10비트를 고정하고 뒤의 8비트는 스위치의 ADDRESS 입력에 연결되도록 구성되어 있다.28라인은 SRAM의 DATA에 연결되는 부분인데, SRAM의 DATA가 양방향 입출력 포트이어서 데이터를 읽을 때에는 High Impedance의 값을 출력해주어야, 읽는 데이터가 정상적으로 들어온다. 이것을 위해 설계된 부분으로 RAM_DATA는 WRITE가 1일 때(RAM_WE = 0)에만 전달되고,1이 아닐 때에는 High Impedance의 값이 전달된다.29라인은 데이터를 출력해 보기 위한 구문으로 READ 신호가 들어왔을 때에 RAM_DATA의 신호를 LED에 출력하도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.입력 데이터 ADDRESS는 BUS SW1~8에 연결하고, DATA_IN은 버튼 스위치 SW1~8에 연결한다. WRITE와 READ 신호는 각각 SW 9, SW0에 연결한다. 그리고, RAM_.. 신호는 SRAM의 핀번호로 설정하여 SRAM에 연결하도록 한다.  출력 결과 LED_OUT는 LED1~8에 연결하여 저장되었던 데이터를 확인할 수 있도록 한다.
+
+
+
+
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| ADDRESS[7] | T6 | BUS SW1 | | RAM_ADDRESS[7] | E22 | SRAM_ADDR7 |
+| ADDRESS[6] | V1 | BUS SW2 | | RAM_ADDRESS[6] | D26 | SRAM_ADDR6 |
+| ADDRESS[5] | U7 | BUS SW3 | | RAM_ADDRESS[5] | D25 | SRAM_ADDR5 |
+| ADDRESS[4] | U6 | BUS SW4 | | RAM_ADDRESS[4] | D23 | SRAM_ADDR4 |
+| ADDRESS[3] | U5 | BUS SW5 | | RAM_ADDRESS[3] | C25 | SRAM_ADDR3 |
+| ADDRESS[2] | U4 | BUS SW6 | | RAM_ADDRESS[2] | C24 | SRAM_ADDR2 |
+| ADDRESS[1] | V6 | BUS SW7 | | RAM_ADDRESS[1] | B25 | SRAM_ADDR1 |
+| ADDRESS[0] | V5 | BUS SW8 | | RAM_ADDRESS[0] | B24 | SRAM_ADDR0 |
+| DATA_IN[7] | V4 | SW1 | | RAM_DATA[15] | U24 | SRAM_DATA15 |
+| DATA_IN[6] | V3 | SW2 | | RAM_DATA[14] | U23 | SRAM_DATA14 |
+| DATA_IN[5] | V2 | SW3 | | RAM_DATA[13] | U22 | SRAM_DATA13 |
+| DATA_IN[4] | W4 | SW4 | | RAM_DATA[12] | U21 | SRAM_DATA12 |
+| DATA_IN[3] | W3 | SW5 | | RAM_DATA[11] | U20 | SRAM_DATA11 |
+| DATA_IN[2] | W2 | SW6 | | RAM_DATA[10] | T25 | SRAM_DATA10 |
+| DATA_IN[1] | W1 | SW7 | | RAM_DATA[9] | T24 | SRAM_DATA9 |
+| DATA_IN[0] | V7 | SW8 | | RAM_DATA[8] | T23 | SRAM_DATA8 |
+| WRITE | Y4 | SW9 | | RAM_DATA[7] | T22 | SRAM_DATA7 |
+| READ | Y3 | SW0 | | RAM_DATA[6] | T21 | SRAM_DATA6 |
+|           |     |             | | RAM_CS | H26 | SRAM_CS |
+|           |     |             | | RAM_DATA[5] | T20 | SRAM_DATA5 |
+|           |     |             | | RAM_OE | J21 | SRAM_OE |
+|           |     |             | | RAM_DATA[4] | R25 | SRAM_DATA4 |
+|           |     |             | | RAM_WE | J20 | SRAM_WE |
+|           |     |             | | RAM_DATA[3] | R24 | SRAM_DATA3 |
+|           |     |             | | RAM_UB | G24 | SRAM1_UB |
+|           |     |             | | RAM_DATA[2] | R20 | SRAM_DATA2 |
+|           |     |             | | RAM_LB | G23 | SRAM1_LB |
+|           |     |             | | RAM_DATA[1] | P24 | SRAM_DATA1 |
+|           |     |             | | RAM_ADDRESS[17] | G22 | SRAM_ADDR17 |
+|           |     |             | | RAM_DATA[0] | P23 | SRAM_DATA0 |
+|           |     |             | | RAM_ADDRESS[16] | G21 | SRAM_ADDR16 |
+|           |     |             | | LED_OUT[7] | AE11 | LED1 |
+|           |     |             | | RAM_ADDRESS[15] | F26 | SRAM_ADDR15 |
+|           |     |             | | LED_OUT[6] | AE10 | LED2 |
+|           |     |             | | RAM_ADDRESS[14] | F25 | SRAM_ADDR14 |
+|           |     |             | | LED_OUT[5] | AF9 | LED3 |
+|           |     |             | | RAM_ADDRESS[13] | F24 | SRAM_ADDR13 |
+|           |     |             | | LED_OUT[4] | AF8 | LED4 |
+|           |     |             | | RAM_ADDRESS[12] | F20 | SRAM_ADDR12 |
+|           |     |             | | LED_OUT[3] | AF7 | LED5 |
+|           |     |             | | RAM_ADDRESS[11] | E26 | SRAM_ADDR11 |
+|           |     |             | | LED_OUT[2] | AF6 | LED6 |
+|           |     |             | | RAM_ADDRESS[10] | E25 | SRAM_ADDR10 |
+|           |     |             | | LED_OUT[1] | AF5 | LED7 |
+|           |     |             | | RAM_ADDRESS[9] | E24 | SRAM_ADDR9 |
+|           |     |             | | LED_OUT[0] | B3 | LED8 |
+|           |     |             | | RAM_ADDRESS[8] | E23 | SRAM_ADDR8 |
+
+
+
+핀 설정 후 컴파일 한다.
+
+HBE-Combo III 장비에 다운로딩 하고, SRAM의 동작 타이밍도를 보고 실험해 보면서 SRAM의제어에 대하여 이해해 보자.
+
+동작하는 것을 예로 들면 다음과 같다.BUS SWITCH를 조절하여 ADDRESS를 설정한다. (예, “00000000”)버튼 SWITCH SW1~8을 눌러 입력하려고 하는 DATA_IN을 설정한다.(예, “10101010”)버튼 SWITCH SW9를 눌러 RAM에 데이터를 저장한다.같은 방법으로 ①~③의 동작을 반복하여 여러 개의 데이터를 저장한다. 단ADDRESS와 DATA는 바꾸어준다.BUS SWITCH를 조절하여 읽고자 하는 ADDRESS를 설정한다.버튼 SWITCH SW0을 눌러 LED에 ①~③에서 저장하였던 데이터가 맞게 나오는지를확인한다.
