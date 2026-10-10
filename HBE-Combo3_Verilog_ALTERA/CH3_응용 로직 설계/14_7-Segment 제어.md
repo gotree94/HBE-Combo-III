@@ -227,7 +227,7 @@ HBE-Combo III 장비에 다운로딩 하고, 그 동작을 살펴보자.먼저 �
 
 이 장에서 설계하려고 하는 예제는 위의 7-Segment에 숫자를 표시하는 것을 확장한 예제로시, 분, 초가 나오는 시계 로직을 설계하여 7-Segment에 표시하는 것이다.
 
-이 로직은 외부에서 1kHz의 클럭 입력과 RESET 스위치의 입력을 받고, 클럭을 카운트하여 7-Segment에 시, 분, 초의 시계가 표시되도록 설계된 예제이다.이 로직에서는 Top Project 파일로 CH3_WATCH.VHD 파일이 사용되며, 내부의 로직에서 시,분, 초의 2자리 수를 십의 자리와 일의 자리의 숫자로 분리시켜주는 CH3_WT_SEP.VHD 파일과숫자를 7-segment 디코더를 설계한 CH3_WT_DECODER.VHD 파일이 COMPONENT로 구성되어 있다.
+이 로직은 외부에서 1kHz의 클럭 입력과 RESET 스위치의 입력을 받고, 클럭을 카운트하여 7-Segment에 시, 분, 초의 시계가 표시되도록 설계된 예제이다.이 로직에서는 Top Project 파일로 CH3_WATCH.V 파일이 사용되며, 내부의 로직에서 시,분, 초의 2자리 수를 십의 자리와 일의 자리의 숫자로 분리시켜주는 CH3_WT_SEP.V 파일과숫자를 7-segment 디코더를 설계한 CH3_WT_DECODER.V 파일이 COMPONENT로 구성되어 있다.
 
 ```verilog
 // CH3_WATCH.V
