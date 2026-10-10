@@ -32,4 +32,4 @@
 
 - [완] [CH4. 18. Quartus II Installation](<CH4_부 록/18_Quartus II Installation.md>)
 - [완] [CH4. 19. ModelSim-Altera Web Edition Installation](<CH4_부 록/19_ModelSim-Altera Web Edition Installation.md>)
-- [완] [CH4. 20. HBE-Combo III Altera 핀 맵](<CH4_부 록/20_HBE-Combo III ltera 핀 맵.md>)
+- [완] [CH4. 20. HBE-Combo III Altera 핀 맵](<CH4_부 록/20_HBE-Combo III Altera 핀 맵.md>)
