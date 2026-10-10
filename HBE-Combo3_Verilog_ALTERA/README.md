@@ -6,6 +6,7 @@
 
 - [완] [CH1. 1. 아날로그와 디지털](<CH1_기초 이론/01_아날로그와 디지털.md>)
 - [ ] [CH1. 2. TTL, ASIC, FPGA](<CH1_기초 이론/02_TTL, ASIC, FPGA.md>)
+- [ ] CH1. 2-1.반도체_논리게이트_구현기술_진화_교육자료
 - [완] [CH1. 3. Design Flow](<CH1_기초 이론/03_Design Flow.md>)
 - [완] [CH1. 4. Getting Started](<CH1_기초 이론/04_Getting Started.md>)
 - [완] [CH1. 5. Verilog HDL 구조 및 기초](<CH1_기초 이론/05_Verilog HDL 구조 및 기초.md>)
@@ -27,6 +28,7 @@
 - [완] [CH3. 15. Step Motor 제어](<CH3_응용 로직 설계/15_Step Motor 제어.md>)
 - [완] [CH3. 16. PIEZO 제어](<CH3_응용 로직 설계/16_PIEZO 제어.md>)
 - [ ] [CH3. 17. Character LCD 제어](<CH3_응용 로직 설계/17_Character LCD 제어.md>)
+- [ ]  CH3. 18. RS-232 제어
 
 ## CH4. 부 록
 
