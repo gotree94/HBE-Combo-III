@@ -38,6 +38,8 @@ Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web E
 
 ---
 
+## Quartus II 8.0
+
 <br><br>
 
 <p align="center"> <img src="../verilog-media/image180.jpeg"> </p>
