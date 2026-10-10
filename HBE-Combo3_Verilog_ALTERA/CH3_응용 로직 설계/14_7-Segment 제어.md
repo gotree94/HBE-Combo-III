@@ -13,6 +13,12 @@
 
 위의 그림과 같이 7-Segment에는 a,b,c,d,e,f,g,h의 8개의 LED로 구성되어 있다. 이 LED를 제어하여 숫자 또는 문자를 표현할 수 있는 것이 7-Segment이다. 실제 숫자와 문자를 표시하는것은 a,b,c,d,e,f,g의 데이터이고, h는 구분 등의 표시를 나타내는 용도로 사용된다. 예를 들어,7-Segment의 a,b,c,d,e,f,g,h 라인에 “01100000”의 데이터를 입력 시키면 “1”의 숫자가 표시된다. 같은 방법으로 7-Segment의 a,b,c,d,e,f,g.h라인에 데이터를 입력하여 아래와 같은 숫자와문자들을 표시할 수 있다.
 
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image161.png"> </p>
+
+<br><br>
+
 아래의 표는 위의 16개의 숫자와 문자를 표시하기 위한 7-Segment 디코더 데이터이다.
 
 <div align="center">
@@ -41,6 +47,12 @@
 HBE-Combo III에는 7-Segment가 1개로 된 것과 8개가 Array로 연결되어 있는 두 가지 형태로 구성되어 있다.
 
 7-Segment가 1개로 구성되어 있는 것에는 위와 같이 7-Segment의 a,b,c,d,e,f,g,h 라인에 데이터를 입력하면 숫자 또는 문자가 표시된다. 하지만, 7-Segment가 8개 Array로 연결되어 있는것은 데이터만 제어하면 되지 않고, 7-Segment의 Common 단자도 같이 제어해야 한다. 8개의Common 단자를 제어하는 방법을 Scanning 방식이라고 한다. 이러한 Array 구성은 I/O의 사용률을 줄이기 위한 목적으로 되어 있으며, 제어는 표시하고자 하는 7-Segment의 common단자를 0의 값을 입력하고, 그에 대한 데이터를 입력하면 선택된 7-Segment에 숫자 또는 문자가 display된다.
+
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image162.png"> </p>
+
+<br><br>
 
 아래는 8개의 7-Segment Array 중 첫 번째 7-Segment에 숫자 7을 표시하기 위한 구문이다.
 
