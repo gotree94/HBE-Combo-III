@@ -123,6 +123,11 @@ END HB;
 
 아래의 시뮬레이션의 결과에서 X가 1로 바뀔 때마다 STATE가 바뀌어 나타나는 Y의 출력 결과를 확인할 수 있다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image164.png"> </p>
+
+<br><br>
 
 위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
 
@@ -143,7 +148,19 @@ Mealy Machine은 Moore Machine이 State에 의해서 출력이 결정되는 것�
 
 아래의 블록도는 이 Mealy Machine을 구성하는 시스템에 대해서 나타내는 것인데, MooreMachine에 비해서 INPUT이 출력 데이터를 생성하는 조합논리회로에도 연결되어 있음을 유의하여야 한다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image165.png"> </p>
+
+<br><br>
+
 이 Mealy Machine을 상태도로 그리면 아래 그림과 같다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image166.png"> </p>
+
+<br><br>
 
 이 스테이트 머신은 S0과 S1의 상태를 갖고 있고, S0의 상태일 때 X=0이면 Y에 00의 데이터를 출력하고, X=1이면 Y에 10 데이터를 출력하면서, State가 S0에서 S1로 바뀐다. S1의 상태일때, X=0이면 Y에 00의 데이터를 출력하고, X=1이면 y에 01데이터를 출력하면서 State가 S1에서 S0으로 바뀌는 구조를 갖고 있다.
 
@@ -238,6 +255,12 @@ END HB;
 ```
 
 아래의 시뮬레이션의 결과에서 X가 1로 바뀔 때마다 STATE가 바뀌고, X=0일 때 STATE에 따른값이 Y에 출력되고, X=0일 때에는 Y에 00이 출력 되는 것을 확인 할 수 있다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image167.png"> </p>
+
+<br><br>
 
 위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
 
