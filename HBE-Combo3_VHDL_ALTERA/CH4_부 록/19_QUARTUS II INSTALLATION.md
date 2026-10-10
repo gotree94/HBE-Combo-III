@@ -22,7 +22,22 @@ Quartus II는 하나의 소프트웨어 안에서 로직을 설계하고, 시뮬
 
 Quartus II는 Web에서 다운로드 받아 무료로 사용할 수 있는 Web Edition 버전을 사용할 수있다. 아래에 이 Web Edition을 다운로드 받는 방법은 소개되어 있다. (이 문서는 2008년 6월을 기준으로 작성된 것으로 Quartus II 8.0 소프트웨어의 내용을 담고 있다. 이 내용은 홈페이지 내용과 위치 등이 달라질 수 있다.)
 
-아래와 같이 ALTERA사의 홈페이지(http://www.altera.com)에 접속을 한다.
+아래와 같이 ALTERA 홈페이지([Quartus-web-13.1.0.162](https://www.altera.com/downloads/fpga-development-tools/quartus-ii-web-edition-design-software-version-13-1-windows))에 접속을 한다.
+
+
+<br><br>
+
+<p align="center"> <img src="new1.png"> </p>
+
+<br><br>
+
+<br><br>
+
+<p align="center"> <img src="new2.pnㅎ"> </p>
+
+<br><br>
+
+---
 
 <br><br>
 
