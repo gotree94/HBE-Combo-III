@@ -13,6 +13,12 @@
 
 위의 그림과 같이 7-Segment에는 a,b,c,d,e,f,g,h의 8개의 LED로 구성되어 있다. 이 LED를 제어하여 숫자 또는 문자를 표현할 수 있는 것이 7-Segment이다. 실제 숫자와 문자를 표시하는것은 a,b,c,d,e,f,g의 데이터이고, h는 구분 등의 표시를 나타내는 용도로 사용된다. 예를 들어,7-Segment의 a,b,c,d,e,f,g,h 라인에 “01100000”의 데이터를 입력 시키면 “1”의 숫자가 표시된다. 같은 방법으로 7-Segment의 a,b,c,d,e,f,g.h라인에 데이터를 입력하여 아래와 같은 숫자와문자들을 표시할 수 있다.
 
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image173.png"> </p>
+
+<br><br>
+
 7-Segment 제어아래의 표는 위의 16개의 숫자와 문자를 표시하기 위한 7-Segment 디코더 데이터이다.
 
 <div align="center">
@@ -54,6 +60,12 @@ Seg_dat <= “11100000”;
    * 다음 두번째 7-Segment를 선택하기 위하여 common 단자에 ‘0’의 값을 전달하고 다른 common 단자에는‘1’의 값을 전달한다. 그리고, seg_data에 “2”를 표시하기 위한 데이터를 전달한다.
    * 이런 방법으로 세번째와 네번째의 7-Segment에도 각각 common 단자를 선택하고, “3”과 “4”에 해당하는seg_data 데이터를 전달한다.
    * 이 각 7-Segment를 선택하고 데이터를 전달하는 것을 빠르게반복시키면, 아래 그림과 같이 4개의 7-Segment Array에 전부 데이터가 출력되는 것처럼 보인다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image174.png"> </p>
+
+<br><br>
 
 
 실제 제어하는 VHDL 로직은 아래의 14.2. 기본 제어에 설명하겠다.
