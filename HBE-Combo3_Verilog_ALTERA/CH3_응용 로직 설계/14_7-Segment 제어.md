@@ -201,4 +201,213 @@ HBE-Combo III 장비에 다운로딩 하고, 그 동작을 살펴보자.먼저 �
 
 이 장에서 설계하려고 하는 예제는 위의 7-Segment에 숫자를 표시하는 것을 확장한 예제로시, 분, 초가 나오는 시계 로직을 설계하여 7-Segment에 표시하는 것이다.
 
-이 로직은 외부에서 1kHz의 클럭 입력과 RESET 스위치의 입력을 받고, 클럭을 카운트하여 7-Segment에 시, 분, 초의 시계가 표시되도록 설계된 예제이다.이 로직에서는 Top Project 파일로 CH3_WATCH.VHD 파일이 사용되며, 내부의 로직에서 시,분, 초의 2자리 수를 십의 자리와 일의 자리의 숫자로 분리시켜주는 CH3_WT_SEP.VHD 파일과숫자를 7-segment 디코더를 설계한 CH3_WT_DECODER.VHD 파일이 COMPONENT로 구성되어 있다.// CH3_WATCH.Vmodule CH3_WATCH(RESETN, CLK,SEG_COM, SEG_DATAinput RESETN, CLK;output [7:0] SEG_COM, SEG_DATA;reg [7:0] SEG_COM;wire [7:0] SEG_DATA;integer CNT;integer CNT_SCAN;reg [6:0] HOUR, MIN, SEC;wire [3:0] H10, H1, M10, M1, S10, S1;reg [3:0] NUM;reg SEG_DOT;always @(posedge CLK)beginif (~RESETN)CNT = 0;elsebeginif (CNT >= 999)CNT = 0;elseCNT = CNT + 1;endendalways @(posedge CLK)beginif (~RESETN)SEC = 0;elsebeginif (CNT == 999)beginif (SEC >= 59)SEC = 0;elseSEC = SEC + 1;endendendalways @(posedge CLK)beginif (~RESETN)MIN = 0;elsebeginif ((CNT == 999) && (SEC == 59))beginif (MIN >= 59)MIN = 0;elseMIN = MIN + 1;endendendalways @(posedge CLK)beginif (~RESETN)HOUR = 0;elsebeginif ((CNT == 999) && (SEC == 59) && (MIN == 59))beginif (HOUR >= 23)HOUR = 0;elseHOUR = HOUR + 1;endendendalways @(posedge CLK)beginif (~RESETN)beginSEG_DOT = 1'b0;SEG_COM = 8'b00000000;NUM = 0;CNT_SCAN = 0;endelsebeginif (CNT_SCAN >= 5)CNT_SCAN = 0;elseCNT_SCAN = CNT_SCAN + 1;case (CNT_SCAN)0 :beginNUM = H10;SEG_DOT = 1'b0;SEG_COM = 8'b01111111;end1 :beginNUM = H1;SEG_DOT = 1'b1;SEG_COM = 8'b10111111;end2 :beginNUM = M10;SEG_DOT = 1'b0;SEG_COM = 8'b11011111;end3 :beginNUM = M1;SEG_DOT = 1'b1;SEG_COM = 8'b11101111;end4 :beginNUM = S10;SEG_DOT = 1'b0;SEG_COM = 8'b11110111;end5 :beginNUM = S1;SEG_DOT = 1'b1;SEG_COM = 8'b11111011;enddefault :beginNUM = 0;SEG_DOT = 1'b0;SEG_COM = 8'b11111111;endendcaseendendCH3_WT_SEP S_SEP(SEC, S10, S1);CH3_WT_SEP M_SEP(MIN, M10, M1);CH3_WT_SEP H_SEP(HOUR, H10, H1);CH3_WT_DECODER S_DECODE(NUM, SEG_DOT, SEG_DATA);endmodule먼저 Top Project 파일인 CH3_WATCH.V 파일에 대한 설명을 하겠다.이 Verilog HDL로직은 3~9라인에서 선언되어 있듯이, 1KHz의 클럭의 입력을 받는 CLK와 초기화 동작을 위한 RESETN이 입력으로 선언되어 있다. 출력 결과는 7-Segment의 Common 단자에 연결되는 SEG_COM과 7-Segment의 Data에 연결되는 SEG_DATA로 출력이 된다.37~83라인은 실제 시간이 카운트 되는 블록인데, 첫 번째 always문에서 1KHz의 신호를 받아먼저 1초를 생성하기 위해 CNT를 0~999까지 카운트 하고 있다. 두 번째 always문에서는 앞에서 카운트한 CNT의 값이 999일 때 SEC를 하나씩 카운트하여 0~59까지 카운트 한다. 시계의 초 영역을 카운트 하는 블록이다. 세 번째 always문은 CNT의 값이 999이고, SEC의 값이59까지 카운트 되었을 때마다 MIN을 1씩 카운트 하여 0~59까지 카운트 한다. 시계의 분 영역을 카운트 하는 블록이다. 네 번째 always 문에서는 같은 방법으로 하여 시계의 시 영역을카운트 하도록 설계되어 있다.85~146라인은 클럭을 CNT_SCAN이라는 변수에 카운트하여 그 카운트한 값에 따라 7-Segment의 Common단자를 선택하고 그에 해당하는 데이터를 NUM이라는 변수로 출력하는블록이다. 이 NUM의 변수는 뒤의 164~166라인의 7-Segment 디코더와 연결되어 7-Segment에 표시하는 데이터가 출력된다. 그리고, SEG_DOT는 시, 분, 초를 구분하기 위하여 두 번째와네 번째, 여섯 번째의 7-Segment에만 표시되도록 설계되었다.148~150라인은 앞에서 카운트한 시, 분, 초의 값을 7-Segment에 표시할 수 있도록 각각을 십의 자릿수와 일의 자릿수로 분리하는 CH3_WT_SEP에 연결되어 있다. 이 컴포넌트에 SEC, MIN,HOUR의 데이터를 입력시키면, 자릿수가 분리된 데이터가 출력된다.아래의 CH3_WT_SEP 로직은 두 자릿수의 수(0~99)의 입력을 받아 십의 자릿수의 수와 일의자릿수의 수로 분리하는 로직이다. 13~90라인에 이 부분이 설계되어 있다.// CH3_WT_SEP.Vmodule CH3_WT_SEP(NUMBER,SEP_A, SEP_Binput [6:0] NUMBER;output [3:0] SEP_A, SEP_B;reg [3:0] SEP_A, SEP_B;always @(NUMBER)beginif (NUMBER <= 9)beginSEP_A = 3'b000;SEP_B = NUMBER[3:0];endelse if (NUMBER <= 19)beginSEP_A = 1;SEP_B = NUMBER - 10;endelse if (NUMBER <= 29)beginSEP_A = 2;SEP_B = NUMBER - 20;endelse if (NUMBER <= 39)beginSEP_A = 3;SEP_B = NUMBER - 30;endelse if (NUMBER <= 49)beginSEP_A = 4;SEP_B = NUMBER - 40;endelse if (NUMBER <= 59)beginSEP_A = 5;SEP_B = NUMBER - 50;endelse if (NUMBER <= 69)beginSEP_A = 6;SEP_B = NUMBER - 60;endelse if (NUMBER <= 79)beginSEP_A = 7;SEP_B = NUMBER - 70;endelse if (NUMBER <= 89)beginSEP_A = 8;SEP_B = NUMBER - 80;endelse if (NUMBER <= 99)beginSEP_A = 9;SEP_B = NUMBER - 90;endelsebeginSEP_A = 0;SEP_B = 0;endendendmodule아래의 CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어온 BCD의 값을15~30라인의 CASE문에서 7-Segment에 표시하기 위한 데이터로 변환하는 블록이 설계되어있다. 7-Segment Data에는 총 8비트의 출력이 필요하기 때문에 32라인에서 외부 입력으로 들어온 DOT 값을 SEG_D와 합치도록 구성되어 있다.// CH3_WT_DECODER.Vmodule CH3_WT_DECODER(BCD, DOT,SEG_DATAinput [3:0] BCD;input DOT;output [7:0] SEG_DATA;wire [7:0] SEG_DATA;reg [6:0] BUFF;always @(BCD)begincase (BCD)4'b0000 : BUFF = 7'b1111110;  //04'b0001 : BUFF = 7'b0110000;  //14'b0010 : BUFF = 7'b1101101;  //24'b0011 : BUFF = 7'b1111001;  //34'b0100 : BUFF = 7'b0110011;  //44'b0101 : BUFF = 7'b1011011;  //54'b0110 : BUFF = 7'b1011111;  //64'b0111 : BUFF = 7'b1110000;  //74'b1000 : BUFF = 7'b1111111;  //84'b1001 : BUFF = 7'b1111011;  //9default : BUFF = 7'b0000000;  //NULLendcaseendassign SEG_DATA = { BUFF, DOT };endmodule위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSEG_COM[0]T7SEG_COM8CLKN2CLK1SEG_DATA[7]M5SEG_DATA_ASEG_COM[7]T3SEG_COM1SEG_DATA[6]M4SEG_ DATA_BSEG_COM[6]T2SEG_COM2SEG_DATA[5]R5SEG_ DATA_CSEG_COM[5]R7SEG_COM3SEG_DATA[4]R4SEG_ DATA_DSEG_COM[4]R6SEG_COM4SEG_DATA[3]R3SEG_ DATA_ESEG_COM[3]U3SEG_COM5SEG_DATA[2]R2SEG_ DATA_FSEG_COM[2]U2SEG_COM6SEG_DATA[1]P7SEG_ DATA_GSEG_COM[1]U1SEG_COM7SEG_DATA[0]T4SEG_ DATA_H핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 1kHz로 설정하고, 위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.
+이 로직은 외부에서 1kHz의 클럭 입력과 RESET 스위치의 입력을 받고, 클럭을 카운트하여 7-Segment에 시, 분, 초의 시계가 표시되도록 설계된 예제이다.이 로직에서는 Top Project 파일로 CH3_WATCH.VHD 파일이 사용되며, 내부의 로직에서 시,분, 초의 2자리 수를 십의 자리와 일의 자리의 숫자로 분리시켜주는 CH3_WT_SEP.VHD 파일과숫자를 7-segment 디코더를 설계한 CH3_WT_DECODER.VHD 파일이 COMPONENT로 구성되어 있다.
+
+```verilog
+// CH3_WATCH.V
+
+module CH3_WATCH(RESETN, CLK, SEG_COM, SEG_DATA);
+    input  RESETN, CLK;
+    output [7:0] SEG_COM, SEG_DATA;
+
+    reg [7:0] SEG_COM;
+    wire [7:0] SEG_DATA;
+
+    integer CNT;
+    integer CNT_SCAN;
+    reg [6:0] HOUR, MIN, SEC;
+    wire [3:0] H10, H1, M10, M1, S10, S1;
+    reg [3:0] NUM;
+    reg SEG_DOT;
+
+    CH3_WT_SEP S_SEP(SEC, S10, S1);
+    CH3_WT_SEP M_SEP(MIN, M10, M1);
+    CH3_WT_SEP H_SEP(HOUR, H10, H1);
+    CH3_WT_DECODER S_DECODE(NUM, SEG_DOT, SEG_DATA);
+
+    always @(posedge CLK) begin
+        if (~RESETN)
+            CNT = 0;
+        else begin
+            if (CNT >= 999)
+                CNT = 0;
+            else
+                CNT = CNT + 1;
+        end
+    end
+
+    always @(posedge CLK) begin
+        if (~RESETN)
+            SEC = 0;
+        else begin
+            if (CNT == 999) begin
+                if (SEC >= 59)
+                    SEC = 0;
+                else
+                    SEC = SEC + 1;
+            end
+        end
+    end
+
+    always @(posedge CLK) begin
+        if (~RESETN)
+            MIN = 0;
+        else begin
+            if ((CNT == 999) && (SEC == 59)) begin
+                if (MIN >= 59)
+                    MIN = 0;
+                else
+                    MIN = MIN + 1;
+            end
+        end
+    end
+
+    always @(posedge CLK) begin
+        if (~RESETN)
+            HOUR = 0;
+        else begin
+            if ((CNT == 999) && (SEC == 59) && (MIN == 59)) begin
+                if (HOUR >= 23)
+                    HOUR = 0;
+                else
+                    HOUR = HOUR + 1;
+            end
+        end
+    end
+
+    always @(posedge CLK) begin
+        if (~RESETN) begin
+            SEG_DOT  = 1'b0;
+            SEG_COM  = 8'b00000000;
+            NUM      = 0;
+            CNT_SCAN = 0;
+        end
+        else begin
+            if (CNT_SCAN >= 5)
+                CNT_SCAN = 0;
+            else
+                CNT_SCAN = CNT_SCAN + 1;
+
+            case (CNT_SCAN)
+                0 : begin
+                        NUM     = H10;
+                        SEG_DOT = 1'b0;
+                        SEG_COM = 8'b01111111;
+                    end
+                1 : begin
+                        NUM     = H1;
+                        SEG_DOT = 1'b1;
+                        SEG_COM = 8'b10111111;
+                    end
+                2 : begin
+                        NUM     = M10;
+                        SEG_DOT = 1'b0;
+                        SEG_COM = 8'b11011111;
+                    end
+                3 : begin
+                        NUM     = M1;
+                        SEG_DOT = 1'b1;
+                        SEG_COM = 8'b11101111;
+                    end
+                4 : begin
+                        NUM     = S10;
+                        SEG_DOT = 1'b0;
+                        SEG_COM = 8'b11110111;
+                    end
+                5 : begin
+                        NUM     = S1;
+                        SEG_DOT = 1'b1;
+                        SEG_COM = 8'b11111011;
+                    end
+                default : begin
+                        NUM     = 0;
+                        SEG_DOT = 1'b0;
+                        SEG_COM = 8'b11111111;
+                    end
+            endcase
+        end
+    end
+
+endmodule
+```
+
+먼저 Top Project 파일인 CH3_WATCH.V 파일에 대한 설명을 하겠다.이 Verilog HDL로직은 3~9라인에서 선언되어 있듯이, 1KHz의 클럭의 입력을 받는 CLK와 초기화 동작을 위한 RESETN이 입력으로 선언되어 있다. 출력 결과는 7-Segment의 Common 단자에 연결되는 SEG_COM과 7-Segment의 Data에 연결되는 SEG_DATA로 출력이 된다.37~83라인은 실제 시간이 카운트 되는 블록인데, 첫 번째 always문에서 1KHz의 신호를 받아먼저 1초를 생성하기 위해 CNT를 0~999까지 카운트 하고 있다. 두 번째 always문에서는 앞에서 카운트한 CNT의 값이 999일 때 SEC를 하나씩 카운트하여 0~59까지 카운트 한다. 시계의 초 영역을 카운트 하는 블록이다. 세 번째 always문은 CNT의 값이 999이고, SEC의 값이59까지 카운트 되었을 때마다 MIN을 1씩 카운트 하여 0~59까지 카운트 한다. 시계의 분 영역을 카운트 하는 블록이다. 네 번째 always 문에서는 같은 방법으로 하여 시계의 시 영역을카운트 하도록 설계되어 있다.85~146라인은 클럭을 CNT_SCAN이라는 변수에 카운트하여 그 카운트한 값에 따라 7-Segment의 Common단자를 선택하고 그에 해당하는 데이터를 NUM이라는 변수로 출력하는블록이다. 이 NUM의 변수는 뒤의 164~166라인의 7-Segment 디코더와 연결되어 7-Segment에 표시하는 데이터가 출력된다. 그리고, SEG_DOT는 시, 분, 초를 구분하기 위하여 두 번째와네 번째, 여섯 번째의 7-Segment에만 표시되도록 설계되었다.148~150라인은 앞에서 카운트한 시, 분, 초의 값을 7-Segment에 표시할 수 있도록 각각을 십의 자릿수와 일의 자릿수로 분리하는 CH3_WT_SEP에 연결되어 있다. 이 컴포넌트에 SEC, MIN,HOUR의 데이터를 입력시키면, 자릿수가 분리된 데이터가 출력된다.아래의 CH3_WT_SEP 로직은 두 자릿수의 수(0~99)의 입력을 받아 십의 자릿수의 수와 일의자릿수의 수로 분리하는 로직이다. 13~90라인에 이 부분이 설계되어 있다.
+
+```verilog
+// CH3_WT_SEP.V
+
+module CH3_WT_SEP(NUMBER, SEP_A, SEP_B);
+    input  [6:0]  NUMBER;
+    output [3:0]  SEP_A, SEP_B;
+
+    reg [3:0] SEP_A, SEP_B;
+
+    always @(NUMBER) begin
+        if      (NUMBER <= 9)  begin SEP_A = 4'd0; SEP_B = NUMBER[3:0]; end
+        else if (NUMBER <= 19) begin SEP_A = 4'd1; SEP_B = NUMBER - 10; end
+        else if (NUMBER <= 29) begin SEP_A = 4'd2; SEP_B = NUMBER - 20; end
+        else if (NUMBER <= 39) begin SEP_A = 4'd3; SEP_B = NUMBER - 30; end
+        else if (NUMBER <= 49) begin SEP_A = 4'd4; SEP_B = NUMBER - 40; end
+        else if (NUMBER <= 59) begin SEP_A = 4'd5; SEP_B = NUMBER - 50; end
+        else if (NUMBER <= 69) begin SEP_A = 4'd6; SEP_B = NUMBER - 60; end
+        else if (NUMBER <= 79) begin SEP_A = 4'd7; SEP_B = NUMBER - 70; end
+        else if (NUMBER <= 89) begin SEP_A = 4'd8; SEP_B = NUMBER - 80; end
+        else if (NUMBER <= 99) begin SEP_A = 4'd9; SEP_B = NUMBER - 90; end
+        else                   begin SEP_A = 4'd0; SEP_B = 4'd0;       end
+    end
+
+endmodule
+```
+아래의 CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어온 BCD의 값을15~30라인의 CASE문에서 7-Segment에 표시하기 위한 데이터로 변환하는 블록이 설계되어있다. 7-Segment Data에는 총 8비트의 출력이 필요하기 때문에 32라인에서 외부 입력으로 들어온 DOT 값을 SEG_D와 합치도록 구성되어 있다.
+
+```verilog
+// CH3_WT_DECODER.V
+
+module CH3_WT_DECODER(BCD, DOT, SEG_DATA);
+    input  [3:0] BCD;
+    input  DOT;
+    output [7:0] SEG_DATA;
+
+    wire [6:0] BUFF;
+
+    always @(BCD) begin
+        case (BCD)
+            4'b0000 : BUFF = 7'b1111110;  // 0
+            4'b0001 : BUFF = 7'b0110000;  // 1
+            4'b0010 : BUFF = 7'b1101101;  // 2
+            4'b0011 : BUFF = 7'b1111001;  // 3
+            4'b0100 : BUFF = 7'b0110011;  // 4
+            4'b0101 : BUFF = 7'b1011011;  // 5
+            4'b0110 : BUFF = 7'b1011111;  // 6
+            4'b0111 : BUFF = 7'b1110000;  // 7
+            4'b1000 : BUFF = 7'b1111111;  // 8
+            4'b1001 : BUFF = 7'b1111011;  // 9
+            default : BUFF = 7'b0000000;  // NULL
+        endcase
+    end
+
+    assign SEG_DATA = {BUFF, DOT};
+
+endmodule
+```
+
+위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.
+
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | SEG_COM[0] | T7 | SEG_COM8 |
+| CLK | N2 | CLK1 | | SEG_DATA[7] | M5 | SEG_DATA_A |
+| SEG_COM[7] | T3 | SEG_COM1 | | SEG_DATA[6] | M4 | SEG_DATA_B |
+| SEG_COM[6] | T2 | SEG_COM2 | | SEG_DATA[5] | R5 | SEG_DATA_C |
+| SEG_COM[5] | R7 | SEG_COM3 | | SEG_DATA[4] | R4 | SEG_DATA_D |
+| SEG_COM[4] | R6 | SEG_COM4 | | SEG_DATA[3] | R3 | SEG_DATA_E |
+| SEG_COM[3] | U3 | SEG_COM5 | | SEG_DATA[2] | R2 | SEG_DATA_F |
+| SEG_COM[2] | U2 | SEG_COM6 | | SEG_DATA[1] | P7 | SEG_DATA_G |
+| SEG_COM[1] | U1 | SEG_COM7 | | SEG_DATA[0] | T4 | SEG_DATA_H |
+
+핀 설정 후 컴파일 한다.
+
+먼저 HBE-Combo III 장비에서 클럭의 입력은 1kHz로 설정하고, 위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.
+
+
+
