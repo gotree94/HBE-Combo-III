@@ -435,4 +435,6 @@ CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어�
 | SEG_COM[2] | U2 | SEG_COM6 | | SEG_DATA[1] | P7 | SEG_DATA_G |
 | SEG_COM[1] | U1 | SEG_COM7 | | SEG_DATA[0] | T4 | SEG_DATA_H |
 
-핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 1kHz로 설정하고, 위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.
+핀 설정 후 컴파일 한다.
+
+먼저 HBE-Combo III 장비에서 클럭의 입력은 1kHz로 설정하고, 위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.
