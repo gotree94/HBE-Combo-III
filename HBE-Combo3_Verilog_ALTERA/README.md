@@ -1,7 +1,5 @@
 # HBE-Combo III로 배우는 VerilogHDL를 이용한 디지털 회로설계(ALTERA)
 
-본 문서는 「HBE-Combo III로 배우는 VerilogHDL를 이용한 디지털 회로설계(ALTERA) v1.0 최종 20081006-p337」 교재
-
 ## 목차
 
 ## CH1. 기초 이론
