@@ -176,35 +176,21 @@ END HB;
 | DATA_IN[0] | V7 | SW8 | | RAM_DATA[8] | T23 | SRAM_DATA8 |
 | WRITE | Y4 | SW9 | | RAM_DATA[7] | T22 | SRAM_DATA7 |
 | READ | Y3 | SW0 | | RAM_DATA[6] | T21 | SRAM_DATA6 |
-|           |     |             | | RAM_CS | H26 | SRAM_CS |
-|           |     |             | | RAM_DATA[5] | T20 | SRAM_DATA5 |
-|           |     |             | | RAM_OE | J21 | SRAM_OE |
-|           |     |             | | RAM_DATA[4] | R25 | SRAM_DATA4 |
-|           |     |             | | RAM_WE | J20 | SRAM_WE |
-|           |     |             | | RAM_DATA[3] | R24 | SRAM_DATA3 |
-|           |     |             | | RAM_UB | G24 | SRAM1_UB |
-|           |     |             | | RAM_DATA[2] | R20 | SRAM_DATA2 |
-|           |     |             | | RAM_LB | G23 | SRAM1_LB |
-|           |     |             | | RAM_DATA[1] | P24 | SRAM_DATA1 |
-|           |     |             | | RAM_ADDRESS[17] | G22 | SRAM_ADDR17 |
-|           |     |             | | RAM_DATA[0] | P23 | SRAM_DATA0 |
-|           |     |             | | RAM_ADDRESS[16] | G21 | SRAM_ADDR16 |
-|           |     |             | | LED_OUT[7] | AE11 | LED1 |
-|           |     |             | | RAM_ADDRESS[15] | F26 | SRAM_ADDR15 |
-|           |     |             | | LED_OUT[6] | AE10 | LED2 |
-|           |     |             | | RAM_ADDRESS[14] | F25 | SRAM_ADDR14 |
-|           |     |             | | LED_OUT[5] | AF9 | LED3 |
-|           |     |             | | RAM_ADDRESS[13] | F24 | SRAM_ADDR13 |
-|           |     |             | | LED_OUT[4] | AF8 | LED4 |
-|           |     |             | | RAM_ADDRESS[12] | F20 | SRAM_ADDR12 |
-|           |     |             | | LED_OUT[3] | AF7 | LED5 |
-|           |     |             | | RAM_ADDRESS[11] | E26 | SRAM_ADDR11 |
-|           |     |             | | LED_OUT[2] | AF6 | LED6 |
-|           |     |             | | RAM_ADDRESS[10] | E25 | SRAM_ADDR10 |
-|           |     |             | | LED_OUT[1] | AF5 | LED7 |
-|           |     |             | | RAM_ADDRESS[9] | E24 | SRAM_ADDR9 |
-|           |     |             | | LED_OUT[0] | B3 | LED8 |
-|           |     |             | | RAM_ADDRESS[8] | E23 | SRAM_ADDR8 |
+| RAM_CS | H26 | SRAM_CS | | RAM_DATA[5] | T20 | SRAM_DATA5 |
+| RAM_OE | J21 | SRAM_OE | | RAM_DATA[4] | R25 | SRAM_DATA4 |
+| RAM_WE | J20 | SRAM_WE | | RAM_DATA[3] | R24 | SRAM_DATA3 |
+| RAM_UB | G24 | SRAM1_UB | | RAM_DATA[2] | R20 | SRAM_DATA2 |
+| RAM_LB | G23 | SRAM1_LB | | RAM_DATA[1] | P24 | SRAM_DATA1 |
+| RAM_ADDRESS[17] | G22 | SRAM_ADDR17 | | RAM_DATA[0] | P23 | SRAM_DATA0 |
+| RAM_ADDRESS[16] | G21 | SRAM_ADDR16 | | LED_OUT[7] | AE11 | LED1 |
+| RAM_ADDRESS[15] | F26 | SRAM_ADDR15 | | LED_OUT[6] | AE10 | LED2 |
+| RAM_ADDRESS[14] | F25 | SRAM_ADDR14 | | LED_OUT[5] | AF9 | LED3 |
+| RAM_ADDRESS[13] | F24 | SRAM_ADDR13 | | LED_OUT[4] | AF8 | LED4 |
+| RAM_ADDRESS[12] | F20 | SRAM_ADDR12 | | LED_OUT[3] | AF7 | LED5 |
+| RAM_ADDRESS[11] | E26 | SRAM_ADDR11 | | LED_OUT[2] | AF6 | LED6 |
+| RAM_ADDRESS[10] | E25 | SRAM_ADDR10 | | LED_OUT[1] | AF5 | LED7 |
+| RAM_ADDRESS[9] | E24 | SRAM_ADDR9 | | LED_OUT[0] | B3 | LED8 |
+| RAM_ADDRESS[8] | E23 | SRAM_ADDR8 | |           |     |             | 
 
 
 핀 설정 후 컴파일 한다.
