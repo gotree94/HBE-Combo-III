@@ -181,7 +181,7 @@ endmodule
 
 위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
 
-입력 데이터 ADDRESS는 BUS SW1 ~ 8에 연결하고, DATA_IN은 버튼 스위치 SW1~8에 연결한다. WRITE와 READ 신호는 각각 SW 9, SW0에 연결한다. 그리고, RAM_.. 신호는 SRAM의 핀번호로 설정하여 SRAM에 연결하도록 한다.  출력 결과 LED_OUT는 LED1~8에 연결하여 저장되었던 데이터를 확인할 수 있도록 한다.
+입력 데이터 ADDRESS는 BUS SW1 ~ 8에 연결하고, DATA_IN은 버튼 스위치 SW1 ~ 8에 연결한다. WRITE와 READ 신호는 각각 SW 9, SW0에 연결한다. 그리고, RAM_.. 신호는 SRAM의 핀번호로 설정하여 SRAM에 연결하도록 한다.  출력 결과 LED_OUT는 LED1~8에 연결하여 저장되었던 데이터를 확인할 수 있도록 한다.
 
 
 <div align="center">
