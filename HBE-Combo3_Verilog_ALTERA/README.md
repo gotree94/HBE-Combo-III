@@ -26,7 +26,7 @@
 - [완] [CH3. 14. 7-Segment 제어](<CH3_응용 로직 설계/14_7-Segment 제어.md>)
 - [완] [CH3. 15. Step Motor 제어](<CH3_응용 로직 설계/15_Step Motor 제어.md>)
 - [완] [CH3. 16. PIEZO 제어](<CH3_응용 로직 설계/16_PIEZO 제어.md>)
-- [완] [CH3. 17. Character LCD 제어](<CH3_응용 로직 설계/17_Character LCD 제어.md>)
+- [ ] [CH3. 17. Character LCD 제어](<CH3_응용 로직 설계/17_Character LCD 제어.md>)
 
 ## CH4. 부 록
 
