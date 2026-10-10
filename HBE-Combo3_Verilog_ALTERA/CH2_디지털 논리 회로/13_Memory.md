@@ -143,7 +143,21 @@ module CH2_SRAM(WRITE, READ, ADDRESS, DATA_IN,
 endmodule
 ```
 
-위에서 설계된 로직에서 3~17 라인에서 READ, WRITE, DATA_IN, ADDRESS는 스위치를 통해SRAM에 전달해 주기 위한 신호이고, RAM_XX 신호는 SRAM에 직접 연결되어 있는 신호이다.SRAM의 DATA는 INOUT으로 선언해야 됨을 유의해야 한다.24라인에서 SRAM의 Chip Select 신호로 계속 사용하기 위하여 0의 값을 전달해 준다.25~26라인은 각각 SRAM의 Output Enable과 Write Enable의 신호로 버튼 스위치와 연결되어있다.27라인은 SRAM의 ADDRESS로 실제 사용하는 SRAM의 ADDRESS가 18비트이기 때문에 앞의10비트를 고정하고 뒤의 8비트는 스위치의 ADDRESS 입력에 연결되도록 구성되어 있다.28라인은 SRAM의 DATA에 연결되는 부분인데, SRAM의 DATA가 양방향 입출력 포트이어서 데이터를 읽을 때에는 High Impedance의 값을 출력해주어야, 읽는 데이터가 정상적으로 들어온다. 이것을 위해 설계된 부분으로 RAM_DATA는 WRITE가 1일 때(RAM_WE = 0)에만 전달되고,1이 아닐 때에는 High Impedance의 값이 전달된다.29라인은 데이터를 출력해 보기 위한 구문으로 READ 신호가 들어왔을 때에 RAM_DATA의 신호를 LED에 출력하도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.입력 데이터 ADDRESS는 BUS SW1~8에 연결하고, DATA_IN은 버튼 스위치 SW1~8에 연결한다. WRITE와 READ 신호는 각각 SW 9, SW0에 연결한다. 그리고, RAM_.. 신호는 SRAM의 핀번호로 설정하여 SRAM에 연결하도록 한다.  출력 결과 LED_OUT는 LED1~8에 연결하여 저장되었던 데이터를 확인할 수 있도록 한다.
+위에서 설계된 로직에서 3 ~ 17 라인에서 READ, WRITE, DATA_IN, ADDRESS는 스위치를 통해SRAM에 전달해 주기 위한 신호이고, RAM_XX 신호는 SRAM에 직접 연결되어 있는 신호이다.SRAM의 DATA는 INOUT으로 선언해야 됨을 유의해야 한다.
+
+24라인에서 SRAM의 Chip Select 신호로 계속 사용하기 위하여 0의 값을 전달해 준다.
+
+25 ~ 26라인은 각각 SRAM의 Output Enable과 Write Enable의 신호로 버튼 스위치와 연결되어있다.
+
+27라인은 SRAM의 ADDRESS로 실제 사용하는 SRAM의 ADDRESS가 18비트이기 때문에 앞의10비트를 고정하고 뒤의 8비트는 스위치의 ADDRESS 입력에 연결되도록 구성되어 있다.
+
+28라인은 SRAM의 DATA에 연결되는 부분인데, SRAM의 DATA가 양방향 입출력 포트이어서 데이터를 읽을 때에는 High Impedance의 값을 출력해주어야, 읽는 데이터가 정상적으로 들어온다. 이것을 위해 설계된 부분으로 RAM_DATA는 WRITE가 1일 때(RAM_WE = 0)에만 전달되고,1이 아닐 때에는 High Impedance의 값이 전달된다.
+
+29라인은 데이터를 출력해 보기 위한 구문으로 READ 신호가 들어왔을 때에 RAM_DATA의 신호를 LED에 출력하도록 구성되어 있다.
+
+위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
+
+입력 데이터 ADDRESS는 BUS SW1~8에 연결하고, DATA_IN은 버튼 스위치 SW1~8에 연결한다. WRITE와 READ 신호는 각각 SW 9, SW0에 연결한다. 그리고, RAM_.. 신호는 SRAM의 핀번호로 설정하여 SRAM에 연결하도록 한다.  출력 결과 LED_OUT는 LED1~8에 연결하여 저장되었던 데이터를 확인할 수 있도록 한다.
 
 
 <div align="center">
