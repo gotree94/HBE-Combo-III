@@ -113,7 +113,36 @@ BEGIN
 END HB;
 ```
 
-22~41라인에 클럭의 입력을 받아 CNT를 카운트하고, 그 카운트한 값을 비교하여 REG의 변수에 2상 여자 방식의 데이터를 전달하는 회로가 구성되어 있다. 이 REG 데이터는 43~46라인에서 스텝 모터의 제어 신호로 출력된다.이 예제는 아래와 같이 테스트 벤치 파일을 작성하여 시뮬레이션 할 수 있다.--TB_CH3_STEP.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.STD_LOGIC_UNSIGNED.ALL;ENTITY TB_CH3_STEP ISEND TB_CH3_STEP;ARCHITECTURE HB OF TB_CH3_STEP ISCOMPONENT CH3_STEPPORT(RESETN : IN STD_LOGIC;CLK : IN STD_LOGIC;STEP_A, STEP_B : OUT STD_LOGIC;STEP_AN, STEP_BN : OUT STD_LOGICEND COMPONENT;SIGNAL RESETN : STD_LOGIC := ‘0’;SIGNAL CLK : STD_LOGIC := ‘0’;SIGNAL STEP_A : STD_LOGIC := ‘0’;SIGNAL STEP_B : STD_LOGIC := ‘0’;SIGNAL STEP_AN : STD_LOGIC := ‘0’;SIGNAL STEP_BN : STD_LOGIC := ‘0’;BEGINPROCESSBEGINWAIT FOR 10 NS;CLK  <= NOT CLK;END PROCESS;RESETN <= ‘0’, ‘1’ AFTER 15NS;U_CH3_STEP : CH3_STEPPORT MAP (RESETN => RESETN,CLK => CLK,STEP_A => STEP_A,STEP_B => STEP_B,STEP_AN => STEP_AN,STEP_BN => STEP_BNEND HB;이 테스트 벤치 파일은 30~36라인에 시뮬레이션 하기 위해서 필요한 RESETN과 CLK의 신호를 생성하도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSTEP_BAB24STEPMOTOR BCLKN2CLK1STEP_ANY26STEPMOTOR /ASTEP_AAA23STEPMOTOR ASTEP_BNAB23STEPMOTOR /B핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 100Hz로 설정하고, 위에서 생성된 프로그래밍파일을 다운로딩 하여 그 동작을 살펴보자.
+22~41라인에 클럭의 입력을 받아 CNT를 카운트하고, 그 카운트한 값을 비교하여 REG의 변수에 2상 여자 방식의 데이터를 전달하는 회로가 구성되어 있다. 이 REG 데이터는 43~46라인에서 스텝 모터의 제어 신호로 출력된다.
+
+이 예제는 아래와 같이 테스트 벤치 파일을 작성하여 시뮬레이션 할 수 있다.
+
+```
+
+--TB_CH3_STEP.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.STD_LOGIC_UNSIGNED.ALL;ENTITY TB_CH3_STEP ISEND TB_CH3_STEP;ARCHITECTURE HB OF TB_CH3_STEP ISCOMPONENT CH3_STEPPORT(RESETN : IN STD_LOGIC;CLK : IN STD_LOGIC;STEP_A, STEP_B : OUT STD_LOGIC;STEP_AN, STEP_BN : OUT STD_LOGICEND COMPONENT;SIGNAL RESETN : STD_LOGIC := ‘0’;SIGNAL CLK : STD_LOGIC := ‘0’;SIGNAL STEP_A : STD_LOGIC := ‘0’;SIGNAL STEP_B : STD_LOGIC := ‘0’;SIGNAL STEP_AN : STD_LOGIC := ‘0’;SIGNAL STEP_BN : STD_LOGIC := ‘0’;BEGINPROCESSBEGINWAIT FOR 10 NS;CLK  <= NOT CLK;END PROCESS;RESETN <= ‘0’, ‘1’ AFTER 15NS;U_CH3_STEP : CH3_STEPPORT MAP (RESETN => RESETN,CLK => CLK,STEP_A => STEP_A,STEP_B => STEP_B,STEP_AN => STEP_AN,STEP_BN => STEP_BNEND HB;
+```
+
+이 테스트 벤치 파일은 30 ~ 36라인에 시뮬레이션 하기 위해서 필요한 RESETN과 CLK의 신호를 생성하도록 구성되어 있다.
+
+
+
+위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.
+
+위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.
+
+<div align="center">
+  
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | STEP_B  | AB24 | STEPMOTOR B |
+| CLK | N2 | CLK1 | | STEP_AN | Y26 | STEPMOTOR /A |
+| STEP_A | A23 | STEPMOTOR A | | STEP_BN | AB23 | STEPMOTOR /B |
+
+</div>
+
+핀 설정 후 컴파일 한다.
+
+먼저 HBE-Combo III 장비에서 클럭의 입력은 100Hz로 설정하고, 위에서 생성된 프로그래밍파일을 다운로딩 하여 그 동작을 살펴보자.
 
 ## 15.3.  응용 제어
 
@@ -263,6 +292,15 @@ END HB;
 
 이 테스트 벤치 파일은 이전의 TB_CH3_STEP.VHD 파일과 거의 같다. 다만 포토 센서의 입력에해당하는 SENSE의 값을 생성하기 위하여 40~44라인에 임의로 200NS 주기의 SENSE 파형을발생시키도록 구성하였다. 실제 동작에서의 데이터와는 약간 다르다.아래 그림은 이 테스트 벤치 파일을 ModelSim에서 시뮬레이션 하였을 때의 결과 파형이다.그림에서 커서바가 위치한 부분이 SENSE의 신호가 10번 발생하고, 11번째 발생하였을 때의시점이다. STEP_A, STEP_B, STEP_AN, STEP_BN의 데이터 흐름을 살펴보면 이 순간을 기점으로데이터가 반대로 흐르는 것을 확인할 수 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 Motor의 4개의 데이터 라인에 연결해 준다.
 
-포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSTEP_ANY26STEPMOTOR /ACLKN2CLK1STEP_BNAB23STEPMOTOR /BSTEP_AAA23STEPMOTOR ASENSEAA26MOTOR_SENSORSTEP_BAB24STEPMOTOR B
+<div align="center">
+  
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | STEP_AN | Y26 | STEPMOTOR /A |
+| CLK | N2 | CLK1 | | STEP_BN | AB23 | STEPMOTOR /B |
+| STEP_A | A23 | STEPMOTOR A | | SENSE  | AA26 | MOTOR_SENSOR |
+| STEP_B | AB24 | STEPMOTOR B | |         |       |              |
+
+</div>
 
 핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 100Hz로 설정하고, 위에서 생성된 프로그래밍파일을 다운로딩 하여 그 동작을 살펴보자.
