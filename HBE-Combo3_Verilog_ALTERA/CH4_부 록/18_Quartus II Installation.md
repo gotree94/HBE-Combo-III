@@ -6,6 +6,7 @@ Quartus II는 하나의 소프트웨어 안에서 로직을 설계하고, 시뮬
 
 ## 18.1. 사용 환경
 
+<div align="center">
 
 | 요구사항 | 내용 | 
 |:-----:|:-----:|
@@ -14,6 +15,8 @@ Quartus II는 하나의 소프트웨어 안에서 로직을 설계하고, 시뮬
 |  | Windows 2000 | 
 |  | For Solaris or Linux Support.| 
 | Disk Space | 약 4Gbyte 정도의 디스크 용량 | 
+
+</div>
 
 ## 18.2.  Web Edition 다운로드
 
