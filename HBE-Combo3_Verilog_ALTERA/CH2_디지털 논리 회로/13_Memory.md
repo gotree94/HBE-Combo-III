@@ -93,6 +93,12 @@ SRAM이 반도체로 구성된 회로에 의해서 데이터를 기억을 하는
 
 HBE-Combo III 장비에 구성되어 있는 SRAM은 Address 비트가 18비트이고, Data가 16비트인4Mbit SRAM이다. 이 SRAM은 아래와 같이 구성되어 있다.
 
+<br><br>
+
+<p align="center"> <img src="../verilog-media/image157.png"> </p>
+
+<br><br>
+
 아래의 표는 SRAM에서 사용하는 각 입출력 신호선의 특징을 표로 나타낸 것이다. 아래에서설명하고 있는 신호선은 SRAM에 연결되어 있는 FPGA를 기준으로 작성되었다. 즉 OUT은FPGA에서 데이터가 출력되어 SRAM에 전달된다는 뜻이다.
 
 | 신호 이름 | 신호 방향 | 특 징 |
@@ -111,11 +117,19 @@ SRAM을 제어할 때에는 SRAM에 데이터를 쓸 것인지 또는 읽을 것
 
 
 
- Write CycleParameterSymbolMinMaxUnitWrite Cycle TimetWCnsChip Select to End of WritetCWnsAddress Set-up TimetAS0nsAddress Valid to End of WritetAWnsWrite Pulse Width (/OE High)tWPnsWrite Pulse Width (/OE Low)tWP1nsWrite Recovery TimetWR0nsWrite to Output High-ZtWHZ0nsData to Write Time OverlaptDWnsData Hold from Write TimetDH0nsEnd of Write to Output Low-ZtOWns Read CycleParameterSymbolMinMaxUnitRead Cycle TimetRCnsAddress Access TimetAAnsChip Select to OutputtCOnsOutput Enable to Valid OutputtOEnsChip Enable to Low-Z OutputtLZnsOutput Enable to Low-Z OutputtOLZ0nsChip Disable to High-Z OutputtHZ0nsOutput Disable to High-Z OutputtOHZ0nsOutput Hold form Address ChangetOHnsChip Selection to Power Up TimetPU0nsChip Selection to Power DownTimetPDns
+### ■ Write Cycle
+
+ParameterSymbolMinMaxUnitWrite Cycle TimetWCnsChip Select to End of WritetCWnsAddress Set-up TimetAS0nsAddress Valid to End of WritetAWnsWrite Pulse Width (/OE High)tWPnsWrite Pulse Width (/OE Low)tWP1nsWrite Recovery TimetWR0nsWrite to Output High-ZtWHZ0nsData to Write Time OverlaptDWnsData Hold from Write TimetDH0nsEnd of Write to Output Low-ZtOWns
+
+### ■ Read CycleParameterSymbolMinMaxUnitRead Cycle TimetRCnsAddress Access TimetAAnsChip Select to OutputtCOnsOutput Enable to Valid OutputtOEnsChip Enable to Low-Z OutputtLZnsOutput Enable to Low-Z OutputtOLZ0nsChip Disable to High-Z OutputtHZ0nsOutput Disable to High-Z OutputtOHZ0nsOutput Hold form Address ChangetOHnsChip Selection to Power Up TimetPU0nsChip Selection to Power DownTimetPDns
 
 ### (3) Verilog HDL을 이용한 SRAM 제어
 
-다음의 예제는 버튼 및 버스 스위치를 이용하여 간단히 SRAM을 동작 시키는 예제이다.이 예제는 버튼 스위치를 통해 SRAM의 READ, WRITE 발생시키고, 버튼 스위치를 통해 SRAM에 데이터를 입력하고, 버스 스위치를 통해 SRAM의 ADDRESS를 지정하게 된다.장비에 프로그래밍 파일을 다운로딩 하고 버스 스위치로 ADDRESS를 설정하고 버튼 스위치로는 SRAM에 입력 데이터를 설정한다. 이 후 WRITE에 연결된 버튼 스위치를 눌러 설정한ADDRESS와 DATA를 SRAM에 저장시키고, READ에 연결된 버튼 스위치를 눌러 SRAM에서 저장한 데이터를 읽어 LED로 확인할 수 있도록 구성되어 있다.
+다음의 예제는 버튼 및 버스 스위치를 이용하여 간단히 SRAM을 동작 시키는 예제이다.
+
+이 예제는 버튼 스위치를 통해 SRAM의 READ, WRITE 발생시키고, 버튼 스위치를 통해 SRAM에 데이터를 입력하고, 버스 스위치를 통해 SRAM의 ADDRESS를 지정하게 된다.
+
+장비에 프로그래밍 파일을 다운로딩 하고 버스 스위치로 ADDRESS를 설정하고 버튼 스위치로는 SRAM에 입력 데이터를 설정한다. 이 후 WRITE에 연결된 버튼 스위치를 눌러 설정한ADDRESS와 DATA를 SRAM에 저장시키고, READ에 연결된 버튼 스위치를 눌러 SRAM에서 저장한 데이터를 읽어 LED로 확인할 수 있도록 구성되어 있다.
 
 ```verilog
 // CH2_SRAM.V
