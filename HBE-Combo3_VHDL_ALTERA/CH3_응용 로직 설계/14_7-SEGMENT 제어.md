@@ -4,7 +4,12 @@
 
 7-Segment는 숫자 또는 문자를 디스플레이 하기 위한 최소의 장치이다. 아래 그림은 1개의7-Segment를 나타낸 그림이다.
 
-![](../vhdl-media/image172.png)
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image172.png"> </p>
+
+<br><br>
+
 
 위의 그림과 같이 7-Segment에는 a,b,c,d,e,f,g,h의 8개의 LED로 구성되어 있다. 이 LED를 제어하여 숫자 또는 문자를 표현할 수 있는 것이 7-Segment이다. 실제 숫자와 문자를 표시하는것은 a,b,c,d,e,f,g의 데이터이고, h는 구분 등의 표시를 나타내는 용도로 사용된다. 예를 들어,7-Segment의 a,b,c,d,e,f,g,h 라인에 “01100000”의 데이터를 입력 시키면 “1”의 숫자가 표시된다. 같은 방법으로 7-Segment의 a,b,c,d,e,f,g.h라인에 데이터를 입력하여 아래와 같은 숫자와문자들을 표시할 수 있다.
 
