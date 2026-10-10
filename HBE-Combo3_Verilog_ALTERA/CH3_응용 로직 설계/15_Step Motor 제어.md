@@ -153,7 +153,7 @@ endmodule
 
 <br><br>
 
-<p align="center"> <img src="../vhdl-media/image175.png"> </p>
+<p align="center"> <img src="../verilog-media/image175.png"> </p>
 
 <br><br>
 
