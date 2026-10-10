@@ -227,4 +227,212 @@ HBE-Combo III 장비에 다운로딩 하고, 그 동작을 살펴보자.먼저 �
 
 이 장에서 설계하려고 하는 예제는 위의 7-Segment에 숫자를 표시하는 것을 확장한 예제로시, 분, 초가 나오는 시계 로직을 설계하여 7-Segment에 표시하는 것이다.
 
-이 로직은 외부에서 1kHz의 클럭 입력과 RESET 스위치의 입력을 받고, 클럭을 카운트하여 7-Segment에 시, 분, 초의 시계가 표시되도록 설계된 예제이다.이 로직에서는 Top Project 파일로 CH3_WATCH.VHD 파일이 사용되며, 내부의 로직에서 시,분, 초의 2자리 수를 십의 자리와 일의 자리의 숫자로 분리시켜주는 CH3_WT_SEP.VHD 파일과숫자를 7-segment 디코더를 설계한 CH3_WT_DECODER.VHD 파일이 COMPONENT로 구성되어 있다.-- CH3_WATCH.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;USE IEEE.STD_LOGIC_UNSIGNED.ALL;ENTITY CH3_WATCH ISPORT(CLK : IN STD_LOGIC;  -- 1KHzRESETN : IN STD_LOGIC;SEG_COM : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);SEG_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)END CH3_WATCH;ARCHITECTURE HB OF CH3_WATCH ISSIGNAL CNT : INTEGER RANGE 0 TO 999;SIGNAL CNT_SCAN : INTEGER RANGE 0 TO 7;SIGNAL HOUR : INTEGER RANGE 0 TO 99;SIGNAL MIN, SEC : INTEGER RANGE 0 TO 99;SIGNAL H10, H1, M10, M1, S10, S1 : INTEGER RANGE 0 TO 9;SIGNAL NUM : INTEGER RANGE 0 TO 9;SIGNAL SEG_DOT : STD_LOGIC;--COMPONENTS PIN ASSINGECOMPONENT CH3_WT_SEPPORT(NUMBER : IN INTEGER RANGE 0 TO 99;TEN, ONE : OUT INTEGER RANGE 0 TO 15END COMPONENT;COMPONENT CH3_WT_DECODERPORT(BCD : IN INTEGER RANGE 0 TO 15;DOT: IN STD_LOGIC;SEG_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)END COMPONENT;BEGIN-- COMPONENTSS_SEP : CH3_WT_SEPPORT MAP(SEC, S10, S1);M_SEP : CH3_WT_SEPPORT MAP(MIN, M10, M1);H_SEP : CH3_WT_SEPPORT MAP(HOUR, H10, H1);S7 : CH3_WT_DECODERPORT MAP(NUM, SEG_DOT, SEG_DATA);-- TIME COUNTPROCESS(CLK, RESETN)BEGINIF RESETN = ‘0’ THENCNT <= 0;ELSIF CLK’EVENT AND CLK = ‘1’ THENIF CNT >= 999 THEN--ENABLE SIGNAL FOR MINUTECNT <= 0;ELSECNT <= CNT + 1;END IF;END IF;END PROCESS;PROCESS(CLK, RESETN)BEGINIF RESETN = ‘0’ THENSEC <= 0;ELSIF CLK’EVENT AND CLK = ‘1’ THENIF CNT = 999 THENIF SEC >= 59 THENSEC <= 0;ELSESEC <= SEC + 1;END IF;END IF;END IF;END PROCESS;PROCESS(RESETN, CLK)BEGINIF RESETN = ‘0’ THENMIN <= 0;ELSIF CLK’EVENT AND CLK = ‘1’ THENIF CNT = 999 AND SEC = 59 THENIF MIN >= 59 THENMIN <= 0;ELSEMIN <= MIN + 1;END IF;END IF;END IF;END PROCESS;PROCESS(RESETN, CLK)BEGINIF RESETN = ‘0’ THENHOUR <= 0;ELSIF CLK’EVENT AND CLK = ‘1’ THENIF CNT = 999 AND SEC = 59 AND MIN = 59 THENIF HOUR >= 23 THENHOUR <= 0;ELSEHOUR <= HOUR + 1;END IF;END IF;END IF;END PROCESS;--7-SEGMENT DISPLAYPROCESS(RESETN, CLK)BEGINIF RESETN = ‘0’ THENSEG_DOT <= ‘0’;SEG_COM <= “11111111”;NUM <= 0;CNT_SCAN <= 0;ELSIF CLK’EVENT AND CLK = ‘1’ THENCASE CNT_SCAN ISWHEN 0 =>SEG_DOT <= ‘0’;    -- SIGNAL FOR TIME UNIT DISPLAYSEG_COM <= “01111111”;NUM <= H10;WHEN 1 =>SEG_DOT <= ‘1’;SEG_COM <= “10111111”;NUM <= H1;WHEN 2 =>SEG_DOT <= ‘0’;SEG_COM <= “11011111”;NUM <= M10;WHEN 3 =>SEG_DOT <= ‘1’;SEG_COM <= “11101111”;NUM <= M1;WHEN 4 =>SEG_DOT <= ‘0’;SEG_COM <= “11110111”;NUM <= S10;WHEN 5 =>SEG_DOT <= ‘1’;SEG_COM <= “11111011”;NUM <= S1;WHEN OTHERS =>END CASE;IF CNT_SCAN >= 5 THENCNT_SCAN <= 0;ELSECNT_SCAN <= CNT_SCAN + 1;END IF;END IF;END PROCESS;END HB;먼저 Top Project 파일인 CH3_WATCH.VHD 파일에 대한 설명을 하겠다.이 VHDL로직은 7~15라인에서 ENTITY로 선언되어 있듯이, 1KHz의 클럭의 입력을 받는 CLK와초기화 동작을 위한 RESETN이 입력으로 선언되어 있다. 출력 결과는 7-Segment의 Common단자에 연결되는 SEG_COM과 7-Segment의 Data에 연결되는 SEG_DATA로 출력이 된다.30~44라인에는 서브 프로젝트를 불러오기 위한 COMPONENT가 선언되어 있다. 이 서브 프로젝트의 내용은 뒤에 설명되어 있다.48~108라인은 실제 시간이 카운트 되는 블록인데, 첫 번째 PROCESS문에서 1KHz의 신호를받아 먼저 1초를 생성하기 위해 CNT를 0~999까지 카운트 하고 있다. 두 번째 PROCESS문에서는 앞에서 카운트한 CNT의 값이 999일 때 SEC를 하나씩 카운트하여 0~59까지 카운트 한다. 시계의 초 영역을 카운트 하는 블록이다. 세 번째 PROCESS문은 CNT의 값이 999이고,SEC의 값이 59까지 카운트 되었을 때마다 MIN을 1씩 카운트 하여 0~59까지 카운트 한다. 시계의 분 영역을 카운트 하는 블록이다. 네 번째 PROCESS 문에서는 같은 방법으로 하여 시계의 시 영역을 카운트 하도록 설계되어 있다.110~116라인은 앞에서 카운트한 시, 분, 초의 값을 7-Segment에 표시할 수 있도록 각각을 십의 자릿수와 일의 자릿수로 분리하는 CH3_WT_SEP COMPONET에 연결되어 있다. 이 컴포넌트에 SEC, MIN, HOUR의 데이터를 입력시키면, 자릿수가 분리된 데이터가 출력된다.118~161라인은 클럭을 CNT_SCAN이라는 변수에 카운트하여 그 카운트한 값에 따라 7-Segment의 Common단자를 선택하고 그에 해당하는 데이터를 NUM이라는 변수로 출력하는블록이다. 이 NUM의 변수는 뒤의 164~166라인의 7-Segment 디코더와 연결되어 7-Segment에 표시하는 데이터가 출력된다. 또, SEG_DOT는 시, 분, 초를 구분하기 위하여 두 번째와 네번째, 여섯 번째의 7-Segment에만 표시되도록 설계되었다.-- CH3_WT_SEP.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;ENTITY CH3_WT_SEP ISPORT(NUMBER : IN INTEGER RANGE 0 TO 99;TEN, ONE : OUT INTEGER RANGE 0 TO 9END CH3_WT_SEP;ARCHITECTURE HB OF CH3_WT_SEP ISBEGINPROCESS(NUMBER)BEGINIF NUMBER <= 9 THENTEN <= 0;ONE <= NUMBER;ELSIF NUMBER <= 19 THENTEN <= 1;ONE <= NUMBER – 10;ELSIF NUMBER <= 29 THENTEN <= 2;ONE <= NUMBER – 20;ELSIF NUMBER <= 39 THENTEN <= 3;ONE <= NUMBER – 30;END PROCESS;END HB;CH3_WT_SEP는 두 자릿수의 수(0~99)의 입력을 받아 십의 자릿수의 수와 일의 자릿수의 수로분리하는 로직이다. 16~52라인의 PROCESS문에 이 블록이 설계되어 있다. 이 교재에는 같은내용이 반복되어 있기 때문에 로직의 일부가 삭제되어 있다.-- CH3_WT_DECODER.VHDLIBRARY IEEE;USE IEEE.STD_LOGIC_1164.ALL;ENTITY CH3_WT_DECODER ISPORT(BCD : IN INTEGER RANGE 0 TO 15;DOT : IN STD_LOGIC;SEG_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)END CH3_WT_DECODER;ARCHITECTURE HB OF CH3_WT_DECODER ISSIGNAL SEG_D : STD_LOGIC_VECTOR(6 DOWNTO 0);BEGINPROCESS(BCD)BEGINCASE BCD ISWHEN 0 => SEG_D <= “1111110”;WHEN 1 => SEG_D <= “0110000”;WHEN 2 => SEG_D <= “1101101”;WHEN 9 => SEG_D <= “1110011”;WHEN OTHERS => SEG_D <= “0000000”;END CASE;SEG_DATA <= SEG_D & DOT;END PROCESS;END HB;CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어온 BCD의 값을 22~34라인의 CASE문에서 7-Segment에 표시하기 위한 데이터로 변환하는 블록이 설계되어 있다. 7-Segment Data에는 총 8비트의 출력이 필요하기 때문에 36라인에서 외부 입력으로 들어온DOT 값을 SEG_D와 합치도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.포트 이름핀 번호하드웨어 설명포트 이름핀 번호하드웨어 설명RESETNC5FPGA_RESETSEG_COM[0]T7SEG_COM8CLKN2CLK1SEG_DATA[7]M5SEG_DATA_ASEG_COM[7]T3SEG_COM1SEG_DATA[6]M4SEG_ DATA_BSEG_COM[6]T2SEG_COM2SEG_DATA[5]R5SEG_ DATA_CSEG_COM[5]R7SEG_COM3SEG_DATA[4]R4SEG_ DATA_DSEG_COM[4]R6SEG_COM4SEG_DATA[3]R3SEG_ DATA_ESEG_COM[3]U3SEG_COM5SEG_DATA[2]R2SEG_ DATA_FSEG_COM[2]U2SEG_COM6SEG_DATA[1]P7SEG_ DATA_GSEG_COM[1]U1SEG_COM7SEG_DATA[0]T4SEG_ DATA_H핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 1kHz로 설정하고, 위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.
+이 로직은 외부에서 1kHz의 클럭 입력과 RESET 스위치의 입력을 받고, 클럭을 카운트하여 7-Segment에 시, 분, 초의 시계가 표시되도록 설계된 예제이다.이 로직에서는 Top Project 파일로 CH3_WATCH.VHD 파일이 사용되며, 내부의 로직에서 시,분, 초의 2자리 수를 십의 자리와 일의 자리의 숫자로 분리시켜주는 CH3_WT_SEP.VHD 파일과숫자를 7-segment 디코더를 설계한 CH3_WT_DECODER.VHD 파일이 COMPONENT로 구성되어 있다.
+
+```vhdl
+-- CH3_WATCH.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY CH3_WATCH IS
+    PORT(
+        CLK      : IN  STD_LOGIC;  -- 1KHz
+        RESETN   : IN  STD_LOGIC;
+        SEG_COM  : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+        SEG_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    );
+END CH3_WATCH;
+
+ARCHITECTURE HB OF CH3_WATCH IS
+    SIGNAL CNT      : INTEGER RANGE 0 TO 999;
+    SIGNAL CNT_SCAN : INTEGER RANGE 0 TO 7;
+    SIGNAL HOUR     : INTEGER RANGE 0 TO 99;
+    SIGNAL MIN, SEC : INTEGER RANGE 0 TO 99;
+    SIGNAL H10, H1, M10, M1, S10, S1 : INTEGER RANGE 0 TO 9;
+    SIGNAL NUM      : INTEGER RANGE 0 TO 9;
+    SIGNAL SEG_DOT  : STD_LOGIC;
+
+    -- COMPONENTS PIN ASSIGN
+    COMPONENT CH3_WT_SEP
+        PORT(
+            NUMBER   : IN  INTEGER RANGE 0 TO 99;
+            TEN, ONE : OUT INTEGER RANGE 0 TO 15
+        );
+    END COMPONENT;
+
+    COMPONENT CH3_WT_DECODER
+        PORT(
+            BCD      : IN  INTEGER RANGE 0 TO 15;
+            DOT      : IN  STD_LOGIC;
+            SEG_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+        );
+    END COMPONENT;
+
+BEGIN
+
+    -- COMPONENTS
+    S_SEP : CH3_WT_SEP PORT MAP(SEC, S10, S1);
+    M_SEP : CH3_WT_SEP PORT MAP(MIN, M10, M1);
+    H_SEP : CH3_WT_SEP PORT MAP(HOUR, H10, H1);
+    S7    : CH3_WT_DECODER PORT MAP(NUM, SEG_DOT, SEG_DATA);
+
+    -- TIME COUNT
+    PROCESS(CLK, RESETN)
+    BEGIN
+        IF RESETN = '0' THEN
+            CNT <= 0;
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            IF CNT >= 999 THEN
+                -- ENABLE SIGNAL FOR MINUTE
+                CNT <= 0;
+            ELSE
+                CNT <= CNT + 1;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    PROCESS(CLK, RESETN)
+    BEGIN
+        IF RESETN = '0' THEN
+            SEC <= 0;
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            IF CNT = 999 THEN
+                IF SEC >= 59 THEN
+                    SEC <= 0;
+                ELSE
+                    SEC <= SEC + 1;
+                END IF;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    PROCESS(RESETN, CLK)
+    BEGIN
+        IF RESETN = '0' THEN
+            MIN <= 0;
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            IF CNT = 999 AND SEC = 59 THEN
+                IF MIN >= 59 THEN
+                    MIN <= 0;
+                ELSE
+                    MIN <= MIN + 1;
+                END IF;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    PROCESS(RESETN, CLK)
+    BEGIN
+        IF RESETN = '0' THEN
+            HOUR <= 0;
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            IF CNT = 999 AND SEC = 59 AND MIN = 59 THEN
+                IF HOUR >= 23 THEN
+                    HOUR <= 0;
+                ELSE
+                    HOUR <= HOUR + 1;
+                END IF;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    -- 7-SEGMENT DISPLAY
+    PROCESS(RESETN, CLK)
+    BEGIN
+        IF RESETN = '0' THEN
+            SEG_DOT <= '0';
+            SEG_COM <= "11111111";
+            NUM <= 0;
+            CNT_SCAN <= 0;
+        ELSIF CLK'EVENT AND CLK = '1' THEN
+            CASE CNT_SCAN IS
+                WHEN 0 =>
+                    SEG_DOT <= '0';     -- SIGNAL FOR TIME UNIT DISPLAY
+                    SEG_COM <= "01111111";
+                    NUM <= H10;
+                WHEN 1 =>
+                    SEG_DOT <= '1';
+                    SEG_COM <= "10111111";
+                    NUM <= H1;
+                WHEN 2 =>
+                    SEG_DOT <= '0';
+                    SEG_COM <= "11011111";
+                    NUM <= M10;
+                WHEN 3 =>
+                    SEG_DOT <= '1';
+                    SEG_COM <= "11101111";
+                    NUM <= M1;
+                WHEN 4 =>
+                    SEG_DOT <= '0';
+                    SEG_COM <= "11110111";
+                    NUM <= S10;
+                WHEN 5 =>
+                    SEG_DOT <= '1';
+                    SEG_COM <= "11111011";
+                    NUM <= S1;
+                WHEN OTHERS =>
+            END CASE;
+
+            IF CNT_SCAN >= 5 THEN
+                CNT_SCAN <= 0;
+            ELSE
+                CNT_SCAN <= CNT_SCAN + 1;
+            END IF;
+        END IF;
+    END PROCESS;
+
+END HB;
+```
+
+먼저 Top Project 파일인 CH3_WATCH.VHD 파일에 대한 설명을 하겠다.이 VHDL로직은 7~15라인에서 ENTITY로 선언되어 있듯이, 1KHz의 클럭의 입력을 받는 CLK와초기화 동작을 위한 RESETN이 입력으로 선언되어 있다. 출력 결과는 7-Segment의 Common단자에 연결되는 SEG_COM과 7-Segment의 Data에 연결되는 SEG_DATA로 출력이 된다.30~44라인에는 서브 프로젝트를 불러오기 위한 COMPONENT가 선언되어 있다. 이 서브 프로젝트의 내용은 뒤에 설명되어 있다.48~108라인은 실제 시간이 카운트 되는 블록인데, 첫 번째 PROCESS문에서 1KHz의 신호를받아 먼저 1초를 생성하기 위해 CNT를 0~999까지 카운트 하고 있다. 두 번째 PROCESS문에서는 앞에서 카운트한 CNT의 값이 999일 때 SEC를 하나씩 카운트하여 0~59까지 카운트 한다. 시계의 초 영역을 카운트 하는 블록이다. 세 번째 PROCESS문은 CNT의 값이 999이고,SEC의 값이 59까지 카운트 되었을 때마다 MIN을 1씩 카운트 하여 0~59까지 카운트 한다. 시계의 분 영역을 카운트 하는 블록이다. 네 번째 PROCESS 문에서는 같은 방법으로 하여 시계의 시 영역을 카운트 하도록 설계되어 있다.110~116라인은 앞에서 카운트한 시, 분, 초의 값을 7-Segment에 표시할 수 있도록 각각을 십의 자릿수와 일의 자릿수로 분리하는 CH3_WT_SEP COMPONET에 연결되어 있다. 이 컴포넌트에 SEC, MIN, HOUR의 데이터를 입력시키면, 자릿수가 분리된 데이터가 출력된다.118~161라인은 클럭을 CNT_SCAN이라는 변수에 카운트하여 그 카운트한 값에 따라 7-Segment의 Common단자를 선택하고 그에 해당하는 데이터를 NUM이라는 변수로 출력하는블록이다. 이 NUM의 변수는 뒤의 164~166라인의 7-Segment 디코더와 연결되어 7-Segment에 표시하는 데이터가 출력된다. 또, SEG_DOT는 시, 분, 초를 구분하기 위하여 두 번째와 네번째, 여섯 번째의 7-Segment에만 표시되도록 설계되었다.
+
+```vhdl
+-- CH3_WT_SEP.VHD
+
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY CH3_WT_SEP IS
+    PORT(
+        NUMBER   : IN  INTEGER RANGE 0 TO 99;
+        TEN, ONE : OUT INTEGER RANGE 0 TO 9
+    );
+END CH3_WT_SEP;
+
+ARCHITECTURE HB OF CH3_WT_SEP IS
+
+BEGIN
+    PROCESS(NUMBER)
+    BEGIN
+        IF    NUMBER <= 9  THEN TEN <= 0; ONE <= NUMBER;
+        ELSIF NUMBER <= 19 THEN TEN <= 1; ONE <= NUMBER - 10;
+        ELSIF NUMBER <= 29 THEN TEN <= 2; ONE <= NUMBER - 20;
+        ELSIF NUMBER <= 39 THEN TEN <= 3; ONE <= NUMBER - 30;
+        ELSIF NUMBER <= 49 THEN TEN <= 4; ONE <= NUMBER - 40;
+        ELSIF NUMBER <= 59 THEN TEN <= 5; ONE <= NUMBER - 50;
+        ELSIF NUMBER <= 69 THEN TEN <= 6; ONE <= NUMBER - 60;
+        ELSIF NUMBER <= 79 THEN TEN <= 7; ONE <= NUMBER - 70;
+        ELSIF NUMBER <= 89 THEN TEN <= 8; ONE <= NUMBER - 80;
+        ELSE                  TEN <= 9; ONE <= NUMBER - 90;
+        END IF;
+    END PROCESS;
+END HB;
+```
+
+CH3_WT_DECODER 로직은 7-Segment 디코더이다. 외부 입력으로 들어온 BCD의 값을 22~34라인의 CASE문에서 7-Segment에 표시하기 위한 데이터로 변환하는 블록이 설계되어 있다. 7-Segment Data에는 총 8비트의 출력이 필요하기 때문에 36라인에서 외부 입력으로 들어온DOT 값을 SEG_D와 합치도록 구성되어 있다.위의 로직을 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 장비의 FPGA_RESET 단자와 CLK입력을 선택한다. FPGA_RESET는 다른 버튼 스위치와는 다르게 버튼을 눌렀을 때 0의 값이 입력되고, 기본상태에서는 1의 값이 입력된다. , 출력은 7-Segment Array를 사용하여 결과를 확인할 수 있도록 SEG_COM과 SEG_DATA의 핀을 설정한다.
+
+| 포트 이름 | 핀 번호 | 하드웨어 설명 | | 포트 이름 | 핀 번호 | 하드웨어 설명 |
+|-----------|--------|---------------|-|-----------|--------|---------------|
+| RESETN | C5 | FPGA_RESET | | SEG_COM[0] | T7 | SEG_COM8 |
+| CLK | N2 | CLK1 | | SEG_DATA[7] | M5 | SEG_DATA_A |
+| SEG_COM[7] | T3 | SEG_COM1 | | SEG_DATA[6] | M4 | SEG_DATA_B |
+| SEG_COM[6] | T2 | SEG_COM2 | | SEG_DATA[5] | R5 | SEG_DATA_C |
+| SEG_COM[5] | R7 | SEG_COM3 | | SEG_DATA[4] | R4 | SEG_DATA_D |
+| SEG_COM[4] | R6 | SEG_COM4 | | SEG_DATA[3] | R3 | SEG_DATA_E |
+| SEG_COM[3] | U3 | SEG_COM5 | | SEG_DATA[2] | R2 | SEG_DATA_F |
+| SEG_COM[2] | U2 | SEG_COM6 | | SEG_DATA[1] | P7 | SEG_DATA_G |
+| SEG_COM[1] | U1 | SEG_COM7 | | SEG_DATA[0] | T4 | SEG_DATA_H |
+
+핀 설정 후 컴파일 한다.먼저 HBE-Combo III 장비에서 클럭의 입력은 1kHz로 설정하고, 위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.
