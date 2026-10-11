@@ -17,7 +17,30 @@ HBE-Combo III에 장착되어 사용되는 Character LCD는 VFD(Vacuum Fluoresce
 
 Character LCD제어아래 표는 VFD를 사용하기 위한 제어 명령어를 정리한 것이다. VFD 는 명령을 받아서 이를실행하기 위해서는 지정된 시간이 필요하므로,  그 다음의 명령을 보내기 전에 충분히 대기하거나 busy flag을 조사하여 앞에서 전송한 제어 코드의 실행이 완료되었는지의 여부를 확인해야 한다.
 
-InstructionCODERSR/WDB7DB6DB5DB4DB3DB2DB1DB0Display Data000000000Cursor Home00000000XEntry Mode Set0000000I/DSDisplay On/Off Control000000DCBCursor/Display Shift00000S/CR/LXXFunction Set0000IFNXBR1BR2CGRAM Address Setting000CG-RAM AddressDDRAM AddressSetting00DD-RAM AddressBusy Flag &Address Reading0BFAddress CounterBusy Writing toCG-RAM ro DD-RAM0Write DataData Reading fromCG-RAM or DD-RAMRead DataI/D1 : Increment0 : DecrementS1 : Display shift enabled0 : Cursor shift enabledS/C1 : Display shift0 : Cursor moveR/L1 : Shift to the right0 : Shift to the leftIF1 : 8bit0 : 4bitN1 : 2 Line display0 : 1 Line displayBF1 : Busy(Internally operation)0 : Not Busy(Instruction acceptable)BR1, BR000 : 100%01 : 75%10 : 50%11 : 25%
+| Instruction | RS | R/W | DB7 | DB6 | DB5 | DB4 | DB3 | DB2 | DB1 | DB0 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Display Data | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Cursor Home | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | X |
+| Entry Mode Set | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | I/D | S |
+| Display On/Off Control | 0 | 0 | 0 | 0 | 0 | 0 | 1 | D | C | B |
+| Cursor/Display Shift | 0 | 0 | 0 | 0 | 0 | 1 | S/C | R/L | X | X |
+| Function Set | 0 | 0 | 0 | 0 | 1 | IF | N | X | BR1 | BR0 |
+| CGRAM Address Setting | 0 | 0 | 0 | 1 | CG-RAM Address |  |  |  |  |  |
+| DDRAM Address Setting | 0 | 0 | 1 | DD-RAM Address |  |  |  |  |  |  |
+| Busy Flag & Address Reading | 0 | 1 | BF | Address Counter |  |  |  |  |  |  |
+| Busy Writing to CG-RAM or DD-RAM | 1 | 0 | Write Data |  |  |  |  |  |  |  |
+| Data Reading from CG-RAM or DD-RAM | 1 | 1 | Read Data |  |  |  |  |  |  |  |
+
+| 비트 | 설명 |
+|---|---|
+| I/D | 1 : Increment<br>0 : Decrement |
+| S | 1 : Display shift enabled<br>0 : Cursor shift enabled |
+| S/C | 1 : Display shift<br>0 : Cursor move |
+| R/L | 1 : Shift to the right<br>0 : Shift to the left |
+| IF | 1 : 8bit<br>0 : 4bit |
+| N | 1 : 2 Line display<br>0 : 1 Line display |
+| BF | 1 : Busy(Internally operation)<br>0 : Not Busy(Instruction acceptable) |
+| BR1, BR0 | 00 : 100%<br>01 : 75%<br>10 : 50%<br>11 : 25% |
 
 
 * Display Clear전체 화면을 지우고 어드레스 카운터를 DD-RAM 어드레스 0으로 하여 커서를 home 위치로옮긴다.
