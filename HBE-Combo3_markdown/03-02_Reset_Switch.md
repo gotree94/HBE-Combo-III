@@ -7,7 +7,11 @@
 * 장비에서는 기본으로 제공하는 버튼 스위치 이외에 소스 설계 시 Reset 용도로 사용 할 수 있도록 버튼 스위치를 구성하고 있습니다.
 * 이 스위치는 FPGA 디바이스와 연결 되어 있으며, FPGA 동작 시 이 버튼에 의해 Reset 동작에 이용할 수 있습니다.
 
-![](../img/image44.jpeg)
+<br><br>
+
+<p align="center"> <img src="../img/image44.jpeg"> </p>
+
+<br><br>
 
 **2)** 동작
 
@@ -16,7 +20,11 @@
 
 **3)** 회로
 
-![](../img/image45.png)
+<br><br>
+
+<p align="center"> <img src="../img/image45.png"> </p>
+
+<br><br>
 
 * 회로에서도 알 수 있듯이 버튼이 눌려지면 0 의 값이 FPGA로 전달 됩니다.
 
