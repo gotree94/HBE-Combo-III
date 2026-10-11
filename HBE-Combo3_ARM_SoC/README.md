@@ -1,6 +1,4 @@
-# HBE-Combo III로 배우는 ARM 기반 SoC 설계_OCR
-
-본 문서는 「HBE-Combo III로 배우는 ARM 기반 SoC 설계_OCR」 교재(스캔본, OCR 인식)의 목차(챕터/섹션)에 따라 OCR 텍스트를 챕터별 · 섹션별 마크다운 파일로 정리한 것입니다. OCR 특성상 일부 글자/단어 인식 오류가 있을 수 있습니다.
+# HBE-Combo III로 배우는 ARM 기반 SoC 설계
 
 ## 목차
 
