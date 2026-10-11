@@ -1,7 +1,11 @@
 # HBE-COMBO III User's Guide 
 
 <p align="center">
-  <img src="img/image6.png">   <img src="img/image8.jpeg" width="50%">
+
+| HBE-COMBO III | HBE-COMBO III |
+|----|------|
+|  ![](img/image6.png)  | ![](img/image8.jpeg) |
+
 </p>
 
 * 보드: **HBE-COMBO III**
