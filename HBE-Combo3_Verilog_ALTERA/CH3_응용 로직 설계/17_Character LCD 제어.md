@@ -16,6 +16,8 @@ HBE-Combo III에 장착되어 사용되는 Character LCD는 VFD(Vacuum Fluoresce
 
 아래 표는 VFD를 사용하기 위한 제어 명령어를 정리한 것이다. VFD 는 명령을 받아서 이를실행하기 위해서는 지정된 시간이 필요하므로,  그 다음의 명령을 보내기 전에 충분히 대기하거나 busy flag을 조사하여 앞에서 전송한 제어 코드의 실행이 완료되었는지의 여부를 확인해야 한다.
 
+<div align="center">
+  
 | Instruction | RS | R/W | DB7 | DB6 | DB5 | DB4 | DB3 | DB2 | DB1 | DB0 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Display Data | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
@@ -41,6 +43,7 @@ HBE-Combo III에 장착되어 사용되는 Character LCD는 VFD(Vacuum Fluoresce
 | BF | 1 : Busy(Internally operation) 0 : Not Busy(Instruction acceptable) |
 | BR1, BR0 | 00 : 100% 01 : 75% 10 : 50% 11 : 25% |
 
+</div>
 
 * Display Clear전체 화면을 지우고 어드레스 카운터를 DD-RAM 어드레스 0으로 하여 커서를 home 위치로옮긴다.
 * Cursor homeDD RAM의 내용은 변경하지 않고 커서만을 home 위치로 옮긴다.
@@ -66,10 +69,14 @@ VFD에 전원을 인가해서 문자를 표시하는 흐름을 순서대로 나�
 
 * DD-RAM 어드레스DD-RAM은 표시될 각 문자의 ASCII 코드 데이터가 저장되어 있는 메모리로 모두 80개의 번지가 있는데, 화면의 각 행과 열의 위치에는 고유한 Address 값이 부여된다. 그런데, 각 행과행 사이의 어드레스가 연속하여 있지 않으므로 주의하여야 한다. 표시 문자의 위치에 대한DD-RAM의 어드레스는 아래 표와 같다.
 
+<div align="center">
+  
 |  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1행 | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 0A | 0B | 0C | 0D | 0E | 0F |
 | 2행 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 4A | 4B | 4C | 4D | 4E | 4F |
+
+</div>
 
 표시 문자 세트VFD에서 화면에 표시할 수 있는 문자의 종류에는 대부분의 ASCII 도형문자들이 포함되며, 기타 일본어의 카타가나 문자와 몇 가지 특수문자들이 포함된다. 00H~0FH의 영역에는 사용자정의문자를 설정하여 사용할 수 있다. 여기에는 최대 8문자를 정의할 수 있는데, 이에 대한정보는 전원이 인가된 후에 정의되어야 하며, 전원이 꺼지면 정의된 내용은 기억되지 않는다.VFD에서 화면에 표시할 수 있는 문자 중 ASCII 도형문자의 종류와 코드 값이 아래의 표에 나타나 있다.
 
@@ -77,7 +84,7 @@ VFD에 전원을 인가해서 문자를 표시하는 흐름을 순서대로 나�
 
 아래 예제는 VFD에 “This is Verilog HDL Text LCD Example” 문자를 표시하는 예제이다. 이 예제에서는 초기화를 위한 RESETN 신호와 100Hz의 클럭의 입력을 받아 VFD에 데이터를 출력하도록 구성되어 있다.
 
-```
+```verilog
 // CH3_VFD.V
 module CH3_VFD(RESETN, CLK,LCD_E, LCD_RS, LCD_RW,LCD_DATA);
 input RESETN, CLK;
@@ -283,7 +290,7 @@ endmodule
 
 위의 로직에서 29~91라인은 VFD를 동작시키기 위한 설정을 하고, 각 라인에 DISPLAY 데이터를 전달시키기 위한 FLOW를 만드는 부분이다. VFD를 동작시키기 위한 스테이트 머신은 첫번째 always문에서 구성되며, 처음 Delay 상태에서 FUNCTION SET상태로, 또, DISP_ONOFF,ENTRY_MODE로 바뀌어 VFD를 동작하기 위한 설정을 진행한다. 또, LINE1, LINE2상태에서VFD에 문자를 DISPLAY하고 DELAY_T에서 일정시간 VFD에서 문자를 DISPLAY한 내용을 유지하였다가 CLEAR_DISP에서 전체의 화면을 초기화 시킨다. 그리고, 다시 LINE1의 상태로 변경되어 LINE1, LINE2, DELAY_T, CLEAR_DISP의 상태가 순환되도록 구성되어 있다. 두 번째 always문에서는 위의 스테이트 머신의 상태가 바뀌는 시간을 카운트하는 블록이다. 각 상태일 때에일정 시간을 카운트(CNT) 한 후, 0으로 초기화 된다. 여기에서 만들어진 CNT의 값은 처음always 문에서 스테이트 머신의 상태를 바꾸는데 사용된다.108~347라인은 실제 VFD에 데이터를 보내는 블록이다. FUNCTION_SET, DISP_ONOFF,ENTRY_MODE, CLEAR_DISP는 VFD의 초기 설정을 하는 스테이트인데, LCD_RS와 LCD_RW에 0의 값을 출력하고, 해당 설정 데이터를 출력한다. LINE1과 LINE2의 상태에서는 각 라인의 첫ADDRESS만 설정하고, 그 후에 DISPLAY하려는 데이터를 출력한다. 여기에서 설정을 할 때에는 LCD_RS와 LCD_RW가 0의 값을 출력해야 하고, VFD에 문자를 DISPLAY할 때에는 LCD_RW는 마찬가지로 0의 값을 출력해야 하지만, LCD_RS는 1의 값을 출력해야 한다는 점에 유의 해야 한다. 각 라인의 첫 ADDRESS를 설정하는 것도 설정 이기 때문에 LCD_R에는 0을 출력해야한다. DISPLAY하려는 데이터는 앞에서 설명한 표시문자세트 표를 참고하면 된다.아래 테스트 벤치 파일이 이 예제를 시뮬레이션을 하기 위해서 예제에서 필요로 하는 입력신호를 생성하기 위한 것이다.
 
-```
+```verilog
 // CH3_VFD_TB.V
 `timescale 1ns / 1ps
 
@@ -321,7 +328,8 @@ endmodule
 
 이 테스트 벤치 파일은 22~32라인에서 CH3_VFD의 입력 신호인 RESETN과 CLK를 생성하는블록이 구현되어 있다.아래 그림은 ModelSim 소프트웨어로 시뮬레이션 한 결과를 나타낸다.FUNCTIONSETDISPON_OFFENTRYMODELINE1LINE2 DELAY이 예제를 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야 한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 각각 FPGA_RESET과 CLK의 입력을 설정하고,LCD_RS, LCD_RW, LCD_D의 출력 신호는 VFD의 해당 핀에 연결한다.
 
-
+<div align="center">
+  
 | 포트 이름 | 핀 번호 | 하드웨어 설명 | 포트 이름 | 핀 번호 | 하드웨어 설명 |
 |---|---|---|---|---|---|
 | RESETN | C5 | FPGA_RESET | LCD_D[5] | L2 | VFD_D[5] |
@@ -331,5 +339,7 @@ endmodule
 | LCD_E | K5 | VFD_E | LCD_D[1] | K3 | VFD_D[1] |
 | LCD_D[7] | K7 | VFD_D[7] | LCD_D[0] | K4 | VFD_D[0] |
 | LCD_D[6] | K8 | VFD_D[6] |  |  |  |
+
+</div>
 
 핀 설정 후 컴파일 한다. 먼저 HBE-Combo III 장비에서 클럭의 입력은 100Hz 로 설정하고,위에서 생성된 프로그래밍 파일을 다운로딩 하여 그 동작을 살펴보자.  그리고, 로직을변경하여 VFD 에 DISPLAY 되는 데이터를 바꾸어보자.
