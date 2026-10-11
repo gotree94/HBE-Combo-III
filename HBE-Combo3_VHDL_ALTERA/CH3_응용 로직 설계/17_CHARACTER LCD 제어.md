@@ -339,7 +339,15 @@ BEGIN
 END HB;
 ```
 
-이 테스트 벤치 파일은 33~39라인에서 CH3_VFD의 입력 신호인 RESETN과 CLK를 생성하는블록이 구현되어 있다.아래 그림은 ModelSim 소프트웨어로 시뮬레이션 한 결과를 나타낸다.이 예제를 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야 한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 각각 FPGA_RESET과 CLK의 입력을 설정하고,LCD_RS, LCD_RW, LCD_D의 출력 신호는 VFD의 해당 핀에 연결한다.
+이 테스트 벤치 파일은 33~39라인에서 CH3_VFD의 입력 신호인 RESETN과 CLK를 생성하는블록이 구현되어 있다.아래 그림은 ModelSim 소프트웨어로 시뮬레이션 한 결과를 나타낸다.
+
+<br><br>
+
+<p align="center"> <img src="../vhdl-media/image195.png"> </p>
+
+<br><br>
+
+이 예제를 HBE-Combo III에서 동작시키기 위해서는 아래 표와 같이 핀 설정을 해 주어야 한다.위의 로직에서 사용된 RESETN과 CLK의 입력은 각각 FPGA_RESET과 CLK의 입력을 설정하고,LCD_RS, LCD_RW, LCD_D의 출력 신호는 VFD의 해당 핀에 연결한다.
 
 <div align="center">
   
