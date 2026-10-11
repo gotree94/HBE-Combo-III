@@ -51,7 +51,7 @@ Character LCD제어아래 표는 VFD를 사용하기 위한 제어 명령어를 
 * Entry mode set데이터를 read하거나 write할 경우에 커서의 위치를 증가시킬 것인가(I/D=1) 감소 시킬 것인가(I/D=0)를 결정하며, 또 이때 화면을 시프트 할 것인지(S=1) 아닌지(S=0)를 결정한다.
 * Display ON/OFF control화면 표시를 ON/OFF 하거나(D), 커서를 ON/OFF하거나©, 커서를 깜박이게 할 것인지(B)의 여부를 설정 한다.
 * Cursor/Display shift화면(S/C=1) 또는 커서(S/C=0)를 오른쪽(R/L=1) 또는 왼쪽(R/L=0)으로 시프트 한다.
-* Function set인터페이스에서 데이터의 길이를 8비트(DL=1) 또는 4비트(DL=0)로 설정하고, 화면 표시 행수를 2행(N=1) 또는 1행(N=0)으로 설정하며, 화면의 밝기를 BR1~0에 의해 100%, 75%, 50%,25%로 설정을 해 줄 수 있다.※ 전원 투입 후 최초에는 주로 이 명령을 보내게 됩니다. 또한, 4비트로 인터페이스 할 경우에는 DB4~DB7 을 사용하며, 상위 4 bit를 먼저 전송하고 다음에 하위 4 bit를 전송해야 한다.
+* Function set인터페이스에서 데이터의 길이를 8비트(DL=1) 또는 4비트(DL=0)로 설정하고, 화면 표시 행수를 2행(N=1) 또는 1행(N=0)으로 설정하며, 화면의 밝기를 BR1 ~ 0에 의해 100%, 75%, 50%,25%로 설정을 해 줄 수 있다.※ 전원 투입 후 최초에는 주로 이 명령을 보내게 됩니다. 또한, 4비트로 인터페이스 할 경우에는 DB4~DB7 을 사용하며, 상위 4 bit를 먼저 전송하고 다음에 하위 4 bit를 전송해야 한다.
 * CGRAM address SettingCharacter Generator RAM의 어드레스를 설정한다. 이 다음에 송수신하는 데이터는 CG RAM의데이터이다.
 * DDRAM address SettingDisplay Data RAM의 어드레스를 설정한다. 이 다음에 송수신하는 데이터는 DD RAM의 데이터이다.
 * Busy flag & address ReadingLCD 모듈이 내부 동작중임을 나타내는 Busy Flag(BF) 및 어드레스 카운터의 내용을 read 한다.LCD 모듈이 각 제어 코드를 실행하는데 설정된 시간이 필요하므로 FPGA가 BF를 읽어 1일 경우에는 기다리고 0일 경우에는 다음 제어 코드를 보내는 방법을 사용하면 보다 효율적인 처리가 가능하다.
@@ -289,7 +289,9 @@ BEGIN
 END HB;
 ```
 
-위의 로직에서 28~128라인은 VFD를 동작시키기 위한 설정을 하고, 각 라인에 DISPLAY 데이터를 전달시키기 위한 FLOW를 만드는 부분이다. 앞의 21~34라인에 LCD_STATE라는 VFD 로직의 흐름을 나타내는 스테이트 머신을 선언하였다. 이 스테이트 머신은 첫 번째 PROCESS문에서 구성되며, 처음 Delay 상태에서 FUNCTION SET상태로, 또, DISP_ONOFF, ENTRY_MODE로바뀌어 VFD를 동작하기 위한 설정을 진행한다. 또, LINE1, LINE2상태에서 VFD에 문자를DISPLAY하고 DELAY_T에서 일정시간 VFD에서 문자를 DISPLAY한 내용을 유지하였다가CLEAR_DISP에서 전체의 화면을 초기화 시킨다. 그리고, 다시 LINE1의 상태로 변경되어 LINE1,LINE2, DELAY_T, CLEAR_DISP의 상태가 순환되도록 구성되어 있다. 두 번째 PROCESS문에서는위의 스테이트 머신의 상태가 바뀌는 시간을 카운트하는 블록이다. 각 상태일 때에 일정 시간을 카운트(CNT) 한 후, 0으로 초기화 된다. 여기에서 만들어진 CNT의 값은 처음 PROCESS문에서 스테이트 머신의 상태를 바꾸는데 사용된다.130~277라인은 실제 VFD에 데이터를 보내는 블록이다. FUNCTION_SET, DISP_ONOFF,ENTRY_MODE, CLEAR_DISP는 VFD를 설정하는 것인데, LCD_RS와 LCD_RW에 0의 값을 출력하고, 해당 설정 데이터를 출력한다. LINE1과 LINE2의 상태에서는 각 라인의 첫 ADDRESS만 설정하고, 그 후에 DISPLAY하려는 데이터를 출력한다. 여기에서 설정을 할 때에는 LCD_RS와LCD_RW가 0의 값을 출력해야 하고, VFD에 문자를 DISPLAY할 때에는 LCD_RW는 마찬가지로0의 값을 출력해야 하지만, LCD_RS는 1의 값을 출력해야 한다는 점에 유의 해야 한다. 각 라인의 첫 ADDRESS를 설정하는 것도 설정 이기 때문에 LCD_R에는 0을 출력해야 한다.DISPLAY하려는 데이터는 앞에서 설명한 표시문자세트 표를 참고하면 된다.아래 테스트 벤치 파일이 이 예제를 시뮬레이션을 하기 위해서 예제에서 필요로 하는 입력신호를 생성하기 위한 것이다.
+위의 로직에서 28~128라인은 VFD를 동작시키기 위한 설정을 하고, 각 라인에 DISPLAY 데이터를 전달시키기 위한 FLOW를 만드는 부분이다. 앞의 21~34라인에 LCD_STATE라는 VFD 로직의 흐름을 나타내는 스테이트 머신을 선언하였다. 이 스테이트 머신은 첫 번째 PROCESS문에서 구성되며, 처음 Delay 상태에서 FUNCTION SET상태로, 또, DISP_ONOFF, ENTRY_MODE로바뀌어 VFD를 동작하기 위한 설정을 진행한다. 또, LINE1, LINE2상태에서 VFD에 문자를DISPLAY하고 DELAY_T에서 일정시간 VFD에서 문자를 DISPLAY한 내용을 유지하였다가CLEAR_DISP에서 전체의 화면을 초기화 시킨다. 그리고, 다시 LINE1의 상태로 변경되어 LINE1,LINE2, DELAY_T, CLEAR_DISP의 상태가 순환되도록 구성되어 있다. 두 번째 PROCESS문에서는위의 스테이트 머신의 상태가 바뀌는 시간을 카운트하는 블록이다. 각 상태일 때에 일정 시간을 카운트(CNT) 한 후, 0으로 초기화 된다. 여기에서 만들어진 CNT의 값은 처음 PROCESS문에서 스테이트 머신의 상태를 바꾸는데 사용된다.
+
+130~277라인은 실제 VFD에 데이터를 보내는 블록이다. FUNCTION_SET, DISP_ONOFF,ENTRY_MODE, CLEAR_DISP는 VFD를 설정하는 것인데, LCD_RS와 LCD_RW에 0의 값을 출력하고, 해당 설정 데이터를 출력한다. LINE1과 LINE2의 상태에서는 각 라인의 첫 ADDRESS만 설정하고, 그 후에 DISPLAY하려는 데이터를 출력한다. 여기에서 설정을 할 때에는 LCD_RS와LCD_RW가 0의 값을 출력해야 하고, VFD에 문자를 DISPLAY할 때에는 LCD_RW는 마찬가지로0의 값을 출력해야 하지만, LCD_RS는 1의 값을 출력해야 한다는 점에 유의 해야 한다. 각 라인의 첫 ADDRESS를 설정하는 것도 설정 이기 때문에 LCD_R에는 0을 출력해야 한다.DISPLAY하려는 데이터는 앞에서 설명한 표시문자세트 표를 참고하면 된다.아래 테스트 벤치 파일이 이 예제를 시뮬레이션을 하기 위해서 예제에서 필요로 하는 입력신호를 생성하기 위한 것이다.
 
 ```vhdl
 -- TB_CH3_VFD.VHD
