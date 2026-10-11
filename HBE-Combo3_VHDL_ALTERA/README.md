@@ -2,7 +2,7 @@
 
 ## 목차
 
-## CH1. 기초 이론
+### CH1. 기초 이론
 
 - [완] [CH1. 1. 아날로그와 디지털](<CH1_기초 이론/01_아날로그와 디지털.md>)
 - [완] [CH1. 2. TTL, ASIC, FPGA](<CH1_기초 이론/02_TTL, ASIC, FPGA.md>)
@@ -11,7 +11,7 @@
 - [완] [CH1. 4. GETTING STARTED](<CH1_기초 이론/04_GETTING STARTED.md>)
 - [완] [CH1. 5. VHDL 구조 및 기초](<CH1_기초 이론/05_VHDL 구조 및 기초.md>)
 
-## CH2. 디지털 논리 회로
+### CH2. 디지털 논리 회로
 
 - [완] [CH2. 6. 논리 게이트 설계](<CH2_디지털 논리 회로/06_논리 게이트 설계.md>)
 - [완] [CH2. 7. 연산 회로](<CH2_디지털 논리 회로/07_연산 회로.md>)
@@ -22,7 +22,7 @@
 - [완] [CH2. 12. 스테이트 머신(STATE MACHINE)](<CH2_디지털 논리 회로/12_스테이트%20머신(STATE MACHINE).md>)
 - [완] [CH2. 13. MEMORY](<CH2_디지털 논리 회로/13_MEMORY.md>)
 
-## CH3. 응용 로직 설계
+### CH3. 응용 로직 설계
 
 - [완] [CH3. 14. 7-SEGMENT 제어](<CH3_응용 로직 설계/14_7-SEGMENT%20제어.md>)
 - [완] [CH3. 15. STEP MOTOR 제어](<CH3_응용 로직 설계/15_STEP%20MOTOR%20제어.md>)
@@ -30,7 +30,7 @@
 - [완] [CH3. 17. CHARACTER LCD 제어](<CH3_응용 로직 설계/17_CHARACTER%20LCD%20제어.md>)
 - [완] [CH3. 18. RS-232 제어](<CH3_응용 로직 설계/18_RS-232 제어.md>)
 
-## CH4. 부 록
+### CH4. 부 록
 
 - [완] [CH4. 19. QUARTUS II INSTALLATION](<CH4_부 록/19_QUARTUS II INSTALLATION.md>)
 - [완] [CH4. 20. MODELSIM-ALTERA WEB EDITION INSTALLATION](<CH4_부 록/20_MODELSIM-ALTERA WEB EDITION INSTALLATION.md>)
