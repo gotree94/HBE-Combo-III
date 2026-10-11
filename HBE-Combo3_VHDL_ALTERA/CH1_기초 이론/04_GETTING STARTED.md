@@ -215,6 +215,8 @@ Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 �
 
 <br><br>
 
+<div align="center">
+  
 | 포트 이름 | 핀 번호 | 하드웨어 설명 | 포트 이름 | 핀 번호 | 하드웨어 설명 | 
 |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 | RESETN | N2 | FPGA_RESET | COUNT_OUT[4] | AF8 | LED4 | 
@@ -222,6 +224,8 @@ Assignment는 프로젝트의 타겟이 되는 FPGA 디바이스와 설계된 �
 | COUNT_OUT[7] | AE11 | LED1 | COUNT_OUT[2] | AF6 | LED6 | 
 | COUNT_OUT[6] | AE10 | LED2C | OUNT_OUT[1] | AF5 | LED7 | 
 | COUNT_OUT[5] | AF9 | LED3C | OUNT_OUT[0] | B3 | LED8 | 
+
+</div>
 
 <br><br>
 
