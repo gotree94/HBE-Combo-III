@@ -1,4 +1,4 @@
-# HBE-Combo3 
+# HBE-COMBO III User's Guide
 
 ## 목차
 
