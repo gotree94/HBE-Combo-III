@@ -1,4 +1,4 @@
-# HBE-COMBO III User's Guide 
+# HBE-COMBO III 
 
 <br><br>
 
