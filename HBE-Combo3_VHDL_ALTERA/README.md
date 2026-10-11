@@ -28,7 +28,7 @@
 - [완] [CH3. 15. STEP MOTOR 제어](<CH3_응용 로직 설계/15_STEP%20MOTOR%20제어.md>)
 - [완] [CH3. 16. PIEZO 제어](<CH3_응용 로직 설계/16_PIEZO%20제어.md>)
 - [ ] [CH3. 17. CHARACTER LCD 제어](<CH3_응용 로직 설계/17_CHARACTER%20LCD%20제어.md>)
-- [ ] [CH3. 18. RS-232 제어](<CH3_응용 로직 설계/18_RS-232 제어.md>)
+- [완] [CH3. 18. RS-232 제어](<CH3_응용 로직 설계/18_RS-232 제어.md>)
 
 ## CH4. 부 록
 
