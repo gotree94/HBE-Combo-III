@@ -25,22 +25,22 @@ Character LCD제어아래 표는 VFD를 사용하기 위한 제어 명령어를 
 | Display On/Off Control | 0 | 0 | 0 | 0 | 0 | 0 | 1 | D | C | B |
 | Cursor/Display Shift | 0 | 0 | 0 | 0 | 0 | 1 | S/C | R/L | X | X |
 | Function Set | 0 | 0 | 0 | 0 | 1 | IF | N | X | BR1 | BR0 |
-| CGRAM Address Setting | 0 | 0 | 0 | 1 | CG-RAM Address |  |  |  |  |  |
-| DDRAM Address Setting | 0 | 0 | 1 | DD-RAM Address |  |  |  |  |  |  |
-| Busy Flag & Address Reading | 0 | 1 | BF | Address Counter |  |  |  |  |  |  |
-| Busy Writing to CG-RAM or DD-RAM | 1 | 0 | Write Data |  |  |  |  |  |  |  |
-| Data Reading from CG-RAM or DD-RAM | 1 | 1 | Read Data |  |  |  |  |  |  |  |
+| CGRAM Address Setting | 0 | 0 | 0 | 1 | CG-RAM Address | CG-RAM Address | CG-RAM Address | CG-RAM Address | CG-RAM Address | CG-RAM Address |
+| DDRAM Address Setting | 0 | 0 | 1 | DD-RAM Address | DD-RAM Address | DD-RAM Address | DD-RAM Address | DD-RAM Address | DD-RAM Address | DD-RAM Address |
+| Busy Flag & Address Reading | 0 | 1 | BF | Address Counter | Address Counter | Address Counter | Address Counter | Address Counter | Address Counter | Address Counter |
+| Busy Writing to CG-RAM or DD-RAM | 1 | 0 | Write Data | Write Data | Write Data | Write Data | Write Data | Write Data | Write Data | Write Data |
+| Data Reading from CG-RAM or DD-RAM | 1 | 1 | Read Data | Read Data | Read Data | Read Data | Read Data | Read Data | Read Data | Read Data |
 
 | 비트 | 설명 |
 |---|---|
-| I/D | 1 : Increment<br>0 : Decrement |
-| S | 1 : Display shift enabled<br>0 : Cursor shift enabled |
-| S/C | 1 : Display shift<br>0 : Cursor move |
-| R/L | 1 : Shift to the right<br>0 : Shift to the left |
-| IF | 1 : 8bit<br>0 : 4bit |
-| N | 1 : 2 Line display<br>0 : 1 Line display |
-| BF | 1 : Busy(Internally operation)<br>0 : Not Busy(Instruction acceptable) |
-| BR1, BR0 | 00 : 100%<br>01 : 75%<br>10 : 50%<br>11 : 25% |
+| I/D | 1 : Increment 0 : Decrement |
+| S | 1 : Display shift enabled 0 : Cursor shift enabled |
+| S/C | 1 : Display shift 0 : Cursor move |
+| R/L | 1 : Shift to the right 0 : Shift to the left |
+| IF | 1 : 8bit 0 : 4bit |
+| N | 1 : 2 Line display 0 : 1 Line display |
+| BF | 1 : Busy(Internally operation) 0 : Not Busy(Instruction acceptable) |
+| BR1, BR0 | 00 : 100% 01 : 75% 10 : 50% 11 : 25% |
 
 
 * Display Clear전체 화면을 지우고 어드레스 카운터를 DD-RAM 어드레스 0으로 하여 커서를 home 위치로옮긴다.
