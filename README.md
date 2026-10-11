@@ -1,5 +1,7 @@
 # HBE-COMBO III User's Guide 
 
+<br><br>
+
 <p align="center">
 
 | HBE-COMBO III | HBE-COMBO III |
@@ -8,13 +10,17 @@
 
 </p>
 
+<br><br>
+
 * 보드: **HBE-COMBO III**
    * Altera(Quartus II) / Xilinx(Vivado) FPGA 훈련용 콤보 보드
    * ARM926EJS
 
+<br><br>
 
 ## 목차
 
+<br><br>
 
 | 장 | 파일 | 내용 |
 |----|------|------|
