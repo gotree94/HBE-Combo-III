@@ -152,7 +152,7 @@ Mealy Machine은 Moore Machine이 State에 의해서 출력이 결정되는 것�
 
 아래의 로직은 위의 상태도를 Verilog HDL로 구현한 것이다.
 
-```
+```verilog
 // CH2_MEALY.V
 
 module CH2_MEALY(X, Y);
@@ -190,7 +190,7 @@ endmodule
 
 아래는 이 예제를 시뮬레이션 하기 위한 테스트 벤치 파일과 ModelSim으로 시뮬레이션 한결과이다.
 
-```
+```verilog
 // CH2_MEALY_TB.V
 `timescale 10ns / 1ps
 
