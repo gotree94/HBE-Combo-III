@@ -73,7 +73,7 @@ endmodule
 
 아래는 이 예제를 시뮬레이션 하기 위한 테스트 벤치 파일과 ModelSim으로 시뮬레이션 한결과이다.
 
-```
+```verilog
 // CH2_MOORE_TB.V
 `timescale 10ns / 1ps
 
