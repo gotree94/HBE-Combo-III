@@ -4,6 +4,8 @@ Quartus II는 하나의 소프트웨어 안에서 로직을 설계하고, 시뮬
 
 이 장에서는 이 Quartus II 프로그램을 설치하는 과정에 대하여 설명하고 있다.
 
+Quartus II 13.0sp1 Web Edition 이 마지막 지원 버전입니다.
+
 ## 19.1. 사용 환경
 
 <div align="center">
