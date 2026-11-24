@@ -277,6 +277,7 @@ vmap work gate_work
 vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
 vlog -work work C:/altera/work/ch2_and2_delay_tb.v
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb
+add wave -radix binary sim:/ch2_and2_delay_tb/A sim:/ch2_and2_delay_tb/B sim:/ch2_and2_delay_tb/X
 run 70000 ps
 ```
 
