@@ -281,7 +281,9 @@ add wave -radix binary sim:/ch2_and2_delay_tb/A sim:/ch2_and2_delay_tb/B sim:/ch
 run 70000 ps
 ```
 
-Fast 지연을 보려면 `CH2_AND2.vo`를 `CH2_AND2_fast.vo`로 바꾸면 된다.
+Fast 지연을 보려면 `CH2_AND2.vo`를 `CH2_AND2_fast.vo`로 바꾸면 된다. GUI에서 파형을 보려면 `add wave`가 필요하다. TB의 `$display`는 Transcript에만 값을 출력하므로 Wave에는 자동으로 신호가 추가되지 않는다.
+
+또한 `quit -simcd C:/...`처럼 붙여 쓰면 안 된다. `quit -sim`과 `cd ...`는 반드시 별도 줄로 입력한다.
 
 ### 9.4 각 명령의 의미
 
@@ -296,7 +298,7 @@ Fast 지연을 보려면 `CH2_AND2.vo`를 `CH2_AND2_fast.vo`로 바꾸면 된다
 | `vlog ... CH2_AND2_TB.V` | 테스트벤치 컴파일 |
 | `vsim -voptargs=+acc -L ... work.TestBench` | top을 `TestBench`로 시뮬레이션 시작 |
 | `add wave ...` | A/B/X를 파형 창에 2진수로 표시 |
-| `run 400 ns` / `run 70000 ps` | 지정 시간 동안 시뮬레이션 진행 |
+| `run 600 ns` / `run 70000 ps` | 지정 시간 동안 시뮬레이션 진행 |
 
 `-L` 옵션이 필요한 이유:
 
@@ -387,7 +389,15 @@ monitor TB 실행 결과이다.
 
 STA 리포트와 게이트 시뮬레이션 실측값이 정확히 일치한다.
 
-처음에 `X=x`로 보였다가 약 6 ns 또는 2.3 ns 뒤에 0이 되는 현가는 power-up/IO 초기화 현상이며 입력 전환 지연이 아니다.
+처음에 `X=x`로 보였다가 약 6 ns 또는 2.3 ns 뒤에 0이 되는 현가는 **설계가 반드시 기다려야 하는 지연이 아니라 power-up/unknown 해소 현상**이다.
+
+- t=0에 TB가 `A=0, B=1`을 넣어도, 그 전까지 레지스터/와이어/primitive 내부 상태는 `x`이다.
+- SDF가 0 ps에 back-annotation되면서 IO/LUT primitive의 초기값이 전파되고, `CH2_AND2.vo:185`의 `output_power_up = "low"` 같은 설정이 output pad를 0으로 수렴시킨다.
+- Slow에서는 약 `5978 ps`, Fast에서는 약 `2337 ps` 뒤 `X=0`이 된다.
+- 이 값은 A/B 입력 전환에 대한 propagation delay가 아니므로 `7068 ps`, `6677 ps` 등과 같을 필요는 없다.
+- 따라서 지연 측정에서는 초기 구간을 무시하고, 입력이 안정된 뒤에 일어난 전환(예: `10000 ps → 17068 ps`)만 사용해야 한다.
+
+실제 FPGA에서도 전원 직후 출력값을 보장할 수 없으므로, power-up 값에 의존하지 말고 reset 또는 유효 데이터가 안정된 뒤를 기준으로 판단한다.
 
 ### 12.3 AND2에서 setup slack / hold slack / Fmax / critical path 확인
 
