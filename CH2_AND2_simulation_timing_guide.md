@@ -27,7 +27,7 @@
 | 라이브러리 번들 | `C:\altera\13.0sp1\modelsim_ase` |
 | 프로젝트 | `C:\altera\work\CH2_AND2.qpf`, `CH2_AND2.qsf` |
 | RTL | `C:\altera\work\CH2_AND2.V` |
-| 기존 TB | `C:\altera\work\verilog\CH2_AND2\CH2_AND2_TB.V` |
+| 기존 TB | `C:\altera\work\CH2_AND2_TB.V` |
 | 게이트 시뮬레이션 작업 폴더 | `C:\altera\work\simulation\modelsim` |
 | STA 리포트 | `C:\altera\work\output_files\CH2_AND2.sta.rpt` |
 | 타깃 소자 | Cyclone II `EP2C70F672C8`, speed grade 8 |
@@ -50,7 +50,7 @@ Quartus 13.0sp1은 ModelSim-Altera 10.1d와 공식 조합이다. 13.1 설치본�
 |---|---|
 | `C:\altera\work\CH2_AND2.V` | 원본 RTL. `assign X = A & B;` |
 | `C:\altera\work\CH2_AND2.qsf` | 소자, speed grade, EDA tool 설정. 테스트벤치 등록은 없음 |
-| `C:\altera\work\verilog\CH2_AND2\CH2_AND2_TB.V` | 실습용 기존 테스트벤치 |
+| `C:\altera\work\CH2_AND2_TB.V` | 실습용 기존 테스트벤치 |
 | `C:\altera\work\simulation\modelsim\CH2_AND2.vo` | Slow 코너 게이트 레벨 Verilog 넷리스트 |
 | `C:\altera\work\simulation\modelsim\CH2_AND2_fast.vo` | Fast 코너 게이트 레벨 Verilog 넷리스트 |
 | `C:\altera\work\simulation\modelsim\CH2_AND2_v.sdo` | Slow 코너 SDF 지연 데이터 |
@@ -86,7 +86,7 @@ endmodule
 
 ## 5. 기존 테스트벤치와 한계
 
-`C:\altera\work\verilog\CH2_AND2\CH2_AND2_TB.V`
+`C:\altera\work\CH2_AND2_TB.V`
 
 ```verilog
 // CH2_AND2_TB.V
@@ -241,7 +241,7 @@ vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
 vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
-vlog -work work C:/altera/work/verilog/CH2_AND2/CH2_AND2_TB.V
+vlog -work work C:/altera/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
 run 400 ns
@@ -258,7 +258,7 @@ vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
 vlog -vlog01compat -work work +incdir+. CH2_AND2_fast.vo
-vlog -work work C:/altera/work/verilog/CH2_AND2/CH2_AND2_TB.V
+vlog -work work C:/altera/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
 run 400 ns
@@ -538,7 +538,7 @@ vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cy
 
 ```tcl
 vsim ... work.TestBench
-C:/altera/work/verilog/CH2_AND2/CH2_AND2_TB.V
+C:/altera/work/CH2_AND2_TB.V
 ```
 
 두 번째 줄은 경로만 있는 Tcl 명령이라 오류가 난다. 테스트벤치는 이미 `vlog -work work ...CH2_AND2_TB.V`에서 컴파일되었으므로 이 줄은 삭제한다.
