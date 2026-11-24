@@ -305,11 +305,57 @@ Fast 지연을 보려면 `CH2_AND2.vo`를 `CH2_AND2_fast.vo`로 바꾸면 된다
 -netlist가 `cycloneii_io`, `cycloneii_lcell_comb`, `cycloneii_mux21` 같은 Cyclone II primitive를 인스턴스화하기 때문이다.
 - `-voptargs=+acc`는 신호 최적화를 줄여 `add wave`/`force`가 신호를 볼 수 있게 한다.
 
-### 9.5 Batch 실행 예시
+### 9.5 실행 방법: Batch와 GUI
+
+#### 9.5.1 PowerShell에서 Batch(console) 실행
 
 ```powershell
-& "C:\altera\13.0sp1\modelsim_ase\win32aloem\vsim.exe" -c -do "quit -sim; cd C:/altera/work/simulation/modelsim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/altera/work/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; run 70000 ps; quit -f"
+# 1) 실행 파일 경로를 변수에 저장한다.
+$vsim = "C:\altera\13.0sp1\modelsim_ase\win32aloem\vsim.exe"
+
+# 2) -c : GUI 없이 콘솔 모드로 실행한다. 로그와 $display가 PowerShell에 출력된다.
+#    -do : 따옴표 안의 Tcl 명령을 위에서부터 순서대로 실행한다.
+#    quit -sim : 이전 simulation을 먼저 언로드한다. cd보다 반드시 먼저 실행한다.
+#    cd ... : .vo, .sdo, modelsim.ini가 있는 폴더로 이동한다.
+#    vdel/vlib/vmap : gate_work 라이브러리를 비우고 work로 매핑한다.
+#    vlog ... : CH2_AND2.vo와 지연 측정 TB를 컴파일한다.
+#    vsim ... : Cyclone II primitive 라이브러리를 -L로 모두 지정한다.
+#    run 70000 ps : 70 ns 동안 시뮬레이션한다.
+#    quit -f : batch 끝에서 ModelSim을 강제 종료한다.
+& $vsim -c -do "quit -sim; cd C:/altera/work/simulation/modelsim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/altera/work/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; run 70000 ps; quit -f"
 ```
+
+`-c`가 있으므로 GUI 창은 뜨지 않는다. GUI가 없는 것은 오류가 아니라 의도된 동작이다.
+
+#### 9.5.2 PowerShell에서 GUI로 실행
+
+```powershell
+# 1) GUI로 띄우려면 -c를 빼고, 끝의 quit -f도 빼야 한다.
+#    quit -f를 남기면 창이 열리자마자 바로 닫힌다.
+# 2) add wave로 A/B/X를 Wave에 올린 뒤 wave zoom full로 전체 구간을 맞춘다.
+# 3) $display 값은 Transcript에, 신호 변화는 Wave에 표시된다.
+& $vsim -do "quit -sim; cd C:/altera/work/simulation/modelsim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/altera/work/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; add wave -radix binary sim:/ch2_and2_delay_tb/A sim:/ch2_and2_delay_tb/B sim:/ch2_and2_delay_tb/X; run 70000 ps; wave zoom full"
+```
+
+#### 9.5.3 이미 열려 있는 ModelSim GUI에서 실행
+
+PowerShell 명령 대신 GUI의 Transcript에 아래 줄을 **한 줄씩** 입력한다.
+
+```tcl
+quit -sim
+cd C:/altera/work/simulation/modelsim
+vdel -lib gate_work -all
+vlib gate_work
+vmap work gate_work
+vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
+vlog -work work C:/altera/work/ch2_and2_delay_tb.v
+vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb
+add wave -radix binary sim:/ch2_and2_delay_tb/A sim:/ch2_and2_delay_tb/B sim:/ch2_and2_delay_tb/X
+run 70000 ps
+wave zoom full
+```
+
+`quit -sim`과 `cd`를 한 줄에 붙여 쓰면 `quit -simcd ...`가 되어 오류가 난다. 또한 여기서는 `quit -f`를 쓰지 않는다. Fast 모델을 보려면 `CH2_AND2.vo` 대신 `CH2_AND2_fast.vo`를 컴파일하면 된다.
 
 정상 실행 시 다음 메시지가 나온다.
 
