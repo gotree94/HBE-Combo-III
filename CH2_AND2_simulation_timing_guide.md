@@ -197,13 +197,15 @@ module ch2_and2_delay_tb;
     #10000 A = 1; B = 0;
     #10000 B = 1;
     #10000 B = 0;
-    #10000 //$finish;
+    #10000; //$finish;
   end
   always @(A, B, X) $display("%0t ps A=%b B=%b X=%b", $realtime, A, B, X);
 endmodule
 ```
 
 이 TB를 컴파일할 때는 `vsim ... work.ch2_and2_delay_tb`, 실행은 `run 70000 ps`를 사용한다. `$finish`는 주석 처리했으므로 GUI Transcript에서는 70 ns 실행 후 시뮬레이션이 유지되어 파형을 계속 확인할 수 있다. Batch 실행에서는 마지막 `quit -f`가 자동 종료를 담당한다.
+
+주의: `#10000 //$finish;`처럼 쓰면 지연문 뒤에 올 문장이 없어 `near "end": syntax error`가 난다. 반드시 `#10000; //$finish;`처럼 세미콜론을 먼저 써야 한다.
 
 ---
 
@@ -235,8 +237,8 @@ C:\altera\work\simulation\modelsim
 ### 9.1 Slow 모델 + 기존 테스트벤치
 
 ```tcl
-cd C:/altera/work/simulation/modelsim
 quit -sim
+cd C:/altera/work/simulation/modelsim
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
@@ -252,8 +254,8 @@ run 400 ns
 `CH2_AND2.vo` 대신 `CH2_AND2_fast.vo`만 컴파일하면 된다.
 
 ```tcl
-cd C:/altera/work/simulation/modelsim
 quit -sim
+cd C:/altera/work/simulation/modelsim
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
@@ -267,8 +269,8 @@ run 400 ns
 ### 9.3 Slow 모델 + 지연 monitor TB
 
 ```tcl
-cd C:/altera/work/simulation/modelsim
 quit -sim
+cd C:/altera/work/simulation/modelsim
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
@@ -303,7 +305,7 @@ Fast 지연을 보려면 `CH2_AND2.vo`를 `CH2_AND2_fast.vo`로 바꾸면 된다
 ### 9.5 Batch 실행 예시
 
 ```powershell
-& "C:\altera\13.0sp1\modelsim_ase\win32aloem\vsim.exe" -c -do "cd C:/altera/work/simulation/modelsim; quit -sim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/altera/work/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; run 70000 ps; quit -f"
+& "C:\altera\13.0sp1\modelsim_ase\win32aloem\vsim.exe" -c -do "quit -sim; cd C:/altera/work/simulation/modelsim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/altera/work/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; run 70000 ps; quit -f"
 ```
 
 정상 실행 시 다음 메시지가 나온다.
@@ -559,13 +561,61 @@ C:/altera/work/CH2_AND2_TB.V
 
 `CH2_AND2`는 클록이 없는 순수 조합 회로다. 따라서 setup/hold/Fmax 대신 propagation delay만 의미가 있다.
 
+### 15.6 `Cannot change directory while a simulation is in progress`
+
+```text
+# Cannot change directory while a simulation is in progress.
+# Use the "quit -sim" command to unload the design first.
+```
+
+이미 ModelSim에 설계가 로드된 상태에서 `cd`를 먼저 실행하면 발생한다. 또한 `cd C:/altera/work/simulation/modelsimquit -sim`처럼 한 줄로 붙여 쓰면 안 된다.
+
+올바른 순서:
+
+```tcl
+quit -sim
+cd C:/altera/work/simulation/modelsim
+vdel -lib gate_work -all
+vlib gate_work
+vmap work gate_work
+```
+
+`quit -sim`은 시뮬레이션만 unload하고 ModelSim 창은 유지한다.
+
+### 15.7 `near "end": syntax error` in 지연 TB
+
+잘못된 코드:
+
+```verilog
+#10000 //$finish;
+end
+```
+
+이렇게 쓰면 `#10000` 뒤에 실행할 문장이 없어 `end`가 문장 자리로 해석되어 syntax error가 난다.
+
+올바른 코드:
+
+```verilog
+#10000; //$finish;
+end
+```
+
+세미콜론이 있으면 빈 문장(null statement)이 되어 문법적으로 유효하다. 이 오류 때문에 `vlog`가 실패하면 뒤의 `vsim`도 다음과 같이 연쇄 실패한다.
+
+```text
+** Error: (vsim-3170) Could not find '.../gate_work.ch2_and2_delay_tb'.
+# No Design Loaded!
+```
+
+즉 `vsim-3170`과 `No Design Loaded!`는 원인이 아니라 `vlog` 컴파일 실패의 결과다.
+
 ---
 
 ## 16. 재현 체크리스트
 
 1. Quartus에서 `C:\altera\work\CH2_AND2.qpf`를 열고 Full Compilation 수행
 2. `C:\altera\work\simulation\modelsim`에 `.vo`, `.sdo`가 생성되었는지 확인
-3. ModelSim Transcript에서 `cd C:/altera/work/simulation/modelsim`
+3. ModelSim Transcript에서 `quit -sim` 후 `cd C:/altera/work/simulation/modelsim`
 4. `vdel/vlib/vmap`으로 `gate_work` 재구성
 5. `vlog`로 `.vo`와 TB 컴파일
 6. `vsim -L ...`로 게이트 레벨 시뮬레이션 시작
