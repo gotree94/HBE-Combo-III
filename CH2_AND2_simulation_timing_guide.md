@@ -182,7 +182,7 @@ endmodule
 
 기존 TB의 한계 때문에 별도 지연 측정용 TB를 사용했다. 실제 값은 이 TB로 확인했다.
 
-임시 경로: `C:\Users\Administrator\AppData\Local\Temp\opencode\ch2_and2_delay_tb.v`
+지연 측정용 TB 경로: `C:\altera\work\ch2_and2_delay_tb.v`
 
 ```verilog
 `timescale 1ps/1ps
@@ -197,13 +197,13 @@ module ch2_and2_delay_tb;
     #10000 A = 1; B = 0;
     #10000 B = 1;
     #10000 B = 0;
-    #10000 $finish;
+    #10000 //$finish;
   end
   always @(A, B, X) $display("%0t ps A=%b B=%b X=%b", $realtime, A, B, X);
 endmodule
 ```
 
-이 TB를 컴파일할 때는 `vsim ... work.ch2_and2_delay_tb`, 실행은 `run 70000 ps`를 사용한다.
+이 TB를 컴파일할 때는 `vsim ... work.ch2_and2_delay_tb`, 실행은 `run 70000 ps`를 사용한다. `$finish`는 주석 처리했으므로 GUI Transcript에서는 70 ns 실행 후 시뮬레이션이 유지되어 파형을 계속 확인할 수 있다. Batch 실행에서는 마지막 `quit -f`가 자동 종료를 담당한다.
 
 ---
 
@@ -244,7 +244,7 @@ vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
 vlog -work work C:/altera/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
-run 600 ns
+run 400 ns
 ```
 
 ### 9.2 Fast 모델 + 기존 테스트벤치
@@ -261,7 +261,7 @@ vlog -vlog01compat -work work +incdir+. CH2_AND2_fast.vo
 vlog -work work C:/altera/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
-run 600 ns
+run 400 ns
 ```
 
 ### 9.3 Slow 모델 + 지연 monitor TB
@@ -273,7 +273,7 @@ vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
 vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
-vlog -work work C:/Users/Administrator/AppData/Local/Temp/opencode/ch2_and2_delay_tb.v
+vlog -work work C:/altera/work/ch2_and2_delay_tb.v
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb
 run 70000 ps
 ```
@@ -303,7 +303,7 @@ Fast 지연을 보려면 `CH2_AND2.vo`를 `CH2_AND2_fast.vo`로 바꾸면 된다
 ### 9.5 Batch 실행 예시
 
 ```powershell
-& "C:\altera\13.0sp1\modelsim_ase\win32aloem\vsim.exe" -c -do "cd C:/altera/work/simulation/modelsim; quit -sim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/Users/Administrator/AppData/Local/Temp/opencode/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; run 70000 ps; quit -f"
+& "C:\altera\13.0sp1\modelsim_ase\win32aloem\vsim.exe" -c -do "cd C:/altera/work/simulation/modelsim; quit -sim; vdel -lib gate_work -all; vlib gate_work; vmap work gate_work; vlog -vlog01compat -work work +incdir+. CH2_AND2.vo; vlog -work work C:/altera/work/ch2_and2_delay_tb.v; vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.ch2_and2_delay_tb; run 70000 ps; quit -f"
 ```
 
 정상 실행 시 다음 메시지가 나온다.
