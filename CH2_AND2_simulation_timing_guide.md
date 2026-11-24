@@ -246,7 +246,7 @@ vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
 vlog -work work C:/altera/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
-run 400 ns
+run 600 ns
 ```
 
 ### 9.2 Fast 모델 + 기존 테스트벤치
@@ -263,7 +263,7 @@ vlog -vlog01compat -work work +incdir+. CH2_AND2_fast.vo
 vlog -work work C:/altera/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
-run 400 ns
+run 600 ns
 ```
 
 ### 9.3 Slow 모델 + 지연 monitor TB
