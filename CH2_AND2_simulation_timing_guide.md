@@ -34,6 +34,10 @@
 | 핀 | `A=PIN_C13`, `B=PIN_D13`, `X=PIN_B12` |
 | I/O standard | 3.3-V LVTTL |
 
+* DF = Standard Delay Format (IEEE 1490)입니다.
+* 합성·배치배선 후 얻은 실제 셀/배선 지연값을 시뮬레이터로 되돌려주는 표준 텍스트 파일로, TIMESCALE, IOPATH/PORT/INTERCONNECT 지연, SETUP/HOLD 검사, min:typ:max 값을 담습니다.
+* 지금 구조에서는 $sdf_annotate("CH2_AND2_v.sdo");가 이 값을 넷리스트에 붙입니다. Quartus는 확장자를 .sdo로 쓰고 Xilinx는 보통 .sdf를 씁니다.
+
 참고 문서:
 
 - Quartus II 13.0sp1 release notes: `https://docs.altera.com/api/khub/documents/AssgpFs1s3mMKJwcb_Wilg/content`
