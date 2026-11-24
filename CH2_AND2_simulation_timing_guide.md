@@ -34,10 +34,6 @@
 | 핀 | `A=PIN_C13`, `B=PIN_D13`, `X=PIN_B12` |
 | I/O standard | 3.3-V LVTTL |
 
-* DF = Standard Delay Format (IEEE 1490)입니다.
-* 합성·배치배선 후 얻은 실제 셀/배선 지연값을 시뮬레이터로 되돌려주는 표준 텍스트 파일로, TIMESCALE, IOPATH/PORT/INTERCONNECT 지연, SETUP/HOLD 검사, min:typ:max 값을 담습니다.
-* 지금 구조에서는 $sdf_annotate("CH2_AND2_v.sdo");가 이 값을 넷리스트에 붙입니다. Quartus는 확장자를 .sdo로 쓰고 Xilinx는 보통 .sdf를 씁니다.
-
 참고 문서:
 
 - Quartus II 13.0sp1 release notes: `https://docs.altera.com/api/khub/documents/AssgpFs1s3mMKJwcb_Wilg/content`
@@ -541,15 +537,19 @@ A → X = 561 + 275 + 180 + 359 + 1523 = 2898 ps
 B → X = 561 + 273 + 59 + 359 + 1523 = 2775 ps
 ```
 
-SDF의 `(min:typ:max)` 형식 예:
+SDF 해석 시 주의점:
+
+- 같은 CELL 안에서 `PORT`와 `IOPATH`가 함께 나오면 서로 대체가 아니라 **직렬 구간으로 더해진다**. LCELL의 A 경로는 `PORT datab 275` + `IOPATH datab combout 180` = 455 ps이고, 출력 IO는 `PORT datain 359` + `IOPATH datain padio 1523` = 1882 ps다.
+- `ABSOLUTE`는 각 구간 값이 절대 지연이라는 뜻이다. `INCREMENT`처럼 같은 항목에 덧붙이는 방식이 아니며, 전체 경로 지연은 위 구간들을 합산해 구한다.
+- 입력 IO CELL의 `padio`는 외부 핀 A/B이고, 출력 IO CELL의 `padio`는 실제 출력 핀 X(`PIN_B12`)다.
+- 형식은 `(IOPATH 입력 출력 (rise_min:rise_typ:rise_max) (fall_min:fall_typ:fall_max))`이다. 첫 3-tuple은 rising, 두 번째는 falling 지연이다.
 
 ```text
 (IOPATH padio combout (1090:1090:1090) (1090:1090:1090))
 ```
 
-- 첫 번째 3-tuple: rising 지연의 min/typ/max
-- 두 번째 3-tuple: falling 지연의 min/typ/max
-- 이 파일에서는 세 값이 같아 하나의 코너 값으로 표현됨
+- min은 빠른 공정/높은 전압/낮은 온도, max는 느린 공정/낮은 전압/높은 온도 코너에 해당한다.
+- Quartus가 `_fast.sdo`와 `_v.sdo`로 코너를 이미 선택하므로 이 파일에서는 세 값이 모두 같다.
 
 `파일명:줄번호` 표기 예:
 
