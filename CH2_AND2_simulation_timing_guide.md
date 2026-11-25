@@ -246,8 +246,8 @@ cd C:/altera/13.0sp1/work/simulation/modelsim
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
-vlog -vlog01compat -work work +incdir+. CH2_AND2.vo
-vlog -work work C:/altera/work/CH2_AND2_TB.V
+vlog -vlog01compat -work work +incdir+. NAND2-TEST.vo
+vlog -work work C:/altera/13.0sp1/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
 run 600 ns
@@ -263,8 +263,8 @@ cd C:/altera/13.0sp1/work/simulation/modelsim
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
-vlog -vlog01compat -work work +incdir+. CH2_AND2_fast.vo
-vlog -work work C:/altera/work/CH2_AND2_TB.V
+vlog -vlog01compat -work work +incdir+. NAND2-TEST_fast.vo
+vlog -work work C:/altera/13.0sp1/work/CH2_AND2_TB.V
 vsim -voptargs=+acc -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L cycloneii_ver work.TestBench
 add wave -radix binary sim:/TestBench/A sim:/TestBench/B sim:/TestBench/X
 run 600 ns
