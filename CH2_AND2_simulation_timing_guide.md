@@ -235,7 +235,7 @@ NativeLink는 Quartus가 ModelSim 같은 외부 EDA 시뮬레이터를 자동으
 작업 디렉터리:
 
 ```text
-C:\altera\work\simulation\modelsim
+C:\altera\13.0sp1\modelsim_ase
 ```
 
 ### 9.1 Slow 모델 + 기존 테스트벤치
