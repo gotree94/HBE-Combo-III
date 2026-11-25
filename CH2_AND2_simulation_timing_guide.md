@@ -242,7 +242,7 @@ C:\altera\work\simulation\modelsim
 
 ```tcl
 quit -sim
-cd C:/altera/work/simulation/modelsim
+cd C:\altera\13.0sp1\modelsim_ase
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
@@ -259,7 +259,7 @@ run 600 ns
 
 ```tcl
 quit -sim
-cd C:/altera/work/simulation/modelsim
+cd C:\altera\13.0sp1\modelsim_ase
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
@@ -274,7 +274,7 @@ run 600 ns
 
 ```tcl
 quit -sim
-cd C:/altera/work/simulation/modelsim
+cd C:\altera\13.0sp1\modelsim_ase
 vdel -lib gate_work -all
 vlib gate_work
 vmap work gate_work
