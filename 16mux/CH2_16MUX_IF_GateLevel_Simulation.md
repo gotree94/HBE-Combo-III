@@ -129,6 +129,30 @@ module tb_CH2_16MUX_IF;
 endmodule
 ```
 
+* Quartus II에서 컴파일을 완료하여 코드에 문제가 없는지 확인하고, 필요한 파일들이 생성되는지 확인이 필요합니다.
+
+C:\altera\13.0sp1\simulation\modelsim 폴더 아래
+
+```
+ C:\altera\13.0sp1\simulation\modelsim 디렉터리
+
+2026-11-27  오전 07:26    <DIR>          .
+2026-11-27  오전 06:38    <DIR>          ..
+2026-11-27  오전 07:26               192 CH2_16MUX_IF.sft
+2026-11-27  오전 07:26            31,173 CH2_16MUX_IF.vo
+2026-11-27  오전 07:26            31,178 CH2_16MUX_IF_fast.vo
+2026-11-27  오전 07:26             1,679 CH2_16MUX_IF_modelsim.xrf
+2026-11-27  오전 07:26            11,094 CH2_16MUX_IF_v.sdo
+2026-11-27  오전 07:26            10,980 CH2_16MUX_IF_v_fast.sdo
+               6개 파일              86,296 바이트
+```
+
+## ModelSim 수행
+
+Tool > Run Simulation Tool > Gate Level Simulation
+
+Timing model : Slow Model 을 선택하고 "RUN"
+
 ## ModelSim 수행 절차 (Slow Model)
 
 ModelSim Tcl 콘솔에서 아래 순서대로 실행.
@@ -195,6 +219,25 @@ Quartus에서 **Fast Model**을 선택해 게이트레벨 파일을 생성하면
 |---|---|---|
 | 넷리스트 | `CH2_16MUX_IF.vo` | `CH2_16MUX_IF_fast.vo` |
 | SDF | `CH2_16MUX_IF_v.sdo` | `CH2_16MUX_IF_v_fast.sdo` |
+
+
+* Quartus II에서 컴파일을 완료하여 코드에 문제가 없는지 확인하고, 필요한 파일들이 생성되는지 확인이 필요합니다.
+
+C:\altera\13.0sp1\simulation\modelsim 폴더 아래
+
+```
+ C:\altera\13.0sp1\simulation\modelsim 디렉터리
+
+2026-11-27  오전 07:26    <DIR>          .
+2026-11-27  오전 06:38    <DIR>          ..
+2026-11-27  오전 07:26               192 CH2_16MUX_IF.sft
+2026-11-27  오전 07:26            31,173 CH2_16MUX_IF.vo
+2026-11-27  오전 07:26            31,178 CH2_16MUX_IF_fast.vo
+2026-11-27  오전 07:26             1,679 CH2_16MUX_IF_modelsim.xrf
+2026-11-27  오전 07:26            11,094 CH2_16MUX_IF_v.sdo
+2026-11-27  오전 07:26            10,980 CH2_16MUX_IF_v_fast.sdo
+               6개 파일              86,296 바이트
+```
 
 ### Fast Model용 전체 스크립트 (`run_gate_sim_fast.do`)
 
