@@ -7,6 +7,10 @@
 - **Timing Model**: Slow Model / Fast Model
 - **Target Device**: Cyclone II (`cycloneii_ver`)
 
+* C:\altera\13.0sp1\simulation\modelsim
+* C:\altera\13.0sp1\work\simulation\modelsim
+* C:\altera\13.0sp1\simulation\modelsim 에 파일들을 모아두면 아래 어려움이 없을 것이다.
+
 ## 파일 경로
 | 구분 | 경로 |
 |---|---|
