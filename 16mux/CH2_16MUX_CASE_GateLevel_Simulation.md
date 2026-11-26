@@ -7,6 +7,12 @@
 - **Timing Model**: Slow Model
 - **Target Device**: Cyclone II (`cycloneii_ver`)
 
+시뮬레이션 파일들이 어디에 생성 되었는지 확인을 한다.
+
+* C:\altera\13.0sp1\simulation\modelsim
+* C:\altera\13.0sp1\work\simulation\modelsim
+* C:\altera\13.0sp1\simulation\modelsim 에 파일들을 모아두면 아래 어려움이 없을 것이다.
+
 ## 파일 경로
 | 구분 | 경로 |
 |---|---|
