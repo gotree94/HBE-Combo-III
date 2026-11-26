@@ -132,6 +132,10 @@ C:\altera\13.0sp1\simulation\modelsim 폴더 아래
                6개 파일              87,016 바이트
 ```
 
+## ModelSim 수행
+
+Tool > Run Simulation Tool > Gate Level Simulation
+
 ## ModelSim 수행 절차 (성공 기준)
 
 ModelSim Tcl 콘솔에서 아래 순서대로 실행.
