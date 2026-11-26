@@ -102,10 +102,10 @@
 | S[2] → Z | 3.102 | 3.102 | 3.102 | 3.102 |
 | S[3] → Z | 5.707 | 5.707 | 5.707 | 5.707 |
 
-
-![](case-time.png) ![](case-fast-time.png)
-
-![](if-time.png) ![](if-fast-time.png)
+| Slow | Fast |
+|:------:|:------:|
+| ![](case-time.png) | ![](case-fast-time.png) | 
+| ![](if-time.png) | ![](if-fast-time.png) | 
 
 ### 핵심 관찰
 
