@@ -64,8 +64,10 @@ module CH2_16MUX_IF (I0, I1, I2, I3, I4, I5, I6, I7,
             Z = I15;
     end
 endmodule
-
 ```
+
+![](IF.png)
+
 
 ## 테스트벤치 (`tb_CH2_16MUX_IF.v`)
 
@@ -211,6 +213,9 @@ add wave -r /*
 run -all
 ```
 
+![](IF-slow.png)
+
+
 ## Fast Model 사용 시
 
 Quartus에서 **Fast Model**을 선택해 게이트레벨 파일을 생성하면 fast용 넷리스트/SDO가 만들어집니다. ModelSim에서는 **TCL/스크립트의 파일명도 fast용으로 수정해야 합니다**.
@@ -262,6 +267,8 @@ vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L cycloneii_ver -sdfmax /tb_C
 add wave -r /*
 run -all
 ```
+
+![](IF-fast.png)
 
 **핵심:** `vlog` 대상 VO, `file copy` 대상 SDO, `vsim -sdfmax`의 SDF 파일명을 모두 fast용으로 변경해야 합니다. 디바이스 라이브러리(`-L cycloneii_ver`)는 동일 디바이스면 그대로 사용합니다.
 
