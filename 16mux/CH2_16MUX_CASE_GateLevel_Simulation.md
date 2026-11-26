@@ -217,6 +217,30 @@ Quartus에서 **Fast Model**을 선택해 게이트레벨 파일을 생성하면
 
 ### Fast Model용 ModelSim 명령
 
+* Quartus II에서 컴파일을 완료하여 코드에 문제가 없는지 확인하고, 필요한 파일들이 생성되는지 확인이 필요합니다.
+
+C:\altera\13.0sp1\simulation\modelsim 폴더 아래
+
+```
+ C:\altera\13.0sp1\simulation\modelsim 디렉터리
+
+2026-11-27  오전 07:09    <DIR>          .
+2026-11-27  오전 06:38    <DIR>          ..
+2026-11-27  오전 07:09               200 CH2_16MUX_CASE.sft
+2026-11-27  오전 07:09            31,432 CH2_16MUX_CASE.vo
+2026-11-27  오전 07:09            31,437 CH2_16MUX_CASE_fast.vo
+2026-11-27  오전 07:09             1,809 CH2_16MUX_CASE_modelsim.xrf
+2026-11-27  오전 07:09            11,126 CH2_16MUX_CASE_v.sdo
+2026-11-27  오전 07:09            11,012 CH2_16MUX_CASE_v_fast.sdo
+               6개 파일              87,016 바이트
+```
+
+## ModelSim 수행
+
+Tool > Run Simulation Tool > Gate Level Simulation
+
+Timing model : Fast Model 을 선택하고 "RUN"
+
 ```tcl
 cd C:/altera/13.0sp1/work
 if {[file exists work]} { vdel -lib work -all }
