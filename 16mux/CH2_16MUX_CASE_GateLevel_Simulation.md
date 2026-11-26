@@ -203,8 +203,10 @@ vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L cycloneii_ver -sdfmax /tb_C
 add wave -r /*
 run -all
 ```
-## Finish Vsim 화면에서 "아니오"를 선택합니다. (시뮬레이션 결과는 Wave에 남아 있음.)
 
+### Finish Vsim 화면에서 "아니오"를 선택합니다. (시뮬레이션 결과는 Wave에 남아 있음.)
+
+---
 
 ## Fast Model 사용 시
 
@@ -260,6 +262,9 @@ vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L cycloneii_ver -sdfmax /tb_C
 add wave -r /*
 run -all
 ```
+### Finish Vsim 화면에서 "아니오"를 선택합니다. (시뮬레이션 결과는 Wave에 남아 있음.)
+
+---
 
 **핵심:** `vlog` 대상 VO, `file copy` 대상 SDO, `vsim -sdfmax`의 SDF 파일명을 모두 fast용으로 변경해야 합니다. 디바이스 라이브러리(`-L cycloneii_ver`)는 동일 디바이스면 그대로 사용합니다.
 
