@@ -203,6 +203,8 @@ vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L cycloneii_ver -sdfmax /tb_C
 add wave -r /*
 run -all
 ```
+## Finish Vsim 화면에서 "아니오"를 선택합니다. (시뮬레이션 결과는 Wave에 남아 있음.)
+
 
 ## Fast Model 사용 시
 
