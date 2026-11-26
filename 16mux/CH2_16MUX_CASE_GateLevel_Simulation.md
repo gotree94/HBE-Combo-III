@@ -136,6 +136,8 @@ C:\altera\13.0sp1\simulation\modelsim 폴더 아래
 
 Tool > Run Simulation Tool > Gate Level Simulation
 
+Timing model : Slow Model 을 선택하고 "RUN"
+
 ## ModelSim 수행 절차 (성공 기준)
 
 ModelSim Tcl 콘솔에서 아래 순서대로 실행.
