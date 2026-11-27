@@ -153,6 +153,22 @@ report_timing \
     -npaths 10
 ```
 
+![](time_001.png)
+
+![](time_002.png)
+
+![](time_003.png)
+
+![](time_004.png)
+
+![](time_005.png)
+
+![](time_006.png)
+
+![](time_007.png)
+
+
+
 Quartus/TimeQuest 버전 및 프로젝트의 포트·제약 상태에 따라 명령 옵션이나 노드 이름이 달라질 수 있다. 명령 실행 결과에 경로가 없으면 먼저 `get_ports *` 등으로 실제 포트 이름을 확인하고, SDC가 정상적으로 읽혔는지 확인한다.
 
 ## 9. I15 → Z 경로가 보이지 않을 때
