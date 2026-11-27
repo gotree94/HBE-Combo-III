@@ -27,6 +27,8 @@
 | S[2] → Z | 12.771 | 12.771 | 12.771 | 12.771 |
 | S[3] → Z | 12.655 | 12.655 | 12.655 | 12.655 |
 
+![](CASE-slow2.png)
+
 ### CASE (`CH2_16MUX_CASE`) : minimum propagation
 
 | Input/Output | RR(ns) | RF(ns) | FR(ns) | FF(ns) |
