@@ -213,6 +213,8 @@ run -all
 
 ![](CASE-slow.png)
 
+![](CASE-slow2.png)
+
 ### Finish Vsim 화면에서 "아니오"를 선택합니다. (시뮬레이션 결과는 Wave에 남아 있음.)
 
 ---
@@ -273,8 +275,6 @@ run -all
 ```
 
 ![](CASE-fast.png)
-
-![](CASE-slow2.png)
 
 ### Finish Vsim 화면에서 "아니오"를 선택합니다. (시뮬레이션 결과는 Wave에 남아 있음.)
 
