@@ -294,3 +294,29 @@ run -all
 - 각 `S` 구간에서 `Z`가 선택된 입력(`I0`~`I15`)을 따라가는지 확인.
 - Slow Model SDF가 적용되어 게이트 지연이 파형에 반영되는지 확인.
 - 총 시뮬레이션 시간: `16 × 200ns = 3200ns`.
+
+
+```
+set_location_assignment PIN_AE11 -to Z
+set_location_assignment PIN_T6 -to S[0]
+set_location_assignment PIN_V1 -to S[1]
+set_location_assignment PIN_U7 -to S[2]
+set_location_assignment PIN_U6 -to S[3]
+set_location_assignment PIN_V4 -to I0
+set_location_assignment PIN_V3 -to I1
+set_location_assignment PIN_V2 -to I2
+set_location_assignment PIN_W4 -to I3
+set_location_assignment PIN_W3 -to I4
+set_location_assignment PIN_W2 -to I5
+set_location_assignment PIN_W1 -to I6
+set_location_assignment PIN_V7 -to I7
+set_location_assignment PIN_Y4 -to I8
+set_location_assignment PIN_Y3 -to I9
+set_location_assignment PIN_Y2 -to I10
+set_location_assignment PIN_Y1 -to I11
+set_location_assignment PIN_W6 -to I12
+set_location_assignment PIN_AA4 -to I13
+set_location_assignment PIN_AA3 -to I14
+set_location_assignment PIN_AA2 -to I15
+```
+
